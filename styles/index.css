@@ -1,3 +1,6 @@
+/* Fonts */
+@import "fonts";
+
 @tailwind base;
 
 /* Write your own custom base styles here */

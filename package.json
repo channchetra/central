@@ -1,4 +1,13 @@
 {
+  "name": "ams-central",
+  "slug": "ams-central-front",
+  "version": "1.0.0",
+  "author": "channchetra",
+  "homepage": "https://ams.com.kh/central",
+  "repository": {
+      "type": "git",
+      "url": "git@github.com/channchetra/central.git"
+  },
   "private": true,
   "scripts": {
     "dev": "next",

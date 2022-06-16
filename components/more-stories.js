@@ -9,12 +9,12 @@ export default function MoreStories({ posts }) {
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
         {posts.map(({ node }) => (
           <PostPreview
-            key={node.slug}
+            key={node.databaseId}
             title={node.title}
             coverImage={node.featuredImage}
             date={node.date}
             author={node.author}
-            slug={node.slug}
+            slug={node.databaseId}
             excerpt={node.excerpt}
           />
         ))}

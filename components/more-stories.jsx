@@ -8,8 +8,11 @@ export default function MoreStories({ posts }) {
         More Stories
       </h2>
       
-      <CommonSectionHeader title="Section Header Primary" type="primary" />
-      <CommonSectionHeader title="Section Header Secondary" type="secondary" className="mb-5 !text-lg" />
+      <CommonSectionHeader type="primary" title="Section Header Primary" />
+      <CommonSectionHeader type="primary" title="Section Header Primary" lineColor="before:bg-black" />
+
+      <CommonSectionHeader type="secondary" title="Section Header Secondary" className="mb-5 !text-lg" />
+      <CommonSectionHeader type="secondary" title="Section Header Secondary" lineColor="before:bg-black" lineHighlightColor='after:bg-blue-100' className="mb-5 !text-lg" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
         {posts.map(({ node }) => (

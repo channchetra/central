@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import classNames from "classnames"
 
-export default function CommonSectionHeader({ title, className = '', type = 'primary'}) {
+export default function CommonSectionHeader({ type = 'primary', title, className = '', lineColor = 'before:bg-gray-100', lineHighlightColor = 'after:bg-red-900' }) {
     const primaryClass = classNames(
         "relative",
         "pr-5",
@@ -12,7 +12,7 @@ export default function CommonSectionHeader({ title, className = '', type = 'pri
         "before:left-full",
         "before:top-2/4",
         "before:w-screen",
-        "before:bg-gray-100",
+        lineColor,
     )
     const secondaryClass = classNames(
         "relative",
@@ -24,14 +24,14 @@ export default function CommonSectionHeader({ title, className = '', type = 'pri
         "before:top-full",
         "before:left-0",
         "before:w-full",
-        "before:bg-gray-100",
+        lineColor,
 
         "after:h-0.5",
         "after:absolute",
         "after:top-full",
         "after:left-0",
         "after:w-14",
-        "after:bg-red-900",
+        lineHighlightColor,
     )
 
     if (type === 'primary') {

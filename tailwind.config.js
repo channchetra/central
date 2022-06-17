@@ -25,13 +25,13 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          "Roboto",
-          "Koh-Santepheap",
-          "system-ui",
-          "-apple-system",
-          "Helvetica Neue",
-          "Noto Sans",
-          "serif",
+          'Roboto',
+          'Koh-Santepheap',
+          'system-ui',
+          '-apple-system',
+          'Helvetica Neue',
+          'Noto Sans',
+          'serif',
         ],
       },
       fontSize: {
@@ -46,10 +46,6 @@ module.exports = {
       },
     },
   },
-<<<<<<< HEAD
-  plugins: [require("@tailwindcss/forms")],
-=======
   plugins: [],
   important: true,
->>>>>>> a799fbac76658fb335d17a7f47f9212beba2ff27
 };

@@ -1,100 +1,8 @@
-import Link from "next/link";
 import { Fragment } from "react";
-import { forwardRef } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon, SearchIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-
-const allLink = [
-  { name: "AMS Education", href: "http://education.ams.com.kh/" },
-  { name: "AMS Economy", href: "ttp://economy.ams.com.kh/" },
-  { name: "AMS Infotainment", href: "http://infotainment.ams.com.kh/" },
-  {
-    name: "AMS Khmer Civilization",
-    href: "https://ams.com.kh/khmercivilization/",
-  },
-  { name: "AMS Sports", href: "https://ams.com.kh/sports/" },
-];
-const flagShipMenu = [
-  { name: "វិទ្យុសំលេងយុវជន", href: "#" },
-  { name: "មើលទូរទស្សន៍", href: "#" },
-  { name: "ស្តាប់វិទ្យុ", href: "#" },
-  { name: "ជម្លោះអ៊ុយក្រែននិងរុស្សី", href: "#" },
-];
-const menus = [
-  { name: "ទំព័រដើម", href: "/" },
-  {
-    name: "One-Minute",
-    href: "#",
-    subMenus: [
-      { name: "សន្តិសុខមាតុភូមិខ្ញុំ", href: "#" },
-      { name: "ព័ត៌មានទាន់ហេតុការណ៍", href: "#" },
-      { name: "ព័ត៌មានសង្ខេបប្រចាំថ្ងៃ", href: "#" },
-      { name: "ការផ្លាស់ប្តរមុខមាត់ថ្មីក្នុងប្រទេស", href: "#" },
-    ],
-  },
-  {
-    name: "កិច្ចការបរទេស",
-    href: "#",
-    subMenus: [
-      { name: "AVI Voice", href: "#" },
-      { name: "Cambodia 2050", href: "#" },
-      { name: "Asian Vision Dialogue (AVD)", href: "#" },
-      { name: "Climate Change", href: "#" },
-      { name: "ជីវចំម្រុះ", href: "#" },
-    ],
-  },
-  {
-    name: "ព័ត៌មានទូទៅ",
-    href: "#",
-    subMenus: [
-      { name: "ព័ត៌មានជាតិ", href: "#" },
-      { name: "ព័ត៌មានអន្តរជាតិ", href: "#" },
-      { name: "កីឡា", href: "#" },
-      { name: "សេដ្ឋកិច្ច", href: "#" },
-      { name: "អប្សរាណេត", href: "#" },
-      { name: "អប្សរាផ្លាស់", href: "#" },
-      { name: "ការបោះឆ្នោត", href: "#" },
-      { name: "Covid-19", href: "#" },
-    ],
-  },
-  {
-    name: "កម្ពុជាមាតុភូមិខ្ញុំ",
-    href: "#",
-  },
-  {
-    name: "វីដេអូ",
-    href: "#",
-    subMenus: [
-      { name: "AMS Muzic", href: "#" },
-      { name: "ភូមិខ្ញុំ", href: "#" },
-      { name: "កម្ពុជាដែនដីអឆ្ឆរយៈ", href: "#" },
-      { name: "វេយោអនអប្សរា", href: "#" },
-    ],
-  },
-  {
-    name: "Politico 360",
-    href: "#",
-    subMenus: [
-      { name: "Chao Chaksmok", href: "#" },
-      { name: "បក្សីចាំក្រុង", href: "#" },
-      { name: "កម្ពុជាពិត", href: "#" },
-      { name: "Black & White", href: "#" },
-      { name: "Positive Cambodia", href: "#" },
-    ],
-  },
-  {
-    name: "សច្ចធម៌ប្រវត្តិសាស្ត្រ",
-    href: "#",
-    subMenus: [
-      { name: "ក្អែកខ្មៅ", href: "#" },
-      { name: "កិច្ចព្រមព្រៀងទីក្រុងប៉ារីស៍", href: "#" },
-      { name: "នយោបាយឈ្នះ-ឈ្នះ", href: "#" },
-      { name: "ដំណើររបស់កម្ពុជា", href: "#" },
-      { name: "ឥស្សរជនឆ្នើមកម្ពុជា", href: "#" },
-    ],
-  },
-];
+import Menu from "~/constants/menu";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -157,7 +65,7 @@ export default function Header() {
                           <Popover.Panel className="absolute z-10 -ml-4 mt-3 transform px-2 sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2 shadow-md">
                             <div className="rounded-lg overflow-hidden">
                               <div className="relative grid gap-6 bg-white p-5 sm:gap-5 sm:p-3">
-                                {allLink.map((item) => (
+                                {Menu.amsWebsites.map((item) => (
                                   <a
                                     key={item.name}
                                     href={item.href}
@@ -182,7 +90,7 @@ export default function Header() {
         </div>
         <div className="flex gap-2">
           <div className="flagship items-center hidden sm:flex">
-            {flagShipMenu.map((item) => (
+            {Menu.flagshipMenus.map((item) => (
               <a
                 href={item.href}
                 className="p-5 -skew-x-12 text-base font-bold text-white hover:opacity-75"
@@ -216,7 +124,7 @@ export default function Header() {
                     <div className="p-3 flex-1">
                       <input
                         type="text"
-                        class="
+                        className="
                         h-12
                         mt-1
                         block
@@ -249,7 +157,7 @@ export default function Header() {
                 </Popover.Button>
               </div>
               <Popover.Group as="nav" className="hidden md:flex gap-5">
-                {menus.map((menu) =>
+                {Menu.mainMenus.map((menu) =>
                   menu.subMenus ? (
                     <Popover className="relative">
                       {({ open }) => (
@@ -331,7 +239,7 @@ export default function Header() {
                     </div>
                     <div className="mt-6">
                       <nav className="grid grid-cols-1 gap-7">
-                        {menus.map((menu) => (
+                        {Menu.mainMenus.map((menu) => (
                           <a
                             href={menu.href}
                             className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
@@ -350,6 +258,7 @@ export default function Header() {
             <img
               srcSet="https://asset.ams.com.kh/central/media/AMS-Central-Page-Profile%404x.png"
               className="w-14 sm:hidden"
+              alt=""
             />
           </div>
 
@@ -383,7 +292,7 @@ export default function Header() {
                 <div className="shadow-lg ring-1 h-full ring-black ring-opacity-5 bg-white flex flex-col">
                   <div className="pt-5 px-5 flex-1 mb-auto">
                     <div className="flex items-center justify-between">
-                      <div></div>
+                      <div />
                       <div className="-mr-2">
                         <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 ">
                           <span className="sr-only">Close menu</span>
@@ -396,7 +305,7 @@ export default function Header() {
                     <div className="mt-3 h-full">
                       <input
                         type="text"
-                        class="
+                        className="
                         h-14
                         mt-1
                         block

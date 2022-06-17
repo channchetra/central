@@ -22,7 +22,7 @@ export default function Index({ allPosts: { edges }, preview }) {
       {/* <Intro /> */}
       <Container>
         <div className='my-5'>
-          <CommonSectionHeader type="primary" title="ព័ត៌មានថ្មីបំផុត" className='font-bold' />
+          <CommonSectionHeader type="primary" title="ព័ត៌មានថ្មីបំផុត" className='text-xl font-bold' />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
           { morePosts.map((post) => (

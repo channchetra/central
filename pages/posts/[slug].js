@@ -17,7 +17,7 @@ export default function Post({ post, posts, preview }) {
   const router = useRouter()
   const morePosts = posts?.edges
 
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !post?.databaseId) {
     return <ErrorPage statusCode={404} />
   }
 
@@ -78,7 +78,7 @@ export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug()
 
   return {
-    paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
+    paths: allPosts.edges.map(({ node }) => `/posts/${node.databaseId}`) || [],
     fallback: true,
   }
 }

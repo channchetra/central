@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 export default function Avatar({ author }) {
+  // eslint-disable-next-line no-nested-ternary
   const name = author
     ? author.node.firstName && author.node.lastName
       ? `${author.node.firstName} ${author.node.lastName}`

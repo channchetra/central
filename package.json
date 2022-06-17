@@ -5,8 +5,8 @@
   "author": "channchetra",
   "homepage": "https://ams.com.kh/central",
   "repository": {
-      "type": "git",
-      "url": "git@github.com/channchetra/central.git"
+    "type": "git",
+    "url": "git@github.com/channchetra/central.git"
   },
   "private": true,
   "scripts": {

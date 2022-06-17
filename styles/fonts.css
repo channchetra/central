@@ -1,4 +1,10 @@
 @font-face {
-	font-family: 'Koh-Santepheab';
-	src: url(../public/fonts/KohSantepheap-Regular.ttf);
+  font-family: "Koh-Santepheap";
+  src: url(../public/fonts/KohSantepheap-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Koh-Santepheap";
+  src: url(../public/fonts/KohSantepheap-Bold.ttf);
+  font-weight: 500;
 }

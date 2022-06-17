@@ -26,7 +26,7 @@ module.exports = {
       fontFamily: {
         sans: [
           "Roboto",
-          "Koh-Santepheab",
+          "Koh-Santepheap",
           "system-ui",
           "-apple-system",
           "Helvetica Neue",
@@ -46,5 +46,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };

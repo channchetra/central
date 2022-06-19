@@ -1,0 +1,39 @@
+import Image from 'next/image'
+
+export default function PostAuthor({ author, className = '', styles, config = {} }) {
+  if (!author) {
+    return (null)
+  }
+  
+  const { node: { firstName, lastName, name, avatar } } = author || {}
+  const authorName = name || `${firstName} ${lastName}` || null
+  const conf = {
+      showAvatar: true,
+      showName: true,
+      ...config,
+  }
+  const classes = {
+    wrapper: '',
+    avatar: '',
+    name: '',
+    ...styles,
+  }
+
+  return (
+    <div className={`${className} ${classes.wrapper}`}>
+      {conf.showAvatar && (
+        <div className={classes.avatar}>
+          <Image
+            src={avatar.url}
+            layout="fill"
+            className="rounded-full"
+            alt={authorName}
+          />
+        </div>
+      )}
+      {conf.showName && (
+        <div className={classes.name}>{authorName}</div>
+      )}
+    </div>
+  )
+}

@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import Layout from '~/components/layout/layout';
+import PostItemGridView from '~/components/post/post-item-grid-view';
+import CommonSectionHeader from '~/components/common/section-header';
 import Container from '../components/container';
 import MoreStories from '../components/more-stories';
 import HeroPost from '../components/hero-post';
@@ -19,6 +21,18 @@ export default function Index({ allPosts: { edges }, preview }) {
       </Head>
       <Header />
       <Container>
+        <div className='my-5'>
+          <CommonSectionHeader type="primary" title="ព័ត៌មានថ្មីបំផុត" className='text-xl font-bold' />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+          { morePosts.map((post) => (
+            <PostItemGridView
+              key={post.databaseId}
+              post={post.node}
+              config={{}}
+            />
+          ))}
+        </div>
         {heroPost && (
           <HeroPost
             title={heroPost.title}

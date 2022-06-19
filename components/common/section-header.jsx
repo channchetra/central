@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import classNames from "classnames"
 
-export default function CommonSectionHeader({ type = 'primary', title, className = '', lineColor = 'before:bg-gray-100', lineHighlightColor = 'after:bg-red-900' }) {
+export default function CommonSectionHeader({ type = 'primary', title, className = 'text-xl', lineColor = 'before:bg-gray-100', lineHighlightColor = 'after:bg-red-900' }) {
     const primaryClass = classNames(
         "relative",
         "pr-5",
@@ -35,13 +35,13 @@ export default function CommonSectionHeader({ type = 'primary', title, className
     )
 
     if (type === 'primary') {
-        return <div className={`text-xl overflow-hidden ${className}`}>
+        return <div className={`overflow-hidden ${className}`}>
             <span className={primaryClass}>{ title }</span>
         </div>
     }
     
     if (type === 'secondary') {
-        return <div className={`text-xl ${className}`}>
+        return <div className={`${className}`}>
             <div className={`${secondaryClass}`}>{ title }</div>
         </div>
     }

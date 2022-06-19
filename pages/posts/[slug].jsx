@@ -21,7 +21,7 @@ export default function Post({ post, posts, preview }) {
   if (!router.isFallback && !post?.databaseId) {
     return <ErrorPage statusCode={404} />
   }
-
+  console.log(post)
   return (
     <Layout preview={preview}>
       <Container>

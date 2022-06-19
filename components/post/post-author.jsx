@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function PostAuthor({ author, className = '', styles, config = {} }) {
   if (!author) {
@@ -32,7 +33,11 @@ export default function PostAuthor({ author, className = '', styles, config = {}
         </div>
       )}
       {conf.showName && (
-        <div className={classes.name}>{authorName}</div>
+        <Link href="#">
+          <a aria-label={authorName}>
+            <div className={classes.name}>{authorName}</div>
+          </a>
+        </Link>
       )}
     </div>
   )

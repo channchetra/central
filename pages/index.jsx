@@ -1,14 +1,14 @@
 import Head from 'next/head';
 import Layout from '~/components/layout/layout';
-import PostItemGridView from '~/components/post/post-item-grid-view';
 import CommonSectionHeader from '~/components/common/section-header';
+import Footer from '~/components/footer';
+import PostItem from '~/components/post/post-item';
 import Container from '../components/container';
 import MoreStories from '../components/more-stories';
 import HeroPost from '../components/hero-post';
 import Header from '../components/header';
 import { getAllPostsForHome } from '../lib/api';
 import { CMS_NAME } from '../lib/constants';
-import Footer from '~/components/footer';
 
 export default function Index({ allPosts: { edges }, preview }) {
   const heroPost = edges[0]?.node;
@@ -24,12 +24,20 @@ export default function Index({ allPosts: { edges }, preview }) {
         <div className='my-5'>
           <CommonSectionHeader type="primary" title="ព័ត៌មានថ្មីបំផុត" className='text-xl font-bold' />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+        <div className='mb-10'>
+          <PostItem
+              post={heroPost}
+              config={{}}
+              styles={{}}
+            />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           { morePosts.map((post) => (
-            <PostItemGridView
+            <PostItem
               key={post.databaseId}
               post={post.node}
-              config={{}}
+              config={{ listView: true }}
+              styles={{}}
             />
           ))}
         </div>

@@ -91,4 +91,31 @@ export default class Menu {
       ],
     },
   ];
+  static footerCentral = [
+    { name: 'ព័ត៌មានទូទៅ', href: '#' },
+    { name: 'Politico 360', href: '#' },
+    { name: 'ក្អែកខ្មៅ', href: '#' },
+    { name: 'បរិស្ថាន', href: '#' },
+    { name: 'វីដេអូ', href: '#' },
+    { name: 'ទូរទស្សន៍', href: '#' },
+    { name: '', href: '#' },
+    { name: '', href: '#' },
+  ];
+  static footerLearnMore = [
+    {name:'ទំនាក់ទំនង', href: '#'},
+    {name:'សំនួរនិងចម្លើយដែលពេញនិយម', href: '#'},
+    {name:'ផ្សព្វផ្សាយពាណិជ្ជកម្ម', href: '#'},
+    {name:'ជ្រើសរើសបុគ្គលិក', href: '#'},
+  ]
+  static amsGroup = [
+    { name: 'AMS Education', href: 'http://education.ams.com.kh/' },
+    { name: 'AMS Central', href: 'https://ams.com.kh/central/' },
+    { name: 'AMS Economy', href: 'ttp://economy.ams.com.kh/' },
+    {
+      name: 'AMS Khmer Civilization',
+      href: 'https://ams.com.kh/khmercivilization/',
+    },
+    { name: 'AMS Infotainment', href: 'http://infotainment.ams.com.kh/' },
+    { name: 'AMS Sports', href: 'https://ams.com.kh/sports/' },
+  ];
 }

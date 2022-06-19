@@ -6,6 +6,7 @@ import HeroPost from '../components/hero-post';
 import Header from '../components/header';
 import { getAllPostsForHome } from '../lib/api';
 import { CMS_NAME } from '../lib/constants';
+import Footer from '~/components/footer';
 
 export default function Index({ allPosts: { edges }, preview }) {
   const heroPost = edges[0]?.node;
@@ -17,7 +18,6 @@ export default function Index({ allPosts: { edges }, preview }) {
         <title>AMS Central {CMS_NAME}</title>
       </Head>
       <Header />
-      {/* <Intro /> */}
       <Container>
         {heroPost && (
           <HeroPost

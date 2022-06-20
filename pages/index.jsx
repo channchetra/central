@@ -21,26 +21,52 @@ export default function Index({ allPosts: { edges }, preview }) {
       </Head>
       <Header />
       <Container>
-        <div className='my-5'>
-          <CommonSectionHeader type="primary" title="ព័ត៌មានថ្មីបំផុត" className='text-xl font-bold' />
+        <div className="my-5">
+          <CommonSectionHeader
+            type="primary"
+            title="ព័ត៌មានថ្មីបំផុត"
+            className="text-xl font-bold"
+          />
         </div>
-        <div className='mb-10'>
-          <PostItem
-              post={heroPost}
-              config={{}}
-              styles={{}}
-            />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          { morePosts.map((post) => (
+        <section className="grid md:grid-cols-2 gap-5">
+          <div className="mb-10">
             <PostItem
-              key={post.databaseId}
-              post={post.node}
-              config={{ listView: true }}
+              post={heroPost}
+              config={{
+                showExcerpt: false,
+                imageHeight: 800,
+                imageWidth: 1000,
+              }}
               styles={{}}
             />
-          ))}
-        </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <PostItem
+              key={heroPost.databaseId}
+              post={heroPost}
+              config={{ showExcerpt: false }}
+              styles={{}}
+            />
+            <PostItem
+              key={heroPost.databaseId}
+              post={heroPost}
+              config={{ showExcerpt: false }}
+              styles={{}}
+            />
+            <PostItem
+              key={heroPost.databaseId}
+              post={heroPost}
+              config={{ showExcerpt: false }}
+              styles={{}}
+            />
+            <PostItem
+              key={heroPost.databaseId}
+              post={heroPost}
+              config={{ showExcerpt: false }}
+              styles={{}}
+            />
+          </div>
+        </section>
         {heroPost && (
           <HeroPost
             title={heroPost.title}

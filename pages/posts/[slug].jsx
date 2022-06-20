@@ -22,6 +22,8 @@ export default function Post({ post, posts, preview }) {
     return <ErrorPage statusCode={404} />;
   }
 
+  const { title } = post || {}
+
   return (
     <Layout preview={preview}>
       <>
@@ -29,7 +31,7 @@ export default function Post({ post, posts, preview }) {
         <Container>
           <CommonBreadcrumb
             className="my-5"
-            items={[{ label: 'One-Minute', link: '#' }, { label: post.title }]}
+            items={[{ label: 'One-Minute', link: '#' }, { label: title }]}
           />
 
           {router.isFallback ? (
@@ -39,7 +41,7 @@ export default function Post({ post, posts, preview }) {
               <article>
                 <Head>
                   <title>
-                    {post.title} | Next.js Blog Example with {CMS_NAME}
+                    {title} | Next.js Blog Example with {CMS_NAME}
                   </title>
                   <meta
                     property="og:image"
@@ -47,7 +49,7 @@ export default function Post({ post, posts, preview }) {
                   />
                 </Head>
                 <PostHeader
-                  title={post.title}
+                  title={title}
                   coverImage={post.featuredImage}
                   date={post.date}
                   author={post.author}

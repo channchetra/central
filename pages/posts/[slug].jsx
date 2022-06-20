@@ -18,10 +18,10 @@ export default function Post({ post, posts, preview }) {
   const router = useRouter();
   const morePosts = posts?.edges;
 
-  if (!router.isFallback && !post?.databaseId) {
+  if (!router.isFallback && !post && !post?.databaseId) {
     return <ErrorPage statusCode={404} />;
   }
-  console.log(post);
+
   return (
     <Layout preview={preview}>
       <>

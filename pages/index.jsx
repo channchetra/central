@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Layout from '~/components/layout/layout';
 import CommonSectionHeader from '~/components/common/section-header';
-import Footer from '~/components/footer';
 import PostItem from '~/components/post/post-item';
 import Container from '../components/container';
 import MoreStories from '../components/more-stories';

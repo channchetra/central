@@ -52,7 +52,8 @@ export default function PostItem({
       second: conf.listView && conf.showImage ? 'flex-1 px-4' : '',
     },
     image: {
-      wrapper: 'mb-3 relative aspect-video',
+      wrapper: 'mb-3',
+      imageWrapper: 'aspect-video',
       category: {
         wrapper: 'absolute bottom-0',
         name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',

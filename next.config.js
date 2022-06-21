@@ -12,7 +12,9 @@ module.exports = {
       '2.gravatar.com',
       'secure.gravatar.com',
       'asset.ams.com.kh',
-      'ams.com.kh',
+      'localhost:3000',
+      'ams.com.kh'
     ],
+    formats: ['image/avif', 'image/webp'],
   },
 };

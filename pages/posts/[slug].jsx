@@ -31,8 +31,8 @@ export default function Post({ post, posts, preview }) {
     setHasmore(newPosts.pageInfo.hasNextPage)
   }
 
-  if (!router.isFallback && !post?.databaseId) {
-    return <ErrorPage statusCode={404} />
+  if (!router.isFallback && !post && !post?.databaseId) {
+    return <ErrorPage statusCode={404} />;
   }
 
   return (
@@ -148,14 +148,14 @@ export async function getStaticProps({ params, preview = false }) {
       posts
     },
     revalidate: 10,
-  }
+  };
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getAllPostsWithSlug()
+  const allPosts = await getAllPostsWithSlug();
 
   return {
     paths: allPosts.edges.map(({ node }) => `/posts/${node.databaseId}`) || [],
     fallback: true,
-  }
+  };
 }

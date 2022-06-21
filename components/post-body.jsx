@@ -1,3 +1,4 @@
+import sanitizeHtml from 'sanitize-html';
 import styles from './post-body.module.css'
 
 export default function PostBody({ content }) {
@@ -5,7 +6,9 @@ export default function PostBody({ content }) {
     <div className="max-w-2xl mx-auto">
       <div
         className={styles.content}
-        dangerouslySetInnerHTML={{ __html: content }}
+         dangerouslySetInnerHTML={{__html: sanitizeHtml(content, {
+          allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
+         })}}
       />
     </div>
   )

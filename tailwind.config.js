@@ -6,6 +6,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'accent-1': '#FAFAFA',
+        'accent-2': '#EAEAEA',
+        'accent-7': '#333',
+        success: '#0070f3',
+        cyan: '#79FFE1',
         'ams-red': '#cf0a10',
         'ams-blue': '#362095',
         'ams-purple': '#721550',
@@ -45,5 +50,4 @@ module.exports = {
     },
   },
   plugins: [],
-  important: true,
 };

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import sanitizeHtml from 'sanitize-html';
 import Avatar from "./avatar";
 import Date from "./date";
 import CoverImage from "./cover-image";
@@ -22,9 +23,9 @@ export default function PostPreview({
         <Link href={`/posts/${slug}`}>
           <a
             className="hover:underline"
-            dangerouslySetInnerHTML={{ __html: title }}
-            href
-           />
+            aria-label={title}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(title) }}
+          />
         </Link>
       </h3>
       <div className="text-lg mb-4">
@@ -32,7 +33,7 @@ export default function PostPreview({
       </div>
       <div
         className=" overflow-hidden"
-        dangerouslySetInnerHTML={{ __html: excerpt }}
+        dangerouslySetInnerHTML={{ __html: sanitizeHtml(excerpt) }}
       />
       <Avatar author={author} />
     </div>

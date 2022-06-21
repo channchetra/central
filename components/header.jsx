@@ -3,6 +3,8 @@ import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon, SearchIcon } from '@heroicons/react/outline';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import Menu from '~/constants/menu';
+import Link from 'next/link';
+import Image from 'next/image';
 import Container from './container';
 
 function classNames(...classes) {
@@ -14,21 +16,24 @@ export default function Header() {
       <Container>
         <div className="hidden sm:flex items-center justify-between">
           <div className="flex gap-3 items-center">
-            <a href="/">
-              <span className="sr-only">AMS Central</span>
-              <img
-                className="h-6 w-auto sm:h-8"
-                src="https://asset.ams.com.kh/central/media/APSARA_MEDIA_SERVICES_SECONDARY_LOGO.png"
-                alt=""
-              />
-            </a>
-            <a
-              href="/"
-              className="text-3xl leading-none before:content-['|'] before:mr-3"
-              style={{ fontFamily: 'Battambang' }}
-            >
-              CENTRAL
-            </a>
+            <Link href='/'>
+              <a aria-label='AMS Central'>
+                <span className="sr-only">AMS Central</span>
+                <div className='h-6 w-20 sm:h-8 relative'>
+                  <Image
+                    layout="fill"
+                    alt='AMS Central'
+                    src='https://asset.ams.com.kh/central/media/APSARA_MEDIA_SERVICES_SECONDARY_LOGO.png'
+                    objectFit="contain"
+                  />
+                </div>
+              </a>
+            </Link>
+            <Link href='/' className="text-3xl leading-none before:content-['|'] before:mr-3" style={{ fontFamily: 'Battambang' }}>
+              <a aria-label='CENTRAL'>
+                CENTRAL
+              </a>
+            </Link>
             <Popover className="relative bg-white">
               <div className="max-w-screen-xl container mx-auto">
                 <div className="flex items-center md:justify-start md:space-x-10 z">
@@ -143,7 +148,7 @@ export default function Header() {
 
       <div className="bg-slate-100 sticky top-0 z-10">
         <Container>
-          <div className="relative flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue md:from-inherit">
+          <div className="relative -mx-5 md:-mx-0 flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue md:from-inherit">
             <Popover>
               <div className="md:hidden">
                 <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100">
@@ -158,7 +163,7 @@ export default function Header() {
                       className="relative"
                       key={`main-menu-${mainMenuIndex}`}
                     >
-                      {({ open }) => (
+                      {() => (
                         <>
                           <Popover.Button className="group py-4 text-xs lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400">
                             <span className="font-bold">{menu.name}</span>
@@ -256,11 +261,14 @@ export default function Header() {
               </Transition>
             </Popover>
             <div className="mobile-logo">
-              <img
-                srcSet="https://asset.ams.com.kh/central/media/AMS-Central-Page-Profile%404x.png"
-                className="w-14 sm:hidden"
-                alt=""
-              />
+              <div className="w-14 sm:hidden relative">
+                <Image
+                  layout='fill'
+                  alt=''
+                  src='https://asset.ams.com.kh/central/media/AMS-Central-Page-Profile%404x.png'
+                  objectFit='contain'
+                />
+              </div>
             </div>
 
             <Popover className="sm:hidden">
@@ -307,6 +315,7 @@ export default function Header() {
                           type="text"
                           className="
                         h-14
+                        px-5
                         mt-1
                         block
                         w-full

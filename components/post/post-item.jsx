@@ -1,3 +1,4 @@
+import { merge } from 'lodash';
 import PostTitle from './post-title';
 import PostAuthor from './post-author';
 import PostCategoryTag from './post-category-tag';
@@ -45,7 +46,8 @@ export default function PostItem({
     author,
     categories,
   } = post || {};
-  const classes = {
+
+  const classes = merge({
     wrapper: conf.listView ? 'flex hover:text-rose-600' : 'hover:text-rose-600',
     innerWrapper: {
       first: conf.listView && conf.showImage ? 'w-1/3' : '',
@@ -83,8 +85,8 @@ export default function PostItem({
       },
     },
     lineSeparator: 'border-accent-2 mt-3',
-    ...styles,
-  };
+  }, styles)
+
   const postDetailLink = `/posts/${databaseId}`;
 
   return (

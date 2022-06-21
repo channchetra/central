@@ -1,5 +1,7 @@
-import Container from './container';
+import Image from 'next/image';
+import Link from 'next/link';
 import Menu from '~/constants/menu';
+import Container from './container';
 // import amsLogoWide from '/images/APSARA_MEDIA_SERVICES_LOGO-01.png';
 // import { EXAMPLE_PATH } from '../lib/constants'
 
@@ -10,9 +12,18 @@ export default function Footer() {
     <section className="bg-ams-light">
       <Container>
         <section className="py-6 border-b-2 border-gray-300">
-          <a href="/" className="inline-block">
-            <img src={amsLogoWide} alt="AMS Logo" width={'180px'} />
-          </a>
+          <Link href='/' className="inline-block">
+            <a aria-label=''>
+              <div className='w-44 h-20 relative'>
+                <Image
+                  layout='fill'
+                  objectFit='contain'
+                  alt='AMS Logo'
+                  src={amsLogoWide}
+                />
+              </div>
+            </a>
+          </Link>
         </section>
         <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
           <div>

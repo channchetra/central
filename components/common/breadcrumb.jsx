@@ -14,8 +14,8 @@ export default function CommonBreadcrumb({ className, items = [] }) {
           ទំព័រដើម
         </a>
       </span>
-      {items.map((item) => (
-        <span className="text-gray-500 text-sm md:text-base">
+      {items.map((item, index) => (
+        <span key={`breadcrumb-${index}`} className="text-gray-500 text-sm md:text-base">
           <ChevronRightIcon className="inline-block h-4 w-4 md:h-5 md:w-5 -mt-0.5 md:-mt-1 mr-1 md:mr-2" />
           {item.link ? (
             <a href="#" className="hover:text-gray-900 mr-1 md:mr-2">

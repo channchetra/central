@@ -1,35 +1,24 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Head from 'next/head';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { useState } from 'react';
+// import InfiniteScroll from 'react-infinite-scroll-component';
+// import { useState } from 'react';
 import Container from '../../components/container';
 import PostBody from '../../components/post-body';
 import Header from '../../components/header';
-import PostHeader from '../../components/post-header';
+// import PostHeader from '../../components/post-header';
 import SectionSeparator from '../../components/section-separator';
 import Layout from '../../components/layout/layout';
 import { getAllPostsWithSlug } from '../../lib/api';
-import { getPost, getPosts } from '../../lib/get-post-and-next-posts';
+import { getPost } from '../../lib/get-post-and-next-posts';
 import PostTitle from '../../components/post-title';
 import { CMS_NAME } from '../../lib/constants';
 import Tags from '../../components/tags';
-import CommonBreadcrumb from '../../components/common/breadcrumb';
+// import CommonBreadcrumb from '../../components/common/breadcrumb';
 
-const postsPerPage = 1;
 
-export default function Post({ post, posts, preview }) {
+export default function Post({ post, preview }) {
   const router = useRouter();
-  const [morePosts, setMorePosts] = useState(posts.edges);
-  const [pageInfo, setPageInfo] = useState(posts.pageInfo);
-  const [hasMore, setHasmore] = useState(posts.pageInfo.hasNextPage);
-
-  const getMorePost = async () => {
-    const newPosts = await getPosts(postsPerPage, pageInfo.endCursor);
-    setMorePosts((oldPosts) => [...oldPosts, ...newPosts.edges]);
-    setPageInfo(newPosts.pageInfo);
-    setHasmore(newPosts.pageInfo.hasNextPage);
-  };
 
   if (!router.isFallback && !post && !post?.databaseId) {
     return <ErrorPage statusCode={404} />;
@@ -40,10 +29,10 @@ export default function Post({ post, posts, preview }) {
       <Container>
         <Header />
 
-        <CommonBreadcrumb
+        {/* <CommonBreadcrumb
           className="my-5"
           items={[{ label: 'One-Minute', link: '#' }, { label: post.title }]}
-        />
+        /> */}
 
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
@@ -59,13 +48,13 @@ export default function Post({ post, posts, preview }) {
                   content={post.featuredImage?.node.sourceUrl}
                 />
               </Head>
-              <PostHeader
+              {/* <PostHeader
                 title={post.title}
                 coverImage={post.featuredImage}
                 date={post.date}
                 author={post.author}
                 categories={post.categories}
-              />
+              /> */}
               <PostBody content={post.content} />
               <footer>
                 {post.tags.edges.length > 0 && <Tags tags={post.tags} />}
@@ -75,56 +64,6 @@ export default function Post({ post, posts, preview }) {
             <SectionSeparator />
           </>
         )}
-
-        <InfiniteScroll
-          dataLength={morePosts.length} // This is important field to render the next data
-          next={getMorePost}
-          hasMore={hasMore}
-          loader={<h4>Loading...</h4>}
-          endMessage={
-            <p style={{ textAlign: 'center' }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
-          // below props only if you need pull down functionality
-          // refreshFunction={this.refresh}
-          // pullDownToRefresh
-          // pullDownToRefreshThreshold={50}
-          // pullDownToRefreshContent={
-          //   <h3 style={{ textAlign: 'center' }}>&#8595; Pull down to refresh</h3>
-          // }
-          // releaseToRefreshContent={
-          //   <h3 style={{ textAlign: 'center' }}>&#8593; Release to refresh</h3>
-          // }
-        >
-          {morePosts.map(({ node: item }) => (
-            <article key={item.id}>
-              <Head>
-                <title>
-                  {item.title} {CMS_NAME}
-                </title>
-                <meta
-                  property="og:image"
-                  content={item.featuredImage?.node.sourceUrl}
-                />
-              </Head>
-              <h1>{item.featuredImage?.node.sourceUrl}</h1>
-              {item?.featuredImage?.node?.sourceUrl && (
-                <PostHeader
-                  title={item.title}
-                  coverImage={item.featuredImage}
-                  date={item.date}
-                  author={item.author}
-                  categories={item.categories}
-                />
-              )}
-              <PostBody content={item.content} />
-              <footer>
-                {item.tags.edges.length > 0 && <Tags tags={item.tags} />}
-              </footer>
-            </article>
-          ))}
-        </InfiniteScroll>
       </Container>
     </Layout>
   );
@@ -132,12 +71,10 @@ export default function Post({ post, posts, preview }) {
 
 export async function getStaticProps({ params, preview = false }) {
   const post = await getPost(params.slug);
-  const posts = await getPosts(postsPerPage, null);
   return {
     props: {
       preview,
-      post,
-      posts,
+      post
     },
     revalidate: 10,
   };

@@ -25,7 +25,8 @@ export default function PostCoverImage({
   };
 
   const classes = {
-    wrapper: 'relative aspect-video',
+    wrapper: 'relative',
+    imageWrapper: 'aspect-video',
     image: classNames('shadow-small', {
       'hover:shadow-medium transition-shadow duration-200': link,
     }),
@@ -43,16 +44,18 @@ export default function PostCoverImage({
     />
   );
   return (
-    <div className={`${className} ${classes.wrapper}`}>
-      {link ? (
-        <Link href={link}>
-          <a className="flex" aria-label={title}>
-            {imageElement}
-          </a>
-        </Link>
-      ) : (
-        imageElement
-      )}
+    <div className={`relative ${className} ${classes.wrapper}`}>
+      <div className={link ? '' : classes.imageWrapper}>
+        {link ? (
+          <Link href={link}>
+            <a className={`flex ${classes.imageWrapper}`} aria-label={title}>
+              {imageElement}
+            </a>
+          </Link>
+        ) : (
+          imageElement
+        )}
+      </div>
 
       {isVideo && (
         <Link href={link}>

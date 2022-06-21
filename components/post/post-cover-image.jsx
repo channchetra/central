@@ -19,15 +19,13 @@ export default function PostCoverImage({
   }
 
   const conf = {
-    width: 2000,
-    height: 1000,
     showCategoryTag: false,
     showCategoryTagMultiple: false,
     ...config,
   };
 
   const classes = {
-    wrapper: '',
+    wrapper: 'relative aspect-video',
     image: classNames('shadow-small', {
       'hover:shadow-medium transition-shadow duration-200': link,
     }),
@@ -37,8 +35,7 @@ export default function PostCoverImage({
 
   const imageElement = (
     <Image
-      width={conf.width}
-      height={conf.height}
+      layout="fill"
       objectFit="cover"
       alt={title}
       src={image?.node.sourceUrl}

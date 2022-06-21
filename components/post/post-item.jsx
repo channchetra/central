@@ -33,8 +33,6 @@ export default function PostItem({
     showLineSeparator: false,
     titleLineClamp: '2',
     excerptLineClamp: '3',
-    imageWidth: config.listView ? 1500 : 2000,
-    imageHeight: config.listView ? 1000 : 1000,
     ...config,
   };
   const {
@@ -54,7 +52,7 @@ export default function PostItem({
       second: conf.listView && conf.showImage ? 'flex-1 px-4' : '',
     },
     image: {
-      wrapper: 'mb-3 relative',
+      wrapper: 'mb-3 relative aspect-video',
       category: {
         wrapper: 'absolute bottom-0',
         name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',
@@ -101,8 +99,6 @@ export default function PostItem({
               categories={categories}
               styles={classes.image}
               config={{
-                width: conf.imageWidth,
-                height: conf.imageHeight,
                 showCategoryTag: conf.showCategoryTagOnImage,
                 showCategoryTagMultiple: conf.showCategoryTagMultiple,
               }}

@@ -143,7 +143,7 @@ export default function Header() {
 
       <div className="bg-slate-100 sticky top-0 z-10">
         <Container>
-          <div className="relative flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue md:from-inherit">
+          <div className="relative -mx-5 md:-mx-0 flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue md:from-inherit">
             <Popover>
               <div className="md:hidden">
                 <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100">
@@ -307,6 +307,7 @@ export default function Header() {
                           type="text"
                           className="
                         h-14
+                        px-5
                         mt-1
                         block
                         w-full

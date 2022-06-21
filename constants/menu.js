@@ -33,7 +33,7 @@ export default class Menu {
       name: 'កិច្ចការបរទេស',
       href: '#',
       subMenus: [
-        { name: 'AVI Voice', href: '#' },
+        { name: 'AVI Voice', href: '/connect-oversea/ams-avi-voice' },
         { name: 'Cambodia 2050', href: '#' },
         { name: 'Asian Vision Dialogue (AVD)', href: '#' },
         { name: 'Climate Change', href: '#' },
@@ -91,6 +91,7 @@ export default class Menu {
       ],
     },
   ];
+
   static footerCentral = [
     { name: 'ព័ត៌មានទូទៅ', href: '#' },
     { name: 'Politico 360', href: '#' },
@@ -101,12 +102,14 @@ export default class Menu {
     { name: '', href: '#' },
     { name: '', href: '#' },
   ];
+
   static footerLearnMore = [
-    {name:'ទំនាក់ទំនង', href: '#'},
-    {name:'សំនួរនិងចម្លើយដែលពេញនិយម', href: '#'},
-    {name:'ផ្សព្វផ្សាយពាណិជ្ជកម្ម', href: '#'},
-    {name:'ជ្រើសរើសបុគ្គលិក', href: '#'},
-  ]
+    { name: 'ទំនាក់ទំនង', href: '#' },
+    { name: 'សំនួរនិងចម្លើយដែលពេញនិយម', href: '#' },
+    { name: 'ផ្សព្វផ្សាយពាណិជ្ជកម្ម', href: '#' },
+    { name: 'ជ្រើសរើសបុគ្គលិក', href: '#' },
+  ];
+
   static amsGroup = [
     { name: 'AMS Education', href: 'http://education.ams.com.kh/' },
     { name: 'AMS Central', href: 'https://ams.com.kh/central/' },

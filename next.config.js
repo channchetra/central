@@ -15,6 +15,6 @@ module.exports = {
       'localhost:3000',
       'ams.com.kh'
     ],
-    formats: ['image/avif', 'image/webp'],
+    // formats: ['image/avif', 'image/webp'],
   },
 };

@@ -29,7 +29,8 @@
       "jsx-a11y/anchor-is-valid": "off",
       "no-nested-ternary": "off",
       "react/no-array-index-key": "off",
-      "no-console": ["error", { "allow": ["warn", "error"] }]
+      "no-console": ["error", { "allow": ["warn", "error"] }],
+      "react/no-danger": "off"
     },
     "settings": {
         "import/resolver": {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import parse from 'html-react-parser';
+import sanitizeHtml from 'sanitize-html';
 import Avatar from "./avatar";
 import Date from "./date";
 import CoverImage from "./cover-image";
@@ -24,9 +24,8 @@ export default function PostPreview({
           <a
             className="hover:underline"
             aria-label={title}
-          >
-            { parse(title) }
-          </a>
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(title) }}
+          />
         </Link>
       </h3>
       <div className="text-lg mb-4">
@@ -34,9 +33,8 @@ export default function PostPreview({
       </div>
       <div
         className=" overflow-hidden"
-      >
-        { parse(excerpt) }
-      </div>
+        dangerouslySetInnerHTML={{ __html: sanitizeHtml(excerpt) }}
+      />
       <Avatar author={author} />
     </div>
   );

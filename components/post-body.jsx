@@ -1,19 +1,15 @@
-import parse from 'html-react-parser';
+import sanitizeHtml from 'sanitize-html';
 import styles from './post-body.module.css'
 
 export default function PostBody({ content }) {
-  
-  if (!content) {
-    return (null)
-  }
-
   return (
     <div className="max-w-2xl mx-auto">
       <div
         className={styles.content}
-      >
-        { parse(content) }
-      </div>
+         dangerouslySetInnerHTML={{__html: sanitizeHtml(content, {
+          allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
+         })}}
+      />
     </div>
   )
 }

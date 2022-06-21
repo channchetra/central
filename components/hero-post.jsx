@@ -1,5 +1,5 @@
 import Link from "next/link";
-import parse from 'html-react-parser';
+import sanitizeHtml from 'sanitize-html';
 import Avatar from "./avatar";
 import Date from "./date";
 import CoverImage from "./cover-image";
@@ -24,9 +24,7 @@ export default function HeroPost({
         <div>
           <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
             <Link href={`/posts/${slug}`} className="hover:underline">
-              <a aria-label={slug}>
-                { parse(title) }
-              </a>
+              <a aria-label={slug} dangerouslySetInnerHTML={{ __html: sanitizeHtml(title) }} />
             </Link>
           </h3>
           <div className="mb-4 md:mb-0 text-lg">
@@ -36,9 +34,8 @@ export default function HeroPost({
         <div>
           <div
             className="text-lg leading-relaxed mb-4 overflow-hidden"
-          >
-            { parse(excerpt) }
-          </div>
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(excerpt) }}
+          />
           <Avatar author={author} />
         </div>
       </div>

@@ -18,7 +18,7 @@ export default function Index({ allPosts: { edges }, preview }) {
       </Head>
       <Header />
       <Container>
-        <div className='my-10'>
+        <div className="my-10">
           <PageTitle title="AVI VOICE" />
         </div>
         <div className="my-5">
@@ -33,14 +33,11 @@ export default function Index({ allPosts: { edges }, preview }) {
             post={heroPost}
             config={{
               showExcerpt: false,
-              imageHeight: 800,
-              imageWidth: 1000,
             }}
             styles={{}}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <PostItem
-              key={heroPost.databaseId}
               post={heroPost}
               config={{ showExcerpt: false }}
               styles={{
@@ -51,7 +48,6 @@ export default function Index({ allPosts: { edges }, preview }) {
               }}
             />
             <PostItem
-              key={heroPost.databaseId}
               post={heroPost}
               config={{ showExcerpt: false }}
               styles={{
@@ -62,7 +58,6 @@ export default function Index({ allPosts: { edges }, preview }) {
               }}
             />
             <PostItem
-              key={heroPost.databaseId}
               post={heroPost}
               config={{ showExcerpt: false }}
               styles={{
@@ -73,7 +68,6 @@ export default function Index({ allPosts: { edges }, preview }) {
               }}
             />
             <PostItem
-              key={heroPost.databaseId}
               post={heroPost}
               config={{ showExcerpt: false }}
               styles={{
@@ -252,18 +246,17 @@ export default function Index({ allPosts: { edges }, preview }) {
                 post={heroPost}
                 config={{
                   listView: true,
-                  showExcerpt: false,
+                  showExcerpt: true,
                   imageHeight: 562,
                   imageWidth: 1000,
+                  showLineSeparator: true,
                 }}
                 styles={{
                   title: {
-                    wrapper: 'mb-3',
                     title: 'text-lg lg:text-xl lg:leading-relaxed',
                   },
-                  image: {
-                    image: 'aspect-video',
-                  },
+                  image: {},
+                  lineSeparator: '',
                 }}
               />
               <PostItem

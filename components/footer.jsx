@@ -12,13 +12,13 @@ export default function Footer() {
     <section className="bg-ams-light">
       <Container>
         <section className="py-6 border-b-2 border-gray-300">
-          <Link href='/' className="inline-block">
-            <a aria-label=''>
-              <div className='w-44 h-20 relative'>
+          <Link href="/" className="inline-block">
+            <a aria-label="">
+              <div className="w-44 h-20 relative">
                 <Image
-                  layout='fill'
-                  objectFit='contain'
-                  alt='AMS Logo'
+                  layout="fill"
+                  objectFit="contain"
+                  alt="AMS Logo"
                   src={amsLogoWide}
                 />
               </div>
@@ -32,14 +32,10 @@ export default function Footer() {
             </h4>
             <ul className="sm:ml-3 grid sm:grid-cols-2 gap-3">
               {Menu.footerCentral.map((item, index) => (
-                <li>
-                  <a
-                    key={`ams-group-${index}`}
-                    href={item.href}
-                    className="hover:text-ams-purple"
-                  >
-                    {item.name}
-                  </a>
+                <li key={`footer-ams-${index}`}>
+                  <Link href={item.href} className="hover:text-ams-purple">
+                    <a>{item.name}</a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -50,12 +46,8 @@ export default function Footer() {
             </h4>
             <ul className="sm:ml-3 grid sm:grid-cols-2 gap-3">
               {Menu.amsGroup.map((item, index) => (
-                <li>
-                  <a
-                    key={`ams-group-${index}`}
-                    href={item.href}
-                    className="hover:text-ams-purple"
-                  >
+                <li key={`ams-group-${index}`}>
+                  <a href={item.href} className="hover:text-ams-purple">
                     {item.name}
                   </a>
                 </li>
@@ -68,14 +60,10 @@ export default function Footer() {
             </h4>
             <ul className="sm:ml-3 grid gap-3">
               {Menu.footerLearnMore.map((item, index) => (
-                <li>
-                  <a
-                    key={`footer-${index}`}
-                    href={item.href}
-                    className="hover:text-ams-purple"
-                  >
-                    {item.name}
-                  </a>
+                <li key={`footer-${index}`}>
+                  <Link href={item.href} className="hover:text-ams-purple">
+                    <a>{item.name}</a>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -25,7 +25,7 @@ export default async function preview(req, res) {
   res.setPreviewData({
     post: {
       id: post.databaseId,
-      slug: post.slug + '',
+      slug: post.slug,
       status: post.status,
     },
   })

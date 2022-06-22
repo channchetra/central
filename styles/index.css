@@ -1,5 +1,5 @@
 /* Fonts */
-@import "fonts";
+@import 'fonts';
 
 @tailwind base;
 
@@ -28,6 +28,21 @@
 }
 .flagship > a:nth-child(4) {
   @apply bg-[#55316f];
+}
+
+/* hide hr in group*/
+:is(.block-politico, .block-daily) [class^='post-']:last-child hr {
+  @apply hidden;
+}
+.connect-inter [class^='post-']:nth-child(n + 5) hr {
+  @apply hidden;
+}
+.block-latest [class^='post-']:nth-child(n + 3) hr {
+  @apply hidden;
+}
+
+.block-avi span {
+  @apply -z-10;
 }
 
 .has-text-align-left {

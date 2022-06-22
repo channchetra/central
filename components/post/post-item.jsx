@@ -45,46 +45,51 @@ export default function PostItem({
     categories,
   } = post || {};
 
-  const classes = merge({
-    wrapper: conf.listView ? 'flex hover:text-rose-600' : 'hover:text-rose-600',
-    innerWrapper: {
-      first: conf.listView && conf.showImage ? 'w-1/3' : '',
-      second: conf.listView && conf.showImage ? 'flex-1 px-4' : '',
-    },
-    image: {
-      wrapper: 'mb-3',
-      imageWrapper: 'aspect-video',
-      category: {
-        wrapper: 'absolute bottom-0',
-        name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',
+  const classes = merge(
+    {
+      wrapper: conf.listView
+        ? 'sm:flex hover:text-rose-600'
+        : 'hover:text-rose-600',
+      innerWrapper: {
+        first: conf.listView && conf.showImage ? 'sm:w-1/3' : '',
+        second: conf.listView && conf.showImage ? 'sm:flex-1 sm:px-4' : '',
       },
-    },
-    title: {
-      wrapper: 'mb-3',
-      title: 'text-lg md:text-xl',
-    },
-    excerpt: {
-      wrapper: '',
-      excerpt: 'text-gray-500',
-    },
-    meta: {
-      wrapper: 'flex items-center text-xs mb-3',
-      author: {
-        wrapper: 'flex items-center',
-        avatar: 'w-12 h-12 relative mr-4',
-        name: 'font-medium text-black',
+      image: {
+        wrapper: 'mb-3 shadow',
+        imageWrapper: 'aspect-video',
+        category: {
+          wrapper: 'absolute bottom-0',
+          name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',
+        },
       },
-      date: {
+      title: {
+        wrapper: 'mb-3',
+        title: 'text-lg md:text-xl',
+      },
+      excerpt: {
         wrapper: '',
-        date: 'text-gray-500',
+        excerpt: 'text-sm text-gray-500',
       },
-      category: {
-        wrapper: 'mr-3',
-        name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',
+      meta: {
+        wrapper: 'flex items-center text-xs mb-3',
+        author: {
+          wrapper: 'flex items-center',
+          avatar: 'w-12 h-12 relative mr-4',
+          name: 'font-medium text-black',
+        },
+        date: {
+          wrapper: '',
+          date: 'text-gray-500',
+        },
+        category: {
+          wrapper: 'mr-3',
+          name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',
+        },
       },
+      lineSeparator: 'border-accent-2 mt-3',
     },
-    lineSeparator: 'border-accent-2 mt-3',
-  }, styles)
+    styles
+  );
 
   const postDetailLink = `/posts/${databaseId}`;
 
@@ -156,7 +161,9 @@ export default function PostItem({
           )}
         </div>
       </div>
-      { conf.showLineSeparator && <CommonLineSeparator className={classes.lineSeparator} /> }
+      {conf.showLineSeparator && (
+        <CommonLineSeparator className={classes.lineSeparator} />
+      )}
     </div>
   );
 }

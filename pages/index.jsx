@@ -1,84 +1,58 @@
-import Head from 'next/head';
-import Layout from '~/components/layout/layout';
+import Image from 'next/image';
+import Link from 'next/link';
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
 import Container from '../components/container';
-import Header from '../components/header';
 import { getAllPostsForHome } from '../lib/api';
-import { CMS_NAME } from '../lib/constants';
 
-export default function Index({ allPosts: { edges }, preview }) {
+export default function Index({ allPosts: { edges } }) {
   const heroPost = edges[0]?.node;
 
   return (
-    <Layout preview={preview}>
-      <Head>
-        <title>AMS Central {CMS_NAME}</title>
-      </Head>
-      <Header />
+    <>
       <Container>
-        <div className="my-5">
-          <CommonSectionHeader
-            type="primary"
-            title="ព័ត៌មានថ្មីបំផុត"
-            className="text-xl font-bold"
-          />
-        </div>
-        <section className="grid md:grid-cols-2 gap-5 mb-7 md:mb-7">
-          <PostItem
-            post={heroPost}
-            config={{
-              showExcerpt: false,
-            }}
-            styles={{}}
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* Block Latest News */}
+        <section className="lastet-news">
+          <div className="my-5">
+            <CommonSectionHeader
+              type="primary"
+              title="ព័ត៌មានថ្មីបំផុត"
+              className="text-xl font-bold"
+            />
+          </div>
+          <div className="grid md:grid-cols-2 gap-5 mb-7 md:mb-7">
             <PostItem
               post={heroPost}
-              config={{ showExcerpt: false }}
+              config={{
+                showExcerpt: false,
+              }}
               styles={{
-                title: {
-                  wrapper: 'mb-3',
-                  title: 'text-lg lg:text-xl lg:leading-relaxed',
+                image: {
+                  imageWrapper:
+                    'relative lg:aspect-[4/3.07] sm:aspect-[7/6] aspect-video',
                 },
               }}
             />
-            <PostItem
-              post={heroPost}
-              config={{ showExcerpt: false }}
-              styles={{
-                title: {
-                  wrapper: 'mb-3',
-                  title: 'text-lg lg:text-xl lg:leading-relaxed',
-                },
-              }}
-            />
-            <PostItem
-              post={heroPost}
-              config={{ showExcerpt: false }}
-              styles={{
-                title: {
-                  wrapper: 'mb-3',
-                  title: 'text-lg lg:text-xl lg:leading-relaxed',
-                },
-              }}
-            />
-            <PostItem
-              post={heroPost}
-              config={{ showExcerpt: false }}
-              styles={{
-                title: {
-                  wrapper: 'mb-3',
-                  title: 'text-lg lg:text-xl lg:leading-relaxed',
-                },
-              }}
-            />
+            <div className="block-latest grid grid-cols-1 md:grid-cols-2 gap-5">
+              {[...Array(4)].map(() => (
+                <PostItem
+                  post={heroPost}
+                  config={{ showExcerpt: false, showLineSeparator: true }}
+                  styles={{
+                    title: {
+                      wrapper: 'mb-3',
+                      title: 'text-base lg:text-lg lg:leading-relaxed',
+                    },
+                  }}
+                />
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* Block Politico */}
-        <div className="grid md:grid-cols-3 gap-5">
-          <section>
+        {/* Block Daily & Politico */}
+        <div className="sm:grid md:grid-cols-3 gap-5">
+          <section className="block-daily">
             <div className="my-5">
               <CommonSectionHeader
                 type="primary"
@@ -86,136 +60,37 @@ export default function Index({ allPosts: { edges }, preview }) {
                 className="text-xl font-bold"
               />
             </div>
-            <div className="space-y-6">
-              <PostItem
-                post={heroPost}
-                config={{
-                  listView: true,
-                  showExcerpt: false,
-                  imageHeight: 562,
-                  imageWidth: 1000,
-                }}
-                styles={{
-                  title: {
-                    wrapper: 'mb-3',
-                    title: 'text-base lg:leading-relaxed',
-                  },
-                  image: {
-                    image: 'aspect-video',
-                  },
-                }}
-              />
-              <PostItem
-                post={heroPost}
-                config={{
-                  listView: true,
-                  showExcerpt: false,
-                  imageHeight: 562,
-                  imageWidth: 1000,
-                }}
-                styles={{
-                  title: {
-                    wrapper: 'mb-3',
-                    title: 'text-base lg:leading-relaxed',
-                  },
-                  image: {
-                    image: 'aspect-video',
-                  },
-                }}
-              />
-              <PostItem
-                post={heroPost}
-                config={{
-                  listView: true,
-                  showExcerpt: false,
-                  imageHeight: 562,
-                  imageWidth: 1000,
-                }}
-                styles={{
-                  title: {
-                    wrapper: 'mb-3',
-                    title: 'text-base lg:leading-relaxed',
-                  },
-                  image: {
-                    image: 'aspect-video',
-                  },
-                }}
-              />
-              <PostItem
-                post={heroPost}
-                config={{
-                  listView: true,
-                  showExcerpt: false,
-                  imageHeight: 562,
-                  imageWidth: 1000,
-                }}
-                styles={{
-                  title: {
-                    wrapper: 'mb-3',
-                    title: 'text-base lg:leading-relaxed',
-                  },
-                  image: {
-                    image: 'aspect-video',
-                  },
-                }}
-              />
-              <PostItem
-                post={heroPost}
-                config={{
-                  listView: true,
-                  showExcerpt: false,
-                  imageHeight: 562,
-                  imageWidth: 1000,
-                }}
-                styles={{
-                  title: {
-                    wrapper: 'mb-3',
-                    title: 'text-base lg:leading-relaxed',
-                  },
-                  image: {
-                    image: 'aspect-video',
-                  },
-                }}
-              />
-              <PostItem
-                post={heroPost}
-                config={{
-                  listView: true,
-                  showExcerpt: false,
-                  imageHeight: 562,
-                  imageWidth: 1000,
-                }}
-                styles={{
-                  title: {
-                    wrapper: 'mb-3',
-                    title: 'text-base lg:leading-relaxed',
-                  },
-                  image: {
-                    image: 'aspect-video',
-                  },
-                }}
-              />
-              <PostItem
-                post={heroPost}
-                config={{
-                  listView: true,
-                  showExcerpt: false,
-                  imageHeight: 562,
-                  imageWidth: 1000,
-                }}
-                styles={{
-                  title: {
-                    wrapper: 'mb-3',
-                    title: 'text-base lg:leading-relaxed',
-                  },
-                  image: {
-                    image: 'aspect-video',
-                  },
-                }}
+            <div className="space-y-5 mb-4">
+              {[...Array(6)].map(() => (
+                <PostItem
+                  post={heroPost}
+                  config={{
+                    listView: true,
+                    showExcerpt: false,
+                    showLineSeparator: true,
+                  }}
+                  styles={{
+                    title: {
+                      wrapper: 'mb-3',
+                      title: 'lg:leading-relaxed',
+                    },
+                    image: {
+                      imageWrapper: 'aspect-video',
+                    },
+                    lineSeparator: 'mt-1',
+                  }}
+                />
+              ))}
+            </div>
+            <div className="relative h-[684px]">
+              <Image
+                src="/images/food-panda.jpeg"
+                layout="fill"
+                objectFit="cover"
               />
             </div>
           </section>
-          <section className="col-span-2">
+          <section className="block-politico col-span-2">
             <div className="my-5">
               <CommonSectionHeader
                 type="primary"
@@ -227,177 +102,67 @@ export default function Index({ allPosts: { edges }, preview }) {
               post={heroPost}
               config={{
                 showExcerpt: false,
-                imageHeight: 400,
-                imageWidth: 1000,
               }}
               styles={{
                 title: {
                   wrapper: 'mb-3',
-                  title: 'text-lg lg:text-xl lg:leading-relaxed',
+                  title: 'text-base lg:text-lg lg:leading-relaxed',
+                },
+                excerpt: {
+                  excerpt: 'text-sm',
                 },
               }}
             />
-            <div className="space-y-8">
-              <PostItem
-                post={heroPost}
-                config={{
-                  listView: true,
-                  showExcerpt: true,
-                  imageHeight: 562,
-                  imageWidth: 1000,
-                  showLineSeparator: true,
-                }}
-                styles={{
-                  title: {
-                    title: 'text-lg lg:text-xl lg:leading-relaxed',
-                  },
-                  image: {},
-                  lineSeparator: '',
-                }}
-              />
-              <PostItem
-                post={heroPost}
-                config={{
-                  listView: true,
-                  showExcerpt: false,
-                  imageHeight: 562,
-                  imageWidth: 1000,
-                }}
-                styles={{
-                  title: {
-                    wrapper: 'mb-3',
-                    title: 'text-lg lg:text-xl lg:leading-relaxed',
-                  },
-                  image: {
-                    image: 'aspect-video',
-                  },
-                }}
-              />
+            <div className="mt-8 space-y-7">
+              {[...Array(4)].map(() => (
+                <PostItem
+                  post={heroPost}
+                  config={{
+                    listView: true,
+                    showExcerpt: true,
+                    showLineSeparator: true,
+                  }}
+                  styles={{
+                    title: {
+                      title: 'text-base lg:text-lg lg:leading-relaxed',
+                    },
+                    image: {},
+                    lineSeparator: 'mt-4',
+                  }}
+                />
+              ))}
             </div>
           </section>
         </div>
 
-        <div className="my-5">
-          <CommonSectionHeader
-            type="primary"
-            title="កិច្ចការបរទេសផ្សាភ្ជាប់កម្ពុជាទៅកាន់អន្តរជាតិ"
-            className="text-xl font-bold"
-          />
-        </div>
+        {/* Block Connect International */}
+        <section className="connected">
+          <div className="my-5">
+            <CommonSectionHeader
+              type="primary"
+              title="កិច្ចការបរទេសផ្សាភ្ជាប់កម្ពុជាទៅកាន់អន្តរជាតិ"
+              className="text-xl font-bold"
+            />
+          </div>
 
-        <section className="grid md:grid-cols-4 gap-5">
-          <PostItem
-            post={heroPost}
-            config={{
-              showExcerpt: false,
-              imageHeight: 400,
-              imageWidth: 1000,
-            }}
-            styles={{
-              title: {
-                wrapper: 'mb-3',
-                title: 'text-lg lg:text-xl lg:leading-relaxed',
-              },
-            }}
-          />
-          <PostItem
-            post={heroPost}
-            config={{
-              showExcerpt: false,
-              imageHeight: 400,
-              imageWidth: 1000,
-            }}
-            styles={{
-              title: {
-                wrapper: 'mb-3',
-                title: 'text-lg lg:text-xl lg:leading-relaxed',
-              },
-            }}
-          />
-          <PostItem
-            post={heroPost}
-            config={{
-              showExcerpt: false,
-              imageHeight: 400,
-              imageWidth: 1000,
-            }}
-            styles={{
-              title: {
-                wrapper: 'mb-3',
-                title: 'text-lg lg:text-xl lg:leading-relaxed',
-              },
-            }}
-          />
-          <PostItem
-            post={heroPost}
-            config={{
-              showExcerpt: false,
-              imageHeight: 400,
-              imageWidth: 1000,
-            }}
-            styles={{
-              title: {
-                wrapper: 'mb-3',
-                title: 'text-lg lg:text-xl lg:leading-relaxed',
-              },
-            }}
-          />
-          <PostItem
-            post={heroPost}
-            config={{
-              showExcerpt: false,
-              imageHeight: 400,
-              imageWidth: 1000,
-            }}
-            styles={{
-              title: {
-                wrapper: 'mb-3',
-                title: 'text-lg lg:text-xl lg:leading-relaxed',
-              },
-            }}
-          />
-          <PostItem
-            post={heroPost}
-            config={{
-              showExcerpt: false,
-              imageHeight: 400,
-              imageWidth: 1000,
-            }}
-            styles={{
-              title: {
-                wrapper: 'mb-3',
-                title: 'text-lg lg:text-xl lg:leading-relaxed',
-              },
-            }}
-          />
-          <PostItem
-            post={heroPost}
-            config={{
-              showExcerpt: false,
-              imageHeight: 400,
-              imageWidth: 1000,
-            }}
-            styles={{
-              title: {
-                wrapper: 'mb-3',
-                title: 'text-lg lg:text-xl lg:leading-relaxed',
-              },
-            }}
-          />
-          <PostItem
-            post={heroPost}
-            config={{
-              showExcerpt: false,
-              imageHeight: 400,
-              imageWidth: 1000,
-            }}
-            styles={{
-              title: {
-                wrapper: 'mb-3',
-                title: 'text-lg lg:text-xl lg:leading-relaxed',
-              },
-            }}
-          />
+          <div className="connect-inter grid md:grid-cols-4 gap-5">
+            {[...Array(8)].map(() => (
+              <PostItem
+                post={heroPost}
+                config={{
+                  showExcerpt: true,
+                  showLineSeparator: true,
+                }}
+                styles={{
+                  title: {
+                    wrapper: 'mb-3',
+                    title: 'text-base lg:text-lg lg:leading-relaxed',
+                  },
+                  lineSeparator: 'mt-4',
+                }}
+              />
+            ))}
+          </div>
         </section>
 
         {/* {heroPost && (
@@ -412,7 +177,204 @@ export default function Index({ allPosts: { edges }, preview }) {
         )} */}
         {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
       </Container>
-    </Layout>
+
+      {/* Block banner AVI */}
+      <section className="block-avi relative my-7 py-12 sm:pt-24 sm:pb-20">
+        <Image
+          src="/images/AMS-AVI-front-cover.jpeg"
+          layout="fill"
+          objectFit="cover"
+          className="cover -z-10"
+        />
+        <Container>
+          <div>
+            <span className="bg-rose-900 text-white py-2 px-5 text-base sm:text-3xl inline-block">
+              AVI Voice
+            </span>
+          </div>
+          <p className="text-white sm:my-5 sm:w-2/5 hidden sm:block">
+            គោលបំណងចែករំលែកចំណេះដឹង និងការវិភាគដល់ប្រិយមិត្តអ្នកស្តាប់
+            ជាពិសេសយុវជន
+            លើប្រធានបទសំខាន់ៗដូចជាភូមិសាស្រ្តនយោបាយនិងសេដ្ឋកិច្ចសកលនិងក្នុងតំបន់
+            <br />
+            ការអភិវឌ្ឍដោយចីរភាព សេដ្ឋកិច្ចឌីជីថល
+            និងនវានុវត្តន៍បច្ចេកវិទ្យាដើម្បីរួមចំណែក <br />{' '}
+            ក្នុងការអភិវឌ្ឍនូវសមត្ថភាព និងការយល់ដឹងរបស់យុវជនកម្ពុជាជំនាន់ថ្មី
+            ក៏ដូចជា ផ្សព្វផ្សាយឲ្យអន្តរជាតិយល់ដឹង
+            និងស្គាល់កាន់តែច្បាស់អំពីកម្ពុជា។ —
+          </p>
+          <Link href="/posts">
+            <a className="bg-rose-900 text-white py-2 px-5 text-base z-50">
+              អត្ថបទរបស់ AVI Voice on AMS
+            </a>
+          </Link>
+        </Container>
+      </section>
+
+      {/* Block Black Crews */}
+      <Container>
+        <div className="my-5">
+          <CommonSectionHeader
+            type="primary"
+            title="សច្ចធម៌ប្រវត្តិសាស្ត្រ"
+            link="/posts"
+            className="text-xl font-bold"
+          />
+        </div>
+
+        <section className="grid md:grid-cols-4 gap-5">
+          {[...Array(8)].map(() => (
+            <PostItem
+              post={heroPost}
+              config={{}}
+              styles={{
+                title: {
+                  wrapper: 'mb-3',
+                  title: 'text-base lg:text-lg lg:leading-relaxed',
+                },
+              }}
+            />
+          ))}
+        </section>
+      </Container>
+
+      {/* Block banner Cambodia 2050 */}
+      <section className="relative my-7 py-12 sm:pt-24 sm:pb-20">
+        <Image
+          src="/images/AMS-2050-cover.jpeg"
+          layout="fill"
+          objectFit="cover"
+          className="cover -z-10"
+        />
+        <Container>
+          <div>
+            <span className="bg-rose-900 text-white py-2 px-5 text-base sm:text-3xl inline-block">
+              Cambodia 2050
+            </span>
+          </div>
+          <p className="text-white sm:my-5 sm:w-2/5 hidden sm:block">
+            ផ្តល់ចំនេះដឹងដល់អ្នកពាក់ព័ន្ធដើម្បីសហការចូលរួមអភិវឌ្ឍន៍ប្រទេសកម្ពុជា
+            ក្នុងគោលដៅប្រែក្លាយទៅជាប្រទេសចំណូលមធ្យមកំរិតខ្ពស់
+            តាមរយៈកិច្ចពិភាក្សាសុីជំរៅ បង្កើនសមត្ថភាព ជំនាញ
+            និងចំណេះដឹងលើគ្រប់វិស័យតាមរយៈការប្រើប្រាស់ប្រព័ន្ធបច្ចេកវិទ្យា
+            និងតភ្ជាប់ទំនាក់ទំនងនៅឆាកអន្តរជាតិ។
+          </p>
+          <Link href="/posts">
+            <a className="bg-rose-900 text-white py-2 px-5 text-base z-50">
+              អត្ថបទរបស់ Cambodia 2050
+            </a>
+          </Link>
+        </Container>
+      </section>
+
+      {/* Block Sports & Economy */}
+      <Container>
+        <div className="sm:grid md:grid-cols-3 gap-5">
+          {/* Block Sports */}
+          <section className="col-span-2">
+            <div className="my-5">
+              <CommonSectionHeader
+                type="primary"
+                title="កីឡា"
+                className="text-xl font-bold"
+              />
+            </div>
+            <div className="grid sm:grid-cols-2 gap-5">
+              <PostItem
+                post={heroPost}
+                config={{
+                  showExcerpt: false,
+                }}
+                styles={{
+                  image: {
+                    imageWrapper: 'aspect-[16/8]',
+                  },
+                  title: {
+                    wrapper: 'mb-3',
+                    title: 'text-base lg:text-lg lg:leading-relaxed',
+                  },
+                }}
+              />
+              <div className="space-y-4">
+                {[...Array(3)].map(() => (
+                  <PostItem
+                    post={heroPost}
+                    config={{
+                      listView: true,
+                      showExcerpt: false,
+                      showLineSeparator: true,
+                    }}
+                    styles={{
+                      title: {
+                        title: 'text-base lg:text-lg lg:leading-relaxed',
+                      },
+                      image: {},
+                      lineSeparator: 'mt-2',
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="my-5">
+              <CommonSectionHeader
+                type="primary"
+                title="ការបោះឆ្នោត"
+                className="text-xl font-bold"
+              />
+            </div>
+            <section className="grid md:grid-cols-3 gap-5">
+              {[...Array(6)].map(() => (
+                <PostItem
+                  post={heroPost}
+                  config={{
+                    showLineSeparator: true,
+                  }}
+                  styles={{
+                    title: {
+                      wrapper: 'mb-3',
+                      title: 'text-base lg:text-lg lg:leading-relaxed',
+                    },
+                  }}
+                />
+              ))}
+            </section>
+          </section>
+
+          {/* Econoomy */}
+          <section>
+            <div className="my-5">
+              <CommonSectionHeader
+                type="primary"
+                title="សេដ្ឋកិច្ច"
+                className="text-xl font-bold"
+              />
+            </div>
+            <div className="space-y-4">
+              {[...Array(8)].map(() => (
+                <PostItem
+                  post={heroPost}
+                  config={{
+                    listView: true,
+                    showExcerpt: false,
+                    showLineSeparator: true,
+                  }}
+                  styles={{
+                    title: {
+                      wrapper: 'mb-3',
+                      title: 'text-base lg:text-lg lg:leading-relaxed',
+                    },
+                    image: {
+                      image: 'aspect-video',
+                    },
+                    lineSeparator: 'mt-2',
+                  }}
+                />
+              ))}
+            </div>
+          </section>
+        </div>
+      </Container>
+    </>
   );
 }
 

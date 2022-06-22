@@ -21,23 +21,38 @@ export default class Menu {
     { name: 'ទំព័រដើម', href: '/' },
     {
       name: 'One-Minute',
-      href: '#',
+      href: '/one-minute',
       subMenus: [
-        { name: 'សន្តិសុខមាតុភូមិខ្ញុំ', href: '#' },
-        { name: 'ព័ត៌មានទាន់ហេតុការណ៍', href: '#' },
-        { name: 'ព័ត៌មានសង្ខេបប្រចាំថ្ងៃ', href: '#' },
-        { name: 'ការផ្លាស់ប្តរមុខមាត់ថ្មីក្នុងប្រទេស', href: '#' },
+        {
+          name: 'សន្តិសុខមាតុភូមិខ្ញុំ',
+          href: '/one-minute/homeland-security',
+        },
+        { name: 'ព័ត៌មានទាន់ហេតុការណ៍', href: '/one-minute/breaking-news' },
+        {
+          name: 'ព័ត៌មានសង្ខេបប្រចាំថ្ងៃ',
+          href: '/one-minute/daily-summary-news',
+        },
+        {
+          name: 'ការផ្លាស់ប្តរមុខមាត់ថ្មីក្នុងប្រទេស',
+          href: '/one-minute/recent-changes-in-the-country',
+        },
       ],
     },
     {
       name: 'កិច្ចការបរទេស',
-      href: '#',
+      href: '/connect-oversea',
       subMenus: [
-        { name: 'AVI Voice', href: '/connect-oversea/ams-avi-voice' },
-        { name: 'Cambodia 2050', href: '#' },
-        { name: 'Asian Vision Dialogue (AVD)', href: '#' },
-        { name: 'Climate Change', href: '#' },
-        { name: 'ជីវចំម្រុះ', href: '#' },
+        { name: 'AVI Voice', href: '/connect-oversea/avi-voice' },
+        {
+          name: 'Cambodia 2050',
+          href: '/connect-oversea/cambodia-2050',
+        },
+        {
+          name: 'Asian Vision Dialogue (AVD)',
+          href: '/connect-oversea/asian-vision-dialogue',
+        },
+        { name: 'Climate Change', href: '/connect-oversea/climate-change' },
+        { name: 'ជីវចំម្រុះ', href: '/connect-oversea/biodiversity' },
       ],
     },
     {

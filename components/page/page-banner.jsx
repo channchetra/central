@@ -8,7 +8,7 @@ export default function PageBanner({ image, className = '', styles }) {
   }
 
   const classes = merge({
-    wrapper: 'relative w-full aspect-[9/2]',
+    wrapper: 'relative w-full aspect-[11/2]',
     image: '',
   }, styles)
 

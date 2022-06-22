@@ -34,13 +34,16 @@ export default function Index({ allPosts: { edges } }) {
               }}
             />
             <div className="block-latest grid grid-cols-1 md:grid-cols-2 gap-5">
-              {[...Array(4)].map(() => (
+              {[...Array(4)].map((post, index) => (
                 <PostItem
+                  key={`latest-post-${index}`}
                   post={heroPost}
-                  config={{ showExcerpt: false, showLineSeparator: true }}
+                  config={{
+                    showExcerpt: false,
+                    showLineSeparator: index < 2,
+                  }}
                   styles={{
                     title: {
-                      wrapper: 'mb-3',
                       title: 'text-base lg:text-lg lg:leading-relaxed',
                     },
                   }}
@@ -61,23 +64,22 @@ export default function Index({ allPosts: { edges } }) {
               />
             </div>
             <div className="space-y-5 mb-4">
-              {[...Array(6)].map(() => (
+              {[...Array(6)].map((post, index) => (
                 <PostItem
+                  key={`daily-post-${index}`}
                   post={heroPost}
                   config={{
                     listView: true,
                     showExcerpt: false,
-                    showLineSeparator: true,
+                    showLineSeparator: index < 5,
                   }}
                   styles={{
                     title: {
-                      wrapper: 'mb-3',
                       title: 'lg:leading-relaxed',
                     },
                     image: {
                       imageWrapper: 'aspect-video',
                     },
-                    lineSeparator: 'mt-1',
                   }}
                 />
               ))}
@@ -114,20 +116,20 @@ export default function Index({ allPosts: { edges } }) {
               }}
             />
             <div className="mt-8 space-y-7">
-              {[...Array(4)].map(() => (
+              {[...Array(4)].map((post, index) => (
                 <PostItem
+                  key={`politico-post-${index}`}
                   post={heroPost}
                   config={{
                     listView: true,
                     showExcerpt: true,
-                    showLineSeparator: true,
+                    showLineSeparator: index < 3,
                   }}
                   styles={{
                     title: {
                       title: 'text-base lg:text-lg lg:leading-relaxed',
                     },
-                    image: {},
-                    lineSeparator: 'mt-4',
+                    lineSeparator: 'border-b pb-6',
                   }}
                 />
               ))}
@@ -146,36 +148,24 @@ export default function Index({ allPosts: { edges } }) {
           </div>
 
           <div className="connect-inter grid md:grid-cols-4 gap-5">
-            {[...Array(8)].map(() => (
+            {[...Array(8)].map((post, index) => (
               <PostItem
+                key={`connect-inter-post-${index}`}
                 post={heroPost}
                 config={{
                   showExcerpt: true,
-                  showLineSeparator: true,
+                  showLineSeparator: index < 4,
                 }}
                 styles={{
                   title: {
                     wrapper: 'mb-3',
                     title: 'text-base lg:text-lg lg:leading-relaxed',
                   },
-                  lineSeparator: 'mt-4',
                 }}
               />
             ))}
           </div>
         </section>
-
-        {/* {heroPost && (
-          <HeroPost
-            title={heroPost.title}
-            coverImage={heroPost.featuredImage}
-            date={heroPost.date}
-            author={heroPost.author}
-            slug={heroPost.databaseId}
-            excerpt={heroPost.excerpt}
-          />
-        )} */}
-        {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
       </Container>
 
       {/* Block banner AVI */}
@@ -296,20 +286,20 @@ export default function Index({ allPosts: { edges } }) {
                 }}
               />
               <div className="space-y-4">
-                {[...Array(3)].map(() => (
+                {[...Array(3)].map((post, index) => (
                   <PostItem
+                    key={`sport-post-${index}`}
                     post={heroPost}
                     config={{
                       listView: true,
                       showExcerpt: false,
-                      showLineSeparator: true,
+                      showLineSeparator: index < 2,
                     }}
                     styles={{
                       title: {
                         title: 'text-base lg:text-lg lg:leading-relaxed',
                       },
-                      image: {},
-                      lineSeparator: 'mt-2',
+                      lineSeparator: 'border-b pb-3',
                     }}
                   />
                 ))}
@@ -323,11 +313,12 @@ export default function Index({ allPosts: { edges } }) {
               />
             </div>
             <section className="grid md:grid-cols-3 gap-5">
-              {[...Array(6)].map(() => (
+              {[...Array(6)].map((post, index) => (
                 <PostItem
+                  key={`election-post-${index}`}
                   post={heroPost}
                   config={{
-                    showLineSeparator: true,
+                    showLineSeparator: index < 3,
                   }}
                   styles={{
                     title: {
@@ -350,13 +341,14 @@ export default function Index({ allPosts: { edges } }) {
               />
             </div>
             <div className="space-y-4">
-              {[...Array(8)].map(() => (
+              {[...Array(8)].map((post, index) => (
                 <PostItem
+                  key={`economy-post-${index}`}
                   post={heroPost}
                   config={{
                     listView: true,
                     showExcerpt: false,
-                    showLineSeparator: true,
+                    showLineSeparator: index < 7,
                   }}
                   styles={{
                     title: {
@@ -366,7 +358,7 @@ export default function Index({ allPosts: { edges } }) {
                     image: {
                       image: 'aspect-video',
                     },
-                    lineSeparator: 'mt-2',
+                    lineSeparator: 'border-b pb-3',
                   }}
                 />
               ))}

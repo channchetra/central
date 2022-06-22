@@ -1,6 +1,5 @@
 import { merge } from 'lodash';
 import Image from 'next/image';
-import CommonLineSeparator from '../common/line-separator';
 
 export default function PageTitle({
   title,
@@ -19,21 +18,23 @@ export default function PageTitle({
       wrapper: 'flex',
       innerWrapper: {
         image: 'w-[30%] lg:w-1/4 hidden md:block',
-        content: `flex-1 ${image ? 'md:px-5' : ''}`,
+        content: `flex-1 ${image ? 'md:pl-5' : ''}`,
       },
-      title: 'font-bold text-2xl md:text-3xl mb-3 md:mb-5',
-      subtitle: 'text-lg md:text-xl leading-relaxed md:leading-loose',
+      title: 'font-bold text-2xl md:text-3xl',
+      subtitle:
+        'text-lg md:text-xl leading-relaxed md:leading-loose mt-3 md:mt-5',
       image: {
         wrapper: 'relative aspect-[2/3] lg:-mt-20',
         image: '',
       },
-      lineSeparator: {
-        wrapper: 'mt-5 md:mt-10',
-        line: 'border-accent-2',
-      },
+      lineSeparator: 'border-b pb-5 md:pb-10',
     },
     styles
   );
+
+  if (!conf.showLineSeparator) {
+    classes.lineSeparator = '';
+  }
 
   return (
     <div className={`${className} ${classes.wrapper}`}>
@@ -50,14 +51,11 @@ export default function PageTitle({
           </div>
         </div>
       )}
-      <div className={classes.innerWrapper.content}>
-        {title && <div className={classes.title}>{title}</div>}
-        {subtitle && <div className={classes.subtitle}>{subtitle}</div>}
-        {conf.showLineSeparator && (
-          <div className={classes.lineSeparator.wrapper}>
-            <CommonLineSeparator className={classes.lineSeparator.wrapper} />
-          </div>
-        )}
+      <div className={`${classes.innerWrapper.content}`}>
+        <div className={classes.lineSeparator}>
+          {title && <div className={classes.title}>{title}</div>}
+          {subtitle && <div className={classes.subtitle}>{subtitle}</div>}
+        </div>
       </div>
     </div>
   );

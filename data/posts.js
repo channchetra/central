@@ -52,9 +52,21 @@ export const QUERY_ALL_POSTS_ARCHIVE = gql`
               id
               name
               slug
+              firstName
+              lastName
             }
           }
           excerpt
+          featuredImage {
+            node {
+              altText
+              caption
+              sourceUrl
+              srcSet
+              sizes
+              id
+            }
+          }
         }
       }
     }
@@ -78,6 +90,8 @@ export const QUERY_ALL_POSTS = gql`
               id
               name
               slug
+              fistName
+              lastName
             }
           }
           content
@@ -112,6 +126,8 @@ export const QUERY_POST_BY_SLUG = gql`
           id
           name
           slug
+          firstName
+          lastName
         }
       }
       id

@@ -16,21 +16,25 @@ export default function Header() {
       <Container>
         <div className="hidden sm:flex items-center justify-between">
           <div className="flex gap-3 items-center">
-            <Link href='/'>
-              <a aria-label='AMS Central'>
+            <Link href="/">
+              <a aria-label="AMS Central">
                 <span className="sr-only">AMS Central</span>
-                <div className='h-6 w-20 sm:h-8 relative'>
+                <div className="h-6 w-20 sm:h-8 relative">
                   <Image
                     layout="fill"
-                    alt='AMS Central'
-                    src='https://asset.ams.com.kh/central/media/APSARA_MEDIA_SERVICES_SECONDARY_LOGO.png'
+                    alt="AMS Central"
+                    src="https://asset.ams.com.kh/central/media/APSARA_MEDIA_SERVICES_SECONDARY_LOGO.png"
                     objectFit="contain"
                   />
                 </div>
               </a>
             </Link>
-            <Link href='/' className="text-3xl leading-none before:content-['|'] before:mr-3" style={{ fontFamily: 'Battambang' }}>
-              <a aria-label='CENTRAL'>
+            <Link href="/">
+              <a
+                aria-label="CENTRAL"
+                className="text-3xl leading-none before:content-['|'] before:mr-3"
+                style={{ fontFamily: 'Battambang' }}
+              >
                 CENTRAL
               </a>
             </Link>
@@ -151,7 +155,7 @@ export default function Header() {
           <div className="relative -mx-5 md:-mx-0 flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue md:from-inherit">
             <Popover>
               <div className="md:hidden">
-                <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100">
+                <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center text-gray-400 focus:outline-none">
                   <span className="sr-only">Open menu</span>
                   <MenuIcon className="h-9 w-9 text-white" aria-hidden="true" />
                 </Popover.Button>
@@ -236,7 +240,7 @@ export default function Header() {
                     <div className="pt-3 pb-6 px-5">
                       <div className="flex items-center justify-start">
                         <div className="-mr-2">
-                          <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 ">
+                          <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400">
                             <span className="sr-only">Close menu</span>
                             <XIcon className="h-6 w-6" aria-hidden="true" />
                           </Popover.Button>
@@ -263,10 +267,10 @@ export default function Header() {
             <div className="mobile-logo">
               <div className="w-14 sm:hidden relative">
                 <Image
-                  layout='fill'
-                  alt=''
-                  src='https://asset.ams.com.kh/central/media/AMS-Central-Page-Profile%404x.png'
-                  objectFit='contain'
+                  layout="fill"
+                  alt=""
+                  src="https://asset.ams.com.kh/central/media/AMS-Central-Page-Profile%404x.png"
+                  objectFit="contain"
                 />
               </div>
             </div>

@@ -23,7 +23,7 @@ export default function Footer() {
             </a>
           </Link>
         </section>
-        <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
+        <section className="mt-6 hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <div>
             <h4 className="block-title relative mb-5 pb-1 font-btb text-lg border-b-2 border-zinc-50 before:absolute before:top-full before:w-14 before:h-[2px] before:bg-ams-purple">
               AMS CENTRAL

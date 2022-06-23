@@ -63,7 +63,7 @@ export default function PostItem({
       },
       title: {
         wrapper: '',
-        title: 'text-lg md:text-xl',
+        title: 'text-base lg:text-lg lg:leading-relaxed',
       },
       excerpt: {
         wrapper: 'mt-3',

@@ -40,11 +40,14 @@ export default function Index({ allPosts: { edges } }) {
                   post={heroPost}
                   config={{
                     showExcerpt: false,
-                    showLineSeparator: index < 2,
+                    showLineSeparator: true,
                   }}
                   styles={{
-                    title: {
-                      title: 'text-base lg:text-lg lg:leading-relaxed',
+                    lineSeparator: `border-b pb-3 sm:pb-6 mb-3 ${
+                      index > 1 ? 'sm:border-none' : ''
+                    } ${index > 2 ? 'border-none' : ''}`,
+                    image: {
+                      wrapper: 'mb-5 shadow',
                     },
                   }}
                 />
@@ -75,11 +78,14 @@ export default function Index({ allPosts: { edges } }) {
                   }}
                   styles={{
                     title: {
-                      title: 'lg:leading-relaxed',
+                      title: 'mb-2',
                     },
                     image: {
                       imageWrapper: 'aspect-video',
                     },
+                    lineSeparator: `border-b pb-3 sm:pb-4 ${
+                      index > 4 ? 'sm:border-none' : ''
+                    } ${index > 5 ? 'border-none' : ''}`,
                   }}
                 />
               ))}
@@ -123,13 +129,12 @@ export default function Index({ allPosts: { edges } }) {
                   config={{
                     listView: true,
                     showExcerpt: true,
-                    showLineSeparator: index < 3,
+                    showLineSeparator: true,
                   }}
                   styles={{
-                    title: {
-                      title: 'text-base lg:text-lg lg:leading-relaxed',
-                    },
-                    lineSeparator: 'border-b pb-6',
+                    lineSeparator: `border-b pb-3 sm:pb-6 ${
+                      index > 2 ? 'sm:border-none' : ''
+                    } ${index > 3 ? 'border-none' : ''}`,
                   }}
                 />
               ))}
@@ -154,13 +159,12 @@ export default function Index({ allPosts: { edges } }) {
                 post={heroPost}
                 config={{
                   showExcerpt: true,
-                  showLineSeparator: index < 4,
+                  showLineSeparator: true,
                 }}
                 styles={{
-                  title: {
-                    wrapper: 'mb-3',
-                    title: 'text-base lg:text-lg lg:leading-relaxed',
-                  },
+                  lineSeparator: `border-b pb-3 sm:pb-5 ${
+                    index > 3 ? 'sm:border-none' : ''
+                  } ${index > 6 ? 'border-none' : ''}`,
                 }}
               />
             ))}
@@ -177,24 +181,24 @@ export default function Index({ allPosts: { edges } }) {
           className="cover -z-10"
         />
         <Container>
-          <div>
+          <div className="mb-5">
             <span className="bg-rose-900 text-white py-2 px-5 text-base sm:text-3xl inline-block">
               AVI Voice
             </span>
           </div>
-          <p className="text-white sm:my-5 sm:w-2/5 hidden sm:block">
+          <p className="text-white sm:w-2/5 hidden sm:block">
             គោលបំណងចែករំលែកចំណេះដឹង និងការវិភាគដល់ប្រិយមិត្តអ្នកស្តាប់
             ជាពិសេសយុវជន
             លើប្រធានបទសំខាន់ៗដូចជាភូមិសាស្រ្តនយោបាយនិងសេដ្ឋកិច្ចសកលនិងក្នុងតំបន់
             <br />
             ការអភិវឌ្ឍដោយចីរភាព សេដ្ឋកិច្ចឌីជីថល
-            និងនវានុវត្តន៍បច្ចេកវិទ្យាដើម្បីរួមចំណែក <br />{' '}
+            និងនវានុវត្តន៍បច្ចេកវិទ្យាដើម្បីរួមចំណែក <br />
             ក្នុងការអភិវឌ្ឍនូវសមត្ថភាព និងការយល់ដឹងរបស់យុវជនកម្ពុជាជំនាន់ថ្មី
             ក៏ដូចជា ផ្សព្វផ្សាយឲ្យអន្តរជាតិយល់ដឹង
             និងស្គាល់កាន់តែច្បាស់អំពីកម្ពុជា។ —
           </p>
           <Link href="/posts">
-            <a className="bg-rose-900 text-white py-2 px-5 text-base z-50">
+            <a className="mt-5 py-2 px-5 bg-rose-900 text-white text-base z-50">
               អត្ថបទរបស់ AVI Voice on AMS
             </a>
           </Link>
@@ -213,15 +217,17 @@ export default function Index({ allPosts: { edges } }) {
         </div>
 
         <section className="grid md:grid-cols-4 gap-5">
-          {[...Array(8)].map(() => (
+          {[...Array(8)].map((post, index) => (
             <PostItem
+              key={`black-crews-${index}`}
               post={heroPost}
-              config={{}}
+              config={{
+                showLineSeparator: true,
+              }}
               styles={{
-                title: {
-                  wrapper: 'mb-3',
-                  title: 'text-base lg:text-lg lg:leading-relaxed',
-                },
+                lineSeparator: `border-b pb-3 sm:pb-5 ${
+                  index > 3 ? 'sm:border-none' : ''
+                } ${index > 6 ? 'border-none' : ''}`,
               }}
             />
           ))}
@@ -259,7 +265,7 @@ export default function Index({ allPosts: { edges } }) {
 
       {/* Block Sports & Economy */}
       <Container>
-        <div className="sm:grid md:grid-cols-3 gap-5">
+        <div className="sm:grid md:grid-cols-3 gap-5 pb-5">
           {/* Block Sports */}
           <section className="col-span-2">
             <div className="my-5">
@@ -279,10 +285,6 @@ export default function Index({ allPosts: { edges } }) {
                   image: {
                     imageWrapper: 'aspect-[16/8]',
                   },
-                  title: {
-                    wrapper: 'mb-3',
-                    title: 'text-base lg:text-lg lg:leading-relaxed',
-                  },
                 }}
               />
               <div className="space-y-4">
@@ -293,13 +295,12 @@ export default function Index({ allPosts: { edges } }) {
                     config={{
                       listView: true,
                       showExcerpt: false,
-                      showLineSeparator: index < 2,
+                      showLineSeparator: true,
                     }}
                     styles={{
-                      title: {
-                        title: 'text-base lg:text-lg lg:leading-relaxed',
-                      },
-                      lineSeparator: 'border-b pb-3',
+                      lineSeparator: `border-b pb-4 ${
+                        index > 1 ? 'pb-0 sm:border-none' : ''
+                      } ${index > 3 ? 'border-none' : ''}`,
                     }}
                   />
                 ))}
@@ -318,17 +319,24 @@ export default function Index({ allPosts: { edges } }) {
                   key={`election-post-${index}`}
                   post={heroPost}
                   config={{
-                    showLineSeparator: index < 3,
+                    showLineSeparator: true,
                   }}
                   styles={{
-                    title: {
-                      wrapper: 'mb-3',
-                      title: 'text-base lg:text-lg lg:leading-relaxed',
-                    },
+                    lineSeparator: `border-b pb-3 sm:pb-5 ${
+                      index > 2 ? 'sm:border-none' : ''
+                    } ${index > 4 ? 'border-none' : ''}`,
                   }}
                 />
               ))}
             </section>
+
+            <div className="relative mt-4 sm:mt-8 h-[450px] sm:h-[1100px]">
+              <Image
+                src="/images/pocarisweat-ads-sport.jpeg"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
           </section>
 
           {/* Econoomy */}
@@ -341,24 +349,22 @@ export default function Index({ allPosts: { edges } }) {
               />
             </div>
             <div className="space-y-4">
-              {[...Array(8)].map((post, index) => (
+              {[...Array(20)].map((post, index) => (
                 <PostItem
                   key={`economy-post-${index}`}
                   post={heroPost}
                   config={{
                     listView: true,
                     showExcerpt: false,
-                    showLineSeparator: index < 7,
+                    showLineSeparator: true,
                   }}
                   styles={{
-                    title: {
-                      wrapper: 'mb-3',
-                      title: 'text-base lg:text-lg lg:leading-relaxed',
-                    },
                     image: {
                       image: 'aspect-video',
                     },
-                    lineSeparator: 'border-b pb-3',
+                    lineSeparator: `border-b pb-4 ${
+                      index > 18 ? 'sm:border-none' : ''
+                    } ${index > 18 ? 'border-none' : ''}`,
                   }}
                 />
               ))}
@@ -366,6 +372,38 @@ export default function Index({ allPosts: { edges } }) {
           </section>
         </div>
       </Container>
+      <section className="bg-slate-100 py-5">
+        {/* Block Videos */}
+        <Container>
+          <div className="my-5">
+            <CommonSectionHeader
+              type="primary"
+              title="ទស្សនាវីដេអូថ្មីៗ"
+              link="/posts"
+              className="text-xl font-bold"
+              lineColor="before:bg-gray-300"
+            />
+          </div>
+
+          <section className="grid md:grid-cols-4 gap-5">
+            {[...Array(8)].map((post, index) => (
+              <PostItem
+                key={`black-crews-${index}`}
+                post={heroPost}
+                config={{
+                  showExcerpt: false,
+                  showLineSeparator: true,
+                }}
+                styles={{
+                  lineSeparator: `border-b pb-3 sm:pb-5 border-gray-300 ${
+                    index > 3 ? 'sm:border-none' : ''
+                  } ${index > 6 ? 'border-none' : ''}`,
+                }}
+              />
+            ))}
+          </section>
+        </Container>
+      </section>
     </>
   );
 }

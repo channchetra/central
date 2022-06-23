@@ -42,11 +42,7 @@ export default function Index({ allPosts: { edges } }) {
                     showExcerpt: false,
                     showLineSeparator: index < 2,
                   }}
-                  styles={{
-                    title: {
-                      title: 'text-base lg:text-lg lg:leading-relaxed',
-                    },
-                  }}
+                  styles={{}}
                 />
               ))}
             </div>
@@ -75,7 +71,7 @@ export default function Index({ allPosts: { edges } }) {
                   }}
                   styles={{
                     title: {
-                      title: 'lg:leading-relaxed',
+                      title: 'mb-2',
                     },
                     image: {
                       imageWrapper: 'aspect-video',
@@ -126,9 +122,6 @@ export default function Index({ allPosts: { edges } }) {
                     showLineSeparator: index < 3,
                   }}
                   styles={{
-                    title: {
-                      title: 'text-base lg:text-lg lg:leading-relaxed',
-                    },
                     lineSeparator: 'border-b pb-6',
                   }}
                 />
@@ -156,12 +149,7 @@ export default function Index({ allPosts: { edges } }) {
                   showExcerpt: true,
                   showLineSeparator: index < 4,
                 }}
-                styles={{
-                  title: {
-                    wrapper: 'mb-3',
-                    title: 'text-base lg:text-lg lg:leading-relaxed',
-                  },
-                }}
+                styles={{}}
               />
             ))}
           </div>
@@ -177,24 +165,24 @@ export default function Index({ allPosts: { edges } }) {
           className="cover -z-10"
         />
         <Container>
-          <div>
+          <div className="mb-5">
             <span className="bg-rose-900 text-white py-2 px-5 text-base sm:text-3xl inline-block">
               AVI Voice
             </span>
           </div>
-          <p className="text-white sm:my-5 sm:w-2/5 hidden sm:block">
+          <p className="text-white sm:w-2/5 hidden sm:block">
             គោលបំណងចែករំលែកចំណេះដឹង និងការវិភាគដល់ប្រិយមិត្តអ្នកស្តាប់
             ជាពិសេសយុវជន
             លើប្រធានបទសំខាន់ៗដូចជាភូមិសាស្រ្តនយោបាយនិងសេដ្ឋកិច្ចសកលនិងក្នុងតំបន់
             <br />
             ការអភិវឌ្ឍដោយចីរភាព សេដ្ឋកិច្ចឌីជីថល
-            និងនវានុវត្តន៍បច្ចេកវិទ្យាដើម្បីរួមចំណែក <br />{' '}
+            និងនវានុវត្តន៍បច្ចេកវិទ្យាដើម្បីរួមចំណែក <br />
             ក្នុងការអភិវឌ្ឍនូវសមត្ថភាព និងការយល់ដឹងរបស់យុវជនកម្ពុជាជំនាន់ថ្មី
             ក៏ដូចជា ផ្សព្វផ្សាយឲ្យអន្តរជាតិយល់ដឹង
             និងស្គាល់កាន់តែច្បាស់អំពីកម្ពុជា។ —
           </p>
           <Link href="/posts">
-            <a className="bg-rose-900 text-white py-2 px-5 text-base z-50">
+            <a className="mt-5 py-2 px-5 bg-rose-900 text-white text-base z-50">
               អត្ថបទរបស់ AVI Voice on AMS
             </a>
           </Link>
@@ -213,16 +201,14 @@ export default function Index({ allPosts: { edges } }) {
         </div>
 
         <section className="grid md:grid-cols-4 gap-5">
-          {[...Array(8)].map(() => (
+          {[...Array(8)].map((post, index) => (
             <PostItem
+              key={`black-crews-${index}`}
               post={heroPost}
-              config={{}}
-              styles={{
-                title: {
-                  wrapper: 'mb-3',
-                  title: 'text-base lg:text-lg lg:leading-relaxed',
-                },
+              config={{
+                showLineSeparator: index < 4,
               }}
+              styles={{}}
             />
           ))}
         </section>
@@ -259,7 +245,7 @@ export default function Index({ allPosts: { edges } }) {
 
       {/* Block Sports & Economy */}
       <Container>
-        <div className="sm:grid md:grid-cols-3 gap-5">
+        <div className="sm:grid md:grid-cols-3 gap-5 pb-5">
           {/* Block Sports */}
           <section className="col-span-2">
             <div className="my-5">
@@ -279,10 +265,6 @@ export default function Index({ allPosts: { edges } }) {
                   image: {
                     imageWrapper: 'aspect-[16/8]',
                   },
-                  title: {
-                    wrapper: 'mb-3',
-                    title: 'text-base lg:text-lg lg:leading-relaxed',
-                  },
                 }}
               />
               <div className="space-y-4">
@@ -296,9 +278,6 @@ export default function Index({ allPosts: { edges } }) {
                       showLineSeparator: index < 2,
                     }}
                     styles={{
-                      title: {
-                        title: 'text-base lg:text-lg lg:leading-relaxed',
-                      },
                       lineSeparator: 'border-b pb-3',
                     }}
                   />
@@ -320,15 +299,18 @@ export default function Index({ allPosts: { edges } }) {
                   config={{
                     showLineSeparator: index < 3,
                   }}
-                  styles={{
-                    title: {
-                      wrapper: 'mb-3',
-                      title: 'text-base lg:text-lg lg:leading-relaxed',
-                    },
-                  }}
+                  styles={{}}
                 />
               ))}
             </section>
+
+            <div className="relative my-4 h-[450px] sm:h-[1100px]">
+              <Image
+                src="/images/pocarisweat-ads-sport.jpeg"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
           </section>
 
           {/* Econoomy */}
@@ -341,20 +323,16 @@ export default function Index({ allPosts: { edges } }) {
               />
             </div>
             <div className="space-y-4">
-              {[...Array(8)].map((post, index) => (
+              {[...Array(19)].map((post, index) => (
                 <PostItem
                   key={`economy-post-${index}`}
                   post={heroPost}
                   config={{
                     listView: true,
                     showExcerpt: false,
-                    showLineSeparator: index < 7,
+                    showLineSeparator: index < 18,
                   }}
                   styles={{
-                    title: {
-                      wrapper: 'mb-3',
-                      title: 'text-base lg:text-lg lg:leading-relaxed',
-                    },
                     image: {
                       image: 'aspect-video',
                     },
@@ -366,6 +344,33 @@ export default function Index({ allPosts: { edges } }) {
           </section>
         </div>
       </Container>
+      <section className="bg-slate-100 py-5">
+        {/* Block Videos */}
+        <Container>
+          <div className="my-5">
+            <CommonSectionHeader
+              type="primary"
+              title="ទស្សនាវីដេអូថ្មីៗ"
+              link="/posts"
+              className="text-xl font-bold"
+            />
+          </div>
+
+          <section className="grid md:grid-cols-4 gap-5">
+            {[...Array(8)].map((post, index) => (
+              <PostItem
+                key={`black-crews-${index}`}
+                post={heroPost}
+                config={{
+                  showExcerpt: false,
+                  showLineSeparator: index < 4,
+                }}
+                styles={{}}
+              />
+            ))}
+          </section>
+        </Container>
+      </section>
     </>
   );
 }

@@ -32,7 +32,7 @@ export default function PostCoverImage({
 
   const classes = {
     wrapper: 'relative',
-    imageWrapper: 'aspect-video',
+    imageWrapper: 'relative aspect-video',
     image: classNames('shadow-sm', {
       'hover:shadow-medium transition-shadow duration-200': link,
     }),

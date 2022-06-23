@@ -1,9 +1,16 @@
-import CommonSectionHeader from '~/components/common/section-header';
 import PageTitle from '~/components/page/page-title';
 import Container from '~/components/container';
 import PageBanner from '~/components/page/page-banner';
+import PostItem from '~/components/post/post-item';
+import { getAllPostsForHome } from '~/lib/api';
+import { map } from 'lodash';
+import InfiniteScroll from 'react-infinite-scroller';
+import useStaticInfiniteScroll from '~/composables/useStaticInfiniteScroll';
+import CommonLoader from '~/components/common/loader';
 
-export default function ConnectOverseaAVIVoice() {
+export default function ConnectOverseaAVIVoice({ posts }) {
+  const { currentItems, hasMore, loadMore } = useStaticInfiniteScroll(posts);
+
   return (
     <>
       <PageBanner image="https://asset.ams.com.kh/central/media/AMS-Cover-AVI-Voice.jpg" />
@@ -14,20 +21,40 @@ export default function ConnectOverseaAVIVoice() {
           image="https://asset.ams.com.kh/central/media/AVI-Voice-on-AMS.jpg"
           className="my-5"
         />
-        <div className="my-5">
-          <CommonSectionHeader
-            type="secondary"
-            title="វិដេអូដែលអ្នកអាចចាប់អារម្មណ៍"
-          />
-        </div>
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={loadMore}
+          hasMore={hasMore}
+          loader={
+            <div className="loader my-5" key={0}>
+              <CommonLoader />
+            </div>
+          }
+        >
+          <section className="grid md:grid-cols-4 gap-5 mb-5">
+            {currentItems.map((post) => (
+              <PostItem
+                key={`post-${post.databaseId}`}
+                post={post}
+                config={{
+                  showExcerpt: false,
+                  showMeta: false,
+                }}
+                styles={{}}
+              />
+            ))}
+          </section>
+        </InfiniteScroll>
       </Container>
     </>
   );
 }
 
 export async function getStaticProps() {
+  const posts = await getAllPostsForHome();
+
   return {
-    props: {},
+    props: { posts: map(posts.edges, 'node') },
     revalidate: 10,
   };
 }

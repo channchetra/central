@@ -40,9 +40,16 @@ export default function Index({ allPosts: { edges } }) {
                   post={heroPost}
                   config={{
                     showExcerpt: false,
-                    showLineSeparator: index < 2,
+                    showLineSeparator: true,
                   }}
-                  styles={{}}
+                  styles={{
+                    lineSeparator: `border-b pb-3 sm:pb-6 mb-3 ${
+                      index > 1 ? 'sm:border-none' : ''
+                    } ${index > 2 ? 'border-none' : ''}`,
+                    image: {
+                      wrapper: 'mb-5 shadow',
+                    },
+                  }}
                 />
               ))}
             </div>
@@ -76,6 +83,9 @@ export default function Index({ allPosts: { edges } }) {
                     image: {
                       imageWrapper: 'aspect-video',
                     },
+                    lineSeparator: `border-b pb-3 sm:pb-4 ${
+                      index > 4 ? 'sm:border-none' : ''
+                    } ${index > 5 ? 'border-none' : ''}`,
                   }}
                 />
               ))}
@@ -119,10 +129,12 @@ export default function Index({ allPosts: { edges } }) {
                   config={{
                     listView: true,
                     showExcerpt: true,
-                    showLineSeparator: index < 3,
+                    showLineSeparator: true,
                   }}
                   styles={{
-                    lineSeparator: 'border-b pb-6',
+                    lineSeparator: `border-b pb-3 sm:pb-6 ${
+                      index > 2 ? 'sm:border-none' : ''
+                    } ${index > 3 ? 'border-none' : ''}`,
                   }}
                 />
               ))}
@@ -147,9 +159,13 @@ export default function Index({ allPosts: { edges } }) {
                 post={heroPost}
                 config={{
                   showExcerpt: true,
-                  showLineSeparator: index < 4,
+                  showLineSeparator: true,
                 }}
-                styles={{}}
+                styles={{
+                  lineSeparator: `border-b pb-3 sm:pb-5 ${
+                    index > 3 ? 'sm:border-none' : ''
+                  } ${index > 6 ? 'border-none' : ''}`,
+                }}
               />
             ))}
           </div>
@@ -206,9 +222,13 @@ export default function Index({ allPosts: { edges } }) {
               key={`black-crews-${index}`}
               post={heroPost}
               config={{
-                showLineSeparator: index < 4,
+                showLineSeparator: true,
               }}
-              styles={{}}
+              styles={{
+                lineSeparator: `border-b pb-3 sm:pb-5 ${
+                  index > 3 ? 'sm:border-none' : ''
+                } ${index > 6 ? 'border-none' : ''}`,
+              }}
             />
           ))}
         </section>
@@ -275,10 +295,12 @@ export default function Index({ allPosts: { edges } }) {
                     config={{
                       listView: true,
                       showExcerpt: false,
-                      showLineSeparator: index < 2,
+                      showLineSeparator: true,
                     }}
                     styles={{
-                      lineSeparator: 'border-b pb-3',
+                      lineSeparator: `border-b pb-4 ${
+                        index > 1 ? 'pb-0 sm:border-none' : ''
+                      } ${index > 3 ? 'border-none' : ''}`,
                     }}
                   />
                 ))}
@@ -297,14 +319,18 @@ export default function Index({ allPosts: { edges } }) {
                   key={`election-post-${index}`}
                   post={heroPost}
                   config={{
-                    showLineSeparator: index < 3,
+                    showLineSeparator: true,
                   }}
-                  styles={{}}
+                  styles={{
+                    lineSeparator: `border-b pb-3 sm:pb-5 ${
+                      index > 2 ? 'sm:border-none' : ''
+                    } ${index > 4 ? 'border-none' : ''}`,
+                  }}
                 />
               ))}
             </section>
 
-            <div className="relative my-4 h-[450px] sm:h-[1100px]">
+            <div className="relative mt-4 sm:mt-8 h-[450px] sm:h-[1100px]">
               <Image
                 src="/images/pocarisweat-ads-sport.jpeg"
                 layout="fill"
@@ -323,20 +349,22 @@ export default function Index({ allPosts: { edges } }) {
               />
             </div>
             <div className="space-y-4">
-              {[...Array(19)].map((post, index) => (
+              {[...Array(20)].map((post, index) => (
                 <PostItem
                   key={`economy-post-${index}`}
                   post={heroPost}
                   config={{
                     listView: true,
                     showExcerpt: false,
-                    showLineSeparator: index < 18,
+                    showLineSeparator: true,
                   }}
                   styles={{
                     image: {
                       image: 'aspect-video',
                     },
-                    lineSeparator: 'border-b pb-3',
+                    lineSeparator: `border-b pb-4 ${
+                      index > 18 ? 'sm:border-none' : ''
+                    } ${index > 18 ? 'border-none' : ''}`,
                   }}
                 />
               ))}
@@ -353,6 +381,7 @@ export default function Index({ allPosts: { edges } }) {
               title="ទស្សនាវីដេអូថ្មីៗ"
               link="/posts"
               className="text-xl font-bold"
+              lineColor="before:bg-gray-300"
             />
           </div>
 
@@ -363,9 +392,13 @@ export default function Index({ allPosts: { edges } }) {
                 post={heroPost}
                 config={{
                   showExcerpt: false,
-                  showLineSeparator: index < 4,
+                  showLineSeparator: true,
                 }}
-                styles={{}}
+                styles={{
+                  lineSeparator: `border-b pb-3 sm:pb-5 border-gray-300 ${
+                    index > 3 ? 'sm:border-none' : ''
+                  } ${index > 6 ? 'border-none' : ''}`,
+                }}
               />
             ))}
           </section>

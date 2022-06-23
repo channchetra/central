@@ -5,11 +5,11 @@ import PostItem from '~/components/post/post-item';
 import { getAllPostsForHome } from '~/lib/api';
 import { map } from 'lodash';
 import InfiniteScroll from 'react-infinite-scroller';
-import useStaticInfiniteScroll from '~/composables/useStaticInfiniteScroll';
 import CommonLoader from '~/components/common/loader';
+import useStaticInfiniteScroll from '~/hooks/use-static-infinite-scroll';
 
 export default function ConnectOverseaAVIVoice({ posts }) {
-  const { currentItems, hasMore, loadMore } = useStaticInfiniteScroll(posts);
+  const { items, hasMore, loadMore } = useStaticInfiniteScroll(posts);
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function ConnectOverseaAVIVoice({ posts }) {
           }
         >
           <section className="grid md:grid-cols-4 gap-5 mb-5">
-            {currentItems.map((post) => (
+            {items.map((post) => (
               <PostItem
                 key={`post-${post.databaseId}`}
                 post={post}

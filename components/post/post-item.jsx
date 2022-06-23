@@ -55,7 +55,7 @@ export default function PostItem({
       },
       image: {
         wrapper: `shadow ${conf.listView && conf.showImage ? '' : 'mb-3'}`,
-        imageWrapper: 'aspect-video',
+        imageWrapper: 'relative aspect-video',
         category: {
           wrapper: 'absolute bottom-0',
           name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',

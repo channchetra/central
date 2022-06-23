@@ -5,7 +5,6 @@ import PostCategoryTag from './post-category-tag';
 import PostCoverImage from './post-cover-image';
 import PostDate from './post-date';
 import PostExcerpt from './post-excerpt';
-import CommonLineSeparator from '../common/line-separator';
 
 export default function PostItem({
   post,
@@ -45,52 +44,61 @@ export default function PostItem({
     categories,
   } = post || {};
 
-  const classes = merge({
-    wrapper: conf.listView ? 'flex hover:text-rose-600' : 'hover:text-rose-600',
-    innerWrapper: {
-      first: conf.listView && conf.showImage ? 'w-1/3' : '',
-      second: conf.listView && conf.showImage ? 'flex-1 px-4' : '',
-    },
-    image: {
-      wrapper: 'mb-3',
-      imageWrapper: 'aspect-video',
-      category: {
-        wrapper: 'absolute bottom-0',
-        name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',
+  const classes = merge(
+    {
+      wrapper: conf.listView
+        ? 'sm:flex hover:text-rose-600'
+        : 'hover:text-rose-600',
+      innerWrapper: {
+        first: conf.listView && conf.showImage ? 'sm:w-1/3' : '',
+        second: conf.listView && conf.showImage ? 'sm:flex-1 sm:pl-4' : '',
       },
-    },
-    title: {
-      wrapper: 'mb-3',
-      title: 'text-lg md:text-xl',
-    },
-    excerpt: {
-      wrapper: '',
-      excerpt: 'text-gray-500',
-    },
-    meta: {
-      wrapper: 'flex items-center text-xs mb-3',
-      author: {
-        wrapper: 'flex items-center',
-        avatar: 'w-12 h-12 relative mr-4',
-        name: 'font-medium text-black',
+      image: {
+        wrapper: `shadow ${conf.listView && conf.showImage ? '' : 'mb-3'}`,
+        imageWrapper: 'aspect-video',
+        category: {
+          wrapper: 'absolute bottom-0',
+          name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',
+        },
       },
-      date: {
+      title: {
         wrapper: '',
-        date: 'text-gray-500',
+        title: 'text-lg md:text-xl',
       },
-      category: {
-        wrapper: 'mr-3',
-        name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',
+      excerpt: {
+        wrapper: 'mt-3',
+        excerpt: 'text-sm text-gray-500',
       },
+      meta: {
+        wrapper: 'flex items-center text-xs mt-3',
+        author: {
+          wrapper: 'flex items-center',
+          avatar: 'w-12 h-12 relative mr-4',
+          name: 'font-medium text-black',
+        },
+        date: {
+          wrapper: '',
+          date: 'text-gray-500',
+        },
+        category: {
+          wrapper: 'mr-3',
+          name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',
+        },
+      },
+      lineSeparator: 'border-b pb-4',
     },
-    lineSeparator: 'border-accent-2 mt-3',
-  }, styles)
+    styles
+  );
+
+  if (!conf.showLineSeparator) {
+    classes.lineSeparator = '';
+  }
 
   const postDetailLink = `/posts/${databaseId}`;
 
   return (
-    <div className={`post-${databaseId}`}>
-      <div className={`${className} ${classes.wrapper}`}>
+    <div className={`post-${databaseId} ${className} ${classes.lineSeparator}`}>
+      <div className={`${classes.wrapper}`}>
         {conf.showImage && (
           <div className={`${classes.innerWrapper.first}`}>
             <PostCoverImage
@@ -156,7 +164,6 @@ export default function PostItem({
           )}
         </div>
       </div>
-      { conf.showLineSeparator && <CommonLineSeparator className={classes.lineSeparator} /> }
     </div>
   );
 }

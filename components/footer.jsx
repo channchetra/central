@@ -13,7 +13,7 @@ export default function Footer() {
       <Container>
         <section className="py-6 border-b-2 border-gray-300">
           <Link href="/" className="inline-block">
-            <a aria-label="">
+            <a aria-label="" className="inline-block">
               <div className="w-44 h-20 relative">
                 <Image
                   layout="fill"

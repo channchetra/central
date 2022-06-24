@@ -16,7 +16,7 @@ export default function TemplateCategory({ category, posts }) {
       )}
       <Container>
         <PageTitle
-          title={category.title}
+          title={category.title || 'Category'}
           description={category.description}
           image={category.image}
           className="my-5"

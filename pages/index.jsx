@@ -43,11 +43,11 @@ export default function Index({ allPosts: { edges } }) {
                     showLineSeparator: true,
                   }}
                   styles={{
-                    lineSeparator: `border-b pb-3 sm:pb-6 mb-3 ${
+                    lineSeparator: `border-b pb-3 sm:pb-3 mb-2 ${
                       index > 1 ? 'sm:border-none' : ''
                     } ${index > 2 ? 'border-none' : ''}`,
                     image: {
-                      wrapper: 'mb-5 shadow',
+                      wrapper: 'mb-3 shadow',
                     },
                   }}
                 />
@@ -349,7 +349,7 @@ export default function Index({ allPosts: { edges } }) {
               />
             </div>
             <div className="space-y-4">
-              {[...Array(20)].map((post, index) => (
+              {[...Array(19)].map((post, index) => (
                 <PostItem
                   key={`economy-post-${index}`}
                   post={heroPost}
@@ -363,8 +363,8 @@ export default function Index({ allPosts: { edges } }) {
                       image: 'aspect-video',
                     },
                     lineSeparator: `border-b pb-4 ${
-                      index > 18 ? 'sm:border-none' : ''
-                    } ${index > 18 ? 'border-none' : ''}`,
+                      index > 17 ? 'sm:border-none' : ''
+                    } ${index > 17 ? 'border-none' : ''}`,
                   }}
                 />
               ))}

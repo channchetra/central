@@ -76,7 +76,7 @@ export default function MainMenu({ mainMenus }) {
         </Transition>
       </Popover>
       <div className="mobile-logo">
-        <div className="w-14 sm:hidden relative">
+        <div className="w-14 h-14 sm:hidden relative">
           <Image
             layout="fill"
             alt=""

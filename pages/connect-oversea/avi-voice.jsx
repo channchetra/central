@@ -40,7 +40,9 @@ export default function ConnectOverseaAVIVoice({ posts }) {
                   showExcerpt: false,
                   showMeta: false,
                 }}
-                styles={{}}
+                styles={{
+                  
+                }}
               />
             ))}
           </section>

@@ -7,6 +7,10 @@ const parentSlug = 'one-minute';
 const parentCategory = find(categories, ['slug', parentSlug]);
 
 export default function OneMinuteCategory({ category, posts }) {
+  if (!category) {
+    return null;
+  }
+
   return <TemplateCategory category={category} posts={posts} />;
 }
 

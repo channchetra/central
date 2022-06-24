@@ -14,7 +14,7 @@ import { CMS_NAME } from '../../lib/constants';
 import Tags from '../../components/tags';
 // import CommonBreadcrumb from '../../components/common/breadcrumb';
 
-export default function Post({data: { post } }) {
+export default function Post({ data: { post } }) {
   const router = useRouter();
 
   if (!router.isFallback && !post && !post?.databaseId) {
@@ -27,12 +27,11 @@ export default function Post({data: { post } }) {
           items={[{ label: 'One-Minute', link: '#' }, { label: post.title }]}
         /> */}
       <Container>
-
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article>
+            <article className="mt-4 sm:mt-6">
               <Head>
                 <title>
                   {post.title} {CMS_NAME}
@@ -43,12 +42,12 @@ export default function Post({data: { post } }) {
                 />
               </Head>
               <PostHeader
-                  title={post.title}
-                  coverImage={post.featuredImage}
-                  date={post.date}
-                  author={post.author}
-                  categories={post.categories}
-                />
+                title={post.title}
+                coverImage={post.featuredImage}
+                date={post.date}
+                author={post.author}
+                categories={post.categories}
+              />
               <PostBody content={post.content} />
               <footer>
                 {post.tags.edges.length > 0 && <Tags tags={post.tags} />}
@@ -64,11 +63,11 @@ export default function Post({data: { post } }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const {post, posts} = await getPostAndMorePosts(params.slug, preview);
+  const { post, posts } = await getPostAndMorePosts(params.slug, preview);
   return {
     props: {
       preview,
-      data: {post, posts}
+      data: { post, posts },
     },
     revalidate: 10,
   };

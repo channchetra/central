@@ -1,4 +1,4 @@
-import Menu from '~/constants/menu';
+import Menu from '~/data/menu';
 import Container from './container';
 import TopMenu from './header/top-menu';
 import MainMenu from './header/main-menu';

@@ -1,23 +1,24 @@
 import TemplateArchive from '~/templates/archive';
-import { getPaginatedPosts } from '../lib/posts';
+import { getAllPosts } from '../lib/posts';
 
-export default function Posts({ posts, pagination }) {
-  // console.warn(posts, pagination);
-  
-  return <TemplateArchive posts={posts} pagination={pagination} />;
+export default function Posts({posts}) {
+  const attr = {
+    pageTitle: {
+      description: 'កម្មវិធី AVI VOICE on AMS ជាកម្មវិធីថ្មីមួយ ដែលត្រូវបានបង្កើតឡើងក្រោមកិច្ចសហការរវាង AMS និង AVI (វិទ្យាស្ថានចក្ខុវិស័យអាស៊ី) ក្នុងគោលបំណងចែករំលែកនូវចំណេះដឹង និងការវិភាគដល់ប្រិយមិត្តអ្នកស្តាប់ ជាពិសេសយុវជន លើប្រធានបទសំខាន់ៗ ដូចជាភូមិសាស្រ្តនយោបាយនិងសេដ្ឋកិច្ចសកលនិងក្នុងតំបន់ ការអភិវឌ្ឍដោយចីរភាព សេដ្ឋកិច្ចឌីជីថល និងនវានុវត្តន៍បច្ចេកវិទ្យា ដើម្បីរួមចំណែកក្នុងការអភិវឌ្ឍនូវសមត្ថភាព និងការយល់ដឹងរបស់យុវជនកម្ពុជាជំនាន់ថ្មី'
+    }
+  }
+  return <TemplateArchive posts={posts} attributes={attr} />;
 }
 
 export async function getStaticProps() {
-  const { posts, pagination } = await getPaginatedPosts({
-    queryIncludes: 'archive',
-  });
+  const options = {
+    queryIncludes: 'archive'
+  } 
+  const {posts} = await getAllPosts( options );
   return {
-    props: {
-      posts,
-      pagination: {
-        ...pagination,
-        basePath: '/posts',
-      },
+    props: { 
+      posts
     },
+    revalidate: 10,
   };
 }

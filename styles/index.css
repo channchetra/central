@@ -34,6 +34,11 @@
   @apply -z-10;
 }
 
+/* Article Detail */
+article figure {
+  margin-bottom: 1rem;
+}
+
 .has-text-align-left {
   @apply text-left;
 }

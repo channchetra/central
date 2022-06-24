@@ -113,9 +113,9 @@ export const QUERY_ALL_POSTS = gql`
   }
 `;
 
-export const QUERY_POST_BY_SLUG = gql`
-  query PostBySlug($slug: ID!) {
-    post(id: $slug, idType: SLUG) {
+export const QUERY_POST_BY_ID = gql`
+  query PostBySlug($id: ID!) {
+    post(id: $id, idType: DATABASE_ID) {
       author {
         node {
           avatar {
@@ -295,9 +295,9 @@ export const QUERY_POSTS_BY_AUTHOR_SLUG = gql`
   }
 `;
 
-export const QUERY_POST_SEO_BY_SLUG = gql`
-  query PostSEOBySlug($slug: ID!) {
-    post(id: $slug, idType: SLUG) {
+export const QUERY_POST_SEO_BY_ID = gql`
+  query PostSEOBySlug($id: ID!) {
+    post(id: $id, idType: DATABASE_ID) {
       id
       seo {
         canonical

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Menu from '~/constants/menu';
+import Menu from '~/data/menu';
 import Container from './container';
 
 const amsLogoWide = '/images/APSARA_MEDIA_SERVICES_LOGO-01.png';

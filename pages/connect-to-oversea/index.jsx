@@ -3,7 +3,7 @@ import { find, map } from 'lodash';
 import { getAllPostsForHome } from '~/lib/api';
 import TemplateCategory from '~/templates/category';
 
-const slug = 'one-minute';
+const slug = 'connect-to-oversea';
 
 export default function OneMinute({ category, posts }) {
   return <TemplateCategory category={category} posts={posts} />;

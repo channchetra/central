@@ -34,25 +34,25 @@ export default class Menu {
         },
         {
           name: 'ការផ្លាស់ប្តរមុខមាត់ថ្មីក្នុងប្រទេស',
-          href: '/one-minute/recent-changes-in-the-country',
+          href: '/one-minute/recent-changes-in-country',
         },
       ],
     },
     {
       name: 'កិច្ចការបរទេស',
-      href: '/connect-oversea',
+      href: '/connect-to-oversea',
       subMenus: [
-        { name: 'AVI Voice', href: '/connect-oversea/avi-voice' },
+        { name: 'AVI Voice', href: '/connect-to-oversea/avi-voice' },
         {
           name: 'Cambodia 2050',
-          href: '/connect-oversea/cambodia-2050',
+          href: '/connect-to-oversea/cambodia-2050',
         },
         {
           name: 'Asian Vision Dialogue (AVD)',
-          href: '/connect-oversea/asian-vision-dialogue',
+          href: '/connect-to-oversea/asian-vision-dialogue',
         },
-        { name: 'Climate Change', href: '/connect-oversea/climate-change' },
-        { name: 'ជីវចំម្រុះ', href: '/connect-oversea/biodiversity' },
+        { name: 'Climate Change', href: '/connect-to-oversea/climate-change' },
+        { name: 'ជីវចំម្រុះ', href: '/connect-to-oversea/biodiversity' },
       ],
     },
     {

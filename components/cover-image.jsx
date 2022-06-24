@@ -15,7 +15,7 @@ export default function CoverImage({ title, coverImage, slug }) {
     />
   );
   return (
-    <div className="relative sm:mx-0 h-[56%]">
+    <div className="relative sm:mx-0 pb-[56%]">
       {slug ? (
         <Link href={`/posts/${slug}`}>
           <a aria-label={title}>{image}</a>

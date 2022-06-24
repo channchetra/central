@@ -1,7 +1,7 @@
 import categories from '~/data/categories';
-import { find, map } from 'lodash';
-import { getAllPostsForHome } from '~/lib/api';
+import { find } from 'lodash';
 import TemplateCategory from '~/templates/category';
+import { getPostsByCategoryId } from '~/lib/posts';
 
 const slug = 'connect-to-oversea';
 
@@ -11,10 +11,12 @@ export default function OneMinute({ category, posts }) {
 
 export async function getStaticProps() {
   const category = find(categories, ['slug', slug]);
-  const posts = await getAllPostsForHome();
+  const { posts } = await getPostsByCategoryId({
+    categoryId: category.databaseId,
+  });
 
   return {
-    props: { category, posts: map(posts.edges, 'node') },
+    props: { category, posts },
     revalidate: 10,
   };
 }

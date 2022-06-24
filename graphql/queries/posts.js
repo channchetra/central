@@ -205,7 +205,10 @@ export const QUERY_POSTS_BY_CATEGORY_ID_ARCHIVE = gql`
 export const QUERY_POSTS_BY_CATEGORY_ID = gql`
   ${POST_FIELDS}
   query PostsByCategoryId($categoryId: Int!) {
-    posts(where: { categoryId: $categoryId, hasPassword: false }) {
+    posts(
+      first: 10000
+      where: { categoryId: $categoryId, hasPassword: false }
+    ) {
       edges {
         node {
           ...PostFields

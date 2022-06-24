@@ -1,7 +1,7 @@
 import categories from '~/data/categories';
-import { filter, find, map } from 'lodash';
-import { getAllPostsForHome } from '~/lib/api';
+import { filter, find } from 'lodash';
 import TemplateCategory from '~/templates/category';
+import { getPostsByCategoryId } from '~/lib/posts';
 
 const parentSlug = 'one-minute';
 const parentCategory = find(categories, ['slug', parentSlug]);
@@ -11,12 +11,13 @@ export default function OneMinuteCategory({ category, posts }) {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  console.warn(slug);
   const category = find(categories, ['slug', slug]);
-  const posts = await getAllPostsForHome();
+  const { posts } = await getPostsByCategoryId({
+    categoryId: category.databaseId,
+  });
 
   return {
-    props: { category, posts: map(posts.edges, 'node') },
+    props: { category, posts },
     revalidate: 10,
   };
 }

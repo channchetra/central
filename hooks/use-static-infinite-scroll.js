@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-function useStaticInfiniteScroll(items, page = 1, perPage = 20) {
+function useStaticInfiniteScroll(items, perPage = 20) {
   const [allItems] = useState(items);
-  const [currentPage, setCurrentPage] = useState(page);
+  const [currentPage, setCurrentPage] = useState(1);
   const [currentPerPage] = useState(perPage);
   const [currentItems, setItems] = useState(
-    allItems.slice(0, currentPerPage * page)
+    allItems.slice(0, currentPerPage * currentPage)
   );
   const [hasMore, setHasMore] = useState(true);
 
@@ -16,12 +16,18 @@ function useStaticInfiniteScroll(items, page = 1, perPage = 20) {
       setTimeout(() => {
         setCurrentPage(_page);
         setHasMore(_page <= maxPage);
-        setItems(items.slice(0, currentPerPage * _page));
+        setItems(allItems.slice(0, currentPerPage * _page));
       }, 250);
     }
   };
 
-  return { currentItems, currentPage, hasMore, loadMore };
+  return {
+    items: currentItems,
+    page: currentPage,
+    perPage: currentPerPage,
+    hasMore,
+    loadMore,
+  };
 }
 
 export default useStaticInfiniteScroll;

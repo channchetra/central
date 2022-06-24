@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
 export default function Avatar({ author }) {
   // eslint-disable-next-line no-nested-ternary
@@ -6,7 +6,7 @@ export default function Avatar({ author }) {
     ? author.node.firstName && author.node.lastName
       ? `${author.node.firstName} ${author.node.lastName}`
       : author.node.name
-    : null
+    : null;
 
   return (
     <div className="flex items-center">
@@ -20,5 +20,5 @@ export default function Avatar({ author }) {
       </div>
       <div className="text-xl font-bold">{name}</div>
     </div>
-  )
+  );
 }

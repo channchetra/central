@@ -1,5 +1,17 @@
 import { gql } from '@apollo/client';
 
+export const QUERY_ALL_USERS_PATH = gql`
+  {
+    users(first: 10000) {
+      edges {
+        node {
+          slug
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_ALL_USERS = gql`
   {
     users(first: 10000) {

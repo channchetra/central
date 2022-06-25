@@ -90,7 +90,7 @@ export const QUERY_ALL_POSTS = gql`
               id
               name
               slug
-              fistName
+              firstName
               lastName
             }
           }
@@ -273,19 +273,33 @@ export const QUERY_POSTS_BY_AUTHOR_SLUG_ARCHIVE = gql`
 export const QUERY_POSTS_BY_AUTHOR_SLUG = gql`
   ${POST_FIELDS}
   query PostByAuthorSlug($slug: String!) {
-    posts(where: { authorName: $slug, hasPassword: false }) {
+    posts(first: 10000, where: { authorName: $slug, hasPassword: false }) {
       edges {
         node {
           ...PostFields
+          author {
+            node {
+              avatar {
+                height
+                url
+                width
+              }
+              id
+              name
+              slug
+              firstName
+              lastName
+            }
+          }
           excerpt
           featuredImage {
             node {
               altText
               caption
-              id
-              sizes
               sourceUrl
               srcSet
+              sizes
+              id
             }
           }
           modified

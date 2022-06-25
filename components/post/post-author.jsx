@@ -39,7 +39,7 @@ export default function PostAuthor({ author, className = '', styles, config = {}
         </div>
       )}
       {conf.showName && (
-        <Link href="#">
+        <Link href={`/author/${author.slug}`}>
           <a aria-label={authorName}>
             <div className={classes.name}>{authorName}</div>
           </a>

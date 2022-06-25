@@ -7,7 +7,6 @@ import { getAllPostsForHome } from '../lib/api';
 
 export default function Index({ allPosts: { edges } }) {
   const heroPost = edges[0]?.node;
-
   return (
     <>
       <Container>

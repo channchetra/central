@@ -10,7 +10,7 @@ import PostTitle from '../../components/post-title';
 import { CMS_NAME } from '../../lib/constants';
 
 export default function Post({ post }) {
-  console.warn(post);
+  // console.warn(post);
   const router = useRouter();
   if (!router.isFallback && !post && !post?.databaseId) {
     return <ErrorPage statusCode={404} />;

@@ -243,6 +243,47 @@ export const QUERY_POSTS_BY_CATEGORY_ID = gql`
   }
 `;
 
+export const QUERY_POSTS_BY_CATEGORY_SLUG = gql`
+  ${POST_FIELDS}
+  query PostsByCategoryId($slug: String!) {
+    posts(
+      first: 10000
+      where: { categoryName: $slug, hasPassword: false }
+    ) {
+      edges {
+        node {
+          ...PostFields
+          author {
+            node {
+              avatar {
+                height
+                url
+                width
+              }
+              id
+              name
+              slug
+            }
+          }
+          content
+          excerpt
+          featuredImage {
+            node {
+              altText
+              caption
+              id
+              sizes
+              sourceUrl
+              srcSet
+            }
+          }
+          modified
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_POSTS_BY_AUTHOR_SLUG_INDEX = gql`
   ${POST_FIELDS}
   query PostByAuthorSlugIndex($slug: String!) {

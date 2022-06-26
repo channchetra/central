@@ -1,4 +1,4 @@
-import TemplateArchiveAuthor from '~/templates/archive-author';
+import TemplateArchive from '~/templates/archive';
 import { getPostsByCategorySlug } from '~/lib/posts';
 import getAllCategories from '~/lib/categories';
 
@@ -6,7 +6,7 @@ export default function Category({posts}) {
   const attr = {
     pageTitle: {}
   }
-  return <TemplateArchiveAuthor posts={posts} attributes={attr} />;
+  return <TemplateArchive posts={posts} attributes={attr} />;
 }
 
 export async function getStaticProps({ params = {} } = {}) {
@@ -22,9 +22,16 @@ export async function getStaticProps({ params = {} } = {}) {
 }
 
 export async function getStaticPaths() {
+  const skipPaths = [
+    '/central/connect-to-oversea/avi-voice',
+    '/central/connect-to-oversea/asian-vision-dialogue',
+    '/central/connect-to-oversea/climate-change',
+    '/central/connect-to-oversea/biodegradable',
+    '/central/connect-to-oversea'
+  ]
   const {categories} = await getAllCategories();
   const paths = categories
-    .filter(({ uri }) => typeof uri === 'string')
+    .filter(({ uri }) => typeof uri === 'string' && !skipPaths.includes(uri))
     .map(({ uri }) => {
       const segments = uri.split('/').filter((seg) => seg !== '');
       segments.shift();
@@ -40,3 +47,4 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+

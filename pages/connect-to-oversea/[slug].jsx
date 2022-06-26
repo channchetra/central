@@ -41,6 +41,6 @@ export async function getStaticPaths() {
 
   return {
     paths: subCategories.map(({ slug }) => `/${parentSlug}/${slug}`) || [],
-    fallback: true,
+    fallback: false,
   };
 }

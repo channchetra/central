@@ -13,7 +13,7 @@ export default function Header() {
         />
       </Container>
 
-      <div className="bg-slate-100 sticky top-0 z-10">
+      <div className="bg-slate-100 dark:bg-zinc-800 sticky top-0 z-10">
         <Container>
           <MainMenu mainMenus={Menu.mainMenus} />
         </Container>

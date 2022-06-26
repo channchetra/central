@@ -47,8 +47,8 @@ export default function PostItem({
   const classes = merge(
     {
       wrapper: conf.listView
-        ? 'sm:flex hover:text-rose-600'
-        : 'hover:text-rose-600',
+        ? 'sm:flex hover:text-rose-600 dark:hover:text-zinc-300'
+        : 'hover:text-rose-600 dark:hover:text-zinc-300',
       innerWrapper: {
         first: conf.listView && conf.showImage ? 'sm:w-1/3' : '',
         second: conf.listView && conf.showImage ? 'sm:flex-1 sm:pl-4' : '',
@@ -67,18 +67,18 @@ export default function PostItem({
       },
       excerpt: {
         wrapper: 'mt-3',
-        excerpt: 'text-sm text-gray-500',
+        excerpt: 'text-sm text-gray-500 dark:text-white',
       },
       meta: {
         wrapper: 'flex items-center text-xs mt-3',
         author: {
           wrapper: 'flex items-center',
           avatar: 'w-12 h-12 relative mr-4',
-          name: 'font-medium text-black',
+          name: 'font-medium text-black dark:text-white',
         },
         date: {
           wrapper: '',
-          date: 'text-gray-500',
+          date: 'text-gray-500 dark:text-white',
         },
         category: {
           wrapper: 'mr-3',

@@ -1,7 +1,7 @@
 export default class Menu {
   static amsWebsites = [
     { name: 'AMS Education', href: 'http://education.ams.com.kh/' },
-    { name: 'AMS Economy', href: 'ttp://economy.ams.com.kh/' },
+    { name: 'AMS Economy', href: 'http://economy.ams.com.kh/' },
     { name: 'AMS Infotainment', href: 'http://infotainment.ams.com.kh/' },
     {
       name: 'AMS Khmer Civilization',

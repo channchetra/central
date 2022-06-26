@@ -10,6 +10,7 @@ export const QUERY_ALL_CATEGORIES = gql`
           id
           name
           slug
+          uri
         }
       }
     }

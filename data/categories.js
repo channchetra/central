@@ -96,7 +96,7 @@ const categories = [
   {
     databaseId: 1932,
     parentDatabaseId: 1934,
-    slug: 'biodiversity',
+    slug: 'biodegradable',
     title: 'ជីវចំម្រុះ',
     description: null,
     banner: null,

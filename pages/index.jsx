@@ -371,7 +371,7 @@ export default function Index({ allPosts: { edges } }) {
           </section>
         </div>
       </Container>
-      <section className="bg-slate-100 py-5">
+      <section className="bg-slate-100 dark:bg-zinc-600 py-5">
         {/* Block Videos */}
         <Container>
           <div className="my-5">

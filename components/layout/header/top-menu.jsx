@@ -21,6 +21,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
                 alt="AMS Central"
                 src="https://asset.ams.com.kh/central/media/APSARA_MEDIA_SERVICES_SECONDARY_LOGO.png"
                 objectFit="contain"
+                className="dark:brightness-0 dark:invert-[1]"
               />
             </div>
           </a>
@@ -34,7 +35,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
             CENTRAL
           </a>
         </Link>
-        <Popover className="relative bg-white">
+        <Popover className="relative bg-white dark:bg-zinc-700">
           <div className="max-w-screen-xl container mx-auto">
             <div className="flex items-center md:justify-start md:space-x-10 z">
               <Popover.Group
@@ -49,13 +50,13 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
                         onMouseLeave={() => setPopoverOpen(false)}
                         className={classNames(
                           open ? 'text-gray-900' : 'text-gray-500',
-                          'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none py-3'
+                          'group bg-white dark:bg-zinc-700 rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none py-3'
                         )}
                       >
                         <ChevronDownIcon
                           className={classNames(
                             open ? 'text-gray-600' : 'text-gray-400',
-                            'h-5 w-5 group-hover:text-gray-500'
+                            'h-5 w-5 hover:text-gray-500 dark:hover:text-neutral-50 dark:text-neutral-50'
                           )}
                           aria-hidden="true"
                         />
@@ -76,16 +77,14 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
                         >
                           <Popover.Panel className="absolute z-20 -ml-4 transform px-2 sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2 shadow-md">
                             <div className="rounded-lg overflow-hidden">
-                              <div className="relative grid gap-6 bg-white p-5 sm:gap-5 sm:p-3">
+                              <div className="relative grid gap-6 bg-white dark:bg-zinc-800 p-5 sm:gap-5 sm:p-3">
                                 {amsWebsites.map((item, index) => (
                                   <a
                                     key={`ams-website-${index}`}
                                     href={item.href}
-                                    className="-m-3 p-3 flex items-start rounded-lg whitespace-nowrap hover:bg-gray-50 text-sm"
+                                    className="-m-3 px-4 py-4 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-neutral-50 dark:hover:text-gray-900 flex items-start whitespace-nowrap"
                                   >
-                                    <div className="ml-4 text-sm font-medium text-gray-900">
-                                      {item.name}
-                                    </div>
+                                    {item.name}
                                   </a>
                                 ))}
                               </div>
@@ -115,7 +114,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
         </div>
         <div className="relative hidden md:flex items-center justify-end">
           <Popover>
-            <Popover.Button className="-ml-2 py-3 lg:py-5 px-2 lg:px-4 -skew-x-12 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+            <Popover.Button className="-ml-2 py-3 lg:py-5 px-2 lg:px-4 -skew-x-12 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-zinc-800 focus:outline-none">
               <span className="sr-only">Open search</span>
               <SearchIcon className="h-6 w-6 skew-x-12" aria-hidden="true" />
             </Popover.Button>
@@ -133,11 +132,11 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
                 focus
                 className="search-form absolute z-40 -ml-4 transform w-72 lg:ml-0 lg:left-1/2 md:-translate-x-[80%] opacity-100 translate-y-0"
               >
-                <div className="rounded-lg shadow-lg ring-1 h-full ring-black ring-opacity-5 bg-white flex flex-col">
+                <div className="rounded-lg shadow-lg ring-1 h-full ring-black ring-opacity-5 bg-white dark:bg-zinc-700 flex flex-col">
                   <div className="p-3 flex-1">
                     <input
                       type="text"
-                      className="h-12 mt-1 px-3 block w-full rounded-md bg-gray-100 border-transparent focus:outline-none"
+                      className="h-12 mt-1 px-3 block w-full rounded-md bg-gray-100 dark:bg-zinc-800 border-transparent focus:outline-none"
                       placeholder="ស្វែងរក"
                     />
                   </div>

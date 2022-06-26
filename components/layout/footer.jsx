@@ -8,17 +8,18 @@ const amsLogoWide = '/images/APSARA_MEDIA_SERVICES_LOGO-01.png';
 
 export default function Footer() {
   return (
-    <section className="bg-ams-light">
+    <section className="bg-ams-light dark:bg-zinc-700">
       <Container>
         <section className="py-6 border-b-2 border-gray-300">
           <Link href="/" className="inline-block">
-            <a aria-label="">
+            <a aria-label="" className="inline-block">
               <div className="w-44 h-20 relative">
                 <Image
                   layout="fill"
                   objectFit="contain"
                   alt="AMS Logo"
                   src={amsLogoWide}
+                  className="dark:brightness-0 dark:invert-[1]"
                 />
               </div>
             </a>

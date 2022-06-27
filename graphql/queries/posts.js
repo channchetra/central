@@ -90,7 +90,7 @@ export const QUERY_ALL_POSTS = gql`
               id
               name
               slug
-              fistName
+              firstName
               lastName
             }
           }
@@ -113,9 +113,9 @@ export const QUERY_ALL_POSTS = gql`
   }
 `;
 
-export const QUERY_POST_BY_SLUG = gql`
-  query PostBySlug($slug: ID!) {
-    post(id: $slug, idType: SLUG) {
+export const QUERY_POST_BY_ID = gql`
+  query PostBySlug($id: ID!) {
+    post(id: $id, idType: DATABASE_ID) {
       author {
         node {
           avatar {
@@ -205,7 +205,92 @@ export const QUERY_POSTS_BY_CATEGORY_ID_ARCHIVE = gql`
 export const QUERY_POSTS_BY_CATEGORY_ID = gql`
   ${POST_FIELDS}
   query PostsByCategoryId($categoryId: Int!) {
-    posts(where: { categoryId: $categoryId, hasPassword: false }) {
+    posts(
+      first: 10000
+      where: { categoryId: $categoryId, hasPassword: false }
+    ) {
+      edges {
+        node {
+          ...PostFields
+          author {
+            node {
+              avatar {
+                height
+                url
+                width
+              }
+              id
+              name
+              slug
+            }
+          }
+          content
+          excerpt
+          featuredImage {
+            node {
+              altText
+              caption
+              id
+              sizes
+              sourceUrl
+              srcSet
+            }
+          }
+          modified
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_POSTS_BY_CATEGORY_TAG = gql`
+  ${POST_FIELDS}
+  query PostsByCategorySlug($slug: String!) {
+    posts(
+      first: 10000
+      where: { tag: $slug, hasPassword: false }
+    ) {
+      edges {
+        node {
+          ...PostFields
+          author {
+            node {
+              avatar {
+                height
+                url
+                width
+              }
+              id
+              name
+              slug
+            }
+          }
+          content
+          excerpt
+          featuredImage {
+            node {
+              altText
+              caption
+              id
+              sizes
+              sourceUrl
+              srcSet
+            }
+          }
+          modified
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_POSTS_BY_CATEGORY_SLUG = gql`
+  ${POST_FIELDS}
+  query PostsByCategoryId($slug: String!) {
+    posts(
+      first: 10000
+      where: { categoryName: $slug, hasPassword: false }
+    ) {
       edges {
         node {
           ...PostFields
@@ -270,19 +355,33 @@ export const QUERY_POSTS_BY_AUTHOR_SLUG_ARCHIVE = gql`
 export const QUERY_POSTS_BY_AUTHOR_SLUG = gql`
   ${POST_FIELDS}
   query PostByAuthorSlug($slug: String!) {
-    posts(where: { authorName: $slug, hasPassword: false }) {
+    posts(first: 10000, where: { authorName: $slug, hasPassword: false }) {
       edges {
         node {
           ...PostFields
+          author {
+            node {
+              avatar {
+                height
+                url
+                width
+              }
+              id
+              name
+              slug
+              firstName
+              lastName
+            }
+          }
           excerpt
           featuredImage {
             node {
               altText
               caption
-              id
-              sizes
               sourceUrl
               srcSet
+              sizes
+              id
             }
           }
           modified
@@ -292,9 +391,9 @@ export const QUERY_POSTS_BY_AUTHOR_SLUG = gql`
   }
 `;
 
-export const QUERY_POST_SEO_BY_SLUG = gql`
-  query PostSEOBySlug($slug: ID!) {
-    post(id: $slug, idType: SLUG) {
+export const QUERY_POST_SEO_BY_ID = gql`
+  query PostSEOBySlug($id: ID!) {
+    post(id: $id, idType: DATABASE_ID) {
       id
       seo {
         canonical

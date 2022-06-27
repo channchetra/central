@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function PageTitle({
   title,
-  subtitle,
+  description,
   image,
   className = '',
   config,
@@ -21,7 +21,7 @@ export default function PageTitle({
         content: `flex-1 ${image ? 'md:pl-5' : ''}`,
       },
       title: 'font-bold text-2xl md:text-3xl',
-      subtitle:
+      description:
         'text-lg md:text-xl leading-relaxed md:leading-loose mt-3 md:mt-5',
       image: {
         wrapper: 'relative aspect-[2/3] lg:-mt-20',
@@ -54,7 +54,7 @@ export default function PageTitle({
       <div className={`${classes.innerWrapper.content}`}>
         <div className={classes.lineSeparator}>
           {title && <div className={classes.title}>{title}</div>}
-          {subtitle && <div className={classes.subtitle}>{subtitle}</div>}
+          {description && <div className={classes.description}>{description}</div>}
         </div>
       </div>
     </div>

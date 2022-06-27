@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function useStaticInfiniteScroll(items, perPage = 20) {
+function useStaticInfiniteScroll(items = [], perPage = 20) {
   const [allItems] = useState(items);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPerPage] = useState(perPage);

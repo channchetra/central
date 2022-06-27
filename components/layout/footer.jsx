@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Menu from '~/constants/menu';
+import Menu from '~/data/menu';
 import Container from './container';
 import CommonSectionHeader from '../common/section-header';
 
@@ -8,17 +8,18 @@ const amsLogoWide = '/images/APSARA_MEDIA_SERVICES_LOGO-01.png';
 
 export default function Footer() {
   return (
-    <section className="bg-ams-light">
+    <section className="bg-ams-light dark:bg-zinc-700">
       <Container>
         <section className="py-6 border-b-2 border-gray-300">
           <Link href="/" className="inline-block">
-            <a aria-label="">
+            <a aria-label="" className="inline-block">
               <div className="w-44 h-20 relative">
                 <Image
                   layout="fill"
                   objectFit="contain"
                   alt="AMS Logo"
                   src={amsLogoWide}
+                  className="dark:brightness-0 dark:invert-[1]"
                 />
               </div>
             </a>
@@ -81,7 +82,8 @@ export default function Footer() {
         <section className="copy-right py-2 grid sm:grid-cols-2">
           <div className="text-xs text-gray-400">
             ឆ្នាំ{new Date().getFullYear()} © រក្សាសិទ្ធគ្រប់យ៉ាងដោយ
-            អប្សរាមេឌាសឺវីស / Apsara Media Services (AMS)
+            អប្សរាមេឌាសឺវីស / <br className="sm:hidden" /> Apsara Media Services
+            (AMS)
           </div>
           <div className="sm:text-right">
             <a href="#" className="text-xs">

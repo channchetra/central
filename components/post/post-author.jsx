@@ -12,7 +12,7 @@ export default function PostAuthor({ author, className = '', styles, config = {}
     data.author = author.node
   }
 
-  const { firstName, lastName, name, avatar } = data.author || {}
+  const { firstName, lastName, name, avatar, slug } = data.author || {}
   const authorName = name || `${firstName} ${lastName}` || null
   const conf = {
       showAvatar: true,
@@ -39,7 +39,7 @@ export default function PostAuthor({ author, className = '', styles, config = {}
         </div>
       )}
       {conf.showName && (
-        <Link href="#">
+        <Link href={`/author/${slug}`}>
           <a aria-label={authorName}>
             <div className={classes.name}>{authorName}</div>
           </a>

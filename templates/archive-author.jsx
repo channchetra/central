@@ -6,7 +6,7 @@ import PageTitle from '~/components/page/page-title';
 import PostItem from '~/components/post/post-item';
 import useStaticInfiniteScroll from '~/hooks/use-static-infinite-scroll';
 
-export default function TemplateArchive({posts, attributes = {}}) {
+export default function TemplateArchiveAuthor({posts, attributes = {}}) {
   // console.warn(posts)
   // return null
   const pageBanner = {
@@ -15,7 +15,7 @@ export default function TemplateArchive({posts, attributes = {}}) {
     ...attributes.pageBanner
   }
   const pageTitle = {
-    title: "Archive",
+    title: "Author",
     description: "Description",
     image: "https://asset.ams.com.kh/central/media/AVI-Voice-on-AMS.jpg",
     className: "my-5",

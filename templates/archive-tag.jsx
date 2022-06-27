@@ -6,19 +6,17 @@ import PageTitle from '~/components/page/page-title';
 import PostItem from '~/components/post/post-item';
 import useStaticInfiniteScroll from '~/hooks/use-static-infinite-scroll';
 
-export default function TemplateCategory({ category, posts }) {
+export default function TemplateArchiveTag({ tag, posts }) {
   const { items, hasMore, loadMore } = useStaticInfiniteScroll(posts);
 
   return (
     <>
-      {category.banner && (
-        <PageBanner image={category.banner} />
-      )}
+      {tag.banner && <PageBanner image={tag.banner} />}
       <Container>
         <PageTitle
-          title={category.title || 'Category'}
-          description={category.description}
-          image={category.image}
+          title={tag.name || 'Tag'}
+          description={tag.description}
+          image={tag.image}
           className="my-5"
         />
         <InfiniteScroll

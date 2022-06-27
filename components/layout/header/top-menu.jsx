@@ -29,13 +29,13 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
         <Link href="/">
           <a
             aria-label="CENTRAL"
-            className="text-3xl leading-none before:content-['|'] before:mr-3"
+            className="text-3xl leading-none dark:text-neutral-50 before:content-['|'] before:mr-3"
             style={{ fontFamily: 'Battambang' }}
           >
             CENTRAL
           </a>
         </Link>
-        <Popover className="relative bg-white dark:bg-zinc-700">
+        <Popover className="relative bg-white dark:bg-transparent">
           <div className="max-w-screen-xl container mx-auto">
             <div className="flex items-center md:justify-start md:space-x-10 z">
               <Popover.Group
@@ -50,7 +50,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
                         onMouseLeave={() => setPopoverOpen(false)}
                         className={classNames(
                           open ? 'text-gray-900' : 'text-gray-500',
-                          'group bg-white dark:bg-zinc-700 rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none py-3'
+                          'group bg-white dark:bg-transparent rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none py-5'
                         )}
                       >
                         <ChevronDownIcon
@@ -82,7 +82,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
                                   <a
                                     key={`ams-website-${index}`}
                                     href={item.href}
-                                    className="-m-3 px-4 py-4 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-neutral-50 dark:hover:text-gray-900 flex items-start whitespace-nowrap"
+                                    className="-m-3 px-4 py-4 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-neutral-50 dark:hover:text-gray-900 dark:hover:bg-gray-300 flex items-start whitespace-nowrap"
                                   >
                                     {item.name}
                                   </a>
@@ -106,7 +106,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
             <a
               key={`flag-ship-${flagShipIndex}`}
               href={item.href}
-              className="p-4 lg:p-5 -skew-x-12 text-xs lg:text-base font-bold text-white hover:opacity-75 flex items-center h-full"
+              className="p-4 lg:p-5 -skew-x-12 text-xs lg:text-base font-bold text-white hover:opacity-75 flex items-center h-full dark:text-neutral-50"
             >
               {item.name}
             </a>

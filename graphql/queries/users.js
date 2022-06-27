@@ -1,8 +1,21 @@
 import { gql } from '@apollo/client';
+import { PER_PAGE } from '~/lib/constants';
 
 export const QUERY_ALL_USERS_PATH = gql`
   {
-    users(first: 10000) {
+    users(first: ${PER_PAGE}) {
+      edges {
+        node {
+          uri
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_ALL_USERS_SLUG = gql`
+  {
+    users(first: ${PER_PAGE}) {
       edges {
         node {
           slug
@@ -14,7 +27,7 @@ export const QUERY_ALL_USERS_PATH = gql`
 
 export const QUERY_ALL_USERS = gql`
   {
-    users(first: 10000) {
+    users(first: ${PER_PAGE}) {
       edges {
         node {
           avatar {
@@ -37,9 +50,26 @@ export const QUERY_ALL_USERS = gql`
   }
 `;
 
+export const QUERY_USER_BY_SLUG = gql`
+  query UserBySlug($slug: ID!) {
+    user(id: $slug, idType: SLUG) {
+      avatar {
+        height
+        width
+        url
+      }
+      description
+      id
+      userId
+      name
+      slug
+    }
+  }
+`;
+
 export const QUERY_ALL_USERS_SEO = gql`
   {
-    users(first: 10000) {
+    users(first: ${PER_PAGE}) {
       edges {
         node {
           id

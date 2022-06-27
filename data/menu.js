@@ -21,20 +21,20 @@ export default class Menu {
     { name: 'ទំព័រដើម', href: '/' },
     {
       name: 'One-Minute',
-      href: '/one-minute',
+      href: '/ams-one-minute',
       subMenus: [
         {
           name: 'សន្តិសុខមាតុភូមិខ្ញុំ',
-          href: '/one-minute/homeland-security',
+          href: '/ams-one-minute/homeland-security',
         },
-        { name: 'ព័ត៌មានទាន់ហេតុការណ៍', href: '/one-minute/breaking-news' },
+        { name: 'ព័ត៌មានទាន់ហេតុការណ៍', href: '/ams-one-minute/hot-news' },
         {
           name: 'ព័ត៌មានសង្ខេបប្រចាំថ្ងៃ',
-          href: '/one-minute/daily-summary-news',
+          href: '/ams-one-minute/daily-summary',
         },
         {
           name: 'ការផ្លាស់ប្តរមុខមាត់ថ្មីក្នុងប្រទេស',
-          href: '/one-minute/recent-changes-in-country',
+          href: '/ams-one-minute/new-change-in-country',
         },
       ],
     },
@@ -45,7 +45,7 @@ export default class Menu {
         { name: 'AVI Voice', href: '/connect-to-oversea/avi-voice' },
         {
           name: 'Cambodia 2050',
-          href: '/connect-to-oversea/cambodia-2050',
+          href: '/connect-to-oversea/cambodia2050',
         },
         {
           name: 'Asian Vision Dialogue (AVD)',
@@ -87,7 +87,10 @@ export default class Menu {
       name: 'Politico 360',
       href: '/politico360',
       subMenus: [
-        { name: 'Chao Chaksmok', href: '/politico360/chao-chaksmok-politico-360' },
+        {
+          name: 'Chao Chaksmok',
+          href: '/politico360/chao-chaksmok-politico-360',
+        },
         { name: 'បក្សីចាំក្រុង', href: '/politico360/city-guard' },
         { name: 'កម្ពុជាពិត', href: '/politico360/true-cambodia' },
         { name: 'Black & White', href: '/politico360/ams-black-and-white' },
@@ -99,7 +102,10 @@ export default class Menu {
       href: '/cambotory',
       subMenus: [
         { name: 'ក្អែកខ្មៅ', href: '/cambotory/black-crows' },
-        { name: 'កិច្ចព្រមព្រៀងទីក្រុងប៉ារីស៍', href: '/cambotory/paris-peace-agreement' },
+        {
+          name: 'កិច្ចព្រមព្រៀងទីក្រុងប៉ារីស៍',
+          href: '/cambotory/paris-peace-agreement',
+        },
         { name: 'នយោបាយឈ្នះ-ឈ្នះ', href: '/cambotory/winwin' },
         { name: 'ដំណើររបស់កម្ពុជា', href: '/cambotory/cambodia-journey' },
         { name: 'ឥស្សរជនឆ្នើមកម្ពុជា', href: '/cambotory/peacefounders' },

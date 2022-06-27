@@ -18,12 +18,6 @@ export default function PostCoverImage({
     return null;
   }
 
-  const img = {};
-  img.node = image.node;
-  if( !image.node ) {
-    img.node = image
-  }
-
   const conf = {
     showCategoryTag: false,
     showCategoryTagMultiple: false,
@@ -45,7 +39,7 @@ export default function PostCoverImage({
       layout="fill"
       objectFit="cover"
       alt={title}
-      src={img?.node.sourceUrl}
+      src={image.sourceUrl}
       className={classes.image}
     />
   );

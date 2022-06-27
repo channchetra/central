@@ -2,11 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
+import { getAllPosts } from '~/lib/posts';
 import Container from '../components/container';
-import { getAllPostsForHome } from '../lib/api';
 
-export default function Index({ allPosts: { edges } }) {
-  const heroPost = edges[0]?.node;
+export default function Index({ posts }) {
+  const heroPost = posts[0];
   return (
     <>
       <Container>
@@ -408,10 +408,10 @@ export default function Index({ allPosts: { edges } }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allPosts = await getAllPostsForHome(preview);
+  const { posts } = await getAllPosts();
 
   return {
-    props: { allPosts, preview },
+    props: { posts, preview },
     revalidate: 10,
   };
 }

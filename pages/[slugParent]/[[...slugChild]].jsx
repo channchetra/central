@@ -1,4 +1,8 @@
-import { getPostsByAuthorSlug, getPostsByCategorySlug, getPostsByTagSlug } from '~/lib/posts';
+import {
+  getPostsByAuthorSlug,
+  getPostsByCategorySlug,
+  getPostsByTagSlug,
+} from '~/lib/posts';
 import { getAllCategoriesPath, getCategoryBySlug } from '~/lib/categories';
 import categoryData from '~/data/categories';
 import { find, isEmpty } from 'lodash';
@@ -27,6 +31,7 @@ export async function getStaticProps({ params = {} } = {}) {
   const slug = slugChild.length ? slugChild[slugChild.length - 1] : slugParent;
   let model = {};
   let postsData = {};
+  let type = slugParent;
 
   if (slugParent === 'author') {
     model = await getUserBySlug(slug);
@@ -35,6 +40,7 @@ export async function getStaticProps({ params = {} } = {}) {
     model = await getTagBySlug(slug);
     postsData = await getPostsByTagSlug({ slug });
   } else {
+    type = 'category';
     model = find(categoryData, ['slug', slug]) || {};
     if (isEmpty(model)) {
       const category = await getCategoryBySlug(slug);
@@ -48,11 +54,11 @@ export async function getStaticProps({ params = {} } = {}) {
     postsData = await getPostsByCategorySlug({
       slug,
     });
-  }  
+  }
 
   return {
     props: {
-      model: { ...model, type: slugParent },
+      model: { ...model, type },
       posts: postsData.posts || [],
     },
     revalidate: 10,

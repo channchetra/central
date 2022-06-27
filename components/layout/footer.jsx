@@ -36,7 +36,10 @@ export default function Footer() {
             <ul className="sm:ml-3 grid sm:grid-cols-2 gap-3">
               {Menu.footerCentral.map((item, index) => (
                 <li key={`footer-ams-${index}`}>
-                  <Link href={item.href} className="hover:text-ams-purple">
+                  <Link
+                    href={item.href}
+                    className="hover:text-ams-purple dark:text-neutral-50"
+                  >
                     <a>{item.name}</a>
                   </Link>
                 </li>
@@ -53,14 +56,17 @@ export default function Footer() {
             <ul className="sm:ml-3 grid sm:grid-cols-2 gap-3">
               {Menu.amsGroup.map((item, index) => (
                 <li key={`ams-group-${index}`}>
-                  <a href={item.href} className="hover:text-ams-purple">
+                  <a
+                    href={item.href}
+                    className="hover:text-ams-purple dark:text-neutral-50"
+                  >
                     {item.name}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="lg:pl-3 lg:border-l lg:border-slate-500">
+          <div className="lg:pl-3 lg:border-l lg:border-slate-500 dark:border-neutral-50">
             <CommonSectionHeader
               type="secondary"
               title="ស្វែងយល់បន្ថែម"
@@ -70,7 +76,10 @@ export default function Footer() {
             <ul className="sm:ml-3 grid gap-3">
               {Menu.footerLearnMore.map((item, index) => (
                 <li key={`footer-${index}`}>
-                  <Link href={item.href} className="hover:text-ams-purple">
+                  <Link
+                    href={item.href}
+                    className="hover:text-ams-purple dark:text-neutral-50"
+                  >
                     <a>{item.name}</a>
                   </Link>
                 </li>

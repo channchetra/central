@@ -18,20 +18,23 @@
 /* Your own custom utilities */
 
 .flagship > a:nth-child(1) {
-  @apply bg-[#fab314];
+  @apply bg-[#fab314]  dark:bg-gray-800;
 }
 .flagship > a:nth-child(2) {
-  @apply bg-[#897b61];
+  @apply bg-[#897b61] dark:bg-gray-800;
 }
 .flagship > a:nth-child(3) {
-  @apply bg-[#c70003];
+  @apply bg-[#c70003] dark:bg-gray-800;
 }
 .flagship > a:nth-child(4) {
-  @apply bg-[#55316f];
+  @apply bg-[#55316f] dark:bg-gray-800 -ml-1;
 }
 
 .block-avi span {
   @apply -z-10;
+}
+html {
+  @apply dark:text-gray-100;
 }
 
 /* Article Detail */

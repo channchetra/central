@@ -6,7 +6,7 @@ export default function CommonSectionHeader({
   type = 'primary',
   title,
   link,
-  className = 'text-xl',
+  className = 'text-xl dark:text-neutral-50',
   lineColor = 'before:bg-gray-100',
   lineHighlightColor = 'after:bg-red-900 after:bg-zinc-400',
 }) {
@@ -20,6 +20,7 @@ export default function CommonSectionHeader({
     'before:left-full',
     'before:top-2/4',
     'before:w-screen',
+    'dark:text-neutral-50',
     lineColor
   );
   const secondaryClass = classNames(

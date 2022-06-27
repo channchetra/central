@@ -13,7 +13,7 @@ export default function MainMenuItem({ menu, index }) {
             onMouseEnter={() => setPopoverOpen(true)}
             onMouseLeave={() => setPopoverOpen(false)}
             href={menu.href}
-            className={`group py-4 text-xs lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800 ${
+            className={`group py-4 text-xs lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800 dark:text-neutral-50 ${
               popoverOpen ? 'border-sky-400 dark:border-zinc-800' : ''
             }`}
           >
@@ -44,12 +44,9 @@ export default function MainMenuItem({ menu, index }) {
                       <a
                         key={`menu-${index}-sub-menu-${subMenuIndex}`}
                         href={subMenu.href}
-                        className="-m-3 px-4 py-4 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-neutral-50 dark:hover:text-gray-900"
+                        className="-m-3 px-4 py-4 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-neutral-50 dark:hover:text-gray-900 dark:hover:bg-gray-300"
                       >
                         {subMenu.name}
-                        {/* <div className="ml-4">
-                          <p className="">{subMenu.name}</p>
-                        </div> */}
                       </a>
                     ))}
                   </div>
@@ -63,7 +60,7 @@ export default function MainMenuItem({ menu, index }) {
   ) : (
     <a
       href={menu.href}
-      className="group py-4 text-xs lg:text-base text-black font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800"
+      className="group py-4 text-xs lg:text-base text-black font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800 dark:text-neutral-50"
     >
       {menu.name}
     </a>

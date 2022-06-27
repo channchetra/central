@@ -41,6 +41,16 @@ export default function CommonSectionHeader({
     'after:w-14',
     lineHighlightColor
   );
+  const tertiaryClass = classNames(
+    'relative',
+    'pl-3',
+    "before:content-['']",
+    'before:w-1',
+    'before:absolute',
+    'before:left-0',
+    'before:h-full',
+    lineColor,
+  );
 
   if (type === 'primary') {
     return (
@@ -69,6 +79,22 @@ export default function CommonSectionHeader({
           </Link>
         ) : (
           <div className={`${secondaryClass}`}>{title}</div>
+        )}
+      </div>
+    );
+  }
+
+  if (type === 'tertiary') {
+    return (
+      <div className={`${className}`}>
+        {link ? (
+          <Link href={link}>
+            <a aria-label={title}>
+              <div className={`${tertiaryClass}`}>{title}</div>
+            </a>
+          </Link>
+        ) : (
+          <div className={`${tertiaryClass}`}>{title}</div>
         )}
       </div>
     );

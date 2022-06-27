@@ -1,8 +1,7 @@
 const categories = [
+  // One-Minute
   {
-    databaseId: 238,
-    parentDatabaseId: null,
-    slug: 'one-minute',
+    slug: 'ams-one-minute',
     title: 'One-Minute',
     description: 'ចំណេះដឹង និងព័ត៌មានពិត ខ្លី ខ្លឹម ត្រឹម ១នាទី។',
     banner:
@@ -10,8 +9,6 @@ const categories = [
     image: null,
   },
   {
-    databaseId: 1926,
-    parentDatabaseId: 238,
     slug: 'homeland-security',
     title: 'សន្តិសុខមាតុភូមិខ្ញុំ',
     description: null,
@@ -19,36 +16,30 @@ const categories = [
     image: null,
   },
   {
-    databaseId: 1928,
-    parentDatabaseId: 238,
-    slug: 'breaking-news',
+    slug: 'hot-news',
     title: 'ព័ត៌មានទាន់ហេតុការណ៍',
     description: null,
     banner: null,
     image: null,
   },
   {
-    databaseId: 1929,
-    parentDatabaseId: 238,
-    slug: 'daily-summary-news',
+    slug: 'daily-summary',
     title: 'ព័ត៌មានសង្ខេបប្រចាំថ្ងៃ',
     description: null,
     banner: null,
     image: null,
   },
   {
-    databaseId: 1931,
-    parentDatabaseId: 238,
-    slug: 'recent-changes-in-country',
+    slug: 'new-change-in-country',
     title: 'ការផ្លាស់ប្តូរមុខមាត់ថ្មីក្នុងប្រទេស',
     description: null,
     banner: null,
     image: null,
   },
+  // =======================
 
+  // កិច្ចការបរទេសផ្សាភ្ជាប់កម្ពុជាទៅកាន់អន្តរជាតិ
   {
-    databaseId: 1934,
-    parentDatabaseId: null,
     slug: 'connect-to-oversea',
     title: 'កិច្ចការបរទេសផ្សាភ្ជាប់កម្ពុជាទៅកាន់អន្តរជាតិ',
     description: null,
@@ -56,8 +47,6 @@ const categories = [
     image: null,
   },
   {
-    databaseId: 609,
-    parentDatabaseId: 1934,
     slug: 'avi-voice',
     title: 'AVI VOICE',
     description:
@@ -66,9 +55,7 @@ const categories = [
     image: 'https://asset.ams.com.kh/central/media/AVI-Voice-on-AMS.jpg',
   },
   {
-    databaseId: 633,
-    parentDatabaseId: 1934,
-    slug: 'cambodia-2050',
+    slug: 'cambodia2050',
     title: 'Cambodia 2050',
     description:
       'ផ្តល់ចំនេះដឹងដល់អ្នកពាក់ព័ន្ធដើម្បីសហការចូលរួមអភិវឌ្ឍន៍ប្រទេសកម្ពុជា ក្នុងគោលដៅប្រែក្លាយទៅជាប្រទេសចំណូលមធ្យមកំរិតខ្ពស់ តាមរយៈកិច្ចពិភាក្សាសុីជំរៅ បង្កើនសមត្ថភាព ជំនាញ និងចំណេះដឹងលើគ្រប់វិស័យតាមរយៈការប្រើប្រាស់ប្រព័ន្ធបច្ចេកវិទ្យា និងតភ្ជាប់ទំនាក់ទំនងនៅឆាកអន្តរជាតិ។',
@@ -76,8 +63,6 @@ const categories = [
     image: 'https://asset.ams.com.kh/central/media/Cambodia-2050-1.png',
   },
   {
-    databaseId: 1766,
-    parentDatabaseId: 1934,
     slug: 'asian-vision-dialogue',
     title: 'ASIAN VISION DIALOGUE (AVD)',
     description: null,
@@ -85,8 +70,6 @@ const categories = [
     image: null,
   },
   {
-    databaseId: 1938,
-    parentDatabaseId: 1934,
     slug: 'climate-change',
     title: 'Climate Change',
     description: null,
@@ -94,14 +77,230 @@ const categories = [
     image: null,
   },
   {
-    databaseId: 1932,
-    parentDatabaseId: 1934,
     slug: 'biodegradable',
     title: 'ជីវចំម្រុះ',
     description: null,
     banner: null,
     image: null,
   },
+  // =======================
+
+  // ព័ត៌មានទូទៅ
+  {
+    slug: 'ams-news',
+    title: 'ព័ត៌មានទូទៅ',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  {
+    slug: 'national-news',
+    title: 'ព័ត៌មានជាតិ',
+    description: null,
+    banner:
+      'https://asset.ams.com.kh/central/media/Plan-de-travail-293-copy.png',
+    image: 'https://asset.ams.com.kh/central/media/ams-blue.png',
+  },
+  {
+    slug: 'international',
+    title: 'ព័ត៌មានអន្តរជាតិ',
+    description: null,
+    banner:
+      'https://asset.ams.com.kh/central/media/Plan-de-travail-293-copy.png',
+    image: 'https://asset.ams.com.kh/central/media/ams-blue.png',
+  },
+  {
+    slug: 'sports',
+    title: 'កីឡា',
+    description: null,
+    banner:
+      'https://asset.ams.com.kh/central/media/Plan-de-travail-293-copy.png',
+    image: 'https://asset.ams.com.kh/central/media/ams-blue.png',
+  },
+  {
+    slug: 'economy',
+    title: 'សេដ្ឋកិច្ច',
+    description: null,
+    banner:
+      'https://asset.ams.com.kh/central/media/Plan-de-travail-293-copy.png',
+    image: 'https://asset.ams.com.kh/central/media/ams-blue.png',
+  },
+  {
+    slug: 'apsara-net',
+    title: 'អប្សរាណេត',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  {
+    slug: 'apsara-plus',
+    title: 'អប្សរាណេត',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  {
+    slug: 'election',
+    title: 'ការបោះឆ្នោត',
+    description: null,
+    banner:
+      'https://asset.ams.com.kh/central/media/Plan-de-travail-293-copy.png',
+    image: 'https://asset.ams.com.kh/central/media/ams-blue.png',
+  },
+  {
+    slug: 'covid-19',
+    title: 'Covid-19',
+    description: null,
+    banner:
+      'https://asset.ams.com.kh/central/media/Plan-de-travail-293-copy.png',
+    image: 'https://asset.ams.com.kh/central/media/ams-blue.png',
+  },
+  // =======================
+
+  // កម្ពុជាមាតុភូមិខ្ញុំ
+  {
+    slug: 'cambodia-my-motherland',
+    title: 'កម្ពុជាមាតុភូមិខ្ញុំ',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  // =======================
+
+  // វីដេអូ
+  {
+    slug: 'video',
+    title: 'វីដេអូ',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  {
+    slug: 'amsmuzic',
+    title: 'AMS Muzic',
+    description: null,
+    banner:
+      'https://asset.ams.com.kh/central/media/Plan-de-travail-293-copy.png',
+    image: 'https://asset.ams.com.kh/central/media/ams-blue.png',
+  },
+  {
+    slug: 'myvillage',
+    title: 'ភូមិខ្ញុំ',
+    description:
+      'ភូមិខ្ញុំ ជាគម្រោងខ្សែវីដេអូឯកសារ ផ្តិតយក និង ឆ្លុះបញ្ចាំងពីសាច់រឿង បុគ្គល ឬ សហគមន៍ ដែលបានបង្កើតផលិតផលពាក់ព័ន្ធនឹងគំនិតច្នៃប្រឌិត ក៏ដូចជាការ បង្កើតថ្មី ដោយសេចក្តីស្រលាញ់ បូករួមជាមួយភាពជាសហគ្រិន សម្រាប់ភូមិ ស្រុកនិង សហគមន៍ របស់ខ្លួន ដោយប្រើប្រាស់នូវធនធានជុំវិញខ្លួន ទាំងចំណេះ ជំនាញ ព្រមទាំង បាន បង្កើតការងារ ដើម្បីបង្កើនចំណូលជូន ប្រជាជនក្នុងតំបន់។ ដែល គំនិត នៃការបង្កើតថ្មី ទាំងនោះ អាចជួយកាត់បន្ថយ ការប៉ះពាល់ដល់ បរិស្ថាន ជួយលើក ស្ទួយទំនៀមទំលាប់ វប្បធម៍ អរិយធម៍ និង មនុស្សធម៍ ក្នុងសង្គមជាតិជាដើម។',
+    banner: 'https://asset.ams.com.kh/central/media/myvillage-banner.png',
+    image: 'https://asset.ams.com.kh/central/media/myvillage-logo-1.png',
+  },
+  {
+    slug: 'cambodia-heritage',
+    title: 'កម្ពុជាដែនដីអឆ្ឆរយៈ',
+    description: null,
+    banner:
+      'https://asset.ams.com.kh/central/media/Cambodia-Land-of-heritage-landscrape.jpg',
+    image: 'https://asset.ams.com.kh/central/media/ams-blue.png',
+  },
+  {
+    slug: 'vayo-on-apsara',
+    title: 'វេយោអនអប្សរា',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  // =======================
+
+  // Politico 360
+  {
+    slug: 'politico360',
+    title: 'Politico 360',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  {
+    slug: 'chao-chaksmok-politico-360',
+    title: 'CHAO CHAKSMOK',
+    description: null,
+    banner:
+      'https://asset.ams.com.kh/central/media/Plan-de-travail-293-copy.png',
+    image: 'https://asset.ams.com.kh/central/media/ams-blue.png',
+  },
+  {
+    slug: 'city-guard',
+    title: 'បក្សីចាំក្រុង',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  {
+    slug: 'true-cambodia',
+    title: 'កម្ពុជាពិត',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  {
+    slug: 'ams-black-and-white',
+    title: 'កម្មវិធី ខ្មៅនិងស',
+    description:
+      'គឺជាកម្មវិធីថ្មី បង្កើតឡើងក្នុងគោលបំណងបកស្រាយពន្យល់ បញ្ជាក់បន្ថែមអំពីគោលបំណង និងចក្ខុវិស័យដ៏វែងឆ្ងាយរបស់រាជរដ្ឋាភិបាលកម្ពុជា ក៏ដូចជាការឆ្លើយតបទៅនឹងការបំពុលព័ត៌មានភូតភរកុហកបោកប្រាស់របស់ក្រុមបំផ្លាញសង្គមមួយចំនួន ដែលតែងតែមានបំណងចង់បំផ្លាញសន្តិភាពនៅកម្ពុជា ក្រោមការបកស្រាយរបស់វាគ្មិនជំនាញ និងអ្នកវិភាគភូមិសាស្រ្តនយោបាយប្រកបដោយបទពិសោធន៍ត្រឹមត្រូវច្បាស់លាស់។ <br>កម្មវិធីនេះ មានផ្សាយជូន ជារៀងរាល់ថ្ងៃ ចន្ទ អង្គារ ពុធ វេលាម៉ោង ១០:៣០ នាទីព្រឹក នៅលើកញ្ចក់ទូរទស្សន៍ និងវិទ្យុអប្សរា។',
+    banner:
+      'https://asset.ams.com.kh/central/media/BG_Black-and-White-wide.jpg',
+    image: 'https://asset.ams.com.kh/central/media/ams-blue.png',
+  },
+  {
+    slug: 'positive-cambodia',
+    title: 'កម្មវិធី កម្ពុជាវិជ្ជមាន',
+    description:
+      'គឺជាកម្មវិធីថ្មី ដែលត្រូវបានបង្កើតឡើង ដើម្បីឆ្លុះបញ្ចាំងពីផលវិជ្ជមាន និងព័ត៌មានពិតពីបច្ចុប្បន្នភាពរបស់ប្រទេសកម្ពុជា ដើម្បីបង្ហាញជូនដល់ប្រជាជនកម្ពុជា ក្រោមការបកស្រាយរបស់វាគ្មិនជំនាញ ដែលអញ្ជើញចូលរួមពីបណ្តារស្ថាប័ន និងអង្គការនានា ដើម្បីបកស្រាយនូវបញ្ហាដែលកំពុងតែកើតឡើងនៅក្នុងប្រទេសរបស់យើង។ <br>កម្មវិធីនេះ មានផ្សាយជូន ជារៀងរាល់ថ្ងៃ ពុធ និងព្រហស្បតិ៍ វេលាម៉ោង ១០:៣០ នាទីព្រឹក នៅលើកញ្ចក់ទូរទស្សន៍ និងវិទ្យុអប្សរា។',
+    banner: 'https://asset.ams.com.kh/central/media/BG_Positive-Cambodia.jpg',
+    image: 'https://asset.ams.com.kh/central/media/ams-blue.png',
+  },
+  // =======================
+
+  // សច្ចធម៌ប្រវត្តិសាស្ត្រ
+  {
+    slug: 'cambotory',
+    title: 'សច្ចធម៌ប្រវត្តិសាស្ត្រ',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  {
+    slug: 'black-crows',
+    title: 'ក្អែកខ្មៅ',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  {
+    slug: 'paris-peace-agreement',
+    title: 'កិច្ចព្រមព្រៀងទីក្រុងប៉ារីស៍',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  {
+    slug: 'winwin',
+    title: 'នយោបាយឈ្នះ-ឈ្នះ',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  {
+    slug: 'cambodia-journey',
+    title: 'ដំណើររបស់កម្ពុជា',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  {
+    slug: 'peacefounders',
+    title: 'ឥស្សរជនឆ្នើមកម្ពុជា',
+    description: null,
+    banner: null,
+    image: null,
+  },
+  // =======================
 ];
 
 export default categories;

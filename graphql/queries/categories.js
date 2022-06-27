@@ -1,15 +1,24 @@
 import { gql } from '@apollo/client';
+import { PER_PAGE } from '~/lib/constants';
 
 export const QUERY_ALL_CATEGORIES = gql`
   {
-    categories(first: 10000) {
+    categories(first: ${PER_PAGE}) {
       edges {
         node {
-          databaseId
-          description
-          id
-          name
           slug
+          uri
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_ALL_CATEGORIES_PATH = gql`
+  {
+    categories(first: ${PER_PAGE}) {
+      edges {
+        node {
           uri
         }
       }

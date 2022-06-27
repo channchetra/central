@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { PER_PAGE } from '~/lib/constants';
 
 export const POST_FIELDS = gql`
   fragment PostFields on Post {
@@ -25,7 +26,7 @@ export const POST_FIELDS = gql`
 export const QUERY_ALL_POSTS_INDEX = gql`
   ${POST_FIELDS}
   query AllPostsIndex {
-    posts(first: 10000, where: { hasPassword: false }) {
+    posts(first: ${PER_PAGE}, where: { hasPassword: false }) {
       edges {
         node {
           ...PostFields
@@ -38,7 +39,7 @@ export const QUERY_ALL_POSTS_INDEX = gql`
 export const QUERY_ALL_POSTS_ARCHIVE = gql`
   ${POST_FIELDS}
   query AllPostsArchive {
-    posts(first: 10000, where: { hasPassword: false }) {
+    posts(first: ${PER_PAGE}, where: { hasPassword: false }) {
       edges {
         node {
           ...PostFields
@@ -76,7 +77,7 @@ export const QUERY_ALL_POSTS_ARCHIVE = gql`
 export const QUERY_ALL_POSTS = gql`
   ${POST_FIELDS}
   query AllPosts {
-    posts(first: 10000, where: { hasPassword: false }) {
+    posts(first: ${PER_PAGE}, where: { hasPassword: false }) {
       edges {
         node {
           ...PostFields
@@ -206,7 +207,7 @@ export const QUERY_POSTS_BY_CATEGORY_ID = gql`
   ${POST_FIELDS}
   query PostsByCategoryId($categoryId: Int!) {
     posts(
-      first: 10000
+      first: ${PER_PAGE}
       where: { categoryId: $categoryId, hasPassword: false }
     ) {
       edges {
@@ -247,7 +248,7 @@ export const QUERY_POSTS_BY_CATEGORY_TAG = gql`
   ${POST_FIELDS}
   query PostsByCategorySlug($slug: String!) {
     posts(
-      first: 10000
+      first: ${PER_PAGE}
       where: { tag: $slug, hasPassword: false }
     ) {
       edges {
@@ -288,7 +289,7 @@ export const QUERY_POSTS_BY_CATEGORY_SLUG = gql`
   ${POST_FIELDS}
   query PostsByCategoryId($slug: String!) {
     posts(
-      first: 10000
+      first: ${PER_PAGE}
       where: { categoryName: $slug, hasPassword: false }
     ) {
       edges {
@@ -355,7 +356,7 @@ export const QUERY_POSTS_BY_AUTHOR_SLUG_ARCHIVE = gql`
 export const QUERY_POSTS_BY_AUTHOR_SLUG = gql`
   ${POST_FIELDS}
   query PostByAuthorSlug($slug: String!) {
-    posts(first: 10000, where: { authorName: $slug, hasPassword: false }) {
+    posts(first: ${PER_PAGE}, where: { authorName: $slug, hasPassword: false }) {
       edges {
         node {
           ...PostFields

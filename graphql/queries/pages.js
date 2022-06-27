@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { PER_PAGE } from '~/lib/constants';
 
 export const PAGE_FIELDS = gql`
   fragment PageFields on Page {
@@ -36,7 +37,7 @@ export const PAGE_FIELDS = gql`
 export const QUERY_ALL_PAGES_INDEX = gql`
   ${PAGE_FIELDS}
   query AllPagesIndex {
-    pages(first: 10000, where: { hasPassword: false }) {
+    pages(first: ${PER_PAGE}, where: { hasPassword: false }) {
       edges {
         node {
           ...PageFields
@@ -49,7 +50,7 @@ export const QUERY_ALL_PAGES_INDEX = gql`
 export const QUERY_ALL_PAGES_ARCHIVE = gql`
   ${PAGE_FIELDS}
   query AllPagesIndex {
-    pages(first: 10000, where: { hasPassword: false }) {
+    pages(first: ${PER_PAGE}, where: { hasPassword: false }) {
       edges {
         node {
           ...PageFields
@@ -62,7 +63,7 @@ export const QUERY_ALL_PAGES_ARCHIVE = gql`
 export const QUERY_ALL_PAGES = gql`
   ${PAGE_FIELDS}
   query AllPagesIndex {
-    pages(first: 10000, where: { hasPassword: false }) {
+    pages(first: ${PER_PAGE}, where: { hasPassword: false }) {
       edges {
         node {
           ...PageFields

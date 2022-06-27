@@ -1,50 +1,95 @@
-import TemplateArchive from '~/templates/archive';
-import { getPostsByCategorySlug } from '~/lib/posts';
-import getAllCategories from '~/lib/categories';
+import { getPostsByAuthorSlug, getPostsByCategorySlug, getPostsByTagSlug } from '~/lib/posts';
+import { getAllCategoriesPath, getCategoryBySlug } from '~/lib/categories';
+import categoryData from '~/data/categories';
+import { find, isEmpty } from 'lodash';
+import TemplateArchiveCategory from '~/templates/archive-category';
+import { getAllUsersSlug, getUserBySlug } from '~/lib/users';
+import TemplateArchiveAuthor from '~/templates/archive-author';
+import { getAllTagsSlug, getTagBySlug } from '~/lib/tag';
+import TemplateArchiveTag from '~/templates/archive-tag';
 
-export default function Category({posts}) {
-  const attr = {
-    pageTitle: {}
+export default function Category({ model, posts }) {
+  if (model.type === 'category') {
+    return <TemplateArchiveCategory category={model} posts={posts} />;
   }
-  return <TemplateArchive posts={posts} attributes={attr} />;
+
+  if (model.type === 'author') {
+    return <TemplateArchiveAuthor author={model} posts={posts} />;
+  }
+
+  if (model.type === 'tag') {
+    return <TemplateArchiveTag tag={model} posts={posts} />;
+  }
 }
 
 export async function getStaticProps({ params = {} } = {}) {
   const { slugParent, slugChild = [] } = params;
-  const slug = [slugParent, ...slugChild];
-  const {posts} = await getPostsByCategorySlug({slug: slug[slug.length -1]});
+  const slug = slugChild.length ? slugChild[slugChild.length - 1] : slugParent;
+  let model = {};
+  let postsData = {};
+
+  if (slugParent === 'author') {
+    model = await getUserBySlug(slug);
+    postsData = await getPostsByAuthorSlug({ slug });
+  } else if (slugParent === 'tag') {
+    model = await getTagBySlug(slug);
+    postsData = await getPostsByTagSlug({ slug });
+  } else {
+    model = find(categoryData, ['slug', slug]) || {};
+    if (isEmpty(model)) {
+      const category = await getCategoryBySlug(slug);
+      model = {
+        ...model,
+        ...category,
+        title: category.name,
+      };
+    }
+
+    postsData = await getPostsByCategorySlug({
+      slug,
+    });
+  }  
+
   return {
-    props: { 
-      posts
+    props: {
+      model: { ...model, type: slugParent },
+      posts: postsData.posts || [],
     },
     revalidate: 10,
   };
 }
 
 export async function getStaticPaths() {
-  const skipPaths = [
-    '/central/connect-to-oversea/avi-voice',
-    '/central/connect-to-oversea/asian-vision-dialogue',
-    '/central/connect-to-oversea/climate-change',
-    '/central/connect-to-oversea/biodegradable',
-    '/central/connect-to-oversea'
-  ]
-  const {categories} = await getAllCategories();
-  const paths = categories
-    .filter(({ uri }) => typeof uri === 'string' && !skipPaths.includes(uri))
-    .map(({ uri }) => {
-      const segments = uri.split('/').filter((seg) => seg !== '');
-      segments.shift();
-      return {
-        params: {
-          slugParent: segments.shift(),
-          slugChild: segments,
-        },
-      };
-    });
+  const { categories } = await getAllCategoriesPath();
+  const categoriesPath = categories.map(({ uri }) => {
+    const segments = uri.split('/').filter((seg) => seg !== '');
+    segments.shift();
+    return {
+      params: {
+        slugParent: segments.shift(),
+        slugChild: segments,
+      },
+    };
+  });
+
+  const { users } = await getAllUsersSlug();
+  const usersPath = users.map(({ slug }) => ({
+    params: {
+      slugParent: 'author',
+      slugChild: [slug],
+    },
+  }));
+
+  const { tags } = await getAllTagsSlug();
+  const tagsPath = tags.map(({ slug }) => ({
+    params: {
+      slugParent: 'tag',
+      slugChild: [slug],
+    },
+  }));
+
   return {
-    paths,
+    paths: [...categoriesPath, ...usersPath, ...tagsPath],
     fallback: false,
   };
 }
-

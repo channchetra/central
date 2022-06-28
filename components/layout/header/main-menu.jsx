@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
+import Link from 'next/link';
 import MainMenuItem from './main-menu-item';
 import SubMenuItem from './menu-item-mobile';
 
@@ -24,13 +25,16 @@ export default function MainMenu({ mainMenus }) {
                 key={`main-menu-${mainMenuIndex}`}
               />
             ) : (
-              <a
+              <Link
                 key={`main-menu-${mainMenuIndex}`}
                 href={menu.href}
-                className="group py-4 text-xs lg:text-base font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-400"
               >
-                {menu.name}
-              </a>
+                <a
+                  className="group py-4 text-xs lg:text-base font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-400"
+                >
+                  {menu.name}
+                </a>
+              </Link>
             )
           )}
         </Popover.Group>

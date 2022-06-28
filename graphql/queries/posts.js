@@ -160,6 +160,16 @@ export const QUERY_POST_BY_ID = gql`
       title
       slug
       isSticky
+      next {
+        databaseId
+        title
+        uri
+      }
+      previous {
+        databaseId
+        title
+        uri
+      }
     }
   }
 `;

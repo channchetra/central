@@ -17,26 +17,13 @@ export default function MainMenu({ mainMenus }) {
           </Popover.Button>
         </div>
         <Popover.Group as="nav" className="hidden md:flex gap-5">
-          {mainMenus.map((menu, mainMenuIndex) =>
-            menu.subMenus ? (
-              <MainMenuItem
-                menu={menu}
-                index={mainMenuIndex}
-                key={`main-menu-${mainMenuIndex}`}
-              />
-            ) : (
-              <Link
-                key={`main-menu-${mainMenuIndex}`}
-                href={menu.href}
-              >
-                <a
-                  className="group py-4 text-xs lg:text-base font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-400"
-                >
-                  {menu.name}
-                </a>
-              </Link>
-            )
-          )}
+          {mainMenus.map((menu, mainMenuIndex) => (
+            <MainMenuItem
+              menu={menu}
+              index={mainMenuIndex}
+              key={`main-menu-${mainMenuIndex}`}
+            />
+          ))}
         </Popover.Group>
 
         <Transition

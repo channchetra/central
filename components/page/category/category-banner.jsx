@@ -1,7 +1,7 @@
 import { merge } from "lodash";
 import Image from "next/image";
 
-export default function PageBanner({ image, className = '', styles }) {
+export default function CategoryBanner({ image, className = '', styles }) {
 
   if (!image) {
     return (null)

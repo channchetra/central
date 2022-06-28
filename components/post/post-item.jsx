@@ -82,7 +82,7 @@ export default function PostItem({
         },
         category: {
           wrapper: 'mr-3',
-          name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',
+          name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 p-1 mr-1 dark:bg-gray-700',
         },
       },
       lineSeparator: 'border-b pb-4',

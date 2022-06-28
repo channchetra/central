@@ -1,8 +1,8 @@
 import InfiniteScroll from 'react-infinite-scroller';
 import CommonLoader from '~/components/common/loader';
 import Container from '~/components/layout/container';
-import PageBanner from '~/components/page/page-banner';
-import PageTitle from '~/components/page/page-title';
+import CategoryBanner from '~/components/page/category/category-banner';
+import CategoryTitle from '~/components/page/category/category-title';
 import PostItem from '~/components/post/post-item';
 import useStaticInfiniteScroll from '~/hooks/use-static-infinite-scroll';
 
@@ -11,11 +11,9 @@ export default function TemplateArchiveCategory({ category, posts }) {
 
   return (
     <>
-      {category.banner && (
-        <PageBanner image={category.banner} />
-      )}
+      {category.banner && <CategoryBanner image={category.banner} />}
       <Container>
-        <PageTitle
+        <CategoryTitle
           title={category.title || 'Category'}
           description={category.description}
           image={category.image}

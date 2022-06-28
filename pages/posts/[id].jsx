@@ -1,112 +1,152 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import ErrorPage from 'next/error';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Container from '~/components/container';
 import { getPostById } from '~/lib/posts';
 import sanitizeHtml from 'sanitize-html';
-// import PostBody from '../../components/post-body';
+import InfiniteScroll from 'react-infinite-scroller';
+import CommonLoader from '~/components/common/loader';
+import PostCategoryTag from '~/components/post/post-category-tag';
 import SectionSeparator from '../../components/section-separator';
 import { getAllPostsWithSlug } from '../../lib/api';
-// import PostTitle from '../../components/post-title';
+import PostBody from '../../components/post-body';
 import { CMS_NAME } from '../../lib/constants';
 
-export default function Post({ post }) {
-  // console.warn(post);
-  const router = useRouter();
-  if (!router.isFallback && !post && !post?.databaseId) {
-    return <ErrorPage statusCode={404} />;
+export default function Post({ post = {} }) {
+  if (!post || !post?.databaseId) {
+    return <div className="loader my-5" key={0}><CommonLoader /></div>
   }
+  const [title, setTitle] = useState(post.title)
+  const [id, setId] =useState(post.databaseId)
+  const [hasMore, setHasMore] = useState(true)
+  const [posts, setPosts] = useState([post])
+  const nextPost = async () => {
+    const preId = posts[posts.length-1].previous?.databaseId || false
+    if( preId ) {
+      const p = await getPostById(preId);
+      setPosts((pre) => [...pre, p.post])
+    } else {
+      setHasMore(false)
+    }
+  }
+  const isInView = element => {
+    const rect = element.getBoundingClientRect()
+    return rect.top >= 0 && rect.bottom <= window.innerHeight
+  }
+
+  const spy = () => {
+    const current = posts.filter((p) => isInView(document.getElementById(p.databaseId)))
+    if(current[0]) {
+      const item = current[0];
+      if(item.databaseId !== id) {
+        setTitle(item.title)
+        window.history.pushState(null, item.title, `/posts/${id}`);
+        setId(item.databaseId);
+      }
+    }
+  }
+
+  useEffect(() => {
+    const timer = setInterval(() => spy(), 200)
+    return () => clearInterval(timer)
+  })
+
   return (
     <Container>
-      {router.isFallback ? (
-        <h3
-          className="mb-5 lg:mb-3 text-2xl md:text-3xl lg:text-3xl font-bold tracking-tighter lg:leading-relaxed md:leading-none text-center md:text-left"
-          dangerouslySetInnerHTML={{ __html: 'Loading…' }}
-        />
-      ) : (
-        <>
-          <article className="mt-4 sm:mt-6">
-            <Head>
-              <title>
-                {post.title} {CMS_NAME}
-              </title>
-              <meta
-                property="og:image"
-                content={post.featuredImage?.sourceUrl}
-              />
-            </Head>
-            {/* <PostHeader
-              title={post.title}
-              coverImage={post.featuredImage}
-              date={post.date}
-              author={post.author}
-              categories={post.categories}
-            /> */}
-            {/* <PostBody content={post.content} /> */}
-            <div className="grid sm:grid-cols-3 gap-3 sm:gap-6">
-              <div className="col-span-2">
-                <h3 className="entry-title text-lg sm:text-2xl font-bold">
-                  {post.title}
-                </h3>
-                <p className="post-date my-3 text-sm">
-                  {/* <span className="py-1 px-2 text-white bg-ams-purple dark:bg-slate-600">{post.categories}</span>  */}{' '}
-                  | {/* {post.author} */} | {post.date}
-                </p>
-                <div className="relative my-3 sm:my-6 pb-[56%]">
-                  <Image
-                    src={post.featuredImage?.sourceUrl}
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: sanitizeHtml(post.content, {
-                      allowedTags: sanitizeHtml.defaults.allowedTags.concat([
-                        'img',
-                      ]),
-                    }),
-                  }}
-                />
-                <div className="ads relative my-4 sm:my-7 pb-[16%]">
-                  <Image
-                    src="https://asset.ams.com.kh/central/media/ads-olatte.jpg"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-                <div className="join-telegram relative my-4 sm:my-7 pb-[25%] border">
-                  <Link href="https://t.me/ApsaraMediaServices">
-                    <a target="_blank">
-                      <Image
-                        src="https://asset.ams.com.kh/central/media/AMS-Telegram-100.jpg"
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </a>
-                  </Link>
-                </div>
-                {/* {post.author} */}
-              </div>
-              <div className="sticky top-0">
-                <div className="ads relative my-4 sm:my-7">
-                  <Image
-                    src="https://asset.ams.com.kh/central/media/cama-mf-2.jpg"
-                    width="100%"
-                    height="100%"
-                    layout="responsive"
-                    objectFit="contain"
-                  />
-                </div>
-              </div>
+      <InfiniteScroll
+          pageStart={0}
+          loadMore={nextPost}
+          hasMore={hasMore}
+          loader={
+            <div className="loader my-5" key={0}>
+              <CommonLoader />
             </div>
-          </article>
-
-          <SectionSeparator />
-        </>
-      )}
+          }
+        >
+          {
+            posts.map((item) =>
+              <>
+                <article key={item.id} className="mt-4 sm:mt-6">
+                  <div id={item.databaseId}> </div>
+                  <Head>
+                    <title>
+                      {title} {CMS_NAME}
+                    </title>
+                    <meta
+                      property="og:image"
+                      content={item.featuredImage?.sourceUrl}
+                    />
+                  </Head>
+                  <div className="grid sm:grid-cols-3 gap-3 sm:gap-6">
+                    <div className="col-span-2">
+                      <h3 className="entry-title text-lg sm:text-2xl font-bold">
+                        {item.title}
+                      </h3>
+                      <p className="post-date my-3 text-sm">
+                        {/* <span className="py-1 px-2 text-white bg-ams-purple dark:bg-slate-600"> */}
+                          <PostCategoryTag categories={item.categories}/>
+                          {/* </span>  */}
+                          {' '}
+                        {/* | {item.author} | {item.date} */}
+                        {item.date}
+                      </p>
+                      <div className="relative my-3 sm:my-6 pb-[56%]">
+                        <Image
+                          src={item.featuredImage?.sourceUrl}
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                      </div>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: sanitizeHtml(item.content, {
+                            allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+                              'img',
+                            ]),
+                          }),
+                        }}
+                      />
+                      <div className="ads relative my-4 sm:my-7 pb-[16%]">
+                        <Image
+                          src="https://asset.ams.com.kh/central/media/ads-olatte.jpg"
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                      </div>
+                      <div className="join-telegram relative my-4 sm:my-7 pb-[25%] border">
+                        <Link href="https://t.me/ApsaraMediaServices">
+                          <a target="_blank">
+                            <Image
+                              src="https://asset.ams.com.kh/central/media/AMS-Telegram-100.jpg"
+                              layout="fill"
+                              objectFit="cover"
+                            />
+                          </a>
+                        </Link>
+                      </div>
+                      {/* {item.author} */}
+                    </div>
+                    <div className="sticky top-0">
+                      <div className="ads relative my-4 sm:my-7">
+                        <Image
+                          src="https://asset.ams.com.kh/central/media/cama-mf-2.jpg"
+                          width="100%"
+                          height="100%"
+                          layout="responsive"
+                          objectFit="contain"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <PostBody content={item.content} />
+                </article>
+                  
+                <SectionSeparator />
+              </>
+            )
+          }
+      </InfiniteScroll>
     </Container>
   );
 }

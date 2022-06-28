@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
 
 export default function SubMenuItem({ menu, index }) {
   const [popoverOpen, setPopoverOpen] = useState(false);
@@ -9,8 +10,10 @@ export default function SubMenuItem({ menu, index }) {
     <Popover className="relative mobile">
       {() => (
         <>
+        <Link
+          href={menu.href}
+        >
           <a
-            href={menu.href}
             className={`group py-4 text-xs lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 ${
               popoverOpen ? 'border-sky-400' : ''
             }`}
@@ -21,6 +24,7 @@ export default function SubMenuItem({ menu, index }) {
               aria-hidden="true"
             />
           </a>
+        </Link>
 
           {popoverOpen && (
             <Transition
@@ -39,17 +43,20 @@ export default function SubMenuItem({ menu, index }) {
                 <div className="relative rounded-lg z-10 shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                   <div className="relative grid gap-4 bg-white px-3 py-4 sm:gap-4">
                     {menu.subMenus.map((subMenu, subMenuIndex) => (
-                      <a
+                      <Link
                         key={`menu-${index}-sub-menu-${subMenuIndex}`}
                         href={subMenu.href}
-                        className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                       >
-                        <div className="ml-4">
-                          <p className="text-base font-medium text-gray-900">
-                            {subMenu.name}
-                          </p>
-                        </div>
-                      </a>
+                        <a
+                          className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
+                        >
+                          <div className="ml-4">
+                            <p className="text-base font-medium text-gray-900">
+                              {subMenu.name}
+                            </p>
+                          </div>
+                        </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -60,11 +67,14 @@ export default function SubMenuItem({ menu, index }) {
       )}
     </Popover>
   ) : (
-    <a
+    <Link
       href={menu.href}
-      className="group py-4 text-xs lg:text-base text-black font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400"
     >
-      {menu.name}
-    </a>
+      <a
+        className="group py-4 text-xs lg:text-base text-black font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400"
+      >
+        {menu.name}
+      </a>
+    </Link>
   );
 }

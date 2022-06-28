@@ -5,14 +5,8 @@ export default function PostAuthor({ author, className = '', styles, config = {}
   if (!author) {
     return (null)
   }
-  
-  const data = {};
-  data.author = author;
-  if(data.author.node) {
-    data.author = author.node
-  }
 
-  const { firstName, lastName, name, avatar, slug } = data.author || {}
+  const { firstName, lastName, name, avatar, slug } = author || {}
   const authorName = name || `${firstName} ${lastName}` || null
   const conf = {
       showAvatar: true,

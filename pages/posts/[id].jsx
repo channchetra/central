@@ -7,6 +7,7 @@ import { getPostById } from '~/lib/posts';
 import sanitizeHtml from 'sanitize-html';
 import InfiniteScroll from 'react-infinite-scroller';
 import CommonLoader from '~/components/common/loader';
+import PostCategoryTag from '~/components/post/post-category-tag';
 import SectionSeparator from '../../components/section-separator';
 import { getAllPostsWithSlug } from '../../lib/api';
 import PostBody from '../../components/post-body';
@@ -16,7 +17,8 @@ export default function Post({ post = {} }) {
   if (!post || !post?.databaseId) {
     return <div className="loader my-5" key={0}><CommonLoader /></div>
   }
-
+  const [title, setTitle] = useState(post.title)
+  const [id, setId] =useState(post.databaseId)
   const [hasMore, setHasMore] = useState(true)
   const [posts, setPosts] = useState([post])
   const nextPost = async () => {
@@ -28,7 +30,6 @@ export default function Post({ post = {} }) {
       setHasMore(false)
     }
   }
-
   const isInView = element => {
     const rect = element.getBoundingClientRect()
     return rect.top >= 0 && rect.bottom <= window.innerHeight
@@ -38,9 +39,11 @@ export default function Post({ post = {} }) {
     const current = posts.filter((p) => isInView(document.getElementById(p.databaseId)))
     if(current[0]) {
       const item = current[0];
-      const title = document.querySelectorAll('title');
-      title[title.length-1].innerText = item.title;
-      window.history.pushState(null, '', `/posts/${item.databaseId}`);
+      if(item.databaseId !== id) {
+        setTitle(item.title)
+        window.history.pushState(null, item.title, `/posts/${id}`);
+        setId(item.databaseId);
+      }
     }
   }
 
@@ -68,7 +71,7 @@ export default function Post({ post = {} }) {
                   <div id={item.databaseId}> </div>
                   <Head>
                     <title>
-                      {item.title} {CMS_NAME}
+                      {title} {CMS_NAME}
                     </title>
                     <meta
                       property="og:image"
@@ -81,8 +84,12 @@ export default function Post({ post = {} }) {
                         {item.title}
                       </h3>
                       <p className="post-date my-3 text-sm">
-                        {/* <span className="py-1 px-2 text-white bg-ams-purple dark:bg-slate-600">{item.categories}</span>  */}{' '}
-                        | {/* {item.author} */} | {item.date}
+                        {/* <span className="py-1 px-2 text-white bg-ams-purple dark:bg-slate-600"> */}
+                          <PostCategoryTag categories={item.categories}/>
+                          {/* </span>  */}
+                          {' '}
+                        {/* | {item.author} | {item.date} */}
+                        {item.date}
                       </p>
                       <div className="relative my-3 sm:my-6 pb-[56%]">
                         <Image

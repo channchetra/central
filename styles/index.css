@@ -37,10 +37,6 @@ html {
   @apply dark:text-gray-100;
 }
 
-.tag-banner {
-  @apply py-12 bg-slate-200 text-center mb-4 text-xl font-bold;
-}
-
 /* Article Detail */
 article figure {
   margin-bottom: 1rem;

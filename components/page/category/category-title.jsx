@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 import Image from 'next/image';
 
-export default function PageTitle({
+export default function CategoryTitle({
   title,
   description,
   image,

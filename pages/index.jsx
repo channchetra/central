@@ -42,7 +42,7 @@ export default function Index({ allPosts: { edges } }) {
                     showLineSeparator: true,
                   }}
                   styles={{
-                    lineSeparator: `border-b pb-3 sm:pb-3 mb-2 ${
+                    lineSeparator: `border-b pb-3 sm:pb-3 mb-1 ${
                       index > 1 ? 'sm:border-none' : ''
                     } ${index > 2 ? 'border-none' : ''}`,
                     image: {

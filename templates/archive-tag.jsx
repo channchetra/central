@@ -1,8 +1,8 @@
 import InfiniteScroll from 'react-infinite-scroller';
 import CommonLoader from '~/components/common/loader';
 import Container from '~/components/layout/container';
-import PageBanner from '~/components/page/page-banner';
-import PageTitle from '~/components/page/page-title';
+// import PageBanner from '~/components/page/page-banner';
+// import PageTitle from '~/components/page/page-title';
 import PostItem from '~/components/post/post-item';
 import useStaticInfiniteScroll from '~/hooks/use-static-infinite-scroll';
 
@@ -11,14 +11,17 @@ export default function TemplateArchiveTag({ tag, posts }) {
 
   return (
     <>
-      {tag.banner && <PageBanner image={tag.banner} />}
+      {/* {tag.banner && <PageBanner image={tag.banner} />} */}
+      <section className="tag-banner sm:py-7 sm:text-2xl">
+        <span>AstraZeneca</span>
+      </section>
       <Container>
-        <PageTitle
+        {/* <PageTitle
           title={tag.name || 'Tag'}
           description={tag.description}
           image={tag.image}
           className="my-5"
-        />
+        /> */}
         <InfiniteScroll
           pageStart={0}
           loadMore={loadMore}

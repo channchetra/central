@@ -43,11 +43,11 @@ export default function MainMenuItem({ menu, index }) {
                 <div className="relative rounded-lg z-10 shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                   <div className="relative grid gap-4 bg-white dark:bg-zinc-800 px-3 py-4 sm:gap-4">
                     {menu.subMenus.map((subMenu, subMenuIndex) => (
-                      <Link href={subMenu.href}>
-                        <a
-                          key={`menu-${index}-sub-menu-${subMenuIndex}`}
-                          className="-m-3 px-4 py-4 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-neutral-50 dark:hover:text-gray-900 dark:hover:bg-gray-300"
-                        >
+                      <Link
+                        href={subMenu.href}
+                        key={`menu-${index}-sub-menu-${subMenuIndex}`}
+                      >
+                        <a className="-m-3 px-4 py-4 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-neutral-50 dark:hover:text-gray-900 dark:hover:bg-gray-300">
                           {subMenu.name}
                         </a>
                       </Link>

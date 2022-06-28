@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
 
 export default function MainMenuItem({ menu, index }) {
   const [popoverOpen, setPopoverOpen] = useState(false);
@@ -9,20 +10,21 @@ export default function MainMenuItem({ menu, index }) {
     <Popover className="relative desktop">
       {() => (
         <>
-          <a
-            onMouseEnter={() => setPopoverOpen(true)}
-            onMouseLeave={() => setPopoverOpen(false)}
-            href={menu.href}
-            className={`group py-4 text-xs lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800 dark:text-neutral-50 ${
-              popoverOpen ? 'border-sky-400 dark:border-zinc-800' : ''
-            }`}
-          >
-            <span className="font-bold">{menu.name}</span>
-            <ChevronDownIcon
-              className="ml-1 h-5 w-5 text-zinc-700 dark:text-neutral-50"
-              aria-hidden="true"
-            />
-          </a>
+          <Link href={menu.href}>
+            <a
+              onMouseEnter={() => setPopoverOpen(true)}
+              onMouseLeave={() => setPopoverOpen(false)}
+              className={`group py-4 text-xs lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800 dark:text-neutral-50 ${
+                popoverOpen ? 'border-sky-400 dark:border-zinc-800' : ''
+              }`}
+            >
+              <span className="font-bold">{menu.name}</span>
+              <ChevronDownIcon
+                className="ml-1 h-5 w-5 text-zinc-700 dark:text-neutral-50"
+                aria-hidden="true"
+              />
+            </a>
+          </Link>
 
           {popoverOpen && (
             <Transition
@@ -41,13 +43,14 @@ export default function MainMenuItem({ menu, index }) {
                 <div className="relative rounded-lg z-10 shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                   <div className="relative grid gap-4 bg-white dark:bg-zinc-800 px-3 py-4 sm:gap-4">
                     {menu.subMenus.map((subMenu, subMenuIndex) => (
-                      <a
-                        key={`menu-${index}-sub-menu-${subMenuIndex}`}
-                        href={subMenu.href}
-                        className="-m-3 px-4 py-4 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-neutral-50 dark:hover:text-gray-900 dark:hover:bg-gray-300"
-                      >
-                        {subMenu.name}
-                      </a>
+                      <Link href={subMenu.href}>
+                        <a
+                          key={`menu-${index}-sub-menu-${subMenuIndex}`}
+                          className="-m-3 px-4 py-4 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-neutral-50 dark:hover:text-gray-900 dark:hover:bg-gray-300"
+                        >
+                          {subMenu.name}
+                        </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -58,11 +61,13 @@ export default function MainMenuItem({ menu, index }) {
       )}
     </Popover>
   ) : (
-    <a
-      href={menu.href}
-      className="group py-4 text-xs lg:text-base text-black font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800 dark:text-neutral-50"
-    >
-      {menu.name}
-    </a>
+    <Link href={menu.href}>
+      <a
+        aria-label={menu.name}
+        className="group py-4 text-xs lg:text-base text-black font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800 dark:text-neutral-50"
+      >
+        {menu.name}
+      </a>
+    </Link>
   );
 }

@@ -77,7 +77,7 @@ export const QUERY_ALL_POSTS_ARCHIVE = gql`
 export const QUERY_ALL_POSTS = gql`
   ${POST_FIELDS}
   query AllPosts {
-    posts(first: ${PER_PAGE}, where: { hasPassword: false }) {
+    posts(first: ${PER_PAGE}, where: { orderby: { field: DATE, order: DESC }, hasPassword: false }) {
       edges {
         node {
           ...PostFields

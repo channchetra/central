@@ -1,7 +1,8 @@
 import { gql } from '@apollo/client';
-import { PER_PAGE } from '~/lib/constants';
+import { ARCHIVE_POST_PER_PAGE, PER_PAGE } from '~/lib/constants';
+import { ARCHIVE_POST_FIELDS } from './posts';
 
-const QUERY_ALL_TAGS = gql`
+export const QUERY_ALL_TAGS = gql`
   {
     tags(first: ${PER_PAGE}) {
       edges {
@@ -25,4 +26,37 @@ export const QUERY_TAG_BY_SLUG = gql`
   }
 `;
 
-export default QUERY_ALL_TAGS;
+export const QUERY_TAG_WITH_PAGINATED_POSTS_BY_SLUG = gql`
+  ${ARCHIVE_POST_FIELDS}
+  query TagWithPaginatedPostsBySlug(
+    $slug: ID!
+    $first: Int! = ${ARCHIVE_POST_PER_PAGE}
+    $after: String
+  ) {
+    tag(
+      id: $slug, idType: SLUG
+    ) {
+      databaseId
+      description
+      id
+      name
+      slug
+      posts(
+        first: $first
+        after: $after
+      ) {
+        edges {
+          node {
+            ...ArchivePostFields
+          }
+        }
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          endCursor
+          startCursor
+        }
+      }
+    }
+  }
+`;

@@ -23,6 +23,43 @@ export const POST_FIELDS = gql`
   }
 `;
 
+export const ARCHIVE_POST_FIELDS = gql`
+  fragment ArchivePostFields on Post {
+    id
+    categories {
+      edges {
+        node {
+          databaseId
+          id
+          name
+          slug
+          uri
+        }
+      }
+    }
+    databaseId
+    date
+    slug
+    title
+    author {
+      node {
+        avatar {
+          url
+        }
+        id
+        name
+        slug
+      }
+    }
+    excerpt
+    featuredImage {
+      node {
+        sourceUrl
+      }
+    }
+  }
+`;
+
 export const QUERY_ALL_POSTS_INDEX = gql`
   ${POST_FIELDS}
   query AllPostsIndex {
@@ -139,6 +176,7 @@ export const QUERY_POST_BY_ID = gql`
             id
             name
             slug
+            uri
           }
         }
       }
@@ -174,6 +212,58 @@ export const QUERY_POST_BY_ID = gql`
   }
 `;
 
+export const QUERY_POST_SEO_BY_ID = gql`
+  query PostSEOBySlug($id: ID!) {
+    post(id: $id, idType: DATABASE_ID) {
+      id
+      seo {
+        canonical
+        metaDesc
+        metaRobotsNofollow
+        metaRobotsNoindex
+        opengraphAuthor
+        opengraphDescription
+        opengraphModifiedTime
+        opengraphPublishedTime
+        opengraphPublisher
+        opengraphTitle
+        opengraphType
+        readingTime
+        title
+        twitterDescription
+        twitterTitle
+        twitterImage {
+          altText
+          sourceUrl
+          mediaDetails {
+            width
+            height
+          }
+        }
+        opengraphImage {
+          altText
+          sourceUrl
+          mediaDetails {
+            height
+            width
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_POST_PER_PAGE = gql`
+  query PostPerPage {
+    allSettings {
+      readingSettingsPostsPerPage
+    }
+  }
+`;
+
+/**
+ * POSTS RELATED TO CATEGORY
+ */
 export const QUERY_POSTS_BY_CATEGORY_ID_INDEX = gql`
   ${POST_FIELDS}
   query PostsByCategoryId($categoryId: Int!) {
@@ -254,47 +344,6 @@ export const QUERY_POSTS_BY_CATEGORY_ID = gql`
   }
 `;
 
-export const QUERY_POSTS_BY_CATEGORY_TAG = gql`
-  ${POST_FIELDS}
-  query PostsByCategorySlug($slug: String!) {
-    posts(
-      first: ${PER_PAGE}
-      where: { tag: $slug, hasPassword: false }
-    ) {
-      edges {
-        node {
-          ...PostFields
-          author {
-            node {
-              avatar {
-                height
-                url
-                width
-              }
-              id
-              name
-              slug
-            }
-          }
-          content
-          excerpt
-          featuredImage {
-            node {
-              altText
-              caption
-              id
-              sizes
-              sourceUrl
-              srcSet
-            }
-          }
-          modified
-        }
-      }
-    }
-  }
-`;
-
 export const QUERY_POSTS_BY_CATEGORY_SLUG = gql`
   ${POST_FIELDS}
   query PostsByCategoryId($slug: String!) {
@@ -336,33 +385,13 @@ export const QUERY_POSTS_BY_CATEGORY_SLUG = gql`
   }
 `;
 
-export const QUERY_POSTS_BY_AUTHOR_SLUG_INDEX = gql`
-  ${POST_FIELDS}
-  query PostByAuthorSlugIndex($slug: String!) {
-    posts(where: { authorName: $slug, hasPassword: false }) {
-      edges {
-        node {
-          ...PostFields
-        }
-      }
-    }
-  }
-`;
+/**
+ * ==========================
+ */
 
-export const QUERY_POSTS_BY_AUTHOR_SLUG_ARCHIVE = gql`
-  ${POST_FIELDS}
-  query PostByAuthorSlugArchive($slug: String!) {
-    posts(where: { authorName: $slug, hasPassword: false }) {
-      edges {
-        node {
-          ...PostFields
-          excerpt
-        }
-      }
-    }
-  }
-`;
-
+/**
+ * POSTS RELATED TO AUTHOR
+ */
 export const QUERY_POSTS_BY_AUTHOR_SLUG = gql`
   ${POST_FIELDS}
   query PostByAuthorSlug($slug: String!) {
@@ -402,51 +431,83 @@ export const QUERY_POSTS_BY_AUTHOR_SLUG = gql`
   }
 `;
 
-export const QUERY_POST_SEO_BY_ID = gql`
-  query PostSEOBySlug($id: ID!) {
-    post(id: $id, idType: DATABASE_ID) {
-      id
-      seo {
-        canonical
-        metaDesc
-        metaRobotsNofollow
-        metaRobotsNoindex
-        opengraphAuthor
-        opengraphDescription
-        opengraphModifiedTime
-        opengraphPublishedTime
-        opengraphPublisher
-        opengraphTitle
-        opengraphType
-        readingTime
-        title
-        twitterDescription
-        twitterTitle
-        twitterImage {
-          altText
-          sourceUrl
-          mediaDetails {
-            width
-            height
-          }
-        }
-        opengraphImage {
-          altText
-          sourceUrl
-          mediaDetails {
-            height
-            width
-          }
+export const QUERY_POSTS_BY_AUTHOR_SLUG_INDEX = gql`
+  ${POST_FIELDS}
+  query PostByAuthorSlugIndex($slug: String!) {
+    posts(where: { authorName: $slug, hasPassword: false }) {
+      edges {
+        node {
+          ...PostFields
         }
       }
     }
   }
 `;
 
-export const QUERY_POST_PER_PAGE = gql`
-  query PostPerPage {
-    allSettings {
-      readingSettingsPostsPerPage
+export const QUERY_POSTS_BY_AUTHOR_SLUG_ARCHIVE = gql`
+  ${POST_FIELDS}
+  query PostByAuthorSlugArchive($slug: String!) {
+    posts(where: { authorName: $slug, hasPassword: false }) {
+      edges {
+        node {
+          ...PostFields
+          excerpt
+        }
+      }
     }
   }
 `;
+
+/**
+ * ==========================
+ */
+
+
+/**
+ * POSTS RELATED TO TAG
+ */
+
+export const QUERY_POSTS_BY_TAG_SLUG = gql`
+  ${POST_FIELDS}
+  query PostsByTagSlug($slug: String!) {
+    posts(
+      first: ${PER_PAGE}
+      where: { tag: $slug, hasPassword: false }
+    ) {
+      edges {
+        node {
+          ...PostFields
+          author {
+            node {
+              avatar {
+                height
+                url
+                width
+              }
+              id
+              name
+              slug
+            }
+          }
+          content
+          excerpt
+          featuredImage {
+            node {
+              altText
+              caption
+              id
+              sizes
+              sourceUrl
+              srcSet
+            }
+          }
+          modified
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * ==========================
+ */

@@ -17,14 +17,14 @@ export default function PostCategoryTag({ categories, multiple = true, className
       <div className={classes.innerWrapper}>
         {multiple ? (
           categories.map((category) => (
-            <Link href="#" key={category.databaseId}>
+            <Link href={category.uri} key={category.databaseId}>
               <a aria-label={category.name}>
                 <div className={classes.name}>{category.name}</div>
               </a>
             </Link>
           ))
         ) : (
-          <Link href="#">
+          <Link href={categories[0].uri}>
             <a aria-label={categories[0].name}>
               <div className={classes.name}>{categories[0].name}</div>
             </a>

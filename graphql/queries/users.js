@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
-import { PER_PAGE } from '~/lib/constants';
+import { ARCHIVE_POST_PER_PAGE, PER_PAGE } from '~/lib/constants';
+import { ARCHIVE_POST_FIELDS } from './posts';
 
 export const QUERY_ALL_USERS_PATH = gql`
   {
@@ -90,6 +91,41 @@ export const QUERY_ALL_USERS_SEO = gql`
               facebook
             }
           }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_AUTHOR_WITH_PAGINATED_POSTS_BY_SLUG = gql`
+  ${ARCHIVE_POST_FIELDS}
+  query UserWithPaginatedPostsBySlug(
+    $slug: ID!
+    $first: Int! = ${ARCHIVE_POST_PER_PAGE}
+    $after: String
+  ) {
+    user(
+      id: $slug, idType: SLUG
+    ) {
+      databaseId
+      description
+      id
+      name
+      slug
+      posts(
+        first: $first
+        after: $after
+      ) {
+        edges {
+          node {
+            ...ArchivePostFields
+          }
+        }
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          endCursor
+          startCursor
         }
       }
     }

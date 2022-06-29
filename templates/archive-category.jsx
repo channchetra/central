@@ -1,48 +1,55 @@
 import InfiniteScroll from 'react-infinite-scroller';
-import CommonLoader from '~/components/common/loader';
+import ClientOnly from '~/components/client-only';
 import Container from '~/components/layout/container';
 import CategoryBanner from '~/components/page/category/category-banner';
 import CategoryTitle from '~/components/page/category/category-title';
 import PostItem from '~/components/post/post-item';
-import useStaticInfiniteScroll from '~/hooks/use-static-infinite-scroll';
+import SkeletonPostItem from '~/components/skeleton/skeleton-post-item';
 
-export default function TemplateArchiveCategory({ category, posts }) {
-  const { items, hasMore, loadMore } = useStaticInfiniteScroll(posts);
-
+export default function TemplateArchiveCategory({
+  category = {},
+  posts = [],
+  hasMore = true,
+  loadMore,
+  loading = false,
+}) {
   return (
     <>
       {category.banner && <CategoryBanner image={category.banner} />}
       <Container>
         <CategoryTitle
-          title={category.title || 'Category'}
+          title={category.name || 'Category'}
           description={category.description}
           image={category.image}
           className="my-5"
         />
-        <InfiniteScroll
-          pageStart={0}
-          loadMore={loadMore}
-          hasMore={hasMore}
-          loader={
-            <div className="loader my-5" key={0}>
-              <CommonLoader />
+        <ClientOnly>
+          <InfiniteScroll pageStart={0} loadMore={loadMore} hasMore={hasMore}>
+            <section className="grid md:grid-cols-4 gap-5 mb-5">
+              {posts.map((post) => (
+                <PostItem
+                  key={`post-${post.databaseId}`}
+                  post={post}
+                  config={{
+                    showExcerpt: false,
+                    showMeta: false,
+                  }}
+                  styles={{}}
+                />
+              ))}
+            </section>
+          </InfiniteScroll>
+          {loading && (
+            <div className="loader my-5">
+              <section className="grid md:grid-cols-4 gap-5 mb-5">
+                <SkeletonPostItem />
+                <SkeletonPostItem />
+                <SkeletonPostItem />
+                <SkeletonPostItem />
+              </section>
             </div>
-          }
-        >
-          <section className="grid md:grid-cols-4 gap-5 mb-5">
-            {items.map((post) => (
-              <PostItem
-                key={`post-${post.databaseId}`}
-                post={post}
-                config={{
-                  showExcerpt: false,
-                  showMeta: false,
-                }}
-                styles={{}}
-              />
-            ))}
-          </section>
-        </InfiniteScroll>
+          )}
+        </ClientOnly>
       </Container>
     </>
   );

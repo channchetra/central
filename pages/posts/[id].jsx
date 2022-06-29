@@ -10,7 +10,6 @@ import CommonLoader from '~/components/common/loader';
 import PostCategoryTag from '~/components/post/post-category-tag';
 import SectionSeparator from '../../components/section-separator';
 import { getAllPostsWithSlug } from '../../lib/api';
-import PostBody from '../../components/post-body';
 import { CMS_NAME } from '../../lib/constants';
 
 export default function Post({ post = {} }) {
@@ -139,7 +138,6 @@ export default function Post({ post = {} }) {
                       </div>
                     </div>
                   </div>
-                  <PostBody content={item.content} />
                 </article>
                   
                 <SectionSeparator />

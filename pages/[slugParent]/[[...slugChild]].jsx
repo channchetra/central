@@ -1,101 +1,64 @@
-import {
-  getPostsByAuthorSlug,
-  getPostsByCategorySlug,
-  getPostsByTagSlug,
-} from '~/lib/posts';
-import { getAllCategoriesPath, getCategoryBySlug } from '~/lib/categories';
+import { mapPostData } from '~/lib/posts';
+import { getCategoryBySlug } from '~/lib/categories';
 import categoryData from '~/data/categories';
-import { find, isEmpty } from 'lodash';
+import { find } from 'lodash';
 import TemplateArchiveCategory from '~/templates/archive-category';
-import { getAllUsersSlug, getUserBySlug } from '~/lib/users';
-import TemplateArchiveAuthor from '~/templates/archive-author';
-import { getAllTagsSlug, getTagBySlug } from '~/lib/tag';
-import TemplateArchiveTag from '~/templates/archive-tag';
+import { useQuery } from '@apollo/client';
+import { QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG } from '~/graphql/queries/categories';
 
-export default function Category({ model, posts }) {
-  if (model.type === 'category') {
-    return <TemplateArchiveCategory category={model} posts={posts} />;
-  }
+export default function ArchivePage({ category, slug }) {
+  const { loading, data, fetchMore } = useQuery(
+    QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG,
+    {
+      variables: {
+        slug,
+      },
+    }
+  );
+  const postData = {
+    posts:
+      data?.category.posts.edges
+        .map(({ node = {} }) => node)
+        .map(mapPostData) || [],
+    pageInfo: data?.category.posts.pageInfo || {},
+  };
 
-  if (model.type === 'author') {
-    return <TemplateArchiveAuthor author={model} posts={posts} />;
-  }
+  const loadMore = () =>
+    fetchMore({
+      variables: {
+        slug,
+        after: postData.pageInfo.endCursor,
+      },
+      notifyOnNetworkStatusChange: true,
+    });
 
-  if (model.type === 'tag') {
-    return <TemplateArchiveTag tag={model} posts={posts} />;
-  }
+  return (
+    <TemplateArchiveCategory
+      category={category}
+      posts={postData.posts}
+      hasMore={postData.pageInfo.hasNextPage}
+      loading={loading}
+      loadMore={loadMore}
+    />
+  );
 }
 
-export async function getStaticProps({ params = {} } = {}) {
+export async function getServerSideProps({ params = {} } = {}) {
   const { slugParent, slugChild = [] } = params;
   const slug = slugChild.length ? slugChild[slugChild.length - 1] : slugParent;
-  let model = {};
-  let postsData = {};
-  let type = slugParent;
 
-  if (slugParent === 'author') {
-    model = await getUserBySlug(slug);
-    postsData = await getPostsByAuthorSlug({ slug });
-  } else if (slugParent === 'tag') {
-    model = await getTagBySlug(slug);
-    postsData = await getPostsByTagSlug({ slug });
-  } else {
-    type = 'category';
-    model = find(categoryData, ['slug', slug]) || {};
-    if (isEmpty(model)) {
-      const category = await getCategoryBySlug(slug);
-      model = {
-        ...model,
-        ...category,
-        title: category.name,
-      };
-    }
-
-    postsData = await getPostsByCategorySlug({
-      slug,
-    });
-  }
+  let category = await getCategoryBySlug(slug);
+  const localCategory = find(categoryData, ['slug', slug]) || {};
+  category = {
+    ...category,
+    ...localCategory,
+    description: localCategory.description || category.description,
+  };
 
   return {
     props: {
-      model: { ...model, type },
-      posts: postsData.posts || [],
+      category,
+      slug,
     },
-    revalidate: 10,
-  };
-}
-
-export async function getStaticPaths() {
-  const { categories } = await getAllCategoriesPath();
-  const categoriesPath = categories.map(({ uri }) => {
-    const segments = uri.split('/').filter((seg) => seg !== '');
-    segments.shift();
-    return {
-      params: {
-        slugParent: segments.shift(),
-        slugChild: segments,
-      },
-    };
-  });
-
-  const { users } = await getAllUsersSlug();
-  const usersPath = users.map(({ slug }) => ({
-    params: {
-      slugParent: 'author',
-      slugChild: [slug],
-    },
-  }));
-
-  const { tags } = await getAllTagsSlug();
-  const tagsPath = tags.map(({ slug }) => ({
-    params: {
-      slugParent: 'tag',
-      slugChild: [slug],
-    },
-  }));
-
-  return {
-    paths: [...categoriesPath, ...usersPath, ...tagsPath],
-    fallback: false,
   };
 }

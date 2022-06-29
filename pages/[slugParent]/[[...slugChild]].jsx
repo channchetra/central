@@ -1,5 +1,5 @@
 import { mapPostData } from '~/lib/posts';
-import { getCategoryBySlug } from '~/lib/categories';
+import { getAllCategoriesPath, getCategoryBySlug } from '~/lib/categories';
 import categoryData from '~/data/categories';
 import { find } from 'lodash';
 import TemplateArchiveCategory from '~/templates/archive-category';
@@ -17,10 +17,10 @@ export default function ArchivePage({ category, slug }) {
   );
   const postData = {
     posts:
-      data?.category.posts.edges
+      data?.category?.posts?.edges
         .map(({ node = {} }) => node)
         .map(mapPostData) || [],
-    pageInfo: data?.category.posts.pageInfo || {},
+    pageInfo: data?.category?.posts?.pageInfo || {},
   };
 
   const loadMore = () =>
@@ -43,7 +43,7 @@ export default function ArchivePage({ category, slug }) {
   );
 }
 
-export async function getServerSideProps({ params = {} } = {}) {
+export async function getStaticProps({ params = {} } = {}) {
   const { slugParent, slugChild = [] } = params;
   const slug = slugChild.length ? slugChild[slugChild.length - 1] : slugParent;
 
@@ -60,5 +60,24 @@ export async function getServerSideProps({ params = {} } = {}) {
       category,
       slug,
     },
+  };
+}
+
+export async function getStaticPaths() {
+  const { categories } = await getAllCategoriesPath();
+  const paths = categories.map(({ uri }) => {
+    const segments = uri.split('/').filter((seg) => seg !== '');
+    segments.shift();
+    return {
+      params: {
+        slugParent: segments.shift(),
+        slugChild: segments,
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
   };
 }

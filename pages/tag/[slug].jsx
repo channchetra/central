@@ -1,6 +1,6 @@
 import { mapPostData } from '~/lib/posts';
 import { useQuery } from '@apollo/client';
-import { getTagBySlug } from '~/lib/tag';
+import { getAllTagsSlug, getTagBySlug } from '~/lib/tag';
 import { QUERY_TAG_WITH_PAGINATED_POSTS_BY_SLUG } from '~/graphql/queries/tag';
 import TemplateArchiveTag from '~/templates/archive-tag';
 
@@ -15,9 +15,9 @@ export default function ArchiveTagPage({ tag, slug }) {
   );
   const postData = {
     posts:
-      data?.tag?.posts.edges.map(({ node = {} }) => node).map(mapPostData) ||
+      data?.tag?.posts?.edges.map(({ node = {} }) => node).map(mapPostData) ||
       [],
-    pageInfo: data?.tag.posts.pageInfo || {},
+    pageInfo: data?.tag?.posts?.pageInfo || {},
   };
 
   const loadMore = () =>
@@ -40,7 +40,7 @@ export default function ArchiveTagPage({ tag, slug }) {
   );
 }
 
-export async function getServerSideProps({ params = {} } = {}) {
+export async function getStaticProps({ params = {} } = {}) {
   const { slug } = params;
   const tag = await getTagBySlug(slug);
 
@@ -49,5 +49,15 @@ export async function getServerSideProps({ params = {} } = {}) {
       tag,
       slug,
     },
+  };
+}
+
+export async function getStaticPaths() {
+  const { tags } = await getAllTagsSlug();
+  const paths = tags.map(({ slug }) => `/tag/${slug}`);
+
+  return {
+    paths,
+    fallback: false,
   };
 }

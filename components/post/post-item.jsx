@@ -94,7 +94,7 @@ export default function PostItem({
     classes.lineSeparator = '';
   }
 
-  const postDetailLink = `/posts/${databaseId}`;
+  const postDetailLink = `/detail/${databaseId}`;
 
   return (
     <div className={`post-${databaseId} ${className} ${classes.lineSeparator}`}>

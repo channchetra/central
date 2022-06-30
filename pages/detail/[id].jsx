@@ -8,6 +8,7 @@ import sanitizeHtml from 'sanitize-html';
 import InfiniteScroll from 'react-infinite-scroller';
 import CommonLoader from '~/components/common/loader';
 import PostCategoryTag from '~/components/post/post-category-tag';
+import PostDate from '~/components/post/post-date';
 import SectionSeparator from '../../components/section-separator';
 import { getAllPostsWithSlug } from '../../lib/api';
 import { CMS_NAME } from '../../lib/constants';
@@ -16,11 +17,13 @@ export default function Post({ post = {} }) {
   if (!post || !post?.databaseId) {
     return <div className="loader my-5" key={0}><CommonLoader /></div>
   }
+
   const [title, setTitle] = useState(post.title)
   const [id, setId] =useState(post.databaseId)
   const [hasMore, setHasMore] = useState(true)
   const [posts, setPosts] = useState([post])
-  const nextPost = async () => {
+
+  const previous = async () => {
     const preId = posts[posts.length-1].previous?.databaseId || false
     if( preId ) {
       const p = await getPostById(preId);
@@ -29,6 +32,7 @@ export default function Post({ post = {} }) {
       setHasMore(false)
     }
   }
+  
   const isInView = element => {
     const rect = element.getBoundingClientRect()
     return rect.top >= 0 && rect.bottom <= window.innerHeight
@@ -39,8 +43,8 @@ export default function Post({ post = {} }) {
     if(current[0]) {
       const item = current[0];
       if(item.databaseId !== id) {
+        window.history.pushState(null, item.title, `/posts/${item.databaseId}`);
         setTitle(item.title)
-        window.history.pushState(null, item.title, `/posts/${id}`);
         setId(item.databaseId);
       }
     }
@@ -55,7 +59,7 @@ export default function Post({ post = {} }) {
     <Container>
       <InfiniteScroll
           pageStart={0}
-          loadMore={nextPost}
+          loadMore={previous}
           hasMore={hasMore}
           loader={
             <div className="loader my-5" key={0}>
@@ -83,12 +87,14 @@ export default function Post({ post = {} }) {
                         {item.title}
                       </h3>
                       <p className="post-date my-3 text-sm">
+                        <PostCategoryTag categories={item.categories}/>
+                      </p>
+                      <p className="post-date my-3 text-sm">
                         {/* <span className="py-1 px-2 text-white bg-ams-purple dark:bg-slate-600"> */}
-                          <PostCategoryTag categories={item.categories}/>
                           {/* </span>  */}
                           {' '}
                         {/* | {item.author} | {item.date} */}
-                        {item.date}
+                        <PostDate dateString={item.date} />
                       </p>
                       <div className="relative my-3 sm:my-6 pb-[56%]">
                         <Image
@@ -150,7 +156,7 @@ export default function Post({ post = {} }) {
 }
 
 export async function getStaticProps({ params }) {
-  const { post } = await getPostById(params.id);
+  const { post } = await getPostById(params.id, true);
   return {
     props: {
       post,
@@ -163,7 +169,7 @@ export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug();
 
   return {
-    paths: allPosts.edges.map(({ node }) => `/posts/${node.databaseId}`) || [],
-    fallback: true,
+    paths: allPosts.edges.map(({ node }) => `/detail/${node.databaseId}`) || [],
+    fallback: false,
   };
 }

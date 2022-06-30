@@ -2,11 +2,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
-import { getAllPosts } from '~/lib/posts';
+import home from '~/data/home';
+import { getPostsForHome } from '~/lib/posts';
 import Container from '../components/container';
 
-export default function Index({ posts }) {
-  const heroPost = posts[0];
+export default function Index({ posts = {} }) {
+  
+  const news = posts.news.posts;
+  const daily = posts.daily.posts;
+  const politico360 = posts.politico360.posts;
+  const connectToOversea = posts.connectToOversea.posts;
+  const cambotory = posts.cambotory.posts;
+  const sports = posts.sports.posts;
+  const economy = posts.economy.posts;
+  const election = posts.election.posts;
+  const video = posts.video.posts;
+
   return (
     <>
       <Container>
@@ -15,13 +26,15 @@ export default function Index({ posts }) {
           <div className="my-5">
             <CommonSectionHeader
               type="primary"
-              title="ព័ត៌មានថ្មីបំផុត"
+              title={home.news.title}
+              link={home.news.link}
               className="text-xl font-bold"
             />
           </div>
           <div className="grid md:grid-cols-2 gap-5 mb-7 md:mb-7">
             <PostItem
-              post={heroPost}
+              key={news[0]?.id}
+              post={news.shift()}
               config={{
                 showExcerpt: false,
               }}
@@ -33,25 +46,26 @@ export default function Index({ posts }) {
               }}
             />
             <div className="block-latest grid grid-cols-1 md:grid-cols-2 gap-5">
-              {[...Array(4)].map((post, index) => (
-                <PostItem
-                  key={`latest-post-${index}`}
-                  post={heroPost}
-                  config={{
-                    showExcerpt: false,
-                    showLineSeparator: true,
-                  }}
-                  styles={{
-                    lineSeparator: `border-b pb-3 sm:pb-3 mb-1 ${
-                      index > 1 ? 'sm:border-none' : ''
-                    } ${index > 2 ? 'border-none' : ''}`,
-                    image: {
-                      wrapper: 'mb-3 shadow',
-                    },
-                  }}
-                />
-              ))}
+              {
+                news.map((post, index) => 
+                  <PostItem
+                    key={post.id}
+                    post={post}
+                    config={{
+                      showExcerpt: false,
+                      showLineSeparator: true,
+                    }}
+                    styles={{
+                      lineSeparator: `border-b pb-3 sm:pb-3 mb-1 ${index > 1 ? 'sm:border-none' : ''} ${index > 2 ? 'border-none' : ''}`,
+                      image: {
+                        wrapper: 'mb-3 shadow',
+                      },
+                    }}
+                  />
+                )
+              }
             </div>
+
           </div>
         </section>
 
@@ -61,15 +75,16 @@ export default function Index({ posts }) {
             <div className="my-5">
               <CommonSectionHeader
                 type="primary"
-                title="ព័ត៌មានប្រចាំថ្ងៃ"
+                title={home.daily.title}
+                link={home.daily.link}
                 className="text-xl font-bold"
               />
             </div>
             <div className="space-y-5 mb-4">
-              {[...Array(6)].map((post, index) => (
+              {daily.map((post, index) => (
                 <PostItem
-                  key={`daily-post-${index}`}
-                  post={heroPost}
+                  key={post.id}
+                  post={post}
                   config={{
                     listView: true,
                     showExcerpt: false,
@@ -91,22 +106,25 @@ export default function Index({ posts }) {
             </div>
             <div className="relative h-[684px]">
               <Image
-                src="/images/food-panda.jpeg"
+                src={home.daily.banner}
                 layout="fill"
                 objectFit="cover"
               />
             </div>
           </section>
+
           <section className="block-politico col-span-2">
             <div className="my-5">
               <CommonSectionHeader
                 type="primary"
-                title="Politico 360"
+                title={home.politico360.title}
+                link={home.politico360.link}
                 className="text-xl font-bold"
               />
             </div>
             <PostItem
-              post={heroPost}
+              key={politico360[0]?.id}
+              post={politico360.shift()}
               config={{
                 showExcerpt: false,
               }}
@@ -121,10 +139,10 @@ export default function Index({ posts }) {
               }}
             />
             <div className="mt-8 space-y-7">
-              {[...Array(4)].map((post, index) => (
+              {politico360.map((post, index) => (
                 <PostItem
-                  key={`politico-post-${index}`}
-                  post={heroPost}
+                  key={post.id}
+                  post={post}
                   config={{
                     listView: true,
                     showExcerpt: true,
@@ -146,16 +164,17 @@ export default function Index({ posts }) {
           <div className="my-5">
             <CommonSectionHeader
               type="primary"
-              title="កិច្ចការបរទេសផ្សាភ្ជាប់កម្ពុជាទៅកាន់អន្តរជាតិ"
+              title={home.connectToOversea.title}
+              link={home.connectToOversea.link}
               className="text-xl font-bold"
             />
           </div>
 
           <div className="connect-inter grid md:grid-cols-4 gap-5">
-            {[...Array(8)].map((post, index) => (
+            {connectToOversea.map((post, index) => (
               <PostItem
-                key={`connect-inter-post-${index}`}
-                post={heroPost}
+                key={post.id}
+                post={post}
                 config={{
                   showExcerpt: true,
                   showLineSeparator: true,
@@ -174,7 +193,7 @@ export default function Index({ posts }) {
       {/* Block banner AVI */}
       <section className="block-avi relative my-7 py-12 sm:pt-24 sm:pb-20">
         <Image
-          src="/images/AMS-AVI-front-cover.jpeg"
+          src={home.aviVoice.banner}
           layout="fill"
           objectFit="cover"
           className="cover -z-10"
@@ -182,23 +201,15 @@ export default function Index({ posts }) {
         <Container>
           <div className="mb-5">
             <span className="bg-rose-900 text-white py-2 px-5 text-base sm:text-3xl inline-block">
-              AVI Voice
+              {home.aviVoice.title}
             </span>
           </div>
-          <p className="text-white sm:w-2/5 hidden sm:block">
-            គោលបំណងចែករំលែកចំណេះដឹង និងការវិភាគដល់ប្រិយមិត្តអ្នកស្តាប់
-            ជាពិសេសយុវជន
-            លើប្រធានបទសំខាន់ៗដូចជាភូមិសាស្រ្តនយោបាយនិងសេដ្ឋកិច្ចសកលនិងក្នុងតំបន់
-            <br />
-            ការអភិវឌ្ឍដោយចីរភាព សេដ្ឋកិច្ចឌីជីថល
-            និងនវានុវត្តន៍បច្ចេកវិទ្យាដើម្បីរួមចំណែក <br />
-            ក្នុងការអភិវឌ្ឍនូវសមត្ថភាព និងការយល់ដឹងរបស់យុវជនកម្ពុជាជំនាន់ថ្មី
-            ក៏ដូចជា ផ្សព្វផ្សាយឲ្យអន្តរជាតិយល់ដឹង
-            និងស្គាល់កាន់តែច្បាស់អំពីកម្ពុជា។ —
+          <p className="text-white sm:w-2/5 hidden sm:block mb-3">
+            {home.aviVoice.description}
           </p>
-          <Link href="/posts">
+          <Link href={home.aviVoice.button.link}>
             <a className="mt-5 py-2 px-5 bg-rose-900 text-white text-base z-50">
-              អត្ថបទរបស់ AVI Voice on AMS
+              {home.aviVoice.button.title}
             </a>
           </Link>
         </Container>
@@ -209,17 +220,17 @@ export default function Index({ posts }) {
         <div className="my-5">
           <CommonSectionHeader
             type="primary"
-            title="សច្ចធម៌ប្រវត្តិសាស្ត្រ"
-            link="/posts"
+            title={home.cambotory.title}
+            link={home.cambotory.link}
             className="text-xl font-bold"
           />
         </div>
 
         <section className="grid md:grid-cols-4 gap-5">
-          {[...Array(8)].map((post, index) => (
+          {cambotory.map((post, index) => (
             <PostItem
-              key={`black-crews-${index}`}
-              post={heroPost}
+              key={post.id}
+              post={post}
               config={{
                 showLineSeparator: true,
               }}
@@ -236,7 +247,7 @@ export default function Index({ posts }) {
       {/* Block banner Cambodia 2050 */}
       <section className="relative my-7 py-12 sm:pt-24 sm:pb-20">
         <Image
-          src="/images/AMS-2050-cover.jpeg"
+          src={home.cambodia2050.banner}
           layout="fill"
           objectFit="cover"
           className="cover -z-10"
@@ -244,19 +255,15 @@ export default function Index({ posts }) {
         <Container>
           <div>
             <span className="bg-rose-900 text-white py-2 px-5 text-base sm:text-3xl inline-block">
-              Cambodia 2050
+              {home.cambodia2050.title}
             </span>
           </div>
           <p className="text-white sm:my-5 sm:w-2/5 hidden sm:block">
-            ផ្តល់ចំនេះដឹងដល់អ្នកពាក់ព័ន្ធដើម្បីសហការចូលរួមអភិវឌ្ឍន៍ប្រទេសកម្ពុជា
-            ក្នុងគោលដៅប្រែក្លាយទៅជាប្រទេសចំណូលមធ្យមកំរិតខ្ពស់
-            តាមរយៈកិច្ចពិភាក្សាសុីជំរៅ បង្កើនសមត្ថភាព ជំនាញ
-            និងចំណេះដឹងលើគ្រប់វិស័យតាមរយៈការប្រើប្រាស់ប្រព័ន្ធបច្ចេកវិទ្យា
-            និងតភ្ជាប់ទំនាក់ទំនងនៅឆាកអន្តរជាតិ។
+            {home.cambodia2050.description}
           </p>
-          <Link href="/posts">
+          <Link href={home.cambodia2050.button.link}>
             <a className="bg-rose-900 text-white py-2 px-5 text-base z-50">
-              អត្ថបទរបស់ Cambodia 2050
+              {home.cambodia2050.button.title}
             </a>
           </Link>
         </Container>
@@ -270,13 +277,15 @@ export default function Index({ posts }) {
             <div className="my-5">
               <CommonSectionHeader
                 type="primary"
-                title="កីឡា"
+                title={home.sports.title}
+                link={home.sports.link}
                 className="text-xl font-bold"
               />
             </div>
             <div className="grid sm:grid-cols-2 gap-5">
               <PostItem
-                post={heroPost}
+                key={sports[0]?.id}
+                post={sports.shift()}
                 config={{
                   showExcerpt: false,
                 }}
@@ -287,10 +296,10 @@ export default function Index({ posts }) {
                 }}
               />
               <div className="space-y-4">
-                {[...Array(3)].map((post, index) => (
+                {sports.map((post, index) => (
                   <PostItem
-                    key={`sport-post-${index}`}
-                    post={heroPost}
+                    key={post.id}
+                    post={post}
                     config={{
                       listView: true,
                       showExcerpt: false,
@@ -308,15 +317,16 @@ export default function Index({ posts }) {
             <div className="my-5">
               <CommonSectionHeader
                 type="primary"
-                title="ការបោះឆ្នោត"
+                title={home.election.title}
+                link={home.election.link}
                 className="text-xl font-bold"
               />
             </div>
             <section className="grid md:grid-cols-3 gap-5">
-              {[...Array(6)].map((post, index) => (
+              {election.map((post, index) => (
                 <PostItem
-                  key={`election-post-${index}`}
-                  post={heroPost}
+                  key={post.id}
+                  post={post}
                   config={{
                     showLineSeparator: true,
                   }}
@@ -331,7 +341,7 @@ export default function Index({ posts }) {
 
             <div className="relative mt-4 sm:mt-8 h-[450px] sm:h-[1100px]">
               <Image
-                src="/images/pocarisweat-ads-sport.jpeg"
+                src={home.election.banner}
                 layout="fill"
                 objectFit="cover"
               />
@@ -343,15 +353,16 @@ export default function Index({ posts }) {
             <div className="my-5">
               <CommonSectionHeader
                 type="primary"
-                title="សេដ្ឋកិច្ច"
+                title={home.economy.title}
+                link={home.economy.link}
                 className="text-xl font-bold"
               />
             </div>
             <div className="space-y-4">
-              {[...Array(19)].map((post, index) => (
+              {economy.map((post, index) => (
                 <PostItem
-                  key={`economy-post-${index}`}
-                  post={heroPost}
+                  key={post.id}
+                  post={post}
                   config={{
                     listView: true,
                     showExcerpt: false,
@@ -377,18 +388,18 @@ export default function Index({ posts }) {
           <div className="my-5">
             <CommonSectionHeader
               type="primary"
-              title="ទស្សនាវីដេអូថ្មីៗ"
-              link="/posts"
+              title={home.video.title}
+              link={home.video.link}
               className="text-xl font-bold"
               lineColor="before:bg-gray-300"
             />
           </div>
 
           <section className="grid md:grid-cols-4 gap-5">
-            {[...Array(8)].map((post, index) => (
+            {video.map((post, index) => (
               <PostItem
-                key={`black-crews-${index}`}
-                post={heroPost}
+                key={post.id}
+                post={post}
                 config={{
                   showExcerpt: false,
                   showLineSeparator: true,
@@ -407,11 +418,31 @@ export default function Index({ posts }) {
   );
 }
 
-export async function getStaticProps({ preview = false }) {
-  const { posts } = await getAllPosts();
+export async function getStaticProps() {
+  const news = await getPostsForHome({...home.news});
+  const daily = await getPostsForHome(home.daily);
+  const politico360 = await getPostsForHome(home.politico360);
+  const connectToOversea = await getPostsForHome(home.connectToOversea);
+  const cambotory = await getPostsForHome(home.cambotory);
+  const sports = await getPostsForHome(home.sports);
+  const economy = await getPostsForHome(home.economy);
+  const election = await getPostsForHome(home.election);
+  const video = await getPostsForHome(home.video);
 
   return {
-    props: { posts, preview },
+    props: { 
+      posts: {
+        news,
+        daily,
+        politico360,
+        connectToOversea,
+        cambotory,
+        sports,
+        economy,
+        election,
+        video
+      }
+    },
     revalidate: 10,
   };
 }

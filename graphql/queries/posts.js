@@ -206,6 +206,7 @@ export const QUERY_POST_BY_ID = gql`
     }
   }
 `;
+
 export const QUERY_POST_SEO_BY_ID = gql`
   query PostBySlug($id: ID!) {
     post(id: $id, idType: DATABASE_ID) {
@@ -288,6 +289,41 @@ export const QUERY_POST_SEO_BY_ID = gql`
           mediaDetails {
             height
             width
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_POSTS_FOR_HOME = gql`
+  query PostsHomePage ($categoryName: String, $first: Int) {
+    posts(where: {categoryName: $categoryName, orderby: {field: DATE, order: DESC}, hasPassword: false}, first: $first) {
+      edges {
+        node {
+          id
+          date
+          databaseId
+          title
+          author {
+            node {
+              firstName
+              lastName
+              name
+              slug
+            }
+          }
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+          categories {
+            edges {
+              node {
+                slug
+              }
+            }
           }
         }
       }

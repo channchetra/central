@@ -4,6 +4,7 @@ import { ThemeProvider } from 'next-themes';
 import ThemeSwitcher from '~/components/common/theme-switcher';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '~/lib/apollo-client';
+import NextNProgress from 'nextjs-progressbar';
 
 function MyApp({ Component, pageProps }) {
   const { meta } = pageProps || {};
@@ -16,6 +17,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </Layout>
         <ThemeSwitcher />
+        <NextNProgress color="#cf0a10" />
       </ThemeProvider>
     </ApolloProvider>
   );

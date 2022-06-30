@@ -22,7 +22,7 @@ const home = {
     title: 'កិច្ចការបរទេសផ្សាភ្ជាប់កម្ពុជាទៅកាន់អន្តរជាតិ',
     link: '/connect-to-oversea',
     categoryName: 'connect-to-oversea',
-    first: 5
+    first: 8
   },
   aviVoice: {
     title: 'AVI Voice',

@@ -7,7 +7,7 @@ import { getPostsForHome } from '~/lib/posts';
 import Container from '../components/container';
 
 export default function Index({ posts = {} }) {
-  
+
   const news = posts.news.posts;
   const daily = posts.daily.posts;
   const politico360 = posts.politico360.posts;
@@ -34,7 +34,7 @@ export default function Index({ posts = {} }) {
           <div className="grid md:grid-cols-2 gap-5 mb-7 md:mb-7">
             <PostItem
               key={news[0]?.id}
-              post={news.shift()}
+              post={news[0]}
               config={{
                 showExcerpt: false,
               }}
@@ -47,7 +47,8 @@ export default function Index({ posts = {} }) {
             />
             <div className="block-latest grid grid-cols-1 md:grid-cols-2 gap-5">
               {
-                news.map((post, index) => 
+                news.map((post, index) =>
+                  index > 0 &&
                   <PostItem
                     key={post.id}
                     post={post}
@@ -124,7 +125,7 @@ export default function Index({ posts = {} }) {
             </div>
             <PostItem
               key={politico360[0]?.id}
-              post={politico360.shift()}
+              post={politico360[0]}
               config={{
                 showExcerpt: false,
               }}
@@ -140,6 +141,7 @@ export default function Index({ posts = {} }) {
             />
             <div className="mt-8 space-y-7">
               {politico360.map((post, index) => (
+                index > 0 &&
                 <PostItem
                   key={post.id}
                   post={post}
@@ -285,7 +287,7 @@ export default function Index({ posts = {} }) {
             <div className="grid sm:grid-cols-2 gap-5">
               <PostItem
                 key={sports[0]?.id}
-                post={sports.shift()}
+                post={sports[0]}
                 config={{
                   showExcerpt: false,
                 }}
@@ -297,6 +299,7 @@ export default function Index({ posts = {} }) {
               />
               <div className="space-y-4">
                 {sports.map((post, index) => (
+                  index > 0 &&
                   <PostItem
                     key={post.id}
                     post={post}

@@ -40,14 +40,12 @@ export default function TemplateArchiveCategory({
             </section>
           </InfiniteScroll>
           {loading && (
-            <div className="loader my-5">
-              <section className="grid md:grid-cols-4 gap-5 mb-5">
-                <SkeletonPostItem />
-                <SkeletonPostItem />
-                <SkeletonPostItem />
-                <SkeletonPostItem />
-              </section>
-            </div>
+            <section className="grid md:grid-cols-4 gap-5 mb-5">
+              <SkeletonPostItem />
+              <SkeletonPostItem />
+              <SkeletonPostItem />
+              <SkeletonPostItem />
+            </section>
           )}
         </ClientOnly>
       </Container>

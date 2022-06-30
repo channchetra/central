@@ -6,6 +6,7 @@ if (!process.env.WORDPRESS_API_URL) {
 }
 
 module.exports = {
+  // basePath: '/central',
   images: {
     domains: [
       process.env.WORDPRESS_API_URL.match(/(http(?:s)?:\/\/)(.*)/)[2], // Valid WP Image domain.

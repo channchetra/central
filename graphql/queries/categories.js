@@ -3,12 +3,16 @@ import { PER_PAGE, ARCHIVE_POST_PER_PAGE } from '~/lib/constants';
 import { ARCHIVE_POST_FIELDS } from './posts';
 
 export const QUERY_ALL_CATEGORIES = gql`
-  {
+  query Categories {
     categories(first: ${PER_PAGE}) {
       edges {
         node {
           slug
           uri
+          databaseId
+          description
+          id
+          name
         }
       }
     }
@@ -35,6 +39,7 @@ export const QUERY_CATEGORY_BY_SLUG = gql`
       id
       name
       slug
+      uri
     }
   }
 `;

@@ -198,11 +198,6 @@ export const QUERY_POST_BY_ID = gql`
       title
       slug
       isSticky
-      next {
-        databaseId
-        title
-        uri
-      }
       previous {
         databaseId
         title
@@ -213,9 +208,57 @@ export const QUERY_POST_BY_ID = gql`
 `;
 
 export const QUERY_POST_SEO_BY_ID = gql`
-  query PostSEOBySlug($id: ID!) {
+  query PostBySlug($id: ID!) {
     post(id: $id, idType: DATABASE_ID) {
+      author {
+        node {
+          avatar {
+            height
+            url
+            width
+          }
+          id
+          name
+          slug
+          firstName
+          lastName
+        }
+      }
       id
+      categories {
+        edges {
+          node {
+            databaseId
+            id
+            name
+            slug
+            uri
+          }
+        }
+      }
+      content
+      date
+      excerpt
+      featuredImage {
+        node {
+          altText
+          caption
+          sourceUrl
+          srcSet
+          sizes
+          id
+        }
+      }
+      modified
+      databaseId
+      title
+      slug
+      isSticky
+      previous {
+        databaseId
+        title
+        uri
+      }
       seo {
         canonical
         metaDesc
@@ -246,6 +289,41 @@ export const QUERY_POST_SEO_BY_ID = gql`
           mediaDetails {
             height
             width
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_POSTS_FOR_HOME = gql`
+  query PostsHomePage ($categoryName: String, $first: Int) {
+    posts(where: {categoryName: $categoryName, orderby: {field: DATE, order: DESC}, hasPassword: false}, first: $first) {
+      edges {
+        node {
+          id
+          date
+          databaseId
+          title
+          author {
+            node {
+              firstName
+              lastName
+              name
+              slug
+            }
+          }
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+          categories {
+            edges {
+              node {
+                slug
+              }
+            }
           }
         }
       }

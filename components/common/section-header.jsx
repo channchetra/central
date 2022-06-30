@@ -8,7 +8,7 @@ export default function CommonSectionHeader({
   link,
   className = 'text-xl dark:text-neutral-50',
   lineColor = 'before:bg-gray-100',
-  lineHighlightColor = 'after:bg-red-900 after:bg-zinc-400',
+  lineHighlightColor = 'after:bg-red-900 after:bg-zinc-400 dark:text-neutral-50',
 }) {
   const primaryClass = classNames(
     'relative',
@@ -49,7 +49,7 @@ export default function CommonSectionHeader({
     'before:absolute',
     'before:left-0',
     'before:h-full',
-    lineColor,
+    lineColor
   );
 
   if (type === 'primary') {

@@ -31,18 +31,16 @@ export default function TemplateArchiveAuthor({
             <>
               <SkeletonPostItem />
               <SkeletonPostItem />
-              { posts.length > 0 && <SkeletonPostItem /> }
+              {posts.length > 0 && <SkeletonPostItem />}
             </>
           )}
         </section>
       </InfiniteScroll>
       {/* {loading && (
-        <div className="loader my-5">
-          <section className="grid md:grid-cols-4 gap-5 mb-5">
-            <SkeletonPostItem />
-            <SkeletonPostItem />
-          </section>
-        </div>
+        <section className="grid md:grid-cols-4 gap-5 mb-5">
+          <SkeletonPostItem />
+          <SkeletonPostItem />
+        </section>
       )} */}
     </Container>
   );

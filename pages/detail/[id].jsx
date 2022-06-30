@@ -156,7 +156,7 @@ export default function Post({ post = {} }) {
 }
 
 export async function getStaticProps({ params }) {
-  const { post } = await getPostById(params.id);
+  const { post } = await getPostById(params.id, true);
   return {
     props: {
       post,
@@ -169,7 +169,7 @@ export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug();
 
   return {
-    paths: allPosts.edges.map(({ node }) => `/posts/${node.databaseId}`) || [],
+    paths: allPosts.edges.map(({ node }) => `/detail/${node.databaseId}`) || [],
     fallback: false,
   };
 }

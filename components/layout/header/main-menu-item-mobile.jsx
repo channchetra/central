@@ -12,17 +12,13 @@ export default function SubMenuItem({ menu, index }) {
         <>
           <div className="flex justify-between">
             <Link href={menu.href}>
-              <a
-                className={`group py-2 text-base lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800 dark:text-neutral-50 ${
-                  popoverOpen ? 'border-sky-400' : ''
-                }`}
-              >
+              <a className="group py-2 text-base lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent dark:text-neutral-50">
                 <span className="font-bold">{menu.name}</span>
               </a>
             </Link>
-            <Popover.Button className="bg-white dark:bg-gray-700 rounded-md px-3 py-1 inline-flex items-center justify-center text-gray-400 dark:text-neutral-50 hover:text-gray-500 hover:bg-gray-100">
+            <Popover.Button className="bg-white dark:bg-gray-700 rounded-md px-3 py-1 inline-flex items-center justify-center text-gray-400 dark:text-neutral-50 dark:focus:outline-none">
               <ChevronDownIcon
-                className="h-4 w-4 text-black dark:text-neutral-50"
+                className="h-4 w-4 dark:text-neutral-50"
                 aria-hidden="true"
                 onClick={() => setPopoverOpen(!open)}
               />
@@ -42,15 +38,15 @@ export default function SubMenuItem({ menu, index }) {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-10 -ml-4 transform w-56 md:ml-0 md:left-1/2 md:-translate-x-1/2 before:content-[''] before:-mt-2 before:absolute before:z-50 before:w-4 before:h-4 before:bg-white before:ml-auto before:mr-auto before:left-0 before:right-0 before:rotate-45 dark:before:bg-zinc-400">
-                <div className="relative rounded-lg z-10 shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                  <div className="relative grid gap-4 bg-white px-3 py-4 sm:gap-4">
+              <Popover.Panel className="absolute z-10 top-full transform w-full md:ml-0 md:left-1/2 md:-translate-x-1/2 before:content-[''] before:-mt-1 before:absolute before:w-4 before:h-4 before:bg-white before:drop-shadow before:z-10 before:ml-2 before:mr-auto before:left-0 before:right-0 before:rotate-45 dark:before:bg-gray-700">
+                <div className="relative rounded-lg z-10 shadow-lg drop-shadow overflow-hidden">
+                  <div className="relative grid gap-10 bg-white dark:bg-gray-700 px-5 py-7">
                     {menu.subMenus.map((subMenu, subMenuIndex) => (
                       <Link
                         key={`menu-${index}-sub-menu-${subMenuIndex}`}
                         href={subMenu.href}
                       >
-                        <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 dark:text-neutral-50 dark:hover:text-gray-900 dark:hover:bg-gray-300">
+                        <a className="flex items-start rounded-lg dark:text-neutral-50">
                           <span className="font-bold">{subMenu.name}</span>
                         </a>
                       </Link>
@@ -65,7 +61,7 @@ export default function SubMenuItem({ menu, index }) {
     </Popover>
   ) : (
     <Link href={menu.href}>
-      <a className="group py-4 text-base lg:text-base text-black font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800 dark:text-neutral-50">
+      <a className="group py-4 text-base lg:text-base dark:text-neutral-50 font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent">
         {menu.name}
       </a>
     </Link>

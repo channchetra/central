@@ -1,4 +1,4 @@
-import { merge } from 'lodash';
+import { find, merge } from 'lodash';
 import PostTitle from './post-title';
 import PostAuthor from './post-author';
 import PostCategoryTag from './post-category-tag';
@@ -42,6 +42,7 @@ export default function PostItem({
     date,
     author,
     categories,
+    postFormats = []
   } = post || {};
 
   const classes = merge(
@@ -95,6 +96,7 @@ export default function PostItem({
   }
 
   const postDetailLink = `/detail/${databaseId}`;
+  const isVideo = !!find(postFormats, ['slug', 'post-format-video']);
 
   return (
     <div className={`post-${databaseId} ${className} ${classes.lineSeparator}`}>
@@ -106,6 +108,7 @@ export default function PostItem({
               image={featuredImage}
               link={postDetailLink}
               categories={categories}
+              isVideo={isVideo}
               styles={classes.image}
               config={{
                 showCategoryTag: conf.showCategoryTagOnImage,

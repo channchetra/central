@@ -91,14 +91,16 @@ export default function Post({ post = {} }) {
                   <h3 className="entry-title text-lg sm:text-2xl font-bold">
                     {item.title}
                   </h3>
-                  <p className="post-date my-3 text-sm">
-                    <PostCategoryTag categories={item.categories} />
-                  </p>
-                  <p className="post-date my-3 text-sm">
-                    {/* <span className="py-1 px-2 text-white bg-ams-purple dark:bg-slate-600"> */}
-                    {/* </span>  */} {/* | {item.author} | {item.date} */}
-                    <PostDate dateString={item.date} />
-                  </p>
+                  <div className="flex">
+                    <span className="my-3 text-sm">
+                      <PostCategoryTag categories={item.categories} />
+                    </span>
+                    <span className="post-date my-3 ml-3 text-sm">
+                      {/* <span className="py-1 px-2 text-white bg-ams-purple dark:bg-slate-600"> */}
+                      {/* </span>  */} {/* | {item.author} | {item.date} */}
+                      <PostDate dateString={item.date} />
+                    </span>
+                  </div>
                   <div className="relative my-3 sm:my-6 pb-[56%]">
                     <Image
                       src={item.featuredImage?.sourceUrl}

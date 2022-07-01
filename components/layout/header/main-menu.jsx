@@ -36,20 +36,20 @@ export default function MainMenu({ mainMenus }) {
         >
           <Popover
             focus
-            className="absolute top-0 inset-x-0 z-10 transition transform origin-top-right md:hidden"
+            className="absolute top-0 inset-x-0 z-10 transition transform origin-top-right md:hidden before:h-screen before:bg-black/80 before:absolute before:inset-0 before:-z-10 before:overflow-hidden"
           >
-            <div className="shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+            <div className="shadow-lg bg-white dark:bg-gray-800">
               <div className="pt-3 pb-6 px-5">
                 <div className="flex items-center justify-start">
                   <div className="-mr-2">
-                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400">
+                    <Popover.Button className="bg-white dark:bg-gray-600 rounded-md p-2 inline-flex items-center justify-center text-gray-400">
                       <span className="sr-only">Close menu</span>
                       <XIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
                   </div>
                 </div>
-                <div className="mt-6">
-                  <Popover.Group as="nav" className="grid grid-cols-1 gap-7">
+                <div className="mt-4">
+                  <Popover.Group as="nav" className="grid grid-cols-1 gap-2">
                     {mainMenus.map((menu, subMenuIndex) => (
                       <SubMenuItem
                         menu={menu}
@@ -98,12 +98,12 @@ export default function MainMenu({ mainMenus }) {
             focus
             className="search-form absolute top-0 inset-x-0 z-10 h-screen transition transform origin-top-right md:hidden"
           >
-            <div className="shadow-lg ring-1 h-full ring-black ring-opacity-5 bg-white flex flex-col">
+            <div className="shadow-lg ring-1 h-full ring-black ring-opacity-5 bg-white dark:bg-gray-800 flex flex-col">
               <div className="pt-5 px-5 flex-1 mb-auto">
                 <div className="flex items-center justify-between">
                   <div />
                   <div className="-mr-2">
-                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 ">
+                    <Popover.Button className="bg-white dark:bg-gray-600 rounded-md p-2 inline-flex items-center justify-center text-gray-400 dark:text-neutral-50 hover:text-gray-500 hover:bg-gray-100 ">
                       <span className="sr-only">Close menu</span>
                       <XIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -122,8 +122,10 @@ export default function MainMenu({ mainMenus }) {
                         w-full
                         rounded-md
                         bg-gray-100
+                        dark:bg-gray-500
                         border-transparent
-                        focus:border-gray-500 focus:bg-white focus:ring-0
+                        focus:border-gray-500 focus:bg-white
+                        dark:focus:outline-neutral-50 focus:ring-0
                       "
                     placeholder="ស្វែងរក"
                   />

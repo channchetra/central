@@ -14,6 +14,7 @@ import { getAllPostsWithSlug } from '../../lib/api';
 import { CMS_NAME } from '../../lib/constants';
 
 export default function Post({ post = {} }) {
+
   if (!post || !post?.databaseId) {
     return (
       <div className="loader my-5" key={0}>
@@ -174,6 +175,6 @@ export async function getStaticPaths() {
 
   return {
     paths: allPosts.edges.map(({ node }) => `/detail/${node.databaseId}`) || [],
-    fallback: false,
+    fallback: true,
   };
 }

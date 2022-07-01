@@ -8,7 +8,7 @@ export default function SubMenuItem({ menu, index }) {
 
   return menu.subMenus ? (
     <Popover className="relative mobile">
-      {() => (
+      {({ open }) => (
         <>
           <div className="flex justify-between">
             <Link href={menu.href}>
@@ -24,6 +24,7 @@ export default function SubMenuItem({ menu, index }) {
               <ChevronDownIcon
                 className="h-4 w-4 text-black dark:text-neutral-50"
                 aria-hidden="true"
+                onClick={() => setPopoverOpen(!open)}
               />
             </Popover.Button>
           </div>

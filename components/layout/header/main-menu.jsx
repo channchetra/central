@@ -3,7 +3,7 @@ import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import MainMenuItem from './main-menu-item';
-import SubMenuItem from './menu-item-mobile';
+import MainMenuItemMobile from './main-menu-item-mobile';
 
 export default function MainMenu({ mainMenus }) {
   return (
@@ -34,7 +34,7 @@ export default function MainMenu({ mainMenus }) {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <Popover
+          <Popover.Panel
             focus
             className="absolute top-0 inset-x-0 z-10 transition transform origin-top-right md:hidden before:h-screen before:bg-black/80 before:absolute before:inset-0 before:-z-10 before:overflow-hidden"
           >
@@ -51,17 +51,17 @@ export default function MainMenu({ mainMenus }) {
                 <div className="mt-4">
                   <Popover.Group as="nav" className="grid grid-cols-1 gap-3">
                     {mainMenus.map((menu, subMenuIndex) => (
-                      <SubMenuItem
+                      <MainMenuItemMobile
                         menu={menu}
                         index={subMenuIndex}
-                        key={`main-menu-${subMenuIndex}`}
+                        key={`mobile-main-menu-${subMenuIndex}`}
                       />
                     ))}
                   </Popover.Group>
                 </div>
               </div>
             </div>
-          </Popover>
+          </Popover.Panel>
         </Transition>
       </Popover>
       <div className="mobile-logo">

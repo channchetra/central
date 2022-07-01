@@ -1,7 +1,7 @@
 import InfiniteScroll from 'react-infinite-scroller';
 import Container from '~/components/layout/container';
 import PostDetailItem from '~/components/post/post-detail-item';
-import SkeletonPostItem from '~/components/skeleton/skeleton-post-item';
+import SkeletonPostDetail from '~/components/skeleton/skeleton-post-detail';
 
 export default function TemplateSingle({
   posts = [],
@@ -16,12 +16,11 @@ export default function TemplateSingle({
         loadMore={previous}
         hasMore={hasMore}
         loader={
-          <section className="grid md:grid-cols-4 gap-5 mb-5">
-            <SkeletonPostItem />
-            <SkeletonPostItem />
-            <SkeletonPostItem />
-            <SkeletonPostItem />
-          </section>
+          <div className="grid sm:grid-cols-3 gap-3 sm:gap-6">
+            <div className="col-span-2">
+              <SkeletonPostDetail className='my-3' />
+            </div>
+          </div>
         }
       >
         {posts.map((post) => (

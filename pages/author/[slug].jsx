@@ -1,10 +1,11 @@
 import { mapPostData } from '~/lib/posts';
-import { getAllUsersSlug, getUserBySlug } from '~/lib/users';
+import { getAllUsersSlug } from '~/lib/users';
 import { useQuery } from '@apollo/client';
 import TemplateArchiveAuthor from '~/templates/archive-author';
 import { QUERY_AUTHOR_WITH_PAGINATED_POSTS_BY_SLUG } from '~/graphql/queries/users';
+import { addApolloState, initializeApollo } from '~/lib/apollo-client';
 
-export default function ArchiveAuthorPage({ author, slug }) {
+export default function ArchiveAuthorPage({ slug }) {
   const { loading, data, fetchMore } = useQuery(
     QUERY_AUTHOR_WITH_PAGINATED_POSTS_BY_SLUG,
     {
@@ -13,6 +14,7 @@ export default function ArchiveAuthorPage({ author, slug }) {
       },
     }
   );
+  const author = data?.user || {}
   const postData = {
     posts:
       data?.user?.posts?.edges.map(({ node = {} }) => node).map(mapPostData) ||
@@ -25,6 +27,7 @@ export default function ArchiveAuthorPage({ author, slug }) {
       variables: {
         slug,
         after: postData.pageInfo.endCursor,
+        first: 18
       },
       notifyOnNetworkStatusChange: true,
     });
@@ -42,14 +45,20 @@ export default function ArchiveAuthorPage({ author, slug }) {
 
 export async function getStaticProps({ params = {} } = {}) {
   const { slug } = params;
-  const author = await getUserBySlug(slug);
 
-  return {
-    props: {
-      author,
+  const apolloClient = initializeApollo();
+  await apolloClient.query({
+    query: QUERY_AUTHOR_WITH_PAGINATED_POSTS_BY_SLUG,
+    variables: {
       slug,
     },
-  };
+  });
+
+  return addApolloState(apolloClient, {
+    props: {
+      slug,
+    },
+  });
 }
 
 export async function getStaticPaths() {

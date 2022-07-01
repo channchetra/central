@@ -112,6 +112,11 @@ export const QUERY_AUTHOR_WITH_PAGINATED_POSTS_BY_SLUG = gql`
       id
       name
       slug
+      avatar {
+        height
+        width
+        url
+      }
       posts(
         first: $first
         after: $after

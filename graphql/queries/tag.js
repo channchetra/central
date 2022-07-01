@@ -3,6 +3,22 @@ import { ARCHIVE_POST_PER_PAGE, PER_PAGE } from '~/lib/constants';
 import { ARCHIVE_POST_FIELDS } from './posts';
 
 export const QUERY_ALL_TAGS = gql`
+  query Tags {
+    tags(first: ${PER_PAGE}) {
+      edges {
+        node {
+          id
+          tagId
+          name
+          slug
+          description
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_ALL_TAGS_SLUG = gql`
   {
     tags(first: ${PER_PAGE}) {
       edges {

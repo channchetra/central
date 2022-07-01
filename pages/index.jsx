@@ -90,7 +90,7 @@ export default function Index({ posts = {} }) {
                   config={{
                     listView: true,
                     showExcerpt: false,
-                    showLineSeparator: index < 4,
+                    showLineSeparator: true,
                   }}
                   styles={{
                     title: {
@@ -100,8 +100,8 @@ export default function Index({ posts = {} }) {
                       imageWrapper: 'aspect-video',
                     },
                     lineSeparator: `border-b pb-3 sm:pb-4 ${
-                      index > 3 ? 'sm:border-none' : ''
-                    } ${index > 4 ? 'border-none' : ''}`,
+                      index > 4 ? 'sm:border-none' : ''
+                    } ${index > 5 ? 'border-none' : ''}`,
                   }}
                 />
               ))}
@@ -310,7 +310,7 @@ export default function Index({ posts = {} }) {
                         }}
                         styles={{
                           lineSeparator: `border-b pb-4 ${
-                            index > 1 ? 'pb-0 sm:border-none' : ''
+                            index > 2 ? 'pb-0 sm:border-none' : ''
                           } ${index > 3 ? 'border-none' : ''}`,
                         }}
                       />
@@ -440,10 +440,10 @@ export async function getStaticProps() {
       });
     }
   });
-  
+
   return {
     props: {
-      posts
+      posts,
     },
     revalidate: 10,
   };

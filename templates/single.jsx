@@ -18,13 +18,17 @@ export default function TemplateSingle({
         loader={
           <div className="grid sm:grid-cols-3 gap-3 sm:gap-6">
             <div className="col-span-2">
-              <SkeletonPostDetail className='my-3' />
+              <SkeletonPostDetail className="my-3" />
             </div>
           </div>
         }
       >
         {posts.map((post) => (
-          <PostDetailItem title={title} key={post.id} post={post} />
+          <PostDetailItem
+            title={title}
+            key={post.id}
+            post={post}
+          />
         ))}
       </InfiniteScroll>
     </Container>

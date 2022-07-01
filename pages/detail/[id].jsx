@@ -1,16 +1,21 @@
 import { useEffect, useState } from 'react';
 import { getPostById } from '~/lib/posts';
-import CommonLoader from '~/components/common/loader';
 import TemplateSingle from '~/templates/single';
+import Container from '~/components/layout/container';
+import SkeletonPostDetail from '~/components/skeleton/skeleton-post-detail';
 import { getAllPostsWithSlug } from '../../lib/api';
 
 export default function Post({ post = {} }) {
 
   if (!post || !post?.databaseId) {
     return (
-      <div className="loader my-5" key={0}>
-        <CommonLoader />
-      </div>
+      <Container>
+        <div className="grid sm:grid-cols-3 gap-3 sm:gap-6">
+          <div className="col-span-2">
+            <SkeletonPostDetail className="my-3" />
+          </div>
+        </div>
+      </Container>
     );
   }
 
@@ -54,7 +59,12 @@ export default function Post({ post = {} }) {
   });
 
   return (
-   <TemplateSingle previous={previous} title={title} hasMore={hasMore} posts={posts} />
+    <TemplateSingle
+      previous={previous}
+      title={title}
+      hasMore={hasMore}
+      posts={posts}
+    />
   );
 }
 

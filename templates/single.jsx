@@ -1,14 +1,13 @@
 import InfiniteScroll from 'react-infinite-scroller';
 import Container from '~/components/layout/container';
 import PostDetailItem from '~/components/post/post-detail-item';
-import SectionSeparator from '~/components/section-separator';
 import SkeletonPostItem from '~/components/skeleton/skeleton-post-item';
 
 export default function TemplateSingle({
   posts = [],
   hasMore = true,
   previous,
-  title
+  title,
 }) {
   return (
     <Container>
@@ -26,10 +25,7 @@ export default function TemplateSingle({
         }
       >
         {posts.map((post) => (
-          <>
-            <PostDetailItem title={title} key={post.id} post={post}/>
-            <SectionSeparator />
-          </>
+          <PostDetailItem title={title} key={post.id} post={post} />
         ))}
       </InfiniteScroll>
     </Container>

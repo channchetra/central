@@ -1,4 +1,4 @@
-import { find } from 'lodash';
+import { compact, find, keys, map } from 'lodash';
 import Image from 'next/image';
 import Link from 'next/link';
 import CommonSectionHeader from '~/components/common/section-header';
@@ -423,51 +423,27 @@ export default function Index({ posts = {} }) {
 }
 
 export async function getStaticProps() {
-  const { categories } = await getCategoriesWithPaginatedPostsBySlugs([
-    home.news.categoryName,
-    home.daily.categoryName,
-    home.politico360.categoryName,
-    home.connectToOversea.categoryName,
-    home.cambotory.categoryName,
-    home.sports.categoryName,
-    home.economy.categoryName,
-    home.election.categoryName,
-    home.video.categoryName,
-  ]);
-
-  const news = find(categories, ['slug', home.news.categoryName]);
-  const daily = find(categories, ['slug', home.daily.categoryName]);
-  const politico360 = find(categories, ['slug', home.politico360.categoryName]);
-  const connectToOversea = find(categories, ['slug', home.connectToOversea.categoryName]);
-  const cambotory = find(categories, ['slug', home.cambotory.categoryName]);
-  const sports = find(categories, ['slug', home.sports.categoryName]);
-  const economy = find(categories, ['slug', home.economy.categoryName]);
-  const election = find(categories, ['slug', home.election.categoryName]);
-  const video = find(categories, ['slug', home.video.categoryName]);
-
-  // const news = await getPostsForHome(home.news);
-  // const daily = await getPostsForHome(home.daily);
-  // const politico360 = await getPostsForHome(home.politico360);
-  // const connectToOversea = await getPostsForHome(home.connectToOversea);
-  // const cambotory = await getPostsForHome(home.cambotory);
-  // const sports = await getPostsForHome(home.sports);
-  // const economy = await getPostsForHome(home.economy);
-  // const election = await getPostsForHome(home.election);
-  // const video = await getPostsForHome(home.video);
-
+  const { categories } = await getCategoriesWithPaginatedPostsBySlugs(
+    compact(map(home, (category) => category.categoryName))
+  );
+  const posts = {};
+  keys(home).forEach((categoryKey) => {
+    const { categoryName, first } = home[categoryKey];
+    let category = find(categories, ['slug', categoryName]);
+    if (category) {
+      category = {
+        ...category,
+        posts: category.posts.slice(0, first),
+      };
+      Object.assign(posts, {
+        [categoryKey]: category,
+      });
+    }
+  });
+  
   return {
     props: {
-      posts: {
-        news,
-        daily,
-        politico360,
-        connectToOversea,
-        cambotory,
-        sports,
-        economy,
-        election,
-        video,
-      },
+      posts
     },
     revalidate: 10,
   };

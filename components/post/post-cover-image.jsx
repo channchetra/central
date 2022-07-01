@@ -1,7 +1,7 @@
 import { PlayIcon } from '@heroicons/react/outline';
 import classNames from 'classnames';
-import Image from 'next/image';
 import Link from 'next/link';
+import ImageWithFallback from '../common/image-with-fallback';
 import PostCategoryTag from './post-category-tag';
 
 export default function PostCoverImage({
@@ -35,7 +35,7 @@ export default function PostCoverImage({
   };
 
   const imageElement = (
-    <Image
+    <ImageWithFallback
       layout="fill"
       objectFit="cover"
       alt={title}
@@ -61,7 +61,7 @@ export default function PostCoverImage({
         <Link href={link}>
           <a className="flex" aria-label={title}>
             <div className="flex w-full h-full items-center justify-center absolute top-0">
-              <PlayIcon className="h-12 w-12 text-white" />
+              <PlayIcon className="h-12 w-12 text-white drop-shadow-lg" />
             </div>
             {/* <div className="absolute bottom-0 right-0 bg-black text-white px-1 text-[11px]">
               00:11:53

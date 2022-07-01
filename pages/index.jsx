@@ -5,7 +5,7 @@ import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
 import home from '~/data/home';
 import { getCategoriesWithPaginatedPostsBySlugs } from '~/lib/categories';
-import Container from '../components/container';
+import Container from '../components/layout/container';
 
 export default function Index({ posts = {} }) {
   const news = posts.news.posts;

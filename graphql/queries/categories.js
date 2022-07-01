@@ -102,6 +102,7 @@ export const QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG = gql`
       posts(
         first: $first
         after: $after
+        where: { orderby: { field: DATE, order: DESC } }
       ) {
         edges {
           node {
@@ -113,6 +114,46 @@ export const QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG = gql`
           hasPreviousPage
           endCursor
           startCursor
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_CATEGORIES_WITH_PAGINATED_POSTS_BY_SLUGS = gql`
+  ${ARCHIVE_POST_FIELDS}
+  query CategoryWithPaginatedPostsBySlug(
+    $slugs: [String]!
+    $first: Int! = ${ARCHIVE_POST_PER_PAGE}
+    $after: String
+  ) {
+    categories(
+      where: { slug: $slugs }
+    ) {
+      edges {
+        node {
+          databaseId
+          description
+          id
+          name
+          slug
+          posts(
+            first: $first
+            after: $after
+            where: { orderby: { field: DATE, order: DESC } }
+          ) {
+            edges {
+              node {
+                ...ArchivePostFields
+              }
+            }
+            pageInfo {
+              hasNextPage
+              hasPreviousPage
+              endCursor
+              startCursor
+            }
+          }
         }
       }
     }

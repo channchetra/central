@@ -1,13 +1,13 @@
+import { compact, find, keys, map } from 'lodash';
 import Image from 'next/image';
 import Link from 'next/link';
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
 import home from '~/data/home';
-import { getPostsForHome } from '~/lib/posts';
+import { getCategoriesWithPaginatedPostsBySlugs } from '~/lib/categories';
 import Container from '../components/container';
 
 export default function Index({ posts = {} }) {
-
   const news = posts.news.posts;
   const daily = posts.daily.posts;
   const politico360 = posts.politico360.posts;
@@ -46,27 +46,28 @@ export default function Index({ posts = {} }) {
               }}
             />
             <div className="block-latest grid grid-cols-1 md:grid-cols-2 gap-5">
-              {
-                news.map((post, index) =>
-                  index > 0 &&
-                  <PostItem
-                    key={post.id}
-                    post={post}
-                    config={{
-                      showExcerpt: false,
-                      showLineSeparator: true,
-                    }}
-                    styles={{
-                      lineSeparator: `border-b pb-3 sm:pb-3 mb-1 ${index > 2 ? 'sm:border-none' : ''} ${index > 3 ? 'border-none' : ''}`,
-                      image: {
-                        wrapper: 'mb-3 shadow',
-                      },
-                    }}
-                  />
-                )
-              }
+              {news.map(
+                (post, index) =>
+                  index > 0 && (
+                    <PostItem
+                      key={post.id}
+                      post={post}
+                      config={{
+                        showExcerpt: false,
+                        showLineSeparator: true,
+                      }}
+                      styles={{
+                        lineSeparator: `border-b pb-3 sm:pb-3 mb-1 ${
+                          index > 2 ? 'sm:border-none' : ''
+                        } ${index > 3 ? 'border-none' : ''}`,
+                        image: {
+                          wrapper: 'mb-3 shadow',
+                        },
+                      }}
+                    />
+                  )
+              )}
             </div>
-
           </div>
         </section>
 
@@ -98,17 +99,15 @@ export default function Index({ posts = {} }) {
                     image: {
                       imageWrapper: 'aspect-video',
                     },
-                    lineSeparator: `border-b pb-3 sm:pb-4 ${index > 3 ? 'sm:border-none' : ''} ${index > 4 ? 'border-none' : ''}`,
+                    lineSeparator: `border-b pb-3 sm:pb-4 ${
+                      index > 3 ? 'sm:border-none' : ''
+                    } ${index > 4 ? 'border-none' : ''}`,
                   }}
                 />
               ))}
             </div>
             <div className="relative h-[684px]">
-              <Image
-                src={home.daily.banner}
-                layout="fill"
-                objectFit="cover"
-              />
+              <Image src={home.daily.banner} layout="fill" objectFit="cover" />
             </div>
           </section>
 
@@ -138,21 +137,25 @@ export default function Index({ posts = {} }) {
               }}
             />
             <div className="mt-8 space-y-7">
-              {politico360.map((post, index) => (
-                index > 0 &&
-                <PostItem
-                  key={post.id}
-                  post={post}
-                  config={{
-                    listView: true,
-                    showExcerpt: true,
-                    showLineSeparator: true,
-                  }}
-                  styles={{
-                    lineSeparator: `border-b pb-3 sm:pb-6 ${index > 3 ? 'sm:border-none' : ''} ${index > 4 ? 'border-none' : ''}`,
-                  }}
-                />
-              ))}
+              {politico360.map(
+                (post, index) =>
+                  index > 0 && (
+                    <PostItem
+                      key={post.id}
+                      post={post}
+                      config={{
+                        listView: true,
+                        showExcerpt: true,
+                        showLineSeparator: true,
+                      }}
+                      styles={{
+                        lineSeparator: `border-b pb-3 sm:pb-6 ${
+                          index > 3 ? 'sm:border-none' : ''
+                        } ${index > 4 ? 'border-none' : ''}`,
+                      }}
+                    />
+                  )
+              )}
             </div>
           </section>
         </div>
@@ -294,23 +297,25 @@ export default function Index({ posts = {} }) {
                 }}
               />
               <div className="space-y-4">
-                {sports.map((post, index) => (
-                  index > 0 &&
-                  <PostItem
-                    key={post.id}
-                    post={post}
-                    config={{
-                      listView: true,
-                      showExcerpt: false,
-                      showLineSeparator: true,
-                    }}
-                    styles={{
-                      lineSeparator: `border-b pb-4 ${
-                        index > 1 ? 'pb-0 sm:border-none' : ''
-                      } ${index > 3 ? 'border-none' : ''}`,
-                    }}
-                  />
-                ))}
+                {sports.map(
+                  (post, index) =>
+                    index > 0 && (
+                      <PostItem
+                        key={post.id}
+                        post={post}
+                        config={{
+                          listView: true,
+                          showExcerpt: false,
+                          showLineSeparator: true,
+                        }}
+                        styles={{
+                          lineSeparator: `border-b pb-4 ${
+                            index > 1 ? 'pb-0 sm:border-none' : ''
+                          } ${index > 3 ? 'border-none' : ''}`,
+                        }}
+                      />
+                    )
+                )}
               </div>
             </div>
             <div className="my-5">
@@ -418,29 +423,27 @@ export default function Index({ posts = {} }) {
 }
 
 export async function getStaticProps() {
-  const news = await getPostsForHome(home.news);
-  const daily = await getPostsForHome(home.daily);
-  const politico360 = await getPostsForHome(home.politico360);
-  const connectToOversea = await getPostsForHome(home.connectToOversea);
-  const cambotory = await getPostsForHome(home.cambotory);
-  const sports = await getPostsForHome(home.sports);
-  const economy = await getPostsForHome(home.economy);
-  const election = await getPostsForHome(home.election);
-  const video = await getPostsForHome(home.video);
-
+  const { categories } = await getCategoriesWithPaginatedPostsBySlugs(
+    compact(map(home, (category) => category.categoryName))
+  );
+  const posts = {};
+  keys(home).forEach((categoryKey) => {
+    const { categoryName, first } = home[categoryKey];
+    let category = find(categories, ['slug', categoryName]);
+    if (category) {
+      category = {
+        ...category,
+        posts: category.posts.slice(0, first),
+      };
+      Object.assign(posts, {
+        [categoryKey]: category,
+      });
+    }
+  });
+  
   return {
-    props: { 
-      posts: {
-        news,
-        daily,
-        politico360,
-        connectToOversea,
-        cambotory,
-        sports,
-        economy,
-        election,
-        video
-      }
+    props: {
+      posts
     },
     revalidate: 10,
   };

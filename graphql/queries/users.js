@@ -3,7 +3,7 @@ import { ARCHIVE_POST_PER_PAGE, PER_PAGE } from '~/lib/constants';
 import { ARCHIVE_POST_FIELDS } from './posts';
 
 export const QUERY_ALL_USERS_PATH = gql`
-  {
+  query UsersPath{
     users(first: ${PER_PAGE}) {
       edges {
         node {
@@ -27,7 +27,7 @@ export const QUERY_ALL_USERS_SLUG = gql`
 `;
 
 export const QUERY_ALL_USERS = gql`
-  {
+  query Users{
     users(first: ${PER_PAGE}) {
       edges {
         node {

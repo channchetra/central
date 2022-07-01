@@ -13,7 +13,7 @@ const home = {
     first: 6
   },
   politico360: {
-    title: 'Polytico 360',
+    title: 'Politico 360',
     link: '/politico360',
     categoryName: 'politico360',
     first: 5

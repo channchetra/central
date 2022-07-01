@@ -7,7 +7,7 @@ import MainMenuItemMobile from './main-menu-item-mobile';
 
 export default function MainMenu({ mainMenus }) {
   return (
-    <div className="relative -mx-5 md:-mx-0 flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue dark:from-gray-800">
+    <div className="relative -mx-5 md:-mx-0 flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue sm:from-transparent dark:from-gray-800">
       <Popover>
         <div className="md:hidden">
           <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center text-neutral-50 focus:outline-none">

@@ -57,7 +57,7 @@ export default function Index({ posts = {} }) {
                       showLineSeparator: true,
                     }}
                     styles={{
-                      lineSeparator: `border-b pb-3 sm:pb-3 mb-1 ${index > 1 ? 'sm:border-none' : ''} ${index > 2 ? 'border-none' : ''}`,
+                      lineSeparator: `border-b pb-3 sm:pb-3 mb-1 ${index > 2 ? 'sm:border-none' : ''} ${index > 3 ? 'border-none' : ''}`,
                       image: {
                         wrapper: 'mb-3 shadow',
                       },
@@ -89,7 +89,7 @@ export default function Index({ posts = {} }) {
                   config={{
                     listView: true,
                     showExcerpt: false,
-                    showLineSeparator: index < 5,
+                    showLineSeparator: index < 4,
                   }}
                   styles={{
                     title: {
@@ -98,9 +98,7 @@ export default function Index({ posts = {} }) {
                     image: {
                       imageWrapper: 'aspect-video',
                     },
-                    lineSeparator: `border-b pb-3 sm:pb-4 ${
-                      index > 4 ? 'sm:border-none' : ''
-                    } ${index > 5 ? 'border-none' : ''}`,
+                    lineSeparator: `border-b pb-3 sm:pb-4 ${index > 3 ? 'sm:border-none' : ''} ${index > 4 ? 'border-none' : ''}`,
                   }}
                 />
               ))}
@@ -151,9 +149,7 @@ export default function Index({ posts = {} }) {
                     showLineSeparator: true,
                   }}
                   styles={{
-                    lineSeparator: `border-b pb-3 sm:pb-6 ${
-                      index > 2 ? 'sm:border-none' : ''
-                    } ${index > 3 ? 'border-none' : ''}`,
+                    lineSeparator: `border-b pb-3 sm:pb-6 ${index > 3 ? 'sm:border-none' : ''} ${index > 4 ? 'border-none' : ''}`,
                   }}
                 />
               ))}
@@ -422,7 +418,7 @@ export default function Index({ posts = {} }) {
 }
 
 export async function getStaticProps() {
-  const news = await getPostsForHome({...home.news});
+  const news = await getPostsForHome(home.news);
   const daily = await getPostsForHome(home.daily);
   const politico360 = await getPostsForHome(home.politico360);
   const connectToOversea = await getPostsForHome(home.connectToOversea);

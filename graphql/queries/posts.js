@@ -20,6 +20,15 @@ export const POST_FIELDS = gql`
     postId
     slug
     title
+    postFormats {
+      edges {
+        node {
+          name
+          postFormatId
+          slug
+        }
+      }
+    }
   }
 `;
 
@@ -55,6 +64,15 @@ export const ARCHIVE_POST_FIELDS = gql`
     featuredImage {
       node {
         sourceUrl
+      }
+    }
+    postFormats {
+      edges {
+        node {
+          name
+          postFormatId
+          slug
+        }
       }
     }
   }

@@ -63,9 +63,9 @@ export default function PostCoverImage({
             <div className="flex w-full h-full items-center justify-center absolute top-0">
               <PlayIcon className="h-12 w-12 text-white" />
             </div>
-            <div className="absolute bottom-0 right-0 bg-black text-white px-1 text-[11px]">
+            {/* <div className="absolute bottom-0 right-0 bg-black text-white px-1 text-[11px]">
               00:11:53
-            </div>
+            </div> */}
           </a>
         </Link>
       )}

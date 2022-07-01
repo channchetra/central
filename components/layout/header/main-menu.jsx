@@ -49,7 +49,7 @@ export default function MainMenu({ mainMenus }) {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <Popover.Group as="nav" className="grid grid-cols-1 gap-2">
+                  <Popover.Group as="nav" className="grid grid-cols-1 gap-3">
                     {mainMenus.map((menu, subMenuIndex) => (
                       <SubMenuItem
                         menu={menu}
@@ -103,7 +103,7 @@ export default function MainMenu({ mainMenus }) {
                 <div className="flex items-center justify-between">
                   <div />
                   <div className="-mr-2">
-                    <Popover.Button className="bg-white dark:bg-gray-600 rounded-md p-2 inline-flex items-center justify-center text-gray-400 dark:text-neutral-50 hover:text-gray-500 hover:bg-gray-100 ">
+                    <Popover.Button className="bg-white dark:bg-gray-600 rounded-md p-2 inline-flex items-center justify-center text-gray-400 dark:text-neutral-50 hover:text-gray-500 hover:bg-gray-100">
                       <span className="sr-only">Close menu</span>
                       <XIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -123,9 +123,8 @@ export default function MainMenu({ mainMenus }) {
                         rounded-md
                         bg-gray-100
                         dark:bg-gray-500
+                        focus:outline-none
                         border-transparent
-                        focus:border-gray-500 focus:bg-white
-                        dark:focus:outline-neutral-50 focus:ring-0
                       "
                     placeholder="ស្វែងរក"
                   />

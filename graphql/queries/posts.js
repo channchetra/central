@@ -349,6 +349,20 @@ export const QUERY_POSTS_FOR_HOME = gql`
   }
 `;
 
+export const QUERY_POSTS_SEARCH = gql`
+  query Search ($search: String, $first: Int) {
+    posts(where: {search: $search, hasPassword: false}, first: $first) {
+      edges {
+        node {
+          id
+          databaseId
+          title
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_POST_PER_PAGE = gql`
   query PostPerPage {
     allSettings {

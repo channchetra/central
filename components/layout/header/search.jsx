@@ -31,7 +31,7 @@ export default function Search () {
     setLoading(true);
     const timer = setTimeout(() => {
       const fetchData = async () => {
-        const {posts} = await getPostsSearch({search: inputValue});
+        const {posts} = await getPostsSearch({search: inputValue, first: 5});
         setResults(posts);
         setLoading(false);
       }
@@ -44,7 +44,6 @@ export default function Search () {
     }, 1000);
     return () => clearTimeout(timer)
   },[inputValue])
-
   return (
     <div className="relative hidden md:flex items-center justify-end">
       <Popover>

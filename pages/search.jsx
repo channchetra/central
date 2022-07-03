@@ -18,7 +18,9 @@ export default function Search ( {search}) {
     QUERY_POSTS_SEARCH,
     {
       variables: {
-        search
+        search,
+        first: 20,
+        after: null
       }
     }
   );
@@ -36,6 +38,7 @@ export default function Search ( {search}) {
     fetchMore({
       variables: {
         search,
+        first: 20,
         after: pageInfo?.endCursor,
       },
       notifyOnNetworkStatusChange: true,

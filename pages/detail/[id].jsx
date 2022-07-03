@@ -46,7 +46,7 @@ export default function Post({ post = {} }) {
     if (current[0]) {
       const item = current[0];
       if (item.databaseId !== id) {
-        window.history.pushState(null, item.title, `/posts/${item.databaseId}`);
+        window.history.pushState(null, item.title, `/detail/${item.databaseId}`);
         setTitle(item.title);
         setId(item.databaseId);
       }

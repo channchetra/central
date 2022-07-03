@@ -1,27 +1,30 @@
 import { Controller } from 'react-hook-form';
 
-export default function CustomInputText ({ 
-  name, 
+export default function CustomInputText({
+  name,
   type = 'text',
-  rules = {}, 
-  control, 
-  placeholder, 
-  style = {}, 
+  rules = {},
+  control,
+  placeholder,
+  style = {},
   className = '',
   autoComplete,
-  id
+  id,
 }) {
   return (
-    <Controller 
+    <Controller
       name={name}
       control={control}
       rules={rules}
-      render={ ({ field: { value, onChange, onBlur }, fieldState: {error} }) => 
-        <>
+      render={({
+        field: { value, onChange, onBlur },
+        fieldState: { error },
+      }) => (
+        <div className="flex flex-col w-full">
           <input
             id={id}
             className={className}
-            type={type} 
+            type={type}
             value={value}
             style={style.input}
             placeholder={placeholder}
@@ -29,13 +32,13 @@ export default function CustomInputText ({
             onBlur={onBlur}
             autoComplete={autoComplete}
           />
-          {
-            error &&
-            <div style={style.error}>{error.message || 'Error'}</div>
-          }
-                  
-        </>
-      }
+          {error && (
+            <div className="text-rose-800 mt-3" style={style.error}>
+              {error.message || 'Error'}
+            </div>
+          )}
+        </div>
+      )}
     />
-  )
+  );
 }

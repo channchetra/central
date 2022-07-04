@@ -1,7 +1,12 @@
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
 
-export default function HomePolitico360({ title, link, posts = [], className = '' }) {
+export default function HomePolitico360({
+  title,
+  link,
+  posts = [],
+  className = '',
+}) {
   if (!posts.length) return null;
 
   return (
@@ -19,6 +24,7 @@ export default function HomePolitico360({ title, link, posts = [], className = '
         post={posts[0]}
         config={{
           showExcerpt: false,
+          showLineSeparator: true,
         }}
         styles={{
           title: {
@@ -28,9 +34,10 @@ export default function HomePolitico360({ title, link, posts = [], className = '
           excerpt: {
             excerpt: 'text-sm',
           },
+          lineSeparator: 'pb-3 border-b sm:border-none',
         }}
       />
-      <div className="mt-8 space-y-7">
+      <div className="mt-5 space-y-7">
         {posts.map(
           (post, index) =>
             index > 0 && (
@@ -43,7 +50,7 @@ export default function HomePolitico360({ title, link, posts = [], className = '
                   showLineSeparator: true,
                 }}
                 styles={{
-                  lineSeparator: `border-b pb-3 sm:pb-6 ${
+                  lineSeparator: `border-b pb-4 sm:pb-6 ${
                     index > 3 ? 'sm:border-none' : ''
                   } ${index > 4 ? 'border-none' : ''}`,
                 }}

@@ -2,7 +2,12 @@ import classNames from 'classnames';
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
 
-export default function HomeLatestNews({ title, link, posts = [], className = '' }) {
+export default function HomeLatestNews({
+  title,
+  link,
+  posts = [],
+  className = '',
+}) {
   if (!posts.length) return null;
 
   return (
@@ -21,8 +26,10 @@ export default function HomeLatestNews({ title, link, posts = [], className = ''
           post={posts[0]}
           config={{
             showExcerpt: false,
+            showLineSeparator: true,
           }}
           styles={{
+            lineSeparator: 'pb-3 border-b sm:border-none',
             image: {
               imageWrapper:
                 'relative lg:aspect-[4/3.07] sm:aspect-[7/6] aspect-video',

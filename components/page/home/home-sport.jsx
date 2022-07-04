@@ -21,11 +21,13 @@ export default function HomeSport({ title, link, posts = [], className = '' }) {
           post={posts[0]}
           config={{
             showExcerpt: false,
+            showLineSeparator: true,
           }}
           styles={{
             image: {
               imageWrapper: 'aspect-[16/8]',
             },
+            lineSeparator: 'pb-4 border-b sm:border-none',
           }}
         />
         <div className="space-y-4">

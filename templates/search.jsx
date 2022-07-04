@@ -19,24 +19,16 @@ export default function TemplateSearch({
       <div className="my-4 sm:my-8">
         <Container>
           <h1 className="mb-4 text-lg sm:text-2xl leading-relaxed text-center">
-            {
-              search &&
+            {search && (
               <>
                 <span>ស្វែងរកលទ្ធលសម្រាប់: </span>
                 <span className="font-bold">{search}</span>
               </>
-            }
-            {
-              !search &&
-              <span>សូមធ្វើការស្វែងរក</span>
-            }
-              
+            )}
+            {!search && <span>សូមធ្វើការស្វែងរក</span>}
           </h1>
-          <div className="max-w-32 max-w-xl mx-auto">
-            <form
-              onSubmit={handleSubmit}
-              className="flex"
-            >
+          <div className="max-w-32 max-w-xl mx-auto px-3">
+            <form onSubmit={handleSubmit} className="flex">
               <CustomInputText
                 id="search"
                 className="h-12 px-3 block w-full rounded-l-md bg-gray-100 dark:bg-zinc-800 border-transparent focus:outline-none"
@@ -68,6 +60,7 @@ export default function TemplateSearch({
                   config={{
                     showExcerpt: false,
                     showMeta: true,
+                    showLineSeparator: true,
                   }}
                   styles={{}}
                 />

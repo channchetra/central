@@ -1,13 +1,16 @@
 import { Fragment } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
-import Image from 'next/image';
 import MainMenuItem from './main-menu-item';
 import MainMenuItemMobile from './main-menu-item-mobile';
 
+const amsLogoWide = '/images/APSARA_MEDIA_SERVICES_LOGO-01.png';
+
 export default function MainMenu({ mainMenus }) {
   return (
-    <div className="relative -mx-5 md:-mx-0 flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue sm:from-transparent dark:from-gray-800">
+    <div className="relative sm:-mx-5 md:-mx-0 flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue sm:from-transparent dark:from-gray-800">
       <Popover>
         <div className="md:hidden">
           <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center text-neutral-50 focus:outline-none">
@@ -65,18 +68,28 @@ export default function MainMenu({ mainMenus }) {
         </Transition>
       </Popover>
       <div className="mobile-logo">
-        <div className="w-14 h-14 sm:hidden relative">
-          <Image
-            layout="fill"
-            alt=""
-            src="https://asset.ams.com.kh/central/media/AMS-Central-Page-Profile%404x.png"
-            objectFit="contain"
-            // className="dark:brightness-0 dark:invert-[1]"
-          />
+        <div className="w-36 h-20 sm:hidden relative">
+          <Link href="/">
+            <a aria-label="AMS Central">
+              <Image
+                layout="fill"
+                alt=""
+                src={amsLogoWide}
+                objectFit="contain"
+                className="brightness-0 invert-[1]"
+              />
+            </a>
+          </Link>
         </div>
       </div>
 
-      <Popover className="sm:hidden">
+      <Link href="/search">
+        <a className="pr-4 inline-block sm:hidden">
+          <SearchIcon className="h-7 w-7 text-neutral-50" aria-hidden="true" />
+        </a>
+      </Link>
+
+      {/* <Popover className="sm:hidden">
         <div className="flex justify-between items-center sm:px-6 md:justify-start">
           <div className="md:hidden">
             <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
@@ -137,7 +150,7 @@ export default function MainMenu({ mainMenus }) {
             </div>
           </Popover.Panel>
         </Transition>
-      </Popover>
+      </Popover> */}
     </div>
   );
 }

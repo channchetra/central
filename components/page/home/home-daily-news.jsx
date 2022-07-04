@@ -25,9 +25,6 @@ export default function HomeDailyNews({ title, link, posts = [], className = '' 
               showLineSeparator: true,
             }}
             styles={{
-              title: {
-                title: 'mb-2',
-              },
               image: {
                 imageWrapper: 'aspect-video',
               },

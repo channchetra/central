@@ -4,8 +4,12 @@ import { useQuery } from '@apollo/client';
 import TemplateArchiveAuthor from '~/templates/archive-author';
 import { QUERY_AUTHOR_WITH_PAGINATED_POSTS_BY_SLUG } from '~/graphql/queries/users';
 import { addApolloState, initializeApollo } from '~/lib/apollo-client';
+import { useRouter } from 'next/router';
 
-export default function ArchiveAuthorPage({ slug }) {
+export default function ArchiveAuthorPage() {
+  const router = useRouter();
+  const slug = router.query?.slug;
+
   const { loading, data, fetchMore } = useQuery(
     QUERY_AUTHOR_WITH_PAGINATED_POSTS_BY_SLUG,
     {
@@ -55,9 +59,7 @@ export async function getStaticProps({ params = {} } = {}) {
   });
 
   return addApolloState(apolloClient, {
-    props: {
-      slug,
-    },
+    props: {},
   });
 }
 

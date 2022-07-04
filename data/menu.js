@@ -11,10 +11,10 @@ export default class Menu {
   ];
 
   static flagshipMenus = [
-    { name: 'វិទ្យុសំលេងយុវជន', href: '#' },
-    { name: 'មើលទូរទស្សន៍', href: '#' },
-    { name: 'ស្តាប់វិទ្យុ', href: '#' },
-    { name: 'ជម្លោះអ៊ុយក្រែននិងរុស្សី', href: '#' },
+    { name: 'វិទ្យុសំលេងយុវជន', href: '/voice-of-youth' },
+    { name: 'មើលទូរទស្សន៍', href: '/tv' },
+    { name: 'ស្តាប់វិទ្យុ', href: 'https://fm97.ams.com.kh/' },
+    { name: 'ជម្លោះអ៊ុយក្រែននិងរុស្សី', href: '/tag/ukraine-russia' },
   ];
 
   static mainMenus = [

@@ -67,7 +67,7 @@ export default function TemplateSearch({
                   post={post}
                   config={{
                     showExcerpt: false,
-                    showMeta: false,
+                    showMeta: true,
                   }}
                   styles={{}}
                 />

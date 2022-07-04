@@ -40,6 +40,8 @@ export default function PostCoverImage({
       objectFit="cover"
       alt={title}
       src={image.sourceUrl}
+      placeholder="blur"
+      blurDataURL={image.sourceUrl}
       className={classes.image}
     />
   );

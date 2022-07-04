@@ -4,8 +4,12 @@ import { getAllTagsSlug } from '~/lib/tag';
 import { QUERY_TAG_WITH_PAGINATED_POSTS_BY_SLUG } from '~/graphql/queries/tag';
 import TemplateArchiveTag from '~/templates/archive-tag';
 import { addApolloState, initializeApollo } from '~/lib/apollo-client';
+import { useRouter } from 'next/router';
 
-export default function ArchiveTagPage({ slug }) {
+export default function ArchiveTagPage() {
+  const router = useRouter()
+  const slug = router.query?.slug
+
   const { loading, data, fetchMore } = useQuery(
     QUERY_TAG_WITH_PAGINATED_POSTS_BY_SLUG,
     {
@@ -53,18 +57,15 @@ export async function getStaticProps({ params = {} } = {}) {
   });
 
   return addApolloState(apolloClient, {
-    props: {
-      slug,
-    },
+    props: {},
   });
 }
 
 export async function getStaticPaths() {
   const { tags } = await getAllTagsSlug();
   const paths = tags.map(({ slug }) => `/tag/${slug}`);
-
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }

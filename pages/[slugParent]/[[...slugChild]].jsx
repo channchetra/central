@@ -6,8 +6,17 @@ import TemplateArchiveCategory from '~/templates/archive-category';
 import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG } from '~/graphql/queries/categories';
 import { addApolloState, initializeApollo } from '~/lib/apollo-client';
+import { useRouter } from 'next/router';
 
-export default function ArchivePage({ slug }) {
+export default function ArchivePage() {
+  const {
+    query: { slugChild, slugParent },
+  } = useRouter();
+  const slug =
+    slugChild && slugChild.length
+      ? slugChild[slugChild.length - 1]
+      : slugParent;
+
   const { loading, data, fetchMore } = useQuery(
     QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG,
     {
@@ -53,7 +62,10 @@ export default function ArchivePage({ slug }) {
 
 export async function getStaticProps({ params = {} } = {}) {
   const { slugParent, slugChild = [] } = params;
-  const slug = slugChild.length ? slugChild[slugChild.length - 1] : slugParent;
+  const slug =
+    slugChild && slugChild.length
+      ? slugChild[slugChild.length - 1]
+      : slugParent;
 
   const apolloClient = initializeApollo();
   await apolloClient.query({
@@ -64,9 +76,7 @@ export async function getStaticProps({ params = {} } = {}) {
   });
 
   return addApolloState(apolloClient, {
-    props: {
-      slug
-    },
+    props: {},
   });
 }
 

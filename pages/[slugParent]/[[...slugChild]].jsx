@@ -77,6 +77,7 @@ export async function getStaticProps({ params = {} } = {}) {
 
   return addApolloState(apolloClient, {
     props: {},
+    revalidate: 10
   });
 }
 

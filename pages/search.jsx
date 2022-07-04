@@ -4,14 +4,13 @@ import { QUERY_POSTS_SEARCH } from '~/graphql/queries/posts';
 import { useQuery } from '@apollo/client';
 import TemplateSearch from '~/templates/search';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 export default function Search() {
   const router = useRouter();
-  const search = router.query.q;
+  const search = router.query.q || '';
 
-  const { control, handleSubmit, setValue } = useForm();
-
-  setValue('q', search);
+  const { control, handleSubmit, setValue } = useForm({defaultValues: {q: search}});
 
   const { loading, data, fetchMore } = useQuery(QUERY_POSTS_SEARCH, {
     variables: {
@@ -39,6 +38,10 @@ export default function Search() {
     });
 
   const handleOnSubmit = ({ q }) => router.push(`/search?q=${q}`);
+
+  useEffect(() => {
+    setValue('q', search);
+  }, [search]);
 
   return (
     <TemplateSearch

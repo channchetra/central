@@ -9,23 +9,22 @@ import CustomInputText from '~/components/common/custom-input-text'
 
 export default function Search () {
 
+  const router = useRouter();
+  const q = router.query.q || '';
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState([]);
   const [inputValue, setInputValue] = useState('')
 
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      q: ''
-    }
-  })
+  const { control, handleSubmit, setValue } = useForm({defaultValues: {query: q}});
   
-  const router = useRouter();
-
-  const onSubmitSearch = ( {q: search} ) => {
+  const onSubmitSearch = ( {query} ) => {
     setResults([]);
     setLoading(false);
-    router.push(`/search?q=${search}`);
+    router.push(`/search?q=${query}`);
   }
+  useEffect(() => {
+    setValue('query', q);
+  },[q]);
 
   useEffect(() => {
     setLoading(true);
@@ -44,6 +43,7 @@ export default function Search () {
     }, 1000);
     return () => clearTimeout(timer)
   },[inputValue])
+
   return (
     <div className="relative hidden md:flex items-center justify-end">
       <Popover>
@@ -73,7 +73,7 @@ export default function Search () {
                     className="h-12 mt-1 px-3 block w-full rounded-md bg-gray-100 dark:bg-zinc-800 border-transparent focus:outline-none"
                     placeholder="ស្វែងរក"
                     type="search"
-                    name="q"
+                    name="query"
                     autoComplete="off"
                     rules={{required: ''}}
                     control={control}
@@ -85,7 +85,8 @@ export default function Search () {
                 }
                 <ul>
                   {
-                    results?.map((post => 
+                    results?.map(((post, i) =>
+                      i < 5 &&
                       <li key={post.id}>
                         <Link href={postPathById(post.databaseId)}>
                           <a>

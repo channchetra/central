@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import sanitizeHtml from 'sanitize-html';
 import { CMS_NAME } from '~/lib/constants';
 import PostCategoryTag from './post-category-tag';
 import PostDate from './post-date';
@@ -42,9 +41,7 @@ export default function PostDetailItem({ post, title }) {
           </div>
           <div
             dangerouslySetInnerHTML={{
-              __html: sanitizeHtml(post.content, {
-                allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
-              }),
+              __html: post.content,
             }}
           />
           <div className="ads relative my-4 sm:my-7 pb-[16%]">

@@ -88,7 +88,7 @@ export default function Footer() {
           </div>
         </section>
 
-        <section className="copy-right py-2 grid sm:grid-cols-2">
+        <section className="copy-right px-3 py-2 sm:px-0 grid sm:grid-cols-2">
           <div className="text-xs text-gray-400">
             ឆ្នាំ{new Date().getFullYear()} © រក្សាសិទ្ធគ្រប់យ៉ាងដោយ
             អប្សរាមេឌាសឺវីស / <br className="sm:hidden" /> Apsara Media Services

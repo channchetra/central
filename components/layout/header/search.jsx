@@ -5,45 +5,49 @@ import { SearchIcon } from '@heroicons/react/outline';
 import { useForm } from 'react-hook-form';
 import { getPostsSearch, postPathById } from '~/lib/posts';
 import Link from 'next/link';
-import CustomInputText from '~/components/common/custom-input-text'
+import CustomInputText from '~/components/common/custom-input-text';
+import SkeletonPostItemSearch from '~/components/skeleton/skeleton-post-item-search';
+import classNames from 'classnames';
 
-export default function Search () {
-
+export default function Search() {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState([]);
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState('');
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      q: ''
-    }
-  })
-  
+      q: '',
+    },
+  });
+
   const router = useRouter();
 
-  const onSubmitSearch = ( {q: search} ) => {
+  const onSubmitSearch = ({ q: search }) => {
     setResults([]);
     setLoading(false);
     router.push(`/search?q=${search}`);
-  }
+  };
 
   useEffect(() => {
     setLoading(true);
     const timer = setTimeout(() => {
       const fetchData = async () => {
-        const {posts} = await getPostsSearch({search: inputValue, first: 5});
+        const { posts } = await getPostsSearch({
+          search: inputValue,
+          first: 5,
+        });
         setResults(posts);
         setLoading(false);
-      }
-      if(inputValue) {
+      };
+      if (inputValue) {
         fetchData();
       } else {
         setResults([]);
         setLoading(false);
       }
     }, 1000);
-    return () => clearTimeout(timer)
-  },[inputValue])
+    return () => clearTimeout(timer);
+  }, [inputValue]);
   return (
     <div className="relative hidden md:flex items-center justify-end">
       <Popover>
@@ -67,34 +71,43 @@ export default function Search () {
           >
             <div className="rounded-lg shadow-lg ring-1 h-full ring-black ring-opacity-5 bg-white dark:bg-zinc-700 flex flex-col">
               <div className="p-3 flex-1">
-                <form action='/search' onChange={e => setInputValue(e.target.value)} onSubmit={handleSubmit(onSubmitSearch)}>
+                <form
+                  action="/search"
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onSubmit={handleSubmit(onSubmitSearch)}
+                >
                   <CustomInputText
-                    id='search'
+                    id="search"
                     className="h-12 mt-1 px-3 block w-full rounded-md bg-gray-100 dark:bg-zinc-800 border-transparent focus:outline-none"
                     placeholder="ស្វែងរក"
                     type="search"
                     name="q"
                     autoComplete="off"
-                    rules={{required: ''}}
+                    rules={{ required: '' }}
                     control={control}
                   />
                 </form>
-                {
-                  loading &&
-                  <div>Loading...</div>
-                }
+                {loading && (
+                  <div>
+                    <SkeletonPostItemSearch className="my-3 pb-3 border-b" />
+                    <SkeletonPostItemSearch className="mb-3 pb-3 border-b" />
+                    <SkeletonPostItemSearch className="mb-3 pb-3" />
+                  </div>
+                )}
                 <ul>
-                  {
-                    results?.map((post => 
-                      <li key={post.id}>
-                        <Link href={postPathById(post.databaseId)}>
-                          <a>
-                            {post.title}
-                          </a>
-                        </Link>
-                      </li>  
-                    ))
-                  }
+                  {results?.map((post, index) => (
+                    <li
+                      key={post.id}
+                      className={classNames([
+                        'my-3',
+                        index < results.length - 1 ? 'pb-3 border-b' : 'pb-0',
+                      ])}
+                    >
+                      <Link href={postPathById(post.databaseId)}>
+                        <a>{post.title}</a>
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -102,5 +115,5 @@ export default function Search () {
         </Transition>
       </Popover>
     </div>
-  )
+  );
 }

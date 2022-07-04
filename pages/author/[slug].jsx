@@ -8,7 +8,11 @@ import { useRouter } from 'next/router';
 
 export default function ArchiveAuthorPage() {
   const router = useRouter();
-  const slug = router.query?.slug;
+  const { slug } = router.query;
+
+  if (router.isFallback) {
+    return <TemplateArchiveAuthor isFallback={router.isFallback} />;
+  }
 
   const { loading, data, fetchMore } = useQuery(
     QUERY_AUTHOR_WITH_PAGINATED_POSTS_BY_SLUG,
@@ -18,7 +22,7 @@ export default function ArchiveAuthorPage() {
       },
     }
   );
-  const author = data?.user || {}
+  const author = data?.user || {};
   const postData = {
     posts:
       data?.user?.posts?.edges.map(({ node = {} }) => node).map(mapPostData) ||
@@ -31,7 +35,7 @@ export default function ArchiveAuthorPage() {
       variables: {
         slug,
         after: postData.pageInfo.endCursor,
-        first: 18
+        first: 18,
       },
       notifyOnNetworkStatusChange: true,
     });
@@ -69,6 +73,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }

@@ -2,15 +2,21 @@ import InfiniteScroll from 'react-infinite-scroller';
 import Container from '~/components/layout/container';
 import AuthorCard from '~/components/page/author/author-card';
 import PostItem from '~/components/post/post-item';
+import { SkeletonAuthorPage } from '~/components/skeleton';
 import SkeletonPostItem from '~/components/skeleton/skeleton-post-item';
 
 export default function TemplateArchiveAuthor({
   author = {},
   posts = [],
   hasMore = false,
-  loadMore,
+  loadMore = () => {},
   loading = false,
+  isFallback = false,
 }) {
+  if (isFallback) {
+    return <SkeletonAuthorPage />;
+  }
+
   return (
     <Container className="my-5">
       <InfiniteScroll pageStart={0} loadMore={loadMore} hasMore={hasMore}>

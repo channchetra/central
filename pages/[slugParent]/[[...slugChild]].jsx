@@ -9,13 +9,18 @@ import { addApolloState, initializeApollo } from '~/lib/apollo-client';
 import { useRouter } from 'next/router';
 
 export default function ArchivePage() {
+  const router = useRouter();
   const {
     query: { slugChild, slugParent },
-  } = useRouter();
+  } = router;
   const slug =
     slugChild && slugChild.length
       ? slugChild[slugChild.length - 1]
       : slugParent;
+
+  if (router.isFallback) {
+    return <TemplateArchiveCategory isFallback={router.isFallback} />;
+  }
 
   const { loading, data, fetchMore } = useQuery(
     QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG,
@@ -95,6 +100,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }

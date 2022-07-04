@@ -7,8 +7,12 @@ import { addApolloState, initializeApollo } from '~/lib/apollo-client';
 import { useRouter } from 'next/router';
 
 export default function ArchiveTagPage() {
-  const router = useRouter()
-  const slug = router.query?.slug
+  const router = useRouter();
+  const { slug } = router.query;
+
+  if (router.isFallback) {
+    return <TemplateArchiveTag isFallback={router.isFallback} />;
+  }
 
   const { loading, data, fetchMore } = useQuery(
     QUERY_TAG_WITH_PAGINATED_POSTS_BY_SLUG,

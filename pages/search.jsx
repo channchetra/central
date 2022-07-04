@@ -1,37 +1,31 @@
-
-import { mapPostData } from "~/lib/posts";
+import { mapPostData } from '~/lib/posts';
 import { useForm } from 'react-hook-form';
-import { QUERY_POSTS_SEARCH } from "~/graphql/queries/posts";
-import { useQuery } from "@apollo/client";
+import { QUERY_POSTS_SEARCH } from '~/graphql/queries/posts';
+import { useQuery } from '@apollo/client';
 import TemplateSearch from '~/templates/search';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
-export default function Search ( {search}) {
-
+export default function Search() {
   const router = useRouter();
+  const search = router.query.q;
 
   const { control, handleSubmit, setValue } = useForm();
 
-  setValue("q", search);
-  
-  const { loading, data, fetchMore } = useQuery(
-    QUERY_POSTS_SEARCH,
-    {
-      variables: {
-        search,
-        first: 20,
-        after: null
-      }
-    }
-  );
+  setValue('q', search);
 
-  const { pageInfo } = data?.posts || {}
-  
+  const { loading, data, fetchMore } = useQuery(QUERY_POSTS_SEARCH, {
+    variables: {
+      search,
+      first: 20,
+      after: null,
+    },
+  });
+
+  const { pageInfo } = data?.posts || {};
+
   const postData = {
     posts:
-      data?.posts?.edges
-        .map(({ node = {} }) => node)
-        .map(mapPostData) || []
+      data?.posts?.edges.map(({ node = {} }) => node).map(mapPostData) || [],
   };
 
   const loadMore = () =>
@@ -44,12 +38,9 @@ export default function Search ( {search}) {
       notifyOnNetworkStatusChange: true,
     });
 
-  const handleOnSubmit = ({q}) => router.push(`/search?q=${q}`);
+  const handleOnSubmit = ({ q }) => router.push(`/search?q=${q}`);
 
-// console.warn(postData.pageInfo.endCursor);
   return (
-    // <>
-    // {pageInfo?.endCursor}
     <TemplateSearch
       search={search}
       control={control}
@@ -59,14 +50,5 @@ export default function Search ( {search}) {
       loading={loading}
       loadMore={loadMore}
     />
-    // </>
-  )
-}
-
-export async function getServerSideProps({query}) {
-  return {
-    props: {
-      search: query.q || '',
-    }
-  };
+  );
 }

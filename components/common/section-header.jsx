@@ -12,7 +12,7 @@ export default function CommonSectionHeader({
 }) {
   const primaryClass = classNames(
     'relative',
-    'pr-5',
+    'pl-3 sm:pl-0 pr-5',
     "before:content-['']",
     'before:block',
     'before:h-1',

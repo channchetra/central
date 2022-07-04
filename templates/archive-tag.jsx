@@ -3,15 +3,20 @@ import ClientOnly from '~/components/client-only';
 import Container from '~/components/layout/container';
 import TagBanner from '~/components/page/tag/tag-banner';
 import PostItem from '~/components/post/post-item';
+import { SkeletonTagPage } from '~/components/skeleton';
 import SkeletonPostItem from '~/components/skeleton/skeleton-post-item';
 
 export default function TemplateArchiveTag({
   tag = {},
   posts = [],
   hasMore = true,
-  loadMore,
+  loadMore = () => {},
   loading = false,
+  isFallback = false
 }) {
+  if (isFallback) {
+    return <SkeletonTagPage />;
+  }
 
   return (
     <>

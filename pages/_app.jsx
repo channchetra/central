@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </Layout>
         <ThemeSwitcher />
-        <NextNProgress color="#cf0a10" />
+        <NextNProgress color="#cf0a10" options={{ showSpinner: false }} />
       </ThemeProvider>
     </ApolloProvider>
   );

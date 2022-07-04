@@ -4,15 +4,21 @@ import Container from '~/components/layout/container';
 import CategoryBanner from '~/components/page/category/category-banner';
 import CategoryTitle from '~/components/page/category/category-title';
 import PostItem from '~/components/post/post-item';
+import { SkeletonCategoryPage } from '~/components/skeleton';
 import SkeletonPostItem from '~/components/skeleton/skeleton-post-item';
 
 export default function TemplateArchiveCategory({
   category = {},
   posts = [],
   hasMore = true,
-  loadMore,
+  loadMore = () => {},
   loading = false,
+  isFallback = false,
 }) {
+  if (isFallback) {
+    return <SkeletonCategoryPage />;
+  }
+
   return (
     <>
       {category.banner && <CategoryBanner image={category.banner} />}

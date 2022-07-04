@@ -25,8 +25,8 @@ export default function PostCoverImage({
   };
 
   const classes = {
-    wrapper: 'relative',
-    imageWrapper: 'relative aspect-video',
+    wrapper: '',
+    imageWrapper: 'aspect-video',
     image: classNames('shadow-sm', {
       'hover:shadow-medium transition-shadow duration-200': link,
     }),
@@ -40,6 +40,7 @@ export default function PostCoverImage({
       objectFit="cover"
       alt={title}
       src={image.sourceUrl}
+      quality={60}
       placeholder="blur"
       blurDataURL={image.sourceUrl}
       className={classes.image}
@@ -47,10 +48,13 @@ export default function PostCoverImage({
   );
   return (
     <div className={`relative ${className} ${classes.wrapper}`}>
-      <div className={link ? '' : classes.imageWrapper}>
+      <div className={link ? '' : `relative ${classes.imageWrapper}`}>
         {link ? (
           <Link href={link}>
-            <a className={`flex ${classes.imageWrapper}`} aria-label={title}>
+            <a
+              className={`flex relative ${classes.imageWrapper}`}
+              aria-label={title}
+            >
               {imageElement}
             </a>
           </Link>

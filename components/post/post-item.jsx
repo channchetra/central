@@ -42,7 +42,7 @@ export default function PostItem({
     date,
     author,
     categories,
-    postFormats = []
+    postFormats = [],
   } = post || {};
 
   const classes = merge(
@@ -52,11 +52,16 @@ export default function PostItem({
         : 'hover:text-rose-600 dark:hover:text-zinc-300',
       innerWrapper: {
         first: conf.listView && conf.showImage ? 'sm:w-1/3' : '',
-        second: conf.listView && conf.showImage ? 'sm:flex-1 sm:pl-4' : '',
+        second:
+          conf.listView && conf.showImage
+            ? 'px-3 sm:px-0 sm:flex-1 sm:pl-4'
+            : 'px-3 sm:px-0',
       },
       image: {
-        wrapper: `shadow ${conf.listView && conf.showImage ? '' : 'mb-3'}`,
-        imageWrapper: 'relative aspect-video',
+        wrapper: `shadow ${
+          conf.listView && conf.showImage ? 'mb-3 sm:mb-0 ' : 'mb-3'
+        }`,
+        imageWrapper: 'aspect-video bg-gradient-to-r from-gray-100 to-white dark:from-gray-700 dark:to-gray-800',
         category: {
           wrapper: 'absolute bottom-0',
           name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',

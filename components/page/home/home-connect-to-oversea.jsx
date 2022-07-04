@@ -2,7 +2,12 @@ import classNames from 'classnames';
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
 
-export default function HomeConnectToOversea({ title, link, posts = [], className = '' }) {
+export default function HomeConnectToOversea({
+  title,
+  link,
+  posts = [],
+  className = '',
+}) {
   if (!posts.length) return null;
 
   return (
@@ -26,7 +31,7 @@ export default function HomeConnectToOversea({ title, link, posts = [], classNam
               showLineSeparator: true,
             }}
             styles={{
-              lineSeparator: `border-b pb-3 sm:pb-5 ${
+              lineSeparator: `border-b pb-4 sm:pb-5 ${
                 index > 3 ? 'sm:border-none' : ''
               } ${index > 6 ? 'border-none' : ''}`,
             }}

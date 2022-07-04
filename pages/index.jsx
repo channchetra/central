@@ -61,7 +61,7 @@ export default function Index({ posts = {} }) {
         />
       </Container>
 
-      <section className="avi-voice relative my-7 py-12 sm:pt-24 sm:pb-20">
+      <section className="avi-voice relative my-7 py-7 sm:py-12 sm:pt-24 sm:pb-20">
         <Image
           src={home.aviVoice.banner}
           layout="fill"
@@ -69,7 +69,7 @@ export default function Index({ posts = {} }) {
           className="cover -z-10"
         />
         <Container>
-          <div className="mb-5">
+          <div className="mb-5 hidden sm:block">
             <span className="bg-rose-900 text-white py-2 px-5 text-base sm:text-3xl inline-block">
               {home.aviVoice.title}
             </span>
@@ -94,7 +94,7 @@ export default function Index({ posts = {} }) {
       </Container>
 
       {/* Block banner Cambodia 2050 */}
-      <section className="relative my-7 py-12 sm:pt-24 sm:pb-20">
+      <section className="relative my-7 py-7 sm:py-12 sm:pt-24 sm:pb-20">
         <Image
           src={home.cambodia2050.banner}
           layout="fill"
@@ -102,7 +102,7 @@ export default function Index({ posts = {} }) {
           className="cover -z-10"
         />
         <Container>
-          <div>
+          <div className="mb-5 hidden sm:block">
             <span className="bg-rose-900 text-white py-2 px-5 text-base sm:text-3xl inline-block">
               {home.cambodia2050.title}
             </span>

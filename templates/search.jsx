@@ -49,7 +49,7 @@ export default function TemplateSearch({
               />
               <button
                 type="submit"
-                className="rounded-r-md bg-slate-300 px-4 h-12"
+                className="rounded-r-md bg-slate-300 dark:bg-gray-700 px-4 h-12"
               >
                 ស្វែងរក
               </button>

@@ -349,6 +349,85 @@ export const QUERY_POSTS_FOR_HOME = gql`
   }
 `;
 
+export const QUERY_POSTS_QUICK_SEARCH = gql`
+  query QuickSearch($first: Int = 20, $search: String = "") {
+    posts(
+      where: {search: $search, hasPassword: false}
+      first: $first
+    ) {
+      edges {
+        node {
+          title
+          id
+          databaseId
+        }   
+      }
+    }
+  }
+`;
+
+export const QUERY_POSTS_SEARCH = gql`
+  query SearchQuery($first: Int = 20, $search: String = "", $after: String = "") {
+    posts(
+      where: {search: $search, hasPassword: false}
+      first: $first
+      after: $after
+    ) {
+      edges {
+        node {
+          title
+          id
+          databaseId
+          date
+          isSticky
+          slug
+          categories {
+            edges {
+              node {
+                databaseId
+                id
+                name
+                slug
+              }
+            }
+          }
+          author {
+            node {
+              avatar {
+                height
+                url
+                width
+              }
+              id
+              name
+              slug
+              firstName
+              lastName
+            }
+          }
+          excerpt
+          featuredImage {
+            node {
+              altText
+              caption
+              sourceUrl
+              srcSet
+              sizes
+              id
+            }
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        endCursor
+        startCursor
+      }
+    }
+  }
+`;
+
 export const QUERY_POST_PER_PAGE = gql`
   query PostPerPage {
     allSettings {

@@ -1,11 +1,20 @@
-import { find } from 'lodash';
+import { compact, find, keys, map } from 'lodash';
 import Image from 'next/image';
 import Link from 'next/link';
-import CommonSectionHeader from '~/components/common/section-header';
-import PostItem from '~/components/post/post-item';
+import {
+  HomeCambotory,
+  HomeConnectToOversea,
+  HomeDailyNews,
+  HomeEconomy,
+  HomeElection,
+  HomeLatestNews,
+  HomePolitico360,
+  HomeSport,
+  HomeVideo,
+} from '~/components/page/home';
 import home from '~/data/home';
 import { getCategoriesWithPaginatedPostsBySlugs } from '~/lib/categories';
-import Container from '../components/container';
+import Container from '../components/layout/container';
 
 export default function Index({ posts = {} }) {
   const news = posts.news.posts;
@@ -21,178 +30,38 @@ export default function Index({ posts = {} }) {
   return (
     <>
       <Container>
-        {/* Block Latest News */}
-        <section className="lastet-news">
-          <div className="my-5">
-            <CommonSectionHeader
-              type="primary"
-              title={home.news.title}
-              link={home.news.link}
-              className="text-xl font-bold"
-            />
-          </div>
-          <div className="grid md:grid-cols-2 gap-5 mb-7 md:mb-7">
-            <PostItem
-              key={news[0]?.id}
-              post={news[0]}
-              config={{
-                showExcerpt: false,
-              }}
-              styles={{
-                image: {
-                  imageWrapper:
-                    'relative lg:aspect-[4/3.07] sm:aspect-[7/6] aspect-video',
-                },
-              }}
-            />
-            <div className="block-latest grid grid-cols-1 md:grid-cols-2 gap-5">
-              {news.map(
-                (post, index) =>
-                  index > 0 && (
-                    <PostItem
-                      key={post.id}
-                      post={post}
-                      config={{
-                        showExcerpt: false,
-                        showLineSeparator: true,
-                      }}
-                      styles={{
-                        lineSeparator: `border-b pb-3 sm:pb-3 mb-1 ${
-                          index > 2 ? 'sm:border-none' : ''
-                        } ${index > 3 ? 'border-none' : ''}`,
-                        image: {
-                          wrapper: 'mb-3 shadow',
-                        },
-                      }}
-                    />
-                  )
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* Block Daily & Politico */}
+        <HomeLatestNews
+          title={home.news.title}
+          link={home.news.link}
+          posts={news}
+        />
         <div className="sm:grid md:grid-cols-3 gap-5">
-          <section className="block-daily">
-            <div className="my-5">
-              <CommonSectionHeader
-                type="primary"
-                title={home.daily.title}
-                link={home.daily.link}
-                className="text-xl font-bold"
-              />
-            </div>
-            <div className="space-y-5 mb-4">
-              {daily.map((post, index) => (
-                <PostItem
-                  key={post.id}
-                  post={post}
-                  config={{
-                    listView: true,
-                    showExcerpt: false,
-                    showLineSeparator: index < 4,
-                  }}
-                  styles={{
-                    title: {
-                      title: 'mb-2',
-                    },
-                    image: {
-                      imageWrapper: 'aspect-video',
-                    },
-                    lineSeparator: `border-b pb-3 sm:pb-4 ${
-                      index > 3 ? 'sm:border-none' : ''
-                    } ${index > 4 ? 'border-none' : ''}`,
-                  }}
-                />
-              ))}
-            </div>
+          <section>
+            <HomeDailyNews
+              title={home.daily.title}
+              link={home.daily.link}
+              posts={daily}
+            />
             <div className="relative h-[684px]">
               <Image src={home.daily.banner} layout="fill" objectFit="cover" />
             </div>
           </section>
-
-          <section className="block-politico col-span-2">
-            <div className="my-5">
-              <CommonSectionHeader
-                type="primary"
-                title={home.politico360.title}
-                link={home.politico360.link}
-                className="text-xl font-bold"
-              />
-            </div>
-            <PostItem
-              key={politico360[0]?.id}
-              post={politico360[0]}
-              config={{
-                showExcerpt: false,
-              }}
-              styles={{
-                title: {
-                  wrapper: 'mb-3',
-                  title: 'text-base lg:text-lg lg:leading-relaxed',
-                },
-                excerpt: {
-                  excerpt: 'text-sm',
-                },
-              }}
+          <section className="col-span-2">
+            <HomePolitico360
+              title={home.politico360.title}
+              link={home.politico360.link}
+              posts={politico360}
             />
-            <div className="mt-8 space-y-7">
-              {politico360.map(
-                (post, index) =>
-                  index > 0 && (
-                    <PostItem
-                      key={post.id}
-                      post={post}
-                      config={{
-                        listView: true,
-                        showExcerpt: true,
-                        showLineSeparator: true,
-                      }}
-                      styles={{
-                        lineSeparator: `border-b pb-3 sm:pb-6 ${
-                          index > 3 ? 'sm:border-none' : ''
-                        } ${index > 4 ? 'border-none' : ''}`,
-                      }}
-                    />
-                  )
-              )}
-            </div>
           </section>
         </div>
-
-        {/* Block Connect International */}
-        <section className="connected">
-          <div className="my-5">
-            <CommonSectionHeader
-              type="primary"
-              title={home.connectToOversea.title}
-              link={home.connectToOversea.link}
-              className="text-xl font-bold"
-            />
-          </div>
-
-          <div className="connect-inter grid md:grid-cols-4 gap-5">
-            {connectToOversea.map((post, index) => (
-              <PostItem
-                key={post.id}
-                post={post}
-                config={{
-                  showExcerpt: true,
-                  showLineSeparator: true,
-                }}
-                styles={{
-                  lineSeparator: `border-b pb-3 sm:pb-5 ${
-                    index > 3 ? 'sm:border-none' : ''
-                  } ${index > 6 ? 'border-none' : ''}`,
-                }}
-              />
-            ))}
-          </div>
-        </section>
+        <HomeConnectToOversea
+          title={home.connectToOversea.title}
+          link={home.connectToOversea.link}
+          posts={connectToOversea}
+        />
       </Container>
 
-      {/* Block banner AVI */}
-      <section className="block-avi relative my-7 py-12 sm:pt-24 sm:pb-20">
+      <section className="avi-voice relative my-7 py-12 sm:pt-24 sm:pb-20">
         <Image
           src={home.aviVoice.banner}
           layout="fill"
@@ -216,33 +85,12 @@ export default function Index({ posts = {} }) {
         </Container>
       </section>
 
-      {/* Block Black Crews */}
       <Container>
-        <div className="my-5">
-          <CommonSectionHeader
-            type="primary"
-            title={home.cambotory.title}
-            link={home.cambotory.link}
-            className="text-xl font-bold"
-          />
-        </div>
-
-        <section className="grid md:grid-cols-4 gap-5">
-          {cambotory.map((post, index) => (
-            <PostItem
-              key={post.id}
-              post={post}
-              config={{
-                showLineSeparator: true,
-              }}
-              styles={{
-                lineSeparator: `border-b pb-3 sm:pb-5 ${
-                  index > 3 ? 'sm:border-none' : ''
-                } ${index > 6 ? 'border-none' : ''}`,
-              }}
-            />
-          ))}
-        </section>
+        <HomeCambotory
+          title={home.cambotory.title}
+          link={home.cambotory.link}
+          posts={cambotory}
+        />
       </Container>
 
       {/* Block banner Cambodia 2050 */}
@@ -273,75 +121,19 @@ export default function Index({ posts = {} }) {
       {/* Block Sports & Economy */}
       <Container>
         <div className="sm:grid md:grid-cols-3 gap-5 pb-5">
-          {/* Block Sports */}
           <section className="col-span-2">
-            <div className="my-5">
-              <CommonSectionHeader
-                type="primary"
-                title={home.sports.title}
-                link={home.sports.link}
-                className="text-xl font-bold"
-              />
-            </div>
-            <div className="grid sm:grid-cols-2 gap-5">
-              <PostItem
-                key={sports[0]?.id}
-                post={sports[0]}
-                config={{
-                  showExcerpt: false,
-                }}
-                styles={{
-                  image: {
-                    imageWrapper: 'aspect-[16/8]',
-                  },
-                }}
-              />
-              <div className="space-y-4">
-                {sports.map(
-                  (post, index) =>
-                    index > 0 && (
-                      <PostItem
-                        key={post.id}
-                        post={post}
-                        config={{
-                          listView: true,
-                          showExcerpt: false,
-                          showLineSeparator: true,
-                        }}
-                        styles={{
-                          lineSeparator: `border-b pb-4 ${
-                            index > 1 ? 'pb-0 sm:border-none' : ''
-                          } ${index > 3 ? 'border-none' : ''}`,
-                        }}
-                      />
-                    )
-                )}
-              </div>
-            </div>
-            <div className="my-5">
-              <CommonSectionHeader
-                type="primary"
-                title={home.election.title}
-                link={home.election.link}
-                className="text-xl font-bold"
-              />
-            </div>
-            <section className="grid md:grid-cols-3 gap-5">
-              {election.map((post, index) => (
-                <PostItem
-                  key={post.id}
-                  post={post}
-                  config={{
-                    showLineSeparator: true,
-                  }}
-                  styles={{
-                    lineSeparator: `border-b pb-3 sm:pb-5 ${
-                      index > 2 ? 'sm:border-none' : ''
-                    } ${index > 4 ? 'border-none' : ''}`,
-                  }}
-                />
-              ))}
-            </section>
+            <HomeSport
+              title={home.sports.title}
+              link={home.sports.link}
+              posts={sports}
+            />
+
+            <HomeElection
+              title={home.election.title}
+              link={home.election.link}
+              posts={election}
+              className="my-14"
+            />
 
             <div className="relative mt-4 sm:mt-8 h-[450px] sm:h-[1100px]">
               <Image
@@ -352,70 +144,22 @@ export default function Index({ posts = {} }) {
             </div>
           </section>
 
-          {/* Econoomy */}
           <section>
-            <div className="my-5">
-              <CommonSectionHeader
-                type="primary"
-                title={home.economy.title}
-                link={home.economy.link}
-                className="text-xl font-bold"
-              />
-            </div>
-            <div className="space-y-4">
-              {economy.map((post, index) => (
-                <PostItem
-                  key={post.id}
-                  post={post}
-                  config={{
-                    listView: true,
-                    showExcerpt: false,
-                    showLineSeparator: true,
-                  }}
-                  styles={{
-                    image: {
-                      image: 'aspect-video',
-                    },
-                    lineSeparator: `border-b pb-4 ${
-                      index > 17 ? 'sm:border-none' : ''
-                    } ${index > 17 ? 'border-none' : ''}`,
-                  }}
-                />
-              ))}
-            </div>
+            <HomeEconomy
+              title={home.economy.title}
+              link={home.economy.link}
+              posts={economy}
+            />
           </section>
         </div>
       </Container>
       <section className="bg-slate-100 dark:bg-zinc-600 py-5">
-        {/* Block Videos */}
         <Container>
-          <div className="my-5">
-            <CommonSectionHeader
-              type="primary"
-              title={home.video.title}
-              link={home.video.link}
-              className="text-xl font-bold"
-              lineColor="before:bg-gray-300"
-            />
-          </div>
-
-          <section className="grid md:grid-cols-4 gap-5">
-            {video.map((post, index) => (
-              <PostItem
-                key={post.id}
-                post={post}
-                config={{
-                  showExcerpt: false,
-                  showLineSeparator: true,
-                }}
-                styles={{
-                  lineSeparator: `border-b pb-3 sm:pb-5 border-gray-300 ${
-                    index > 3 ? 'sm:border-none' : ''
-                  } ${index > 6 ? 'border-none' : ''}`,
-                }}
-              />
-            ))}
-          </section>
+          <HomeVideo
+            title={home.video.title}
+            link={home.video.link}
+            posts={video}
+          />
         </Container>
       </section>
     </>
@@ -423,51 +167,27 @@ export default function Index({ posts = {} }) {
 }
 
 export async function getStaticProps() {
-  const { categories } = await getCategoriesWithPaginatedPostsBySlugs([
-    home.news.categoryName,
-    home.daily.categoryName,
-    home.politico360.categoryName,
-    home.connectToOversea.categoryName,
-    home.cambotory.categoryName,
-    home.sports.categoryName,
-    home.economy.categoryName,
-    home.election.categoryName,
-    home.video.categoryName,
-  ]);
-
-  const news = find(categories, ['slug', home.news.categoryName]);
-  const daily = find(categories, ['slug', home.daily.categoryName]);
-  const politico360 = find(categories, ['slug', home.politico360.categoryName]);
-  const connectToOversea = find(categories, ['slug', home.connectToOversea.categoryName]);
-  const cambotory = find(categories, ['slug', home.cambotory.categoryName]);
-  const sports = find(categories, ['slug', home.sports.categoryName]);
-  const economy = find(categories, ['slug', home.economy.categoryName]);
-  const election = find(categories, ['slug', home.election.categoryName]);
-  const video = find(categories, ['slug', home.video.categoryName]);
-
-  // const news = await getPostsForHome(home.news);
-  // const daily = await getPostsForHome(home.daily);
-  // const politico360 = await getPostsForHome(home.politico360);
-  // const connectToOversea = await getPostsForHome(home.connectToOversea);
-  // const cambotory = await getPostsForHome(home.cambotory);
-  // const sports = await getPostsForHome(home.sports);
-  // const economy = await getPostsForHome(home.economy);
-  // const election = await getPostsForHome(home.election);
-  // const video = await getPostsForHome(home.video);
+  const { categories } = await getCategoriesWithPaginatedPostsBySlugs(
+    compact(map(home, (category) => category.categoryName))
+  );
+  const posts = {};
+  keys(home).forEach((categoryKey) => {
+    const { categoryName, first } = home[categoryKey];
+    let category = find(categories, ['slug', categoryName]);
+    if (category) {
+      category = {
+        ...category,
+        posts: category.posts.slice(0, first),
+      };
+      Object.assign(posts, {
+        [categoryKey]: category,
+      });
+    }
+  });
 
   return {
     props: {
-      posts: {
-        news,
-        daily,
-        politico360,
-        connectToOversea,
-        cambotory,
-        sports,
-        economy,
-        election,
-        video,
-      },
+      posts,
     },
     revalidate: 10,
   };

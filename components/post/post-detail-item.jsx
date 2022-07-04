@@ -6,23 +6,19 @@ import { CMS_NAME } from '~/lib/constants';
 import PostCategoryTag from './post-category-tag';
 import PostDate from './post-date';
 
-export default function PostDetailItem({key = '', post, title}) {
-
+export default function PostDetailItem({ post, title }) {
   if (!post) {
     return null;
   }
 
   return (
-    <article key={key} className="mt-4 sm:mt-6">
+    <article className="mt-4 sm:mt-6">
       <div id={post.databaseId}> </div>
       <Head>
         <title>
           {title} {CMS_NAME}
         </title>
-        <meta
-          property="og:image"
-          content={post.featuredImage?.sourceUrl}
-        />
+        <meta property="og:image" content={post.featuredImage?.sourceUrl} />
       </Head>
       <div className="grid sm:grid-cols-3 gap-3 sm:gap-6">
         <div className="col-span-2">
@@ -47,9 +43,7 @@ export default function PostDetailItem({key = '', post, title}) {
           <div
             dangerouslySetInnerHTML={{
               __html: sanitizeHtml(post.content, {
-                allowedTags: sanitizeHtml.defaults.allowedTags.concat([
-                  'img',
-                ]),
+                allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
               }),
             }}
           />
@@ -88,5 +82,5 @@ export default function PostDetailItem({key = '', post, title}) {
         </div>
       </div>
     </article>
-  )
+  );
 }

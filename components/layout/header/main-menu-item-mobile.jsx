@@ -3,7 +3,7 @@ import { Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 
-export default function SubMenuItem({ menu, index }) {
+export default function SubMenuItem({ menu, index, close }) {
   const [popoverOpen, setPopoverOpen] = useState(false);
 
   return menu.subMenus ? (
@@ -12,7 +12,11 @@ export default function SubMenuItem({ menu, index }) {
         <>
           <div className="flex justify-between">
             <Link href={menu.href}>
-              <a className="group py-2 text-base lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent dark:text-neutral-50">
+              <a
+                onClick={() => close()}
+                aria-hidden="true"
+                className="group py-2 text-base lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent dark:text-neutral-50"
+              >
                 <span className="font-bold">{menu.name}</span>
               </a>
             </Link>
@@ -46,7 +50,11 @@ export default function SubMenuItem({ menu, index }) {
                         key={`menu-${index}-sub-menu-${subMenuIndex}`}
                         href={subMenu.href}
                       >
-                        <a className="flex items-start rounded-lg dark:text-neutral-50">
+                        <a
+                          onClick={() => { setPopoverOpen(false); close(); }}
+                          aria-hidden="true"
+                          className="flex items-start rounded-lg dark:text-neutral-50"
+                        >
                           <span className="font-bold">{subMenu.name}</span>
                         </a>
                       </Link>
@@ -61,7 +69,11 @@ export default function SubMenuItem({ menu, index }) {
     </Popover>
   ) : (
     <Link href={menu.href}>
-      <a className="group py-4 text-base lg:text-base dark:text-neutral-50 font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent">
+      <a
+        onClick={() => close()}
+        aria-hidden="true"
+        className="group py-4 text-base lg:text-base dark:text-neutral-50 font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent"
+      >
         {menu.name}
       </a>
     </Link>

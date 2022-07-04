@@ -41,29 +41,32 @@ export default function MainMenu({ mainMenus }) {
             focus
             className="absolute top-0 inset-x-0 z-10 transition transform origin-top-right h-screen"
           >
-            <div className="shadow-lg bg-white dark:bg-gray-800 h-full">
-              <div className="pt-3 pb-6 px-5">
-                <div className="flex items-center justify-start">
-                  <div className="-mr-2">
-                    <Popover.Button className="bg-white dark:bg-gray-600 rounded-md p-2 inline-flex items-center justify-center text-gray-400">
-                      <span className="sr-only">Close menu</span>
-                      <XIcon className="h-6 w-6" aria-hidden="true" />
-                    </Popover.Button>
+            {({ close }) => (
+              <div className="shadow-lg bg-white dark:bg-gray-800 h-full">
+                <div className="pt-3 pb-6 px-5">
+                  <div className="flex items-center justify-start">
+                    <div className="-mr-2">
+                      <Popover.Button className="bg-white dark:bg-gray-600 rounded-md p-2 inline-flex items-center justify-center text-gray-400">
+                        <span className="sr-only">Close menu</span>
+                        <XIcon className="h-6 w-6" aria-hidden="true" />
+                      </Popover.Button>
+                    </div>
+                  </div>
+                  <div className="mt-4">
+                    <Popover.Group as="nav" className="grid grid-cols-1 gap-3">
+                      {mainMenus.map((menu, subMenuIndex) => (
+                        <MainMenuItemMobile
+                          menu={menu}
+                          index={subMenuIndex}
+                          key={`mobile-main-menu-${subMenuIndex}`}
+                          close={close}
+                        />
+                      ))}
+                    </Popover.Group>
                   </div>
                 </div>
-                <div className="mt-4">
-                  <Popover.Group as="nav" className="grid grid-cols-1 gap-3">
-                    {mainMenus.map((menu, subMenuIndex) => (
-                      <MainMenuItemMobile
-                        menu={menu}
-                        index={subMenuIndex}
-                        key={`mobile-main-menu-${subMenuIndex}`}
-                      />
-                    ))}
-                  </Popover.Group>
-                </div>
               </div>
-            </div>
+            )}
           </Popover.Panel>
         </Transition>
       </Popover>

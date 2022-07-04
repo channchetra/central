@@ -16,16 +16,18 @@ export default function Search() {
   const [results, setResults] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
-  const { control, handleSubmit, setValue } = useForm({defaultValues: {query: q}});
-  
-  const onSubmitSearch = ( {query} ) => {
+  const { control, handleSubmit, setValue } = useForm({
+    defaultValues: { query: q },
+  });
+
+  const onSubmitSearch = ({ query }) => {
     setResults([]);
     setLoading(false);
     router.push(`/search?q=${query}`);
-  }
+  };
   useEffect(() => {
     setValue('query', q);
-  },[q]);
+  }, [q]);
 
   useEffect(() => {
     setLoading(true);
@@ -45,8 +47,8 @@ export default function Search() {
         setLoading(false);
       }
     }, 1000);
-    return () => clearTimeout(timer)
-  },[inputValue])
+    return () => clearTimeout(timer);
+  }, [inputValue]);
 
   return (
     <div className="relative hidden md:flex items-center justify-end">
@@ -78,7 +80,7 @@ export default function Search() {
                 >
                   <CustomInputText
                     id="search"
-                    className="h-12 mt-1 px-3 block w-full rounded-md bg-gray-100 dark:bg-zinc-800 border-transparent focus:outline-none"
+                    className="h-12 px-3 block w-full rounded-md bg-gray-100 dark:bg-zinc-800 border-transparent focus:outline-none"
                     placeholder="ស្វែងរក"
                     type="search"
                     name="query"

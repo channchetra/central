@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <section className="bg-ams-light dark:bg-zinc-700">
       <Container>
-        <section className="py-6 border-b-2 border-gray-300">
+        <section className="py-6 border-b-2 border-gray-300 text-center sm:text-left">
           <Link href="/" className="inline-block">
             <a aria-label="" className="inline-block">
               <div className="w-44 h-20 relative">
@@ -95,9 +95,11 @@ export default function Footer() {
             (AMS)
           </div>
           <div className="sm:text-right">
-            <a href="#" className="text-xs">
-              គោលការណ៍ភាពឯងជន លក្ខ័ណក្នុងការប្រើប្រាស់ COOKIE (ខូខី)
-            </a>
+            <Link href="#">
+              <a className="text-xs">
+                គោលការណ៍ភាពឯងជន លក្ខ័ណក្នុងការប្រើប្រាស់ COOKIE (ខូខី)
+              </a>
+            </Link>
           </div>
         </section>
       </Container>

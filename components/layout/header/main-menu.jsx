@@ -10,7 +10,7 @@ const amsLogoWide = '/images/APSARA_MEDIA_SERVICES_LOGO-01.png';
 
 export default function MainMenu({ mainMenus }) {
   return (
-    <div className="relative sm:-mx-5 md:-mx-0 flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue sm:from-transparent dark:from-gray-800">
+    <div className="relative sm:-mx-5 md:-mx-0 flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue sm:from-transparent dark:from-gray-800 dark:to-gray-800 dark:sm:from-transparent">
       <Popover>
         <div className="md:hidden">
           <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center text-neutral-50 focus:outline-none">

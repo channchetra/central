@@ -41,8 +41,8 @@ export default function PostCoverImage({
       alt={title}
       src={image.sourceUrl}
       quality={60}
-      placeholder="blur"
-      blurDataURL={image.sourceUrl}
+      // placeholder="blur"
+      // blurDataURL={image.sourceUrl}
       className={classes.image}
     />
   );

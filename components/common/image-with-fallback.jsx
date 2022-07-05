@@ -12,7 +12,7 @@ function ImageWithFallback({
   const [imgSrc, setImgSrc] = useState(src);
   const [imgObjectFit, setImgObjectFit] = useState(objectFit);
   const [imgClassName, setImgClassName] = useState(className);
-  
+
   return (
     <Image
       {...attributes}
@@ -30,10 +30,10 @@ function ImageWithFallback({
       }}
       onError={() => {
         setImgSrc(fallbackSrc);
-        setImgObjectFit('contain');setImgClassName(
+        setImgObjectFit('contain');
+        setImgClassName(
           classNames([imgClassName, 'dark:brightness-0 dark:invert-[1]'])
         );
-
       }}
     />
   );

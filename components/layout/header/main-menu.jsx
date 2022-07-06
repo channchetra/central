@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, SearchIcon, XIcon } from '@heroicons/react/outline';
+import ThemeSwitcher from '~/components/common/theme-switcher';
 import MainMenuItem from './main-menu-item';
 import MainMenuItemMobile from './main-menu-item-mobile';
 
@@ -10,7 +11,7 @@ const amsLogoWide = '/images/APSARA_MEDIA_SERVICES_LOGO-01.png';
 
 export default function MainMenu({ mainMenus }) {
   return (
-    <div className="relative sm:-mx-5 md:-mx-0 flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue sm:from-transparent dark:from-gray-800">
+    <div className="relative sm:-mx-5 md:-mx-0 flex items-center justify-between bg-gradient-to-r from-ams-red to-ams-blue sm:from-transparent dark:from-gray-800 dark:to-gray-800 dark:sm:from-transparent">
       <Popover>
         <div className="md:hidden">
           <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center text-neutral-50 focus:outline-none">
@@ -44,13 +45,14 @@ export default function MainMenu({ mainMenus }) {
             {({ close }) => (
               <div className="shadow-lg bg-white dark:bg-gray-800 h-full">
                 <div className="pt-3 pb-6 px-5">
-                  <div className="flex items-center justify-start">
+                  <div className="flex items-center justify-between">
                     <div className="-mr-2">
                       <Popover.Button className="bg-white dark:bg-gray-600 rounded-md p-2 inline-flex items-center justify-center text-gray-400">
                         <span className="sr-only">Close menu</span>
                         <XIcon className="h-6 w-6" aria-hidden="true" />
                       </Popover.Button>
                     </div>
+                    <ThemeSwitcher />
                   </div>
                   <div className="mt-4">
                     <Popover.Group as="nav" className="grid grid-cols-1 gap-3">

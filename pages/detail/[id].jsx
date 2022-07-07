@@ -3,10 +3,10 @@ import { getPostById } from '~/lib/posts';
 import TemplateSingle from '~/templates/single';
 import Container from '~/components/layout/container';
 import SkeletonPostDetail from '~/components/skeleton/skeleton-post-detail';
+import { find } from 'lodash';
 import { getAllPostsWithSlug } from '../../lib/api';
 
 export default function Post({ post = {} }) {
-
   if (!post || !post?.databaseId) {
     return (
       <Container>
@@ -23,6 +23,9 @@ export default function Post({ post = {} }) {
   const [id, setId] = useState(post.databaseId);
   const [hasMore, setHasMore] = useState(true);
   const [posts, setPosts] = useState([post]);
+
+  const { postFormats = [] } = post || {};
+  const isVideo = !!find(postFormats, ['slug', 'post-format-video']);
 
   const previous = async () => {
     const preId = posts[posts.length - 1].previous?.databaseId || false;
@@ -46,7 +49,11 @@ export default function Post({ post = {} }) {
     if (current[0]) {
       const item = current[0];
       if (item.databaseId !== id) {
-        window.history.pushState(null, item.title, `/detail/${item.databaseId}`);
+        window.history.pushState(
+          null,
+          item.title,
+          `/detail/${item.databaseId}`
+        );
         setTitle(item.title);
         setId(item.databaseId);
       }
@@ -58,6 +65,16 @@ export default function Post({ post = {} }) {
     return () => clearInterval(timer);
   });
 
+  if (isVideo) {
+    return (
+      <TemplateSingle
+        previous={previous}
+        title={title}
+        hasMore={hasMore}
+        posts={posts}
+      />
+    );
+  }
   return (
     <TemplateSingle
       previous={previous}

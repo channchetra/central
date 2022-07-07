@@ -29,10 +29,10 @@ export default function HomeLatestNews({
             showLineSeparator: true,
           }}
           styles={{
-            lineSeparator: 'pb-3 border-b sm:border-none',
+            lineSeparator: 'pb-3 border-b md:border-none',
             image: {
               imageWrapper:
-                'relative lg:aspect-[4/3.07] sm:aspect-[7/6] aspect-video',
+                'relative lg:aspect-[4/3.07] md:aspect-[7/6] aspect-video',
             },
           }}
         />

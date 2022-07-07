@@ -19,7 +19,7 @@ export default function MainMenu({ mainMenus }) {
             <MenuIcon className="h-9 w-9 text-neutral-50" aria-hidden="true" />
           </Popover.Button>
         </div>
-        <Popover.Group as="nav" className="hidden md:flex gap-5">
+        <Popover.Group as="nav" className="hidden md:flex gap-3 lg:gap-5">
           {mainMenus.map((menu, mainMenuIndex) => (
             <MainMenuItem
               menu={menu}

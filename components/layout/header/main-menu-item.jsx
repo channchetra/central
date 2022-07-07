@@ -14,11 +14,11 @@ export default function MainMenuItem({ menu, index }) {
             <a
               onMouseEnter={() => setPopoverOpen(true)}
               onMouseLeave={() => setPopoverOpen(false)}
-              className="group py-4 text-xs lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 dark:hover:border-zinc-800 dark:text-neutral-50"
+              className="group py-4 text-xs lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 dark:hover:border-zinc-800 dark:text-neutral-50 whitespace-nowrap"
             >
               <span className="font-bold">{menu.name}</span>
               <ChevronDownIcon
-                className="ml-1 h-5 w-5 text-zinc-700 dark:text-neutral-50"
+                className="ml-1 h-3 w-3 lg:h-5 Lg:w-5 text-zinc-700 dark:text-neutral-50"
                 aria-hidden="true"
               />
             </a>
@@ -45,7 +45,7 @@ export default function MainMenuItem({ menu, index }) {
                         href={subMenu.href}
                         key={`menu-${index}-sub-menu-${subMenuIndex}`}
                       >
-                        <a className="-m-3 px-4 py-4 text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-neutral-50 dark:hover:text-gray-900 dark:hover:bg-gray-300">
+                        <a className="-m-3 px-4 py-4 text-xs lg:text-base font-medium text-gray-900 hover:bg-gray-50 dark:text-neutral-50 dark:hover:text-gray-900 dark:hover:bg-gray-300">
                           {subMenu.name}
                         </a>
                       </Link>

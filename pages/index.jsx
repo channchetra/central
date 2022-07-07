@@ -35,7 +35,7 @@ export default function Index({ posts = {} }) {
           link={home.news.link}
           posts={news}
         />
-        <div className="sm:grid md:grid-cols-3 gap-5">
+        <div className="md:grid md:grid-cols-3 gap-5">
           <section>
             <HomeDailyNews
               title={home.daily.title}

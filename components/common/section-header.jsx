@@ -42,7 +42,7 @@ export default function CommonSectionHeader({
 
   if (type === 'primary') {
     return (
-      <div className={`flex items-center gap-3 ${className}`}>
+      <div className={`pl-2 sm:pl-0 flex items-center gap-3 ${className}`}>
         {link ? (
           <>
             <Link href={link}>

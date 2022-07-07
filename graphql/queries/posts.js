@@ -221,62 +221,6 @@ export const QUERY_POST_BY_ID = gql`
         title
         uri
       }
-    }
-  }
-`;
-
-export const QUERY_POST_SEO_BY_ID = gql`
-  query PostBySlug($id: ID!) {
-    post(id: $id, idType: DATABASE_ID) {
-      author {
-        node {
-          avatar {
-            height
-            url
-            width
-          }
-          id
-          name
-          slug
-          firstName
-          lastName
-        }
-      }
-      id
-      categories {
-        edges {
-          node {
-            databaseId
-            id
-            name
-            slug
-            uri
-          }
-        }
-      }
-      content
-      date
-      excerpt
-      featuredImage {
-        node {
-          altText
-          caption
-          sourceUrl
-          srcSet
-          sizes
-          id
-        }
-      }
-      modified
-      databaseId
-      title
-      slug
-      isSticky
-      previous {
-        databaseId
-        title
-        uri
-      }
       seo {
         fullHead
       }

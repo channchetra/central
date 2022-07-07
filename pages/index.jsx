@@ -36,14 +36,18 @@ export default function Index({ posts = {} }) {
           posts={news}
         />
         <div className="md:grid md:grid-cols-3 gap-5">
-          <section>
+          <section className="flex flex-col">
             <HomeDailyNews
               title={home.daily.title}
               link={home.daily.link}
               posts={daily}
             />
-            <div className="relative h-[684px]">
-              <Image src={home.daily.banner} layout="fill" objectFit="cover" />
+            <div className="relative md:flex-1 h-[900px]">
+              <Image
+                src={home.daily.banner}
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
           </section>
           <section className="col-span-2">

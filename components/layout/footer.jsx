@@ -25,7 +25,7 @@ export default function Footer() {
             </a>
           </Link>
         </section>
-        <section className="mt-6 px-4 sm:px-0 grid md:grid-cols-7 xl:grid-cols-3 gap-5 lg:gap-5">
+        <section className="mt-6 px-4 sm:px-0 grid md:grid-cols-7 xl:grid-cols-3 gap-5 md:gap-3 lg:gap-5">
           <div className="md:col-span-2 xl:col-auto">
             <CommonSectionHeader
               type="secondary"
@@ -88,13 +88,13 @@ export default function Footer() {
           </div>
         </section>
 
-        <section className="copy-right mt-4 md:mt-8 lg:mt-4 px-4 sm:px-0 py-2 lg:px-0 grid sm:grid-cols-2">
-          <div className="text-xs text-gray-400">
+        <section className="copy-right mt-8 py-2 lg:px-0 flex items-center justify-between flex-col md:flex-row">
+          <div className="text-xs text-gray-400 text-center md:text-left">
             ឆ្នាំ{new Date().getFullYear()} © រក្សាសិទ្ធគ្រប់យ៉ាងដោយ
-            អប្សរាមេឌាសឺវីស / <br className="sm:hidden" /> Apsara Media Services
+            អប្សរាមេឌាសឺវីស / Apsara Media Services
             (AMS)
           </div>
-          <div className="sm:text-right">
+          <div className="md:text-right">
             <Link href="#">
               <a className="text-xs">
                 គោលការណ៍ភាពឯងជន លក្ខ័ណក្នុងការប្រើប្រាស់ COOKIE (ខូខី)

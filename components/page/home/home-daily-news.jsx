@@ -23,7 +23,7 @@ export default function HomeDailyNews({ title, link, posts = [], className = '' 
             key={post.id}
             post={post}
             config={{
-              listView: $breakpoints.lgAndUp,
+              listView: true,
               showExcerpt: false,
               showLineSeparator: true,
               showImage: !$breakpoints.mdOnly && !$breakpoints.lgOnly,

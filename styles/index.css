@@ -27,10 +27,11 @@
   @apply bg-[#c70003] dark:bg-gray-800;
 }
 .flagship > a:nth-child(4) {
-  @apply bg-[#55316f] dark:bg-gray-800 -ml-1;
+  @apply bg-[#55316f] dark:bg-gray-800 -ml-[0.5px];
 }
 
-.block-avi span {
+.block-avi span,
+.block-cambodia span {
   @apply -z-10;
 }
 html {

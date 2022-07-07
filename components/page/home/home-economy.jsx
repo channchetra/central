@@ -21,16 +21,14 @@ export default function HomeEconomy({ title, link, posts = [], className = '' })
             key={post.id}
             post={post}
             config={{
+              showImage: false,
               listView: true,
               showExcerpt: false,
               showLineSeparator: true,
             }}
             styles={{
-              image: {
-                image: 'aspect-video',
-              },
               lineSeparator: `border-b pb-4 ${
-                index > 17 ? 'sm:border-none' : ''
+                index > 16 ? 'sm:border-none' : ''
               } ${index > 17 ? 'border-none' : ''}`,
             }}
           />

@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <section className="bg-ams-light dark:bg-zinc-700">
       <Container>
-        <section className="py-6 border-b-2 border-gray-300 text-center sm:text-left">
+        <section className="py-6 border-b-2 border-zinc-300 text-center sm:text-left">
           <Link href="/" className="inline-block">
             <a aria-label="" className="inline-block">
               <div className="w-44 h-20 relative">
@@ -66,7 +66,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div className="lg:pl-3 lg:border-l lg:border-slate-500 dark:border-neutral-50">
+          <div className="lg:pl-3 lg:border-l lg:border-zinc-400 dark:border-neutral-50">
             <CommonSectionHeader
               type="secondary"
               title="ស្វែងយល់បន្ថែម"

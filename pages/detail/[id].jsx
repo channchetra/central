@@ -95,7 +95,7 @@ export default function Detail({post}) {
 
 export async function getStaticProps({ params = {} }) {
   const { id } = params;
-  const { post } = await getPostById( id, true);
+  const { post } = await getPostById(id);
   return {
     props: {
       post

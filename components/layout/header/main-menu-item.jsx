@@ -14,9 +14,7 @@ export default function MainMenuItem({ menu, index }) {
             <a
               onMouseEnter={() => setPopoverOpen(true)}
               onMouseLeave={() => setPopoverOpen(false)}
-              className={`group py-4 text-xs lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800 dark:text-neutral-50 ${
-                popoverOpen ? 'border-sky-400 dark:border-zinc-800' : ''
-              }`}
+              className="group py-4 text-xs lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 dark:hover:border-zinc-800 dark:text-neutral-50"
             >
               <span className="font-bold">{menu.name}</span>
               <ChevronDownIcon

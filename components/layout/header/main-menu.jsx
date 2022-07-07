@@ -40,7 +40,7 @@ export default function MainMenu({ mainMenus }) {
         >
           <Popover.Panel
             focus
-            className="absolute top-0 inset-x-0 z-10 transition transform origin-top-right h-screen"
+            className="absolute top-0 inset-x-0 z-10 transition transform origin-top-right h-screen sm:hidden"
           >
             {({ close }) => (
               <div className="shadow-lg bg-white dark:bg-gray-800 h-full">

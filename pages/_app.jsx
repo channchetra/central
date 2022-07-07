@@ -16,7 +16,9 @@ function MyApp({ Component, pageProps }) {
         <Layout meta={meta}>
           <Component {...pageProps} />
         </Layout>
-        <ThemeSwitcher />
+        <div className="hidden sm:inline">
+          <ThemeSwitcher />
+        </div>
         <NextNProgress color="#cf0a10" options={{ showSpinner: false }} />
       </ThemeProvider>
     </ApolloProvider>

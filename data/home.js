@@ -60,7 +60,7 @@ const home = {
     title: 'សេដ្ឋកិច្ច',
     link: '/ams-news/economy',
     categoryName: 'economy',
-    first: 19,
+    first: 18,
   },
   election: {
     title: 'ការបោះឆ្នោត',

@@ -1,36 +1,38 @@
+import HTMLReactParser from 'html-react-parser';
+import Head from 'next/head';
 import InfiniteScroll from 'react-infinite-scroller';
 import Container from '~/components/layout/container';
 import PostDetailItem from '~/components/post/post-detail-item';
 import SkeletonPostDetail from '~/components/skeleton/skeleton-post-detail';
 
 export default function TemplateSingle({
+  post = {},
   posts = [],
   hasMore = true,
   previous,
   title,
 }) {
   return (
-    <Container>
-      <InfiniteScroll
-        pageStart={0}
-        loadMore={previous}
-        hasMore={hasMore}
-        loader={
-          <div className="grid sm:grid-cols-3 gap-3 sm:gap-6">
-            <div className="col-span-2">
-              <SkeletonPostDetail className="my-3" />
+    <>
+      <Head>{HTMLReactParser(post.seo.fullHead)}</Head>
+      <Container>
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={previous}
+          hasMore={hasMore}
+          loader={
+            <div className="grid sm:grid-cols-3 gap-3 sm:gap-6" key={0}>
+              <div className="col-span-2">
+                <SkeletonPostDetail className="my-3" />
+              </div>
             </div>
-          </div>
-        }
-      >
-        {posts.map((post) => (
-          <PostDetailItem
-            title={title}
-            key={post.id}
-            post={post}
-          />
-        ))}
-      </InfiniteScroll>
-    </Container>
+          }
+        >
+          {posts.map((_post) => (
+            <PostDetailItem title={title} key={_post.id} post={_post} />
+          ))}
+        </InfiniteScroll>
+      </Container>
+    </>
   );
 }

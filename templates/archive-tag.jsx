@@ -5,6 +5,8 @@ import TagBanner from '~/components/page/tag/tag-banner';
 import PostItem from '~/components/post/post-item';
 import { SkeletonTagPage } from '~/components/skeleton';
 import SkeletonPostItem from '~/components/skeleton/skeleton-post-item';
+import Head from 'next/head';
+import HTMLReactParser from 'html-react-parser';
 
 export default function TemplateArchiveTag({
   tag = {},
@@ -12,7 +14,7 @@ export default function TemplateArchiveTag({
   hasMore = true,
   loadMore = () => {},
   loading = false,
-  isFallback = false
+  isFallback = false,
 }) {
   if (isFallback) {
     return <SkeletonTagPage />;
@@ -20,6 +22,7 @@ export default function TemplateArchiveTag({
 
   return (
     <>
+      <Head>{HTMLReactParser(tag.seo.fullHead)}</Head>
       <TagBanner tag={tag} className="mb-4" />
       <Container>
         <ClientOnly>

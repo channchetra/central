@@ -7,13 +7,12 @@ import { useApollo } from '~/lib/apollo-client';
 import NextNProgress from 'nextjs-progressbar';
 
 function MyApp({ Component, pageProps }) {
-  const { meta } = pageProps || {};
   const apolloClient = useApollo(pageProps);
 
   return (
     <ApolloProvider client={apolloClient}>
       <ThemeProvider attribute="class">
-        <Layout meta={meta}>
+        <Layout>
           <Component {...pageProps} />
         </Layout>
         <ThemeSwitcher />

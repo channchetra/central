@@ -1,3 +1,5 @@
+import HTMLReactParser from 'html-react-parser';
+import Head from 'next/head';
 import InfiniteScroll from 'react-infinite-scroller';
 import ClientOnly from '~/components/client-only';
 import Container from '~/components/layout/container';
@@ -21,6 +23,7 @@ export default function TemplateArchiveCategory({
 
   return (
     <>
+      <Head>{HTMLReactParser(category.seo.fullHead)}</Head>
       {category.banner && <CategoryBanner image={category.banner} />}
       <Container>
         <CategoryTitle

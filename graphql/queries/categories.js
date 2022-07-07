@@ -116,6 +116,9 @@ export const QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG = gql`
           startCursor
         }
       }
+      seo {
+        fullHead
+      }
     }
   }
 `;

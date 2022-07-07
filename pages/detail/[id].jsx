@@ -64,6 +64,7 @@ export default function Post({ post = {} }) {
       title={title}
       hasMore={hasMore}
       posts={posts}
+      post={post}
     />
   );
 }

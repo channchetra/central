@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getPostById } from '~/lib/posts';
+import { getPostById, postPathById } from '~/lib/posts';
 import TemplateSingle from '~/templates/single';
 import Container from '~/components/layout/container';
 import SkeletonPostDetail from '~/components/skeleton/skeleton-post-detail';
@@ -8,11 +8,6 @@ import { find } from 'lodash';
 import { getAllPostsWithSlug } from '../../lib/api';
 
 export default function Detail({post}) {
-
-  const [posts, setPosts] = useState([post]);
-  const [title, setTitle] = useState(post.title);
-  const [id, setId] = useState(post.databaseId);
-  const [hasMore, setHasMore] = useState(true);
 
   const router = useRouter();
 
@@ -28,8 +23,10 @@ export default function Detail({post}) {
     )
   }
   
-
-  
+  const [posts, setPosts] = useState([post]);
+  const [title, setTitle] = useState(post.title);
+  const [id, setId] = useState(post.databaseId);
+  const [hasMore, setHasMore] = useState(true);
 
   const { postFormats = [] } = post || {};
   const isVideo = !!find(postFormats, ['slug', 'post-format-video']);
@@ -59,7 +56,7 @@ export default function Detail({post}) {
         window.history.pushState(
           null,
           item.title,
-          `/detail/${item.databaseId}`
+          postPathById(item.databaseId)
         );
         setTitle(item.title);
         setId(item.databaseId);
@@ -108,7 +105,7 @@ export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug();
 
   return {
-    paths: allPosts.edges.map(({ node }) => `/detail/${node.databaseId}`) || [],
+    paths: allPosts.edges.map(({ node }) => postPathById(node.databaseId) || []),
     fallback: true,
   };
 }

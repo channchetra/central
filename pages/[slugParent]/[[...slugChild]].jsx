@@ -73,7 +73,7 @@ export async function getStaticProps({ params = {} } = {}) {
       : slugParent;
 
   const apolloClient = initializeApollo();
-  await apolloClient.query({
+  const { category } = await apolloClient.query({
     query: QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG,
     variables: {
       slug,
@@ -82,7 +82,8 @@ export async function getStaticProps({ params = {} } = {}) {
 
   return addApolloState(apolloClient, {
     props: {},
-    revalidate: 10
+    revalidate: 10,
+    notFound: !category,
   });
 }
 

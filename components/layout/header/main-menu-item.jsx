@@ -14,11 +14,11 @@ export default function MainMenuItem({ menu, index }) {
             <a
               onMouseEnter={() => setPopoverOpen(true)}
               onMouseLeave={() => setPopoverOpen(false)}
-              className="group py-4 text-xs lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 dark:hover:border-zinc-800 dark:text-neutral-50 whitespace-nowrap"
+              className="group py-4 text-sm lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 dark:hover:border-zinc-800 dark:text-neutral-50 whitespace-nowrap"
             >
               <span className="font-bold">{menu.name}</span>
               <ChevronDownIcon
-                className="ml-1 h-3 w-3 lg:h-5 Lg:w-5 text-zinc-700 dark:text-neutral-50"
+                className="lg:ml-1 h-3 w-3 lg:h-5 Lg:w-5 text-zinc-700 dark:text-neutral-50"
                 aria-hidden="true"
               />
             </a>
@@ -62,7 +62,7 @@ export default function MainMenuItem({ menu, index }) {
     <Link href={menu.href}>
       <a
         aria-label={menu.name}
-        className="group py-4 text-xs lg:text-base text-black font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800 dark:text-neutral-50"
+        className="group py-4 text-sm lg:text-base text-black font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent hover:border-b-2 hover:border-sky-400 dark:hover:border-zinc-800 dark:text-neutral-50"
       >
         {menu.name}
       </a>

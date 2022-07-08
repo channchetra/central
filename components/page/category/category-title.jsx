@@ -20,9 +20,9 @@ export default function CategoryTitle({
         image: 'w-[30%] lg:w-1/4 hidden md:block',
         content: `flex-1 ${image ? 'md:pl-5' : ''}`,
       },
-      title: 'font-bold text-2xl md:text-3xl',
+      title: 'font-bold text-2xl lg:text-3xl px-3 sm:px-0',
       description:
-        'text-lg md:text-xl leading-relaxed md:leading-loose mt-3 md:mt-5',
+        'text-lg lg:text-xl leading-relaxed lg:leading-loose mt-3 lg:mt-5 px-3 sm:px-0',
       image: {
         wrapper: 'relative aspect-[2/3] lg:-mt-20',
         image: '',

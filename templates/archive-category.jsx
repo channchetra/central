@@ -34,7 +34,7 @@ export default function TemplateArchiveCategory({
         />
         <ClientOnly>
           <InfiniteScroll pageStart={0} loadMore={loadMore} hasMore={hasMore}>
-            <section className="grid md:grid-cols-4 gap-5 mb-5">
+            <section className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
               {posts.map((post) => (
                 <PostItem
                   key={`post-${post.databaseId}`}
@@ -49,7 +49,7 @@ export default function TemplateArchiveCategory({
             </section>
           </InfiniteScroll>
           {loading && (
-            <section className="grid md:grid-cols-4 gap-5 mb-5">
+            <section className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
               <SkeletonPostItem />
               <SkeletonPostItem />
               <SkeletonPostItem />

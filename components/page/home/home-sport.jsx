@@ -1,9 +1,12 @@
 import classNames from 'classnames';
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
+import useBreakpoint from '~/hooks/use-breakpoint';
 
 export default function HomeSport({ title, link, posts = [], className = '' }) {
   if (!posts.length) return null;
+
+  const { $breakpoints } = useBreakpoint();
 
   return (
     <section className={classNames(['sport', className])}>
@@ -40,12 +43,13 @@ export default function HomeSport({ title, link, posts = [], className = '' }) {
                   config={{
                     listView: true,
                     showExcerpt: false,
+                    showImage: $breakpoints.lgAndUp,
                     showLineSeparator: true,
                   }}
                   styles={{
                     lineSeparator: `border-b pb-4 ${
-                      index > 2 ? 'pb-0 sm:border-none' : ''
-                    } ${index > 3 ? 'border-none' : ''}`,
+                      index > 2 ? 'pb-0 border-none' : ''
+                    }`,
                   }}
                 />
               )

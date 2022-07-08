@@ -7,22 +7,10 @@ export default function CommonSectionHeader({
   title,
   link,
   className = 'text-xl dark:text-neutral-50',
-  lineColor = 'before:bg-gray-100',
+  lineColor = 'bg-gray-100',
   lineHighlightColor = 'after:bg-red-900 after:bg-zinc-400 dark:text-neutral-50',
 }) {
-  const primaryClass = classNames(
-    'relative',
-    'pl-3 sm:pl-0 pr-5',
-    "before:content-['']",
-    'before:block',
-    'before:h-1',
-    'before:absolute',
-    'before:left-full',
-    'before:top-2/4',
-    'before:w-screen',
-    'dark:text-neutral-50',
-    lineColor
-  );
+  const primaryClass = classNames('h-1', 'flex-1', lineColor);
   const secondaryClass = classNames(
     'relative',
     'pb-2',
@@ -54,13 +42,14 @@ export default function CommonSectionHeader({
 
   if (type === 'primary') {
     return (
-      <div className={`overflow-hidden ${className}`}>
+      <div className={`pl-2 sm:pl-0 flex items-center gap-3 ${className}`}>
         {link ? (
-          <Link href={link}>
-            <a aria-label={title}>
-              <span className={primaryClass}>{title}</span>
-            </a>
-          </Link>
+          <>
+            <Link href={link}>
+              <a aria-label={title}>{title}</a>
+            </Link>
+            <div className={primaryClass} />
+          </>
         ) : (
           <span className={primaryClass}>{title}</span>
         )}

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
+import useBreakpoint from '~/hooks/use-breakpoint';
 
 export default function HomeElection({
   title,
@@ -9,6 +10,8 @@ export default function HomeElection({
   className = '',
 }) {
   if (!posts.length) return null;
+
+  const { $breakpoints } = useBreakpoint();
 
   return (
     <section className={classNames(['election', className])}>
@@ -20,7 +23,7 @@ export default function HomeElection({
           className="text-xl font-bold"
         />
       </div>
-      <section className="grid md:grid-cols-3 gap-5">
+      <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {posts.map((post, index) => (
           <PostItem
             key={post.id}
@@ -28,6 +31,7 @@ export default function HomeElection({
             config={{
               showLineSeparator: true,
               showExcerpt: false,
+              showImage: $breakpoints.smAndUp || index === 0,
             }}
             styles={{
               lineSeparator: `border-b pb-4 sm:pb-5 ${

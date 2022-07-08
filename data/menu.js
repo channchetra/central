@@ -120,8 +120,6 @@ export default class Menu {
     { name: 'បរិស្ថាន', href: '/ams-environment' },
     { name: 'វីដេអូ', href: '/video' },
     { name: 'ទូរទស្សន៍', href: '/category-tv' },
-    { name: '', href: '#' },
-    { name: '', href: '#' },
   ];
 
   static footerLearnMore = [

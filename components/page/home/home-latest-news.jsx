@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import useBreakpoint from '~/hooks/use-breakpoint';
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
 
@@ -10,6 +11,8 @@ export default function HomeLatestNews({
 }) {
   if (!posts.length) return null;
 
+  const { $breakpoints } = useBreakpoint();
+
   return (
     <section className={classNames(['daily-news', className])}>
       <div className="my-5">
@@ -20,7 +23,7 @@ export default function HomeLatestNews({
           className="text-xl font-bold"
         />
       </div>
-      <div className="grid md:grid-cols-2 gap-5 mb-7 md:mb-7">
+      <div className="grid md:grid-cols-2 gap-5 mb-3 lg:mb-5">
         <PostItem
           key={posts[0]?.id}
           post={posts[0]}
@@ -29,14 +32,14 @@ export default function HomeLatestNews({
             showLineSeparator: true,
           }}
           styles={{
-            lineSeparator: 'pb-3 border-b sm:border-none',
+            lineSeparator: 'pb-3 border-b md:border-none',
             image: {
               imageWrapper:
-                'relative lg:aspect-[4/3.07] sm:aspect-[7/6] aspect-video',
+                'relative lg:aspect-[4/3.07] md:aspect-[7/6] aspect-video',
             },
           }}
         />
-        <div className="block-latest grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="block-latest grid grid-cols-1 sm:grid-cols-2 gap-5">
           {posts.map(
             (post, index) =>
               index > 0 && (
@@ -46,6 +49,7 @@ export default function HomeLatestNews({
                   config={{
                     showExcerpt: false,
                     showLineSeparator: true,
+                    showImage: $breakpoints.smAndUp,
                   }}
                   styles={{
                     lineSeparator: `border-b pb-3 sm:pb-3 mb-1 ${

@@ -3,11 +3,20 @@ import { getPostById } from '~/lib/posts';
 import TemplateSingle from '~/templates/single';
 import Container from '~/components/layout/container';
 import SkeletonPostDetail from '~/components/skeleton/skeleton-post-detail';
+import { useRouter } from 'next/router';
+import { find } from 'lodash';
 import { getAllPostsWithSlug } from '../../lib/api';
 
-export default function Post({ post = {} }) {
+export default function Detail({post}) {
 
-  if (!post || !post?.databaseId) {
+  const [posts, setPosts] = useState([post]);
+  const [title, setTitle] = useState(post.title);
+  const [id, setId] = useState(post.databaseId);
+  const [hasMore, setHasMore] = useState(true);
+
+  const router = useRouter();
+
+  if (router.isFallback) {
     return (
       <Container>
         <div className="grid sm:grid-cols-3 gap-3 sm:gap-6">
@@ -16,13 +25,14 @@ export default function Post({ post = {} }) {
           </div>
         </div>
       </Container>
-    );
+    )
   }
+  
 
-  const [title, setTitle] = useState(post.title);
-  const [id, setId] = useState(post.databaseId);
-  const [hasMore, setHasMore] = useState(true);
-  const [posts, setPosts] = useState([post]);
+  
+
+  const { postFormats = [] } = post || {};
+  const isVideo = !!find(postFormats, ['slug', 'post-format-video']);
 
   const previous = async () => {
     const preId = posts[posts.length - 1].previous?.databaseId || false;
@@ -46,7 +56,11 @@ export default function Post({ post = {} }) {
     if (current[0]) {
       const item = current[0];
       if (item.databaseId !== id) {
-        window.history.pushState(null, item.title, `/detail/${item.databaseId}`);
+        window.history.pushState(
+          null,
+          item.title,
+          `/detail/${item.databaseId}`
+        );
         setTitle(item.title);
         setId(item.databaseId);
       }
@@ -58,24 +72,36 @@ export default function Post({ post = {} }) {
     return () => clearInterval(timer);
   });
 
+  if (isVideo) {
+    return (
+      <TemplateSingle
+        previous={previous}
+        title={title}
+        hasMore={hasMore}
+        posts={posts}
+      />
+    );
+  }
   return (
     <TemplateSingle
       previous={previous}
       title={title}
       hasMore={hasMore}
       posts={posts}
+      post={post}
     />
   );
 }
 
-export async function getStaticProps({ params }) {
-  const { post } = await getPostById(params.id, true);
+export async function getStaticProps({ params = {} }) {
+  const { id } = params;
+  const { post } = await getPostById(id);
   return {
     props: {
-      post,
+      post
     },
-    revalidate: 10,
-  };
+    revalidate: 10
+  }
 }
 
 export async function getStaticPaths() {

@@ -1,5 +1,6 @@
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
+import useBreakpoint from '~/hooks/use-breakpoint';
 
 export default function HomePolitico360({
   title,
@@ -8,6 +9,8 @@ export default function HomePolitico360({
   className = '',
 }) {
   if (!posts.length) return null;
+
+  const { $breakpoints } = useBreakpoint();
 
   return (
     <section className={`block-politico ${className}`}>
@@ -23,21 +26,14 @@ export default function HomePolitico360({
         key={posts[0]?.id}
         post={posts[0]}
         config={{
-          showExcerpt: false,
+          showExcerpt: true,
           showLineSeparator: true,
         }}
         styles={{
-          title: {
-            wrapper: 'mb-3',
-            title: 'text-base lg:text-lg lg:leading-relaxed',
-          },
-          excerpt: {
-            excerpt: 'text-sm',
-          },
           lineSeparator: 'pb-3 border-b sm:border-none',
         }}
       />
-      <div className="mt-5 space-y-7">
+      <div className="mt-3 lg:mt-5 space-y-4 lg:space-y-7">
         {posts.map(
           (post, index) =>
             index > 0 && (
@@ -46,11 +42,13 @@ export default function HomePolitico360({
                 post={post}
                 config={{
                   listView: true,
-                  showExcerpt: true,
+                  showExcerpt: $breakpoints.smAndUp,
                   showLineSeparator: true,
+                  excerptLineClamp: $breakpoints.lgAndUp ? '3' : '2',
+                  showImage: $breakpoints.smAndUp,
                 }}
                 styles={{
-                  lineSeparator: `border-b pb-4 sm:pb-6 ${
+                  lineSeparator: `border-b pb-4 sm:pb-4 lg:pb-5 ${
                     index > 3 ? 'sm:border-none' : ''
                   } ${index > 4 ? 'border-none' : ''}`,
                 }}

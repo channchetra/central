@@ -133,6 +133,9 @@ export const QUERY_AUTHOR_WITH_PAGINATED_POSTS_BY_SLUG = gql`
           startCursor
         }
       }
+      seo {
+        fullHead
+      }
     }
   }
 `;

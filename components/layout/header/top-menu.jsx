@@ -10,7 +10,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
   const [popoverOpen, setPopoverOpen] = useState(false);
 
   return (
-    <div className="hidden sm:flex items-center justify-between">
+    <div className="hidden md:flex items-center justify-between">
       <div className="flex gap-3 items-center">
         <Link href="/">
           <a aria-label="AMS Central">
@@ -75,7 +75,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
                           leaveFrom="opacity-100 translate-y-0"
                           leaveTo="opacity-0 translate-y-1"
                         >
-                          <Popover.Panel className="absolute z-20 -ml-4 transform px-2 sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2 shadow-md">
+                          <Popover.Panel className="absolute z-20 -ml-4 transform px-2 sm:px-0 lg:ml-0 md:left-1/2 md:-translate-x-1/2 shadow-md">
                             <div className="rounded-lg overflow-hidden">
                               <div className="relative grid gap-6 bg-white dark:bg-zinc-800 p-5 sm:gap-5 sm:p-3">
                                 {amsWebsites.map((item, index) => (
@@ -104,7 +104,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
         <div className="flagship items-center hidden sm:flex">
           {flagshipMenus.map((item, flagShipIndex) => (
             <Link href={item.href} key={`flag-ship-${flagShipIndex}`}>
-              <a className="p-4 lg:p-5 -skew-x-12 text-xs lg:text-base font-bold text-white hover:opacity-75 flex items-center h-full dark:text-neutral-50">
+              <a className="px-3 py-6 lg:px-5 -skew-x-12 text-xs lg:text-base font-bold text-white hover:opacity-75 flex items-center h-full dark:text-neutral-50">
                 {item.name}
               </a>
             </Link>

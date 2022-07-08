@@ -2,7 +2,12 @@ import classNames from 'classnames';
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
 
-export default function HomeEconomy({ title, link, posts = [], className = '' }) {
+export default function HomeEconomy({
+  title,
+  link,
+  posts = [],
+  className = '',
+}) {
   if (!posts.length) return null;
 
   return (
@@ -21,17 +26,13 @@ export default function HomeEconomy({ title, link, posts = [], className = '' })
             key={post.id}
             post={post}
             config={{
+              showImage: false,
               listView: true,
               showExcerpt: false,
               showLineSeparator: true,
             }}
             styles={{
-              image: {
-                image: 'aspect-video',
-              },
-              lineSeparator: `border-b pb-4 ${
-                index > 17 ? 'sm:border-none' : ''
-              } ${index > 17 ? 'border-none' : ''}`,
+              lineSeparator: `border-b pb-4 ${index > 16 ? 'border-none' : ''}`,
             }}
           />
         ))}

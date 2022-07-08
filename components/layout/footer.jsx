@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <section className="bg-ams-light dark:bg-zinc-700">
       <Container>
-        <section className="py-6 border-b-2 border-gray-300 text-center sm:text-left">
+        <section className="py-6 border-b-2 border-zinc-300 text-center sm:text-left">
           <Link href="/" className="inline-block">
             <a aria-label="" className="inline-block">
               <div className="w-44 h-20 relative">
@@ -25,15 +25,15 @@ export default function Footer() {
             </a>
           </Link>
         </section>
-        <section className="mt-6 hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div>
+        <section className="mt-6 px-4 sm:px-0 grid md:grid-cols-7 xl:grid-cols-3 gap-5 md:gap-3 lg:gap-5">
+          <div className="md:col-span-2 xl:col-auto">
             <CommonSectionHeader
               type="secondary"
               title="AMS CENTRAL"
               lineColor="before:bg-zinc-50"
-              className="text-xl font-bold mb-5"
+              className="text-lg lg:text-xl font-bold mb-5"
             />
-            <ul className="sm:ml-3 grid sm:grid-cols-2 gap-3">
+            <ul className="sm:ml-3 grid sm:grid-cols-2 md:grid-cols-none lg:grid-cols-2 gap-3">
               {Menu.footerCentral.map((item, index) => (
                 <li key={`footer-ams-${index}`}>
                   <Link
@@ -46,14 +46,14 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="md:col-span-3 xl:col-auto">
             <CommonSectionHeader
               type="secondary"
               title="បណ្ដាញព័ត៌មានផ្សេងទៀតពី AMS GROUP"
               lineColor="before:bg-zinc-50"
-              className="text-xl font-bold mb-5"
+              className="text-lg lg:text-xl  font-bold mb-5"
             />
-            <ul className="sm:ml-3 grid sm:grid-cols-2 gap-3">
+            <ul className="sm:ml-3 grid sm:grid-cols-2 md:grid-cols-none lg:grid-cols-2 gap-3">
               {Menu.amsGroup.map((item, index) => (
                 <li key={`ams-group-${index}`}>
                   <a
@@ -66,14 +66,14 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div className="lg:pl-3 lg:border-l lg:border-slate-500 dark:border-neutral-50">
+          <div className="md:col-span-2 xl:col-auto lg:pl-3 lg:border-l lg:border-zinc-400 dark:border-neutral-50">
             <CommonSectionHeader
               type="secondary"
               title="ស្វែងយល់បន្ថែម"
               lineColor="before:bg-zinc-50"
-              className="text-xl font-bold mb-5"
+              className="text-lg lg:text-xl font-bold mb-5"
             />
-            <ul className="sm:ml-3 grid gap-3">
+            <ul className="sm:ml-3 grid sm:grid-cols-2 md:grid-cols-none gap-3">
               {Menu.footerLearnMore.map((item, index) => (
                 <li key={`footer-${index}`}>
                   <Link
@@ -88,13 +88,13 @@ export default function Footer() {
           </div>
         </section>
 
-        <section className="copy-right px-3 py-2 sm:px-0 grid sm:grid-cols-2">
-          <div className="text-xs text-gray-400">
+        <section className="copy-right mt-8 py-2 lg:px-0 flex items-center justify-between flex-col md:flex-row">
+          <div className="text-xs text-gray-400 text-center md:text-left">
             ឆ្នាំ{new Date().getFullYear()} © រក្សាសិទ្ធគ្រប់យ៉ាងដោយ
-            អប្សរាមេឌាសឺវីស / <br className="sm:hidden" /> Apsara Media Services
+            អប្សរាមេឌាសឺវីស / Apsara Media Services
             (AMS)
           </div>
-          <div className="sm:text-right">
+          <div className="md:text-right">
             <Link href="#">
               <a className="text-xs">
                 គោលការណ៍ភាពឯងជន លក្ខ័ណក្នុងការប្រើប្រាស់ COOKIE (ខូខី)

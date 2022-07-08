@@ -35,14 +35,14 @@ export default function Index({ posts = {} }) {
           link={home.news.link}
           posts={news}
         />
-        <div className="sm:grid md:grid-cols-3 gap-5">
-          <section>
+        <div className="md:grid md:grid-cols-3 gap-5">
+          <section className="flex flex-col">
             <HomeDailyNews
               title={home.daily.title}
               link={home.daily.link}
               posts={daily}
             />
-            <div className="relative h-[684px]">
+            <div className="relative md:flex-1 aspect-[1/2]">
               <Image src={home.daily.banner} layout="fill" objectFit="cover" />
             </div>
           </section>
@@ -61,7 +61,7 @@ export default function Index({ posts = {} }) {
         />
       </Container>
 
-      <section className="avi-voice relative my-7 py-7 sm:py-12 sm:pt-24 sm:pb-20">
+      <section className="block-avi relative my-7 py-12 sm:py-7 md:py-14 lg:py-20 lg:pb-20">
         <Image
           src={home.aviVoice.banner}
           layout="fill"
@@ -74,11 +74,11 @@ export default function Index({ posts = {} }) {
               {home.aviVoice.title}
             </span>
           </div>
-          <p className="text-white sm:w-2/5 hidden sm:block mb-3">
+          <p className="text-white sm:w-2/3 lg:w-1/2 xl:w-2/5 hidden sm:block mb-3 text-sm md:text-base">
             {home.aviVoice.description}
           </p>
           <Link href={home.aviVoice.button.link}>
-            <a className="mt-5 py-2 px-5 bg-rose-900 text-white text-base z-50">
+            <a className="py-2 px-5 bg-rose-900 text-white text-sm md:text-base inline-block">
               {home.aviVoice.button.title}
             </a>
           </Link>
@@ -94,7 +94,7 @@ export default function Index({ posts = {} }) {
       </Container>
 
       {/* Block banner Cambodia 2050 */}
-      <section className="relative my-7 py-7 sm:py-12 sm:pt-24 sm:pb-20">
+      <section className="block-cambodia relative my-7 py-12 sm:py-7 md:py-14 lg:py-20 lg:pb-20">
         <Image
           src={home.cambodia2050.banner}
           layout="fill"
@@ -107,11 +107,11 @@ export default function Index({ posts = {} }) {
               {home.cambodia2050.title}
             </span>
           </div>
-          <p className="text-white sm:my-5 sm:w-2/5 hidden sm:block">
+          <p className="text-white sm:w-2/3 lg:w-1/2 xl:w-2/5 hidden sm:block mb-3 text-sm md:text-base">
             {home.cambodia2050.description}
           </p>
           <Link href={home.cambodia2050.button.link}>
-            <a className="bg-rose-900 text-white py-2 px-5 text-base z-50">
+            <a className="py-2 px-5 bg-rose-900 text-white text-sm md:text-base inline-block">
               {home.cambodia2050.button.title}
             </a>
           </Link>
@@ -120,7 +120,7 @@ export default function Index({ posts = {} }) {
 
       {/* Block Sports & Economy */}
       <Container>
-        <div className="sm:grid md:grid-cols-3 gap-5 pb-5">
+        <div className="md:grid md:grid-cols-3 gap-5 pb-5">
           <section className="col-span-2">
             <HomeSport
               title={home.sports.title}
@@ -132,10 +132,10 @@ export default function Index({ posts = {} }) {
               title={home.election.title}
               link={home.election.link}
               posts={election}
-              className="my-14"
+              className="my-5"
             />
 
-            <div className="relative mt-4 sm:mt-8 h-[450px] sm:h-[1100px]">
+            <div className="relative mt-4 sm:mt-8 aspect-[3/4]">
               <Image
                 src={home.election.banner}
                 layout="fill"

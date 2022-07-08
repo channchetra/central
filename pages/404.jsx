@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Container from '../components/layout/container';
 
-export default function FourOhFour() {
+export default function PageNotFound() {
   return (
     <Container>
       <div className="h-[45vh] flex items-center justify-center flex-col">

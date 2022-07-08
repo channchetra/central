@@ -2,10 +2,15 @@ import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
 import useBreakpoint from '~/hooks/use-breakpoint';
 
-export default function HomeDailyNews({ title, link, posts = [], className = '' }) {
+export default function HomeDailyNews({
+  title,
+  link,
+  posts = [],
+  className = '',
+}) {
   if (!posts.length) return null;
 
-  const { $breakpoints } = useBreakpoint()
+  const { $breakpoints } = useBreakpoint();
 
   return (
     <section className={`latest-news ${className}`}>
@@ -26,7 +31,7 @@ export default function HomeDailyNews({ title, link, posts = [], className = '' 
               listView: true,
               showExcerpt: false,
               showLineSeparator: true,
-              showImage: !$breakpoints.mdOnly && !$breakpoints.lgOnly,
+              showImage: $breakpoints.xlAndUp,
             }}
             styles={{
               image: {

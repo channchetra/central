@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import useBreakpoint from '~/hooks/use-breakpoint';
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
 
@@ -9,6 +10,8 @@ export default function HomeLatestNews({
   className = '',
 }) {
   if (!posts.length) return null;
+
+  const { $breakpoints } = useBreakpoint();
 
   return (
     <section className={classNames(['daily-news', className])}>
@@ -46,6 +49,7 @@ export default function HomeLatestNews({
                   config={{
                     showExcerpt: false,
                     showLineSeparator: true,
+                    showImage: $breakpoints.smAndUp,
                   }}
                   styles={{
                     lineSeparator: `border-b pb-3 sm:pb-3 mb-1 ${

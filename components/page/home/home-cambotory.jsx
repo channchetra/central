@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import CommonSectionHeader from '~/components/common/section-header';
 import PostItem from '~/components/post/post-item';
+import useBreakpoint from '~/hooks/use-breakpoint';
 
 export default function HomeCambotory({
   title,
@@ -9,6 +10,8 @@ export default function HomeCambotory({
   className = '',
 }) {
   if (!posts.length) return null;
+
+  const { $breakpoints } = useBreakpoint();
 
   return (
     <section className={classNames(['cambotory', className])}>
@@ -27,7 +30,9 @@ export default function HomeCambotory({
             key={post.id}
             post={post}
             config={{
+              showExcerpt: $breakpoints.smAndUp,
               showLineSeparator: true,
+              showImage: $breakpoints.smAndUp || index === 0,
             }}
             styles={{
               lineSeparator: `border-b pb-4 sm:pb-5 ${

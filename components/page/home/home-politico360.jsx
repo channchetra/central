@@ -42,9 +42,10 @@ export default function HomePolitico360({
                 post={post}
                 config={{
                   listView: true,
-                  showExcerpt: true,
+                  showExcerpt: $breakpoints.smAndUp,
                   showLineSeparator: true,
                   excerptLineClamp: $breakpoints.lgAndUp ? '3' : '2',
+                  showImage: $breakpoints.smAndUp,
                 }}
                 styles={{
                   lineSeparator: `border-b pb-4 sm:pb-4 lg:pb-5 ${

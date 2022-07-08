@@ -10,7 +10,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
   const [popoverOpen, setPopoverOpen] = useState(false);
 
   return (
-    <div className="hidden sm:flex items-center justify-between">
+    <div className="hidden md:flex items-center justify-between">
       <div className="flex gap-3 items-center">
         <Link href="/">
           <a aria-label="AMS Central">

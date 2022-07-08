@@ -7,10 +7,13 @@ export default function CategoryBanner({ image, className = '', styles }) {
     return (null)
   }
 
-  const classes = merge({
-    wrapper: 'relative w-full aspect-[11/2]',
-    image: '',
-  }, styles)
+  const classes = merge(
+    {
+      wrapper: 'relative w-full aspect-[11/4] md:aspect-[11/2]',
+      image: '',
+    },
+    styles
+  );
 
   return  <div className={`${className} ${classes.wrapper}`}>
     <Image

@@ -53,7 +53,7 @@ export default function ArchiveTagPage() {
 export async function getStaticProps({ params = {} } = {}) {
   const { slug } = params;
   const apolloClient = initializeApollo();
-  const { tag } = await apolloClient.query({
+  const { data } = await apolloClient.query({
     query: QUERY_TAG_WITH_PAGINATED_POSTS_BY_SLUG,
     variables: {
       slug,
@@ -63,7 +63,7 @@ export async function getStaticProps({ params = {} } = {}) {
   return addApolloState(apolloClient, {
     props: {},
     revalidate: 10,
-    notFound: !tag,
+    notFound: !data?.tag,
   });
 }
 

@@ -129,6 +129,14 @@ const getBreakpointStates = (screen, width = 0) => {
       Object.assign(states, {
         '2xl': true,
         '2xlOnly': true,
+
+        '2xlAndDown': true,
+
+        smAndUp: true,
+        mdAndUp: true,
+        lgAndUp: true,
+        xlAndUp: true,
+        '2xlAndUp': true,
       });
       break;
 

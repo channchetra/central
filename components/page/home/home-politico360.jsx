@@ -44,7 +44,6 @@ export default function HomePolitico360({
                   listView: true,
                   showExcerpt: $breakpoints.smAndUp,
                   showLineSeparator: true,
-                  excerptLineClamp: $breakpoints.lgAndUp ? '3' : '2',
                   showImage: $breakpoints.smAndUp,
                 }}
                 styles={{

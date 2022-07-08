@@ -42,7 +42,7 @@ export default function Index({ posts = {} }) {
               link={home.daily.link}
               posts={daily}
             />
-            <div className="relative md:flex-1 aspect-[1/2]">
+            <div className="relative md:flex-1 aspect-[2/3]">
               <Image src={home.daily.banner} layout="fill" objectFit="cover" />
             </div>
           </section>

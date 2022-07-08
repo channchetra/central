@@ -26,17 +26,10 @@ export default function HomePolitico360({
         key={posts[0]?.id}
         post={posts[0]}
         config={{
-          showExcerpt: false,
+          showExcerpt: true,
           showLineSeparator: true,
         }}
         styles={{
-          title: {
-            wrapper: 'mb-3',
-            title: 'text-base lg:text-lg lg:leading-relaxed',
-          },
-          excerpt: {
-            excerpt: 'text-sm',
-          },
           lineSeparator: 'pb-3 border-b sm:border-none',
         }}
       />

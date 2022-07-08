@@ -36,7 +36,7 @@ export default function HomeLatestNews({
             },
           }}
         />
-        <div className="block-latest grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="block-latest grid grid-cols-1 sm:grid-cols-2 gap-5">
           {posts.map(
             (post, index) =>
               index > 0 && (

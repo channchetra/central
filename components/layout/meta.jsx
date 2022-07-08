@@ -4,7 +4,7 @@ import { CMS_NAME, HOME_OG_IMAGE_URL } from '~/lib/constants';
 export default function Meta() {
   return (
     <Head>
-      <title>AMS Central {CMS_NAME}</title>
+      <title>{CMS_NAME}</title>
       <link
         rel="apple-touch-icon"
         sizes="180x180"

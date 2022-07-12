@@ -34,7 +34,7 @@ export default function HomeElection({
               showImage: $breakpoints.smAndUp || index === 0,
             }}
             styles={{
-              lineSeparator: `border-b pb-4 sm:pb-5 ${
+              lineSeparator: `border-b mb-3 pb-4 sm:pb-5 ${
                 index > 2 ? 'md:border-none' : ''
               } ${index > 3 ? 'border-none' : ''}`,
             }}

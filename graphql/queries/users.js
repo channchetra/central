@@ -103,7 +103,6 @@ export const QUERY_AUTHOR_WITH_PAGINATED_POSTS_BY_SLUG = gql`
     $slug: ID!
     $first: Int! = ${ARCHIVE_POST_PER_PAGE}
     $after: String
-    $postImageSize: MediaItemSizeEnum! = MEDIUM
   ) {
     user(
       id: $slug, idType: SLUG

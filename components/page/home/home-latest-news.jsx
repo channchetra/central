@@ -30,6 +30,7 @@ export default function HomeLatestNews({
           config={{
             showExcerpt: false,
             showLineSeparator: true,
+            imageSize: 'medium_large',
           }}
           styles={{
             lineSeparator: 'pb-3 border-b md:border-none',

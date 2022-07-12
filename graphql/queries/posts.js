@@ -63,7 +63,13 @@ export const ARCHIVE_POST_FIELDS = gql`
     excerpt
     featuredImage {
       node {
-        sourceUrl(size: $postImageSize)
+        mediaDetails {
+          sizes {
+            sourceUrl
+            name
+          }
+        }
+        sourceUrl
       }
     }
     postFormats {
@@ -285,7 +291,6 @@ export const QUERY_POSTS_SEARCH = gql`
     $first: Int = 20
     $search: String = ""
     $after: String = ""
-    $postImageSize: MediaItemSizeEnum! = MEDIUM_LARGE
   ) {
     posts(
       where: { search: $search, hasPassword: false }
@@ -327,12 +332,14 @@ export const QUERY_POSTS_SEARCH = gql`
           excerpt
           featuredImage {
             node {
-              altText
-              caption
-              sourceUrl(size: $postImageSize)
-              srcSet
-              sizes
               id
+              sourceUrl
+              mediaDetails {
+                sizes {
+                  sourceUrl
+                  name
+                }
+              }
             }
           }
         }

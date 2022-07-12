@@ -32,6 +32,7 @@ export default function PostItem({
     showLineSeparator: false,
     titleLineClamp: '2',
     excerptLineClamp: '3',
+    imageSize: 'td_485x360',
     ...config,
   };
   const {
@@ -119,6 +120,7 @@ export default function PostItem({
               config={{
                 showCategoryTag: conf.showCategoryTagOnImage,
                 showCategoryTagMultiple: conf.showCategoryTagMultiple,
+                imageSize: conf.imageSize,
               }}
             />
           </div>

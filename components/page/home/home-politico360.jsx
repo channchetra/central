@@ -28,6 +28,7 @@ export default function HomePolitico360({
         config={{
           showExcerpt: true,
           showLineSeparator: true,
+          imageSize: 'medium_large',
         }}
         styles={{
           lineSeparator: 'pb-3 border-b sm:border-none',

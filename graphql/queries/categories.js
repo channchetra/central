@@ -90,7 +90,6 @@ export const QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG = gql`
     $slug: ID!
     $first: Int! = ${ARCHIVE_POST_PER_PAGE}
     $after: String
-    $postImageSize: MediaItemSizeEnum! = MEDIUM
   ) {
     category(
       id: $slug, idType: SLUG
@@ -132,7 +131,6 @@ export const QUERY_CATEGORIES_WITH_POSTS_BY_SLUGS = gql`
   query CategoriesWithPostsBySlugs(
     $slugs: [String]!
     $first: Int! = ${ARCHIVE_POST_PER_PAGE}
-    $postImageSize: MediaItemSizeEnum! = MEDIUM
   ) {
     categories(
       where: { slug: $slugs }

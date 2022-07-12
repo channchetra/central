@@ -1,4 +1,4 @@
-import { compact, find, keys, map, without } from 'lodash';
+import { compact, find, keys, map } from 'lodash';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -171,21 +171,11 @@ export default function Index({ posts = {} }) {
 }
 
 export async function getStaticProps() {
-  const { categories: categoriesWithSmallImage } =
+  const { categories } =
     await getCategoriesWithPostsBySlugs(
-      without(
-        compact(map(home, (category) => category.categoryName)),
-        'ams-news',
-        'politico360'
-      ),
+      compact(map(home, (category) => category.categoryName))
     );
 
-  const { categories: categoriesWithLargeImage } =
-    await getCategoriesWithPostsBySlugs(['ams-news', 'politico360'], {
-      postImageSize: 'MEDIUM_LARGE',
-    });
-
-  const categories = [...categoriesWithSmallImage, ...categoriesWithLargeImage];
   const posts = {};
   keys(home).forEach((categoryKey) => {
     const { categoryName, first } = home[categoryKey];
@@ -200,8 +190,6 @@ export async function getStaticProps() {
       });
     }
   });
-
-  console.warn(posts.news.posts[0]);
 
   return {
     props: {

@@ -36,8 +36,8 @@ export default function HomeCambotory({
             }}
             styles={{
               lineSeparator: `border-b pb-4 sm:pb-5 ${
-                index > 3 ? 'sm:border-none' : ''
-              } ${index > 6 ? 'border-none' : ''}`,
+                index > 3 ? 'md:border-none' : ''
+              } ${index > 5 ? 'border-none' : ''}`,
             }}
           />
         ))}

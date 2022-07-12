@@ -1,7 +1,5 @@
 import { mapPostData } from '~/lib/posts';
 import { getAllCategoriesPath } from '~/lib/categories';
-import categoryData from '~/data/categories';
-import { find } from 'lodash';
 import TemplateArchiveCategory from '~/templates/archive-category';
 import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG } from '~/graphql/queries/categories';
@@ -31,12 +29,7 @@ export default function ArchivePage() {
     }
   );
 
-  const localCategory = find(categoryData, ['slug', slug]) || {};
-  const category = {
-    ...data?.category,
-    ...localCategory,
-    description: localCategory.description || data?.category.description,
-  };
+  const category = data?.category;
   const postData = {
     posts:
       data?.category?.posts?.edges

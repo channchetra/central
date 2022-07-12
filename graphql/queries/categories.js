@@ -100,6 +100,10 @@ export const QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG = gql`
       id
       name
       slug
+      image {
+        banner
+        thumbnail
+      }
       posts(
         first: $first
         after: $after

@@ -48,7 +48,11 @@ export default function Index({ posts = {} }) {
               posts={economy}
             />
             <div className="relative md:flex-1 aspect-[2/3]">
-              <Image src={home.economy.banner} layout="fill" objectFit="cover" />
+              <Image
+                src={home.economy.banner}
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
           </section>
           <section className="col-span-2">
@@ -126,13 +130,14 @@ export default function Index({ posts = {} }) {
       {/* Block Sports & Economy */}
       <Container>
         <div className="md:grid md:grid-cols-3 gap-5 pb-5">
-          <section className="col-span-2">
+          <div className="col-span-3">
             <HomeSport
               title={home.sports.title}
               link={home.sports.link}
               posts={sports}
             />
-
+          </div>
+          <section className="col-span-2">
             <HomeElection
               title={home.election.title}
               link={home.election.link}
@@ -142,18 +147,13 @@ export default function Index({ posts = {} }) {
           </section>
 
           <section>
-            <div className="mt-4 sm:mt-8 aspect-[3/4] sticky top-14">
+            <div className="relative mt-4 sm:mt-8 aspect-[3/4]">
               <Image
                 src={home.election.banner}
                 layout="fill"
                 objectFit="cover"
               />
             </div>
-            {/* <HomeEconomy
-              title={home.economy.title}
-              link={home.economy.link}
-              posts={economy}
-            /> */}
           </section>
         </div>
       </Container>

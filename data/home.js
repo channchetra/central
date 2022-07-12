@@ -54,7 +54,7 @@ const home = {
     title: 'កីឡា',
     link: '/ams-news/sports',
     categoryName: 'sports',
-    first: 4,
+    first: 7,
   },
   economy: {
     title: 'សេដ្ឋកិច្ច',

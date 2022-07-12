@@ -18,22 +18,24 @@ export default function HomeSport({ title, link, posts = [], className = '' }) {
           className="text-xl font-bold"
         />
       </div>
-      <div className="grid sm:grid-cols-2 gap-5">
-        <PostItem
-          key={posts[0]?.id}
-          post={posts[0]}
-          config={{
-            showExcerpt: false,
-            showLineSeparator: true,
-          }}
-          styles={{
-            image: {
-              imageWrapper: 'aspect-[16/8]',
-            },
-            lineSeparator: 'pb-4 border-b sm:border-none',
-          }}
-        />
-        <div className="space-y-4">
+      <div className="grid sm:grid-cols-3 gap-5">
+        <div className="col-span-2 sm:col-auto">
+          <PostItem
+            key={posts[0]?.id}
+            post={posts[0]}
+            config={{
+              showExcerpt: false,
+              showLineSeparator: true,
+            }}
+            styles={{
+              image: {
+                imageWrapper: 'aspect-[16/8]',
+              },
+              lineSeparator: 'pb-4 border-b sm:border-none',
+            }}
+          />
+        </div>
+        <div className="col-span-2 grid sm:grid-cols-2 gap-5">
           {posts.map(
             (post, index) =>
               index > 0 && (

@@ -31,7 +31,7 @@ export default function HomeVideo({ title, link, posts = [], className = '' }) {
             }}
             styles={{
               lineSeparator: `border-b pb-4 sm:pb-5 border-gray-300 ${
-                index > 3 ? 'sm:border-none' : ''
+                index > 3 ? 'md:border-none' : ''
               } ${index > 6 ? 'border-none' : ''}`,
             }}
           />

@@ -15,7 +15,7 @@ export default function HomeVideo({ title, link, posts = [], className = '' }) {
           title={title}
           link={link}
           className="text-xl font-bold"
-          lineColor="before:bg-gray-300"
+          lineColor="bg-gray-300"
         />
       </div>
 

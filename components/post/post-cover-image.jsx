@@ -21,6 +21,7 @@ export default function PostCoverImage({
   const conf = {
     showCategoryTag: false,
     showCategoryTagMultiple: false,
+    imageQuality: 70,
     ...config,
   };
 
@@ -40,7 +41,7 @@ export default function PostCoverImage({
       objectFit="cover"
       alt={title}
       src={image.sourceUrl}
-      quality={60}
+      quality={conf.imageQuality}
       // placeholder="blur"
       // blurDataURL={image.sourceUrl}
       className={classes.image}

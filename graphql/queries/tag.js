@@ -48,6 +48,7 @@ export const QUERY_TAG_WITH_PAGINATED_POSTS_BY_SLUG = gql`
     $slug: ID!
     $first: Int! = ${ARCHIVE_POST_PER_PAGE}
     $after: String
+    $postImageSize: MediaItemSizeEnum! = MEDIUM
   ) {
     tag(
       id: $slug, idType: SLUG

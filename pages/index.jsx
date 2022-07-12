@@ -1,4 +1,4 @@
-import { compact, find, keys, map } from 'lodash';
+import { compact, find, keys, map, without } from 'lodash';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -13,7 +13,7 @@ import {
   HomeVideo,
 } from '~/components/page/home';
 import home from '~/data/home';
-import { getCategoriesWithPaginatedPostsBySlugs } from '~/lib/categories';
+import { getCategoriesWithPostsBySlugs } from '~/lib/categories';
 import Container from '../components/layout/container';
 
 export default function Index({ posts = {} }) {
@@ -48,7 +48,7 @@ export default function Index({ posts = {} }) {
               posts={economy}
             />
             <div className="relative md:flex-1 aspect-[2/3]">
-              <Image src={home.daily.banner} layout="fill" objectFit="cover" />
+              <Image src={home.economy.banner} layout="fill" objectFit="cover" />
             </div>
           </section>
           <section className="col-span-2">
@@ -171,9 +171,21 @@ export default function Index({ posts = {} }) {
 }
 
 export async function getStaticProps() {
-  const { categories } = await getCategoriesWithPaginatedPostsBySlugs(
-    compact(map(home, (category) => category.categoryName))
-  );
+  const { categories: categoriesWithSmallImage } =
+    await getCategoriesWithPostsBySlugs(
+      without(
+        compact(map(home, (category) => category.categoryName)),
+        'ams-news',
+        'politico360'
+      ),
+    );
+
+  const { categories: categoriesWithLargeImage } =
+    await getCategoriesWithPostsBySlugs(['ams-news', 'politico360'], {
+      postImageSize: 'MEDIUM_LARGE',
+    });
+
+  const categories = [...categoriesWithSmallImage, ...categoriesWithLargeImage];
   const posts = {};
   keys(home).forEach((categoryKey) => {
     const { categoryName, first } = home[categoryKey];
@@ -188,6 +200,8 @@ export async function getStaticProps() {
       });
     }
   });
+
+  console.warn(posts.news.posts[0]);
 
   return {
     props: {

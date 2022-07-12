@@ -19,6 +19,7 @@ export default function ArchiveAuthorPage() {
     {
       variables: {
         slug,
+        postImageSize: 'MEDIUM_LARGE',
       },
     }
   );
@@ -59,6 +60,7 @@ export async function getStaticProps({ params = {} } = {}) {
     query: QUERY_AUTHOR_WITH_PAGINATED_POSTS_BY_SLUG,
     variables: {
       slug,
+      postImageSize: 'MEDIUM_LARGE',
     },
   });
 

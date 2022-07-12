@@ -90,6 +90,7 @@ export const QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG = gql`
     $slug: ID!
     $first: Int! = ${ARCHIVE_POST_PER_PAGE}
     $after: String
+    $postImageSize: MediaItemSizeEnum! = MEDIUM
   ) {
     category(
       id: $slug, idType: SLUG
@@ -102,7 +103,6 @@ export const QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG = gql`
       posts(
         first: $first
         after: $after
-        where: { orderby: { field: DATE, order: DESC } }
       ) {
         edges {
           node {
@@ -123,12 +123,12 @@ export const QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG = gql`
   }
 `;
 
-export const QUERY_CATEGORIES_WITH_PAGINATED_POSTS_BY_SLUGS = gql`
+export const QUERY_CATEGORIES_WITH_POSTS_BY_SLUGS = gql`
   ${ARCHIVE_POST_FIELDS}
-  query CategoryWithPaginatedPostsBySlug(
+  query CategoriesWithPostsBySlugs(
     $slugs: [String]!
     $first: Int! = ${ARCHIVE_POST_PER_PAGE}
-    $after: String
+    $postImageSize: MediaItemSizeEnum! = MEDIUM
   ) {
     categories(
       where: { slug: $slugs }
@@ -142,8 +142,6 @@ export const QUERY_CATEGORIES_WITH_PAGINATED_POSTS_BY_SLUGS = gql`
           slug
           posts(
             first: $first
-            after: $after
-            where: { orderby: { field: DATE, order: DESC } }
           ) {
             edges {
               node {

@@ -30,7 +30,7 @@ export default function HomeVideo({ title, link, posts = [], className = '' }) {
               showImage: $breakpoints.smAndUp || index === 0,
             }}
             styles={{
-              lineSeparator: `border-b pb-4 sm:pb-5 border-gray-300 ${
+              lineSeparator: `border-b mb-4 pb-4 sm:pb-5 border-gray-300 ${
                 index > 3 ? 'md:border-none' : ''
               } ${index > 5 ? 'border-none' : ''}`,
             }}

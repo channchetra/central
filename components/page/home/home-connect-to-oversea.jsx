@@ -35,9 +35,9 @@ export default function HomeConnectToOversea({
               showImage: $breakpoints.smAndUp || index === 0,
             }}
             styles={{
-              lineSeparator: `border-b pb-4 sm:pb-5 ${
-                index > 3 ? 'sm:border-none' : ''
-              } ${index > 6 ? 'border-none' : ''}`,
+              lineSeparator: `mb-4 border-b pb-4 sm:pb-5 ${
+                index > 3 ? 'md:border-none' : ''
+              } ${index > 5 ? 'mb-0 sm:pb-0 border-none' : ''}`,
             }}
           />
         ))}

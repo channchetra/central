@@ -30,12 +30,12 @@ export default function HomeLatestNews({
           config={{
             showExcerpt: false,
             showLineSeparator: true,
+            imageSize: 'medium_large',
           }}
           styles={{
             lineSeparator: 'pb-3 border-b md:border-none',
             image: {
-              imageWrapper:
-                'relative lg:aspect-[4/3.07] md:aspect-[7/6] aspect-video',
+              imageWrapper: 'lg:aspect-[4/3.07] md:aspect-[7/6] aspect-video',
             },
           }}
         />

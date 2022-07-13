@@ -1,5 +1,6 @@
 import { PlayIcon } from '@heroicons/react/outline';
 import classNames from 'classnames';
+import { find } from 'lodash';
 import Link from 'next/link';
 import ImageWithFallback from '../common/image-with-fallback';
 import PostCategoryTag from './post-category-tag';
@@ -21,6 +22,8 @@ export default function PostCoverImage({
   const conf = {
     showCategoryTag: false,
     showCategoryTagMultiple: false,
+    imageQuality: 70,
+    imageSize: 'td_485x360',
     ...config,
   };
 
@@ -34,15 +37,26 @@ export default function PostCoverImage({
     ...styles,
   };
 
+  let { sourceUrl } = image;
+  if (image.mediaDetails) {
+    const imageSource = find(image.mediaDetails.sizes, [
+      'name',
+      conf.imageSize,
+    ]);
+    if (imageSource) {
+      sourceUrl = imageSource.sourceUrl;
+    }
+  }
+
   const imageElement = (
     <ImageWithFallback
       layout="fill"
       objectFit="cover"
       alt={title}
-      src={image.sourceUrl}
-      quality={60}
+      src={sourceUrl}
+      quality={conf.imageQuality}
       // placeholder="blur"
-      // blurDataURL={image.sourceUrl}
+      // blurDataURL={sourceUrl}
       className={classes.image}
     />
   );

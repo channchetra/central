@@ -5,13 +5,13 @@ const home = {
     categoryName: 'ams-news',
     first: 5,
   },
-  daily: {
-    title: 'ព័ត៌មានប្រចាំថ្ងៃ',
-    banner: '/images/food-panda.jpg',
-    link: '/ams-one-minute/daily-summary',
-    categoryName: 'daily-summary',
-    first: 6,
-  },
+  // daily: {
+  //   title: 'ព័ត៌មានប្រចាំថ្ងៃ',
+  //   banner: '/images/food-panda.jpg',
+  //   link: '/ams-one-minute/daily-summary',
+  //   categoryName: 'daily-summary',
+  //   first: 6,
+  // },
   politico360: {
     title: 'Politico 360',
     link: '/politico360',
@@ -54,13 +54,14 @@ const home = {
     title: 'កីឡា',
     link: '/ams-news/sports',
     categoryName: 'sports',
-    first: 4,
+    first: 7,
   },
   economy: {
     title: 'សេដ្ឋកិច្ច',
     link: '/ams-news/economy',
     categoryName: 'economy',
-    first: 18,
+    first: 5,
+    banner: '/images/food-panda.jpg',
   },
   election: {
     title: 'ការបោះឆ្នោត',

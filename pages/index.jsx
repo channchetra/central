@@ -4,7 +4,7 @@ import Link from 'next/link';
 import {
   HomeCambotory,
   HomeConnectToOversea,
-  HomeDailyNews,
+  // HomeDailyNews,
   HomeEconomy,
   HomeElection,
   HomeLatestNews,
@@ -13,12 +13,12 @@ import {
   HomeVideo,
 } from '~/components/page/home';
 import home from '~/data/home';
-import { getCategoriesWithPaginatedPostsBySlugs } from '~/lib/categories';
+import { getCategoriesWithPostsBySlugs } from '~/lib/categories';
 import Container from '../components/layout/container';
 
 export default function Index({ posts = {} }) {
   const news = posts.news.posts;
-  const daily = posts.daily.posts;
+  // const daily = posts.daily.posts;
   const politico360 = posts.politico360.posts;
   const connectToOversea = posts.connectToOversea.posts;
   const cambotory = posts.cambotory.posts;
@@ -37,13 +37,22 @@ export default function Index({ posts = {} }) {
         />
         <div className="md:grid md:grid-cols-3 gap-5">
           <section className="flex flex-col">
-            <HomeDailyNews
+            {/* <HomeDailyNews
               title={home.daily.title}
               link={home.daily.link}
               posts={daily}
+            /> */}
+            <HomeEconomy
+              title={home.economy.title}
+              link={home.economy.link}
+              posts={economy}
             />
             <div className="relative md:flex-1 aspect-[2/3]">
-              <Image src={home.daily.banner} layout="fill" objectFit="cover" />
+              <Image
+                src={home.economy.banner}
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
           </section>
           <section className="col-span-2">
@@ -121,20 +130,23 @@ export default function Index({ posts = {} }) {
       {/* Block Sports & Economy */}
       <Container>
         <div className="md:grid md:grid-cols-3 gap-5 pb-5">
-          <section className="col-span-2">
+          <div className="col-span-3">
             <HomeSport
               title={home.sports.title}
               link={home.sports.link}
               posts={sports}
             />
-
+          </div>
+          <section className="col-span-2">
             <HomeElection
               title={home.election.title}
               link={home.election.link}
               posts={election}
               className="my-5"
             />
+          </section>
 
+          <section>
             <div className="relative mt-4 sm:mt-8 aspect-[3/4]">
               <Image
                 src={home.election.banner}
@@ -142,14 +154,6 @@ export default function Index({ posts = {} }) {
                 objectFit="cover"
               />
             </div>
-          </section>
-
-          <section>
-            <HomeEconomy
-              title={home.economy.title}
-              link={home.economy.link}
-              posts={economy}
-            />
           </section>
         </div>
       </Container>
@@ -167,9 +171,11 @@ export default function Index({ posts = {} }) {
 }
 
 export async function getStaticProps() {
-  const { categories } = await getCategoriesWithPaginatedPostsBySlugs(
-    compact(map(home, (category) => category.categoryName))
-  );
+  const { categories } =
+    await getCategoriesWithPostsBySlugs(
+      compact(map(home, (category) => category.categoryName))
+    );
+
   const posts = {};
   keys(home).forEach((categoryKey) => {
     const { categoryName, first } = home[categoryKey];

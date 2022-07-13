@@ -18,22 +18,24 @@ export default function HomeSport({ title, link, posts = [], className = '' }) {
           className="text-xl font-bold"
         />
       </div>
-      <div className="grid sm:grid-cols-2 gap-5">
-        <PostItem
-          key={posts[0]?.id}
-          post={posts[0]}
-          config={{
-            showExcerpt: false,
-            showLineSeparator: true,
-          }}
-          styles={{
-            image: {
-              imageWrapper: 'aspect-[16/8]',
-            },
-            lineSeparator: 'pb-4 border-b sm:border-none',
-          }}
-        />
-        <div className="space-y-4">
+      <div className="grid md:grid-cols-3 gap-5">
+        <div className="col-span-2 md:col-auto">
+          <PostItem
+            key={posts[0]?.id}
+            post={posts[0]}
+            config={{
+              showExcerpt: false,
+              showLineSeparator: true,
+            }}
+            styles={{
+              image: {
+                imageWrapper: 'aspect-[16/8]',
+              },
+              lineSeparator: 'pb-4 border-b sm:border-none',
+            }}
+          />
+        </div>
+        <div className="col-span-2 grid md:grid-cols-2 gap-3 md:gap-5">
           {posts.map(
             (post, index) =>
               index > 0 && (
@@ -43,13 +45,13 @@ export default function HomeSport({ title, link, posts = [], className = '' }) {
                   config={{
                     listView: true,
                     showExcerpt: false,
-                    showImage: $breakpoints.lgAndUp,
+                    showImage: $breakpoints.smAndUp,
                     showLineSeparator: true,
                   }}
                   styles={{
-                    lineSeparator: `border-b pb-4 ${
-                      index > 2 ? 'pb-0 border-none' : ''
-                    }`,
+                    lineSeparator: `mb-3 border-b pb-4 ${
+                      index > 3 ? 'pb-4 md:border-none' : ''
+                    }  ${index > 5 ? 'border-none' : ''}`,
                   }}
                 />
               )

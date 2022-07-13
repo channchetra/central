@@ -24,12 +24,14 @@ export default function TemplateArchiveCategory({
   return (
     <>
       <Head>{HTMLReactParser(category.seo.fullHead)}</Head>
-      {category.banner && <CategoryBanner image={category.banner} />}
+      {category?.image?.banner && (
+        <CategoryBanner image={category?.image?.banner} />
+      )}
       <Container>
         <CategoryTitle
           title={category.name || 'Category'}
           description={category.description}
-          image={category.image}
+          image={category?.image?.thumbnail}
           className="my-5"
         />
         <ClientOnly>

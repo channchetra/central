@@ -24,7 +24,7 @@ export default function HomeConnectToOversea({
         />
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
         {posts.map((post, index) => (
           <PostItem
             key={post.id}
@@ -35,9 +35,9 @@ export default function HomeConnectToOversea({
               showImage: $breakpoints.smAndUp || index === 0,
             }}
             styles={{
-              lineSeparator: `border-b pb-4 sm:pb-5 ${
-                index > 3 ? 'sm:border-none' : ''
-              } ${index > 6 ? 'border-none' : ''}`,
+              lineSeparator: `mb-4 border-b pb-4 sm:pb-5 ${
+                index > 3 ? 'md:border-none' : ''
+              } ${index > 5 ? 'mb-0 sm:pb-0 border-none' : ''}`,
             }}
           />
         ))}

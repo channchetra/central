@@ -63,6 +63,12 @@ export const ARCHIVE_POST_FIELDS = gql`
     excerpt
     featuredImage {
       node {
+        mediaDetails {
+          sizes {
+            sourceUrl
+            name
+          }
+        }
         sourceUrl
       }
     }
@@ -281,9 +287,13 @@ export const QUERY_POSTS_QUICK_SEARCH = gql`
 `;
 
 export const QUERY_POSTS_SEARCH = gql`
-  query SearchQuery($first: Int = 20, $search: String = "", $after: String = "") {
+  query SearchQuery(
+    $first: Int = 20
+    $search: String = ""
+    $after: String = ""
+  ) {
     posts(
-      where: {search: $search, hasPassword: false}
+      where: { search: $search, hasPassword: false }
       first: $first
       after: $after
     ) {
@@ -322,12 +332,14 @@ export const QUERY_POSTS_SEARCH = gql`
           excerpt
           featuredImage {
             node {
-              altText
-              caption
-              sourceUrl
-              srcSet
-              sizes
               id
+              sourceUrl
+              mediaDetails {
+                sizes {
+                  sourceUrl
+                  name
+                }
+              }
             }
           }
         }

@@ -15,11 +15,11 @@ export default function HomeVideo({ title, link, posts = [], className = '' }) {
           title={title}
           link={link}
           className="text-xl font-bold"
-          lineColor="before:bg-gray-300"
+          lineColor="bg-gray-300"
         />
       </div>
 
-      <section className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <section className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
         {posts.map((post, index) => (
           <PostItem
             key={post.id}
@@ -30,9 +30,9 @@ export default function HomeVideo({ title, link, posts = [], className = '' }) {
               showImage: $breakpoints.smAndUp || index === 0,
             }}
             styles={{
-              lineSeparator: `border-b pb-4 sm:pb-5 border-gray-300 ${
-                index > 3 ? 'sm:border-none' : ''
-              } ${index > 6 ? 'border-none' : ''}`,
+              lineSeparator: `border-b mb-4 pb-4 sm:pb-5 border-gray-300 ${
+                index > 3 ? 'md:border-none' : ''
+              } ${index > 5 ? 'border-none' : ''}`,
             }}
           />
         ))}

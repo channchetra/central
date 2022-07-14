@@ -35,7 +35,7 @@ export default function HomeSport({ title, link, posts = [], className = '' }) {
             }}
           />
         </div>
-        <div className="col-span-2 grid md:grid-cols-2 gap-3 md:gap-5">
+        <div className="col-span-2 grid md:grid-cols-2 gap-3 lg:gap-5">
           {posts.map(
             (post, index) =>
               index > 0 && (

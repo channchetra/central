@@ -19,7 +19,7 @@ export default function HomeVideo({ title, link, posts = [], className = '' }) {
         />
       </div>
 
-      <section className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+      <section className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5">
         {posts.map((post, index) => (
           <PostItem
             key={post.id}

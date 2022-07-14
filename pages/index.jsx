@@ -35,7 +35,7 @@ export default function Index({ posts = {} }) {
           link={home.news.link}
           posts={news}
         />
-        <div className="md:grid md:grid-cols-3 gap-5">
+        <div className="md:grid md:grid-cols-3 gap-3 lg:gap-5">
           <section className="flex flex-col">
             {/* <HomeDailyNews
               title={home.daily.title}
@@ -129,7 +129,7 @@ export default function Index({ posts = {} }) {
 
       {/* Block Sports & Economy */}
       <Container>
-        <div className="md:grid md:grid-cols-3 gap-5 pb-5">
+        <div className="md:grid md:grid-cols-3 gap-3 lg:gap-5 pb-5">
           <div className="col-span-3">
             <HomeSport
               title={home.sports.title}
@@ -171,10 +171,9 @@ export default function Index({ posts = {} }) {
 }
 
 export async function getStaticProps() {
-  const { categories } =
-    await getCategoriesWithPostsBySlugs(
-      compact(map(home, (category) => category.categoryName))
-    );
+  const { categories } = await getCategoriesWithPostsBySlugs(
+    compact(map(home, (category) => category.categoryName))
+  );
 
   const posts = {};
   keys(home).forEach((categoryKey) => {

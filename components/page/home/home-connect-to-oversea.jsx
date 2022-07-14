@@ -24,7 +24,7 @@ export default function HomeConnectToOversea({
         />
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5">
         {posts.map((post, index) => (
           <PostItem
             key={post.id}

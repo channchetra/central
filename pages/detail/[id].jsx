@@ -7,22 +7,21 @@ import { useRouter } from 'next/router';
 import { find } from 'lodash';
 import { getAllPostsWithSlug } from '../../lib/api';
 
-export default function Detail({post}) {
-
+export default function Detail({ post }) {
   const router = useRouter();
 
   if (router.isFallback) {
     return (
       <Container>
-        <div className="grid sm:grid-cols-3 gap-3 sm:gap-6">
+        <div className="grid sm:grid-cols-3 gap-3 lg:gap-6">
           <div className="col-span-2">
             <SkeletonPostDetail className="my-3" />
           </div>
         </div>
       </Container>
-    )
+    );
   }
-  
+
   const [posts, setPosts] = useState([post]);
   const [title, setTitle] = useState(post.title);
   const [id, setId] = useState(post.databaseId);
@@ -95,17 +94,19 @@ export async function getStaticProps({ params = {} }) {
   const { post } = await getPostById(id);
   return {
     props: {
-      post
+      post,
     },
-    revalidate: 10
-  }
+    revalidate: 10,
+  };
 }
 
 export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug();
 
   return {
-    paths: allPosts.edges.map(({ node }) => postPathById(node.databaseId) || []),
+    paths: allPosts.edges.map(
+      ({ node }) => postPathById(node.databaseId) || []
+    ),
     fallback: true,
   };
 }

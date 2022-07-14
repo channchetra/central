@@ -23,7 +23,7 @@ export default function HomeLatestNews({
           className="text-xl font-bold"
         />
       </div>
-      <div className="grid md:grid-cols-2 gap-5 mb-3 lg:mb-5">
+      <div className="grid md:grid-cols-2 gap-3 lg:gap-5 mb-3 lg:mb-5">
         <PostItem
           key={posts[0]?.id}
           post={posts[0]}
@@ -40,7 +40,7 @@ export default function HomeLatestNews({
             },
           }}
         />
-        <div className="block-latest grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-5">
+        <div className="block-latest grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-5">
           {posts.map(
             (post, index) =>
               index > 0 && (

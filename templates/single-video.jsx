@@ -16,7 +16,7 @@ export default function TemplateSingle({
         loadMore={previous}
         hasMore={hasMore}
         loader={
-          <div className="grid sm:grid-cols-3 gap-3 sm:gap-6">
+          <div className="grid sm:grid-cols-3 gap-3 lg:gap-6">
             <div className="col-span-2">
               <SkeletonPostDetail className="my-3" />
             </div>

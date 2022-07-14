@@ -19,7 +19,7 @@ export default function PostDetailItem({ post, title }) {
         </title>
         <meta property="og:image" content={post.featuredImage?.sourceUrl} />
       </Head>
-      <div className="grid sm:grid-cols-3 gap-3 sm:gap-6">
+      <div className="grid sm:grid-cols-3 gap-3 lg:gap-6">
         <div className="col-span-2">
           <h3 className="entry-title text-lg sm:text-2xl font-bold px-3 sm:px-0">
             {post.title}
@@ -34,20 +34,20 @@ export default function PostDetailItem({ post, title }) {
               <PostDate dateString={post.date} />
             </p>
           </div>
-          <div className="relative my-3 sm:my-6 pb-[56%]">
+          {/* <div className="relative my-3 sm:my-6 pb-[56%]">
             <Image
               src={post.featuredImage?.sourceUrl}
               layout="fill"
               objectFit="cover"
             />
-          </div>
+          </div> */}
           <div
             className=" px-3 sm:px-0"
             dangerouslySetInnerHTML={{
               __html: post.content,
             }}
           />
-          <div className="ads relative my-4 sm:my-7 pb-[16%]">
+          <div className="ads relative pb-[16%]">
             <Image
               src="https://asset.ams.com.kh/central/media/ads-olatte.jpg"
               layout="fill"
@@ -69,7 +69,7 @@ export default function PostDetailItem({ post, title }) {
         </div>
         <div>
           <div className="sticky top-14">
-            <div className="ads relative my-4 sm:my-7">
+            <div className="ads relative">
               <Image
                 src="https://asset.ams.com.kh/central/media/cama-mf-2.jpg"
                 width="100%"

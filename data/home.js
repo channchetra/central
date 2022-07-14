@@ -60,7 +60,7 @@ const home = {
     title: 'សេដ្ឋកិច្ច',
     link: '/ams-news/economy',
     categoryName: 'economy',
-    first: 5,
+    first: 7,
     banner: '/images/food-panda.jpg',
   },
   election: {

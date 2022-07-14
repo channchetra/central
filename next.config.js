@@ -14,8 +14,14 @@ module.exports = {
       'secure.gravatar.com',
       'asset.ams.com.kh',
       'localhost:3000',
-      'ams.com.kh'
+      'ams.com.kh',
     ],
     // formats: ['image/avif', 'image/webp'],
   },
+  experimental: {
+    images: {
+      layoutRaw: true,
+    },
+  },
+  // Rest of the config
 };

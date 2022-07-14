@@ -47,11 +47,13 @@ export default function Index({ posts = {} }) {
               link={home.economy.link}
               posts={economy}
             />
-            <div className="relative md:flex-1 aspect-[2/3]">
+            <div className="relative md:flex-1">
               <Image
                 src={home.economy.banner}
-                layout="fill"
-                objectFit="cover"
+                width="400"
+                height="100%"
+                layout="raw"
+                className="mx-auto"
               />
             </div>
           </section>
@@ -147,11 +149,12 @@ export default function Index({ posts = {} }) {
           </section>
 
           <section>
-            <div className="relative mt-4 sm:mt-8 aspect-[3/4]">
+            <div className="relative mt-4 sm:mt-8">
               <Image
                 src={home.election.banner}
-                layout="fill"
-                objectFit="cover"
+                width="400"
+                height="100%"
+                layout="raw"
               />
             </div>
           </section>

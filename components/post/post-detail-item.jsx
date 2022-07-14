@@ -47,20 +47,22 @@ export default function PostDetailItem({ post, title }) {
               __html: post.content,
             }}
           />
-          <div className="ads relative pb-[16%]">
+          <div className="ads">
             <Image
               src="https://asset.ams.com.kh/central/media/ads-olatte.jpg"
-              layout="fill"
-              objectFit="cover"
+              width="900"
+              height="100%"
+              layout="raw"
             />
           </div>
-          <div className="join-telegram relative my-4 sm:my-7 pb-[25%] border">
+          <div className="join-telegram my-4 sm:my-7 border">
             <Link href="https://t.me/ApsaraMediaServices">
               <a target="_blank">
                 <Image
                   src="https://asset.ams.com.kh/central/media/AMS-Telegram-100.jpg"
-                  layout="fill"
-                  objectFit="cover"
+                  width="900"
+                  height="100%"
+                  layout="raw"
                 />
               </a>
             </Link>
@@ -72,10 +74,9 @@ export default function PostDetailItem({ post, title }) {
             <div className="ads relative">
               <Image
                 src="https://asset.ams.com.kh/central/media/cama-mf-2.jpg"
-                width="100%"
+                width="400px"
                 height="100%"
-                layout="responsive"
-                objectFit="contain"
+                layout="raw"
               />
             </div>
           </div>

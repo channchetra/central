@@ -35,11 +35,12 @@ export default function HomeLatestNews({
           styles={{
             lineSeparator: 'pb-3 border-b md:border-none',
             image: {
-              imageWrapper: 'lg:aspect-[4/3.07] md:aspect-[7/6] aspect-video',
+              imageWrapper:
+                'lg:aspect-[4/3.07] md:aspect-[7/6] aspect-video pb-[56%] md:pb-[85.5%] lg:pb-[77%]',
             },
           }}
         />
-        <div className="block-latest grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="block-latest grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-5">
           {posts.map(
             (post, index) =>
               index > 0 && (

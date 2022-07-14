@@ -63,7 +63,7 @@ export default function PostItem({
           conf.listView && conf.showImage ? 'mb-3 sm:mb-0 ' : 'mb-3'
         }`,
         imageWrapper:
-          'aspect-video bg-gradient-to-r from-gray-100 to-white dark:from-gray-700 dark:to-gray-800',
+          'pb-[56%] aspect-video bg-gradient-to-r from-gray-100 to-white dark:from-gray-700 dark:to-gray-800',
         category: {
           wrapper: 'absolute bottom-0',
           name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',

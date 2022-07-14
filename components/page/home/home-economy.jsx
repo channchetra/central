@@ -32,7 +32,7 @@ export default function HomeEconomy({
               showLineSeparator: true,
             }}
             styles={{
-              lineSeparator: `border-b pb-4 ${index > 16 ? 'border-none' : ''}`,
+              lineSeparator: `border-b pb-4 ${index > 3 ? 'border-none' : ''}`,
             }}
           />
         ))}

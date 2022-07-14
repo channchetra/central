@@ -35,7 +35,7 @@ export default function HomeElection({
             }}
             styles={{
               lineSeparator: `border-b mb-3 pb-4 sm:pb-5 ${
-                index > 2 ? 'md:border-none' : ''
+                index > 2 ? 'lg:border-none' : ''
               } ${index > 3 ? 'border-none' : ''}`,
             }}
           />

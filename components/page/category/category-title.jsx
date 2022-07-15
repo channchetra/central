@@ -1,3 +1,4 @@
+import HTMLReactParser from 'html-react-parser';
 import { merge } from 'lodash';
 import Image from 'next/image';
 
@@ -42,8 +43,9 @@ export default function CategoryTitle({
         <div className={classes.innerWrapper.image}>
           <div className={classes.image.wrapper}>
             <Image
-              layout="fill"
-              objectFit="cover"
+              layout="raw"
+              height="100"
+              width="300"
               alt={title}
               src={image}
               className={classes.image.image}
@@ -54,7 +56,11 @@ export default function CategoryTitle({
       <div className={`${classes.innerWrapper.content}`}>
         <div className={classes.lineSeparator}>
           {title && <div className={classes.title}>{title}</div>}
-          {description && <div className={classes.description}>{description}</div>}
+          {description && (
+            <div className={classes.description}>
+              {HTMLReactParser(description)}
+            </div>
+          )}
         </div>
       </div>
     </div>

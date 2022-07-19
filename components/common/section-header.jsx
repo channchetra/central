@@ -8,7 +8,7 @@ export default function CommonSectionHeader({
   link,
   className = 'text-xl dark:text-neutral-50',
   lineColor = 'bg-gray-100',
-  lineHighlightColor = 'after:bg-red-900 after:bg-zinc-400 dark:text-neutral-50',
+  lineHighlightColor = 'after:bg-red-900 dark:after:bg-zinc-400 dark:text-neutral-50',
 }) {
   const primaryClass = classNames('h-1', 'flex-1', lineColor);
   const secondaryClass = classNames(

@@ -50,7 +50,7 @@ export default function HomeSport({ title, link, posts = [], className = '' }) {
                   }}
                   styles={{
                     lineSeparator: `mb-3 border-b pb-4 ${
-                      index > 3 ? 'pb-4 lg:border-none' : ''
+                      index > 4 ? 'lg:border-none' : ''
                     }  ${index > 4 ? 'border-none' : ''}`,
                   }}
                 />

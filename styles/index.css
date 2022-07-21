@@ -52,3 +52,24 @@ html {
 .podcast_meta {
   @apply hidden;
 }
+
+/* Slider */
+.slick-arrow.slick-prev::before,
+.slick-arrow.slick-next::before {
+  @apply text-4xl;
+}
+.slick-slider .slick-prev {
+  @apply w-auto z-50 left-7;
+}
+.slick-slider .slick-next {
+  @apply w-auto right-7;
+}
+.slick-slider .slick-dots {
+  @apply bottom-5;
+}
+.slick-slider .slick-dots li {
+  @apply mx-2;
+}
+.slick-slider .slick-dots li button:before {
+  @apply text-base;
+}

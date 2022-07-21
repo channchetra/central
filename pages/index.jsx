@@ -12,6 +12,7 @@ import {
   HomeSport,
   HomeVideo,
 } from '~/components/page/home';
+import HomeSlide from '~/components/page/home/home-slide';
 import home from '~/data/home';
 import { getCategoriesWithPostsBySlugs } from '~/lib/categories';
 import Container from '../components/layout/container';
@@ -29,6 +30,7 @@ export default function Index({ posts = {} }) {
 
   return (
     <>
+      <HomeSlide />
       <Container>
         <HomeLatestNews
           title={home.news.title}

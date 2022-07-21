@@ -13,7 +13,7 @@ export default function HomeSlide() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative hidden md:block">
       <Slider {...settings}>
         <div className="relative pb-[40%]">
           <Image

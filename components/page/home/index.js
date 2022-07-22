@@ -1,3 +1,4 @@
+import HomeSlide from './home-slide';
 import HomeLatestNews from './home-latest-news';
 import HomeDailyNews from './home-daily-news';
 import HomePolitico360 from './home-politico360';
@@ -9,6 +10,7 @@ import HomeEconomy from './home-economy';
 import HomeVideo from './home-video';
 
 export {
+  HomeSlide,
   HomeLatestNews,
   HomeDailyNews,
   HomePolitico360,

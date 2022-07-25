@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <section className="bg-ams-light dark:bg-zinc-700">
       <Container>
-        <section className="py-6 border-b-2 border-zinc-300 text-center sm:text-left">
+        <section className="pt-2 md:py-6 border-b-2 border-zinc-300 text-center sm:text-left">
           <Link href="/" className="inline-block">
             <a aria-label="" className="inline-block">
               <div className="w-44 h-20 relative">
@@ -25,7 +25,7 @@ export default function Footer() {
             </a>
           </Link>
         </section>
-        <section className="mt-6 px-4 sm:px-0 grid md:grid-cols-7 xl:grid-cols-3 gap-5 md:gap-3 lg:gap-5">
+        <section className="mt-4 md:mt-6 px-3 sm:px-0 grid md:grid-cols-7 xl:grid-cols-3 gap-5 md:gap-3 lg:gap-5">
           <div className="md:col-span-2 xl:col-auto">
             <CommonSectionHeader
               type="secondary"
@@ -33,7 +33,7 @@ export default function Footer() {
               lineColor="before:bg-zinc-50"
               className="text-lg lg:text-xl font-bold mb-5"
             />
-            <ul className="sm:ml-3 grid sm:grid-cols-2 md:grid-cols-none lg:grid-cols-2 gap-3">
+            <ul className="sm:ml-3 grid grid-cols-2 md:grid-cols-none lg:grid-cols-2 gap-3">
               {Menu.footerCentral.map((item, index) => (
                 <li key={`footer-ams-${index}`}>
                   <Link
@@ -53,7 +53,7 @@ export default function Footer() {
               lineColor="before:bg-zinc-50"
               className="text-lg lg:text-xl  font-bold mb-5"
             />
-            <ul className="sm:ml-3 grid sm:grid-cols-2 md:grid-cols-none lg:grid-cols-2 gap-3">
+            <ul className="sm:ml-3 grid grid-cols-2 md:grid-cols-none lg:grid-cols-2 gap-3">
               {Menu.amsGroup.map((item, index) => (
                 <li key={`ams-group-${index}`}>
                   <a
@@ -73,7 +73,7 @@ export default function Footer() {
               lineColor="before:bg-zinc-50"
               className="text-lg lg:text-xl font-bold mb-5"
             />
-            <ul className="sm:ml-3 grid sm:grid-cols-2 md:grid-cols-none gap-3">
+            <ul className="sm:ml-3 grid grid-cols-2 md:grid-cols-none gap-y-3 md:gap-3">
               {Menu.footerLearnMore.map((item, index) => (
                 <li key={`footer-${index}`}>
                   <Link
@@ -88,11 +88,10 @@ export default function Footer() {
           </div>
         </section>
 
-        <section className="copy-right mt-8 py-2 lg:px-0 flex items-center justify-between flex-col md:flex-row">
-          <div className="text-xs text-gray-400 text-center md:text-left">
+        <section className="copy-right mt-5 md:mt-8 py-2 lg:px-0 flex items-center justify-between flex-col md:flex-row">
+          <div className="text-[10px] md:text-xs text-gray-400 text-center md:text-left">
             ឆ្នាំ{new Date().getFullYear()} © រក្សាសិទ្ធគ្រប់យ៉ាងដោយ
-            អប្សរាមេឌាសឺវីស / Apsara Media Services
-            (AMS)
+            អប្សរាមេឌាសឺវីស / Apsara Media Services (AMS)
           </div>
           <div className="md:text-right">
             <Link href="#">

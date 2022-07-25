@@ -47,12 +47,13 @@ export default function PostDetailItem({ post, title }) {
               __html: post.content,
             }}
           />
-          <div className="ads">
+          <div className="ads my-4">
             <Image
               src="https://asset.ams.com.kh/central/media/ads-olatte.jpg"
               width="900"
               height="100%"
               layout="raw"
+              className="w-full"
             />
           </div>
           <div className="join-telegram my-4 sm:my-7 border">
@@ -69,7 +70,7 @@ export default function PostDetailItem({ post, title }) {
           </div>
           {/* {post.author} */}
         </div>
-        <div>
+        <div className="px-3 sm:px-0 col-span-2 sm:col-auto">
           <div className="sticky top-14">
             <div className="ads relative">
               <Image

@@ -15,6 +15,11 @@
 @tailwind utilities;
 /* Stop purging. */
 
+@layer {
+  .post-detail iframe {
+    @apply before:pb-[56%];
+  }
+}
 /* Your own custom utilities */
 
 .flagship > a:nth-child(1) {
@@ -44,7 +49,7 @@ html {
   @apply mb-4;
 }
 .post-detail iframe {
-  @apply w-full h-[56%];
+  @apply w-full aspect-video;
 }
 
 /* Hide PodCast elements */

@@ -1,6 +1,7 @@
 import { compact, find, keys, map } from 'lodash';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 import {
   HomeSlide,
   HomeCambotory,
@@ -30,6 +31,15 @@ export default function Index({ posts = {} }) {
 
   return (
     <>
+      <Head>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="AMS Central" />
+        <meta property="og:site_name" content="AMS Central" />
+        <meta
+          property="og:image"
+          content="https://asset.ams.com.kh/central/media/APSARA_MEDIA_SERVICES_SECONDARY_LOGO_02.jpg"
+        />
+      </Head>
       <HomeSlide posts={connectToOversea} />
       <Container>
         <HomeLatestNews

@@ -64,13 +64,14 @@ export default function PostDetailItem({ post, title }) {
                   width="900"
                   height="100%"
                   layout="raw"
+                  className="w-full"
                 />
               </a>
             </Link>
           </div>
           {/* {post.author} */}
         </div>
-        <div className="px-3 sm:px-0 col-span-2 sm:col-auto">
+        <div className="mb-4 px-3 sm:px-0 col-span-2 sm:col-auto">
           <div className="sticky top-14">
             <div className="ads relative">
               <Image
@@ -78,6 +79,7 @@ export default function PostDetailItem({ post, title }) {
                 width="400px"
                 height="100%"
                 layout="raw"
+                className="w-full"
               />
             </div>
           </div>

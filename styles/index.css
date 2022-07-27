@@ -51,6 +51,9 @@ html {
 .post-detail iframe {
   @apply w-full aspect-video;
 }
+.post-detail p a {
+  @apply text-ams-blue;
+}
 
 /* Hide PodCast elements */
 .podcast_player,

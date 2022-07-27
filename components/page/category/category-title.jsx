@@ -28,7 +28,7 @@ export default function CategoryTitle({
         wrapper: 'relative aspect-[2/3] lg:-mt-20',
         image: '',
       },
-      lineSeparator: 'border-b pb-5 md:pb-10',
+      lineSeparator: 'border-b pb-5 md:pb-7',
     },
     styles
   );

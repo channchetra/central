@@ -9,7 +9,7 @@ export default function PostCategoryTag({
   const classes = {
     wrapper: '',
     innerWrapper: 'flex items-center',
-    name: 'text-white bg-rose-900 hover:bg-rose-700 px-1 max-w-[8rem] sm:max-w-none truncate mr-2',
+    name: 'mr-2 py-1 px-2 text-white bg-rose-900 hover:bg-rose-700 max-w-[8rem] sm:max-w-none truncate',
     ...styles,
   };
 

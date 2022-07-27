@@ -39,6 +39,7 @@ export default function Index({ posts = {} }) {
           property="og:image"
           content="https://asset.ams.com.kh/central/media/APSARA_MEDIA_SERVICES_SECONDARY_LOGO_02.jpg"
         />
+        <meta name="description" content="AMS Central" />
       </Head>
       <HomeSlide posts={connectToOversea} />
       <Container>

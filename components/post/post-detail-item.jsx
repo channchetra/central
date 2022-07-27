@@ -24,15 +24,15 @@ export default function PostDetailItem({ post, title }) {
           <h3 className="entry-title text-lg sm:text-2xl font-bold px-3 sm:px-0">
             {post.title}
           </h3>
-          <div className="flex flex-wrap">
-            <p className="post-date my-3 text-sm pl-3 sm:pl-0">
+          <div className="flex flex-wrap my-3 items-center">
+            <span className="text-sm pl-3 sm:pl-0">
               <PostCategoryTag categories={post.categories} />
-            </p>
-            <p className="post-date my-3 text-sm pl-3 sm:pl-0">
+            </span>
+            <span className="text-sm pl-3 sm:pl-0">
               {/* <span className="py-1 px-2 text-white bg-ams-purple dark:bg-slate-600"> */}
               {/* </span>  */} {/* | {post.author} | {post.date} */}
               <PostDate dateString={post.date} />
-            </p>
+            </span>
           </div>
           {/* <div className="relative my-3 sm:my-6 pb-[56%]">
             <Image

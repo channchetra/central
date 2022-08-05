@@ -14,6 +14,7 @@ export default function HomeSlide({ posts = [] }) {
 
   const settings = {
     dots: true,
+    autoplay: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,

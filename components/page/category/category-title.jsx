@@ -44,8 +44,6 @@ export default function CategoryTitle({
           <div className={classes.image.wrapper}>
             <Image
               layout="fill"
-              height="600"
-              width="600"
               objectFit="cover"
               alt={title}
               src={image}

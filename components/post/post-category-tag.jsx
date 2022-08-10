@@ -22,8 +22,8 @@ export default function PostCategoryTag({
       <div className={classes.innerWrapper}>
         {multiple ? (
           categories.map((category) => (
-            <div className={classes.name}>
-              <Link href={category.uri} key={category.databaseId}>
+            <div className={classes.name} key={category.databaseId}>
+              <Link href={category.uri}>
                 <a aria-label={category.name}>{category.name}</a>
               </Link>
             </div>

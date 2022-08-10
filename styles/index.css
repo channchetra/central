@@ -54,6 +54,9 @@ html {
 .post-detail p a {
   @apply text-ams-blue;
 }
+.post-detail img {
+  @apply w-full
+}
 
 /* Hide PodCast elements */
 .podcast_player,

@@ -4,7 +4,6 @@ import TemplateSingle from '~/templates/single';
 import Container from '~/components/layout/container';
 import SkeletonPostDetail from '~/components/skeleton/skeleton-post-detail';
 import { useRouter } from 'next/router';
-import { find } from 'lodash';
 import { getAllPostsWithSlug } from '../../lib/api';
 
 export default function Detail({ post }) {
@@ -26,9 +25,6 @@ export default function Detail({ post }) {
   const [title, setTitle] = useState(post.title);
   const [id, setId] = useState(post.databaseId);
   const [hasMore, setHasMore] = useState(true);
-
-  const { postFormats = [] } = post || {};
-  const isVideo = !!find(postFormats, ['slug', 'post-format-video']);
 
   const previous = async () => {
     const preId = posts[posts.length - 1].previous?.databaseId || false;
@@ -68,16 +64,6 @@ export default function Detail({ post }) {
     return () => clearInterval(timer);
   });
 
-  if (isVideo) {
-    return (
-      <TemplateSingle
-        previous={previous}
-        title={title}
-        hasMore={hasMore}
-        posts={posts}
-      />
-    );
-  }
   return (
     <TemplateSingle
       previous={previous}

@@ -41,7 +41,7 @@ export default function Search() {
     <div className="my-4 sm:my-8">
       <Container>
         <h1 className="mb-4 text-lg sm:text-2xl leading-relaxed text-center">
-          ស្វែងរកលទ្ធលសម្រាប់: <span className="font-bold">Search</span>
+          ស្វែងរកលទ្ធលសម្រាប់: <span className="font-normal">Search</span>
         </h1>
         <div className="max-w-32 max-w-xl mx-auto">
           <form

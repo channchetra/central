@@ -25,7 +25,7 @@ export default function CategoryTitle({
       description:
         'text-lg lg:text-xl leading-relaxed lg:leading-loose mt-3 lg:mt-5 px-3 sm:px-0',
       image: {
-        wrapper: 'relative aspect-[2/3] lg:-mt-20',
+        wrapper: 'category-title relative aspect-[2/3] lg:-mt-20',
         image: '',
       },
       lineSeparator: 'border-b pb-5 md:pb-7',
@@ -43,9 +43,10 @@ export default function CategoryTitle({
         <div className={classes.innerWrapper.image}>
           <div className={classes.image.wrapper}>
             <Image
-              layout="raw"
-              height="100"
-              width="300"
+              layout="fill"
+              height="600"
+              width="600"
+              objectFit="cover"
               alt={title}
               src={image}
               className={classes.image.image}

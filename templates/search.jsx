@@ -21,8 +21,8 @@ export default function TemplateSearch({
           <h1 className="mb-4 text-lg sm:text-2xl leading-relaxed text-center">
             {search && (
               <>
-                <span>ស្វែងរកលទ្ធលសម្រាប់: </span>
-                <span className="font-bold">{search}</span>
+                <span>ស្វែងរកលទ្ធផលសម្រាប់: </span>
+                <span className="font-normal">{search}</span>
               </>
             )}
             {!search && <span>សូមធ្វើការស្វែងរក</span>}

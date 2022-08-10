@@ -37,7 +37,7 @@ export default function Index({ posts = {} }) {
         <meta property="og:site_name" content="AMS Central" />
         <meta
           property="og:image"
-          content="https://asset.ams.com.kh/central/media/APSARA_MEDIA_SERVICES_SECONDARY_LOGO_02.jpg"
+          content="/images/APSARA_MEDIA_SERVICES_LOGO-01.png"
         />
         <meta name="description" content="AMS Central" />
       </Head>
@@ -65,7 +65,7 @@ export default function Index({ posts = {} }) {
                 src={home.economy.banner}
                 width="400"
                 height="100%"
-                layout="raw"
+                layout="fill"
                 className="mx-auto"
               />
             </div>
@@ -167,7 +167,7 @@ export default function Index({ posts = {} }) {
                 src={home.election.banner}
                 width="400"
                 height="100%"
-                layout="raw"
+                layout="fill"
               />
             </div>
           </section>

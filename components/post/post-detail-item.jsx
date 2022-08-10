@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CMS_NAME } from '~/lib/constants';
+import ReactPlayer from 'react-player';
 import PostCategoryTag from './post-category-tag';
 import PostDate from './post-date';
 
@@ -14,8 +15,6 @@ export default function PostDetailItem({ post, title }) {
   const { postFormats = [], videoLink } = post || {};
   const isVideo =
     !!find(postFormats, ['slug', 'post-format-video']) && !!videoLink;
-  const videoId = isVideo ? videoLink.split('v=')[1].split('&')[0] : '';
-
   return (
     <article className="post-detail mt-4 sm:mt-6">
       <div id={post.databaseId}> </div>
@@ -41,15 +40,13 @@ export default function PostDetailItem({ post, title }) {
             </span>
           </div>
           {isVideo && (
-            <div className="mb-5">
-              <iframe
+            <div className="player-wrapper mb-5">
+              <ReactPlayer
+                className="react-player"
+                url={videoLink}
+                controls
                 width="100%"
-                height="auto"
-                src={`https://www.youtube.com/embed/${videoId}`}
-                title={post.title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                height="100%"
               />
             </div>
           )}
@@ -92,8 +89,6 @@ export default function PostDetailItem({ post, title }) {
             <div className="ads relative h-[750px] md:h-[400px] lg:h-[563px]">
               <Image
                 src="https://asset.ams.com.kh/central/media/cama-mf-2.jpg"
-                width="400px"
-                height="100%"
                 layout="fill"
                 objectFit="contain"
                 className="w-full object-top"

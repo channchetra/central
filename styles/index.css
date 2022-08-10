@@ -49,7 +49,7 @@ html {
   @apply mb-4;
 }
 .post-detail iframe {
-  @apply w-full aspect-video;
+  @apply w-full h-auto aspect-video;
 }
 .post-detail p a {
   @apply text-ams-blue;

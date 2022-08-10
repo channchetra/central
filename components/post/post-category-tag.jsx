@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export default function PostCategoryTag({
-  categories,
+  categories = [],
   multiple = true,
   className = '',
   styles,

@@ -1,10 +1,10 @@
 import InfiniteScroll from 'react-infinite-scroller';
 import CommonLoader from '~/components/common/loader';
-import Container from '~/components/container';
 import CategoryBanner from '~/components/page/category/category-banner';
 import CategoryTitle from '~/components/page/category/category-title';
 import PostItem from '~/components/post/post-item';
 import useStaticInfiniteScroll from '~/hooks/use-static-infinite-scroll';
+import Container from '~/components/layout/container';
 
 export default function TemplateArchive({ posts, attributes = {} }) {
   // console.warn(posts)

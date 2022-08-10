@@ -14,7 +14,7 @@ export default function PostDetailItem({ post, title }) {
   const { postFormats = [], videoLink } = post || {};
   const isVideo =
     !!find(postFormats, ['slug', 'post-format-video']) && !!videoLink;
-  const videoId = isVideo ? videoLink.split("v=")[1].split("&")[0] : ''
+  const videoId = isVideo ? videoLink.split('v=')[1].split('&')[0] : '';
 
   return (
     <article className="post-detail mt-4 sm:mt-6">
@@ -69,8 +69,6 @@ export default function PostDetailItem({ post, title }) {
           <div className="relative ads my-4 pb-[16%]">
             <Image
               src="https://asset.ams.com.kh/central/media/ads-olatte.jpg"
-              width="900"
-              height="400"
               layout="fill"
               objectFit="cover"
             />
@@ -80,8 +78,6 @@ export default function PostDetailItem({ post, title }) {
               <a target="_blank">
                 <Image
                   src="https://asset.ams.com.kh/central/media/AMS-Telegram-100.jpg"
-                  width="900"
-                  height="100%"
                   layout="fill"
                   objectFit="contain"
                   className="w-full"

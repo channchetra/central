@@ -63,8 +63,6 @@ export default function Index({ posts = {} }) {
             <div className="relative md:flex-1">
               <Image
                 src={home.economy.banner}
-                width="400"
-                height="100%"
                 layout="fill"
                 className="mx-auto"
               />
@@ -163,12 +161,7 @@ export default function Index({ posts = {} }) {
 
           <section>
             <div className="relative mt-4 sm:mt-8">
-              <Image
-                src={home.election.banner}
-                width="400"
-                height="100%"
-                layout="fill"
-              />
+              <Image src={home.election.banner} layout="fill" />
             </div>
           </section>
         </div>

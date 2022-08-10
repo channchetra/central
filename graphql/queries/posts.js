@@ -221,7 +221,17 @@ export const QUERY_POST_BY_ID = gql`
       databaseId
       title
       slug
+      videoLink
       isSticky
+      postFormats {
+        edges {
+          node {
+            name
+            postFormatId
+            slug
+          }
+        }
+      }
       previous {
         databaseId
         title

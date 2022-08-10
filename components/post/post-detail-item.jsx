@@ -1,3 +1,4 @@
+import { find } from 'lodash';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,6 +10,11 @@ export default function PostDetailItem({ post, title }) {
   if (!post) {
     return null;
   }
+
+  const { postFormats = [], videoLink } = post || {};
+  const isVideo =
+    !!find(postFormats, ['slug', 'post-format-video']) && !!videoLink;
+  const videoId = isVideo ? videoLink.split("v=")[1].split("&")[0] : ''
 
   return (
     <article className="post-detail mt-4 sm:mt-6">
@@ -34,6 +40,19 @@ export default function PostDetailItem({ post, title }) {
               <PostDate dateString={post.date} />
             </span>
           </div>
+          {isVideo && (
+            <div className="mb-5">
+              <iframe
+                width="100%"
+                height="auto"
+                src={`https://www.youtube.com/embed/${videoId}`}
+                title={post.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          )}
           {/* <div className="relative my-3 sm:my-6 pb-[56%]">
             <Image
               src={post.featuredImage?.sourceUrl}

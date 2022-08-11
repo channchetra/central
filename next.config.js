@@ -5,7 +5,11 @@ if (!process.env.WORDPRESS_API_URL) {
   `);
 }
 
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+module.exports = withBundleAnalyzer({
   // basePath: '/central',
   images: {
     domains: [
@@ -18,5 +22,4 @@ module.exports = {
     ],
     // formats: ['image/avif', 'image/webp'],
   },
-  // Rest of the config
-};
+})

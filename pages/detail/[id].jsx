@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { getPostById, postPathById } from '~/lib/posts';
+import { getAllPostsSlug, getPostById, postPathById } from '~/lib/posts';
 import TemplateSingle from '~/templates/single';
 import Container from '~/components/layout/container';
 import SkeletonPostDetail from '~/components/skeleton/skeleton-post-detail';
 import { useRouter } from 'next/router';
-import { getAllPostsWithSlug } from '../../lib/api';
 
 export default function Detail({ post }) {
   const router = useRouter();
@@ -87,11 +86,11 @@ export async function getStaticProps({ params = {} }) {
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getAllPostsWithSlug();
+  const { posts } = await getAllPostsSlug();
 
   return {
-    paths: allPosts.edges.map(
-      ({ node }) => postPathById(node.databaseId) || []
+    paths: posts.map(
+      ({ databaseId }) => postPathById(databaseId) || []
     ),
     fallback: true,
   };

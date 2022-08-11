@@ -1,6 +1,6 @@
 import { PlayIcon } from '@heroicons/react/outline';
 import classNames from 'classnames';
-import { find } from 'lodash';
+import find from 'lodash/find';
 import Link from 'next/link';
 import ImageWithFallback from '../common/image-with-fallback';
 import PostCategoryTag from './post-category-tag';

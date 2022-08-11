@@ -1,5 +1,5 @@
 import HTMLReactParser from 'html-react-parser';
-import { merge } from 'lodash';
+import merge from 'lodash/merge';
 import Image from 'next/image';
 
 export default function CategoryTitle({

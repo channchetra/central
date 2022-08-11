@@ -1,5 +1,6 @@
 import { parseISO, format, formatDistance, differenceInWeeks } from 'date-fns';
 import { km } from 'date-fns/locale';
+import ClientOnly from '../client-only';
 
 export default function PostDate({ dateString, className = '', styles }) {
   if (!dateString) {
@@ -25,11 +26,13 @@ export default function PostDate({ dateString, className = '', styles }) {
   }
 
   return (
-    <div className={`${className} ${classes.wrapper}`}>
-      <div
-        dateTime={dateString}
-        className={classes.date}
-      >{`${displayDate}`}</div>
-    </div>
+    <ClientOnly>
+      <div className={`${className} ${classes.wrapper}`}>
+        <div
+          dateTime={dateString}
+          className={classes.date}
+        >{`${displayDate}`}</div>
+      </div>
+    </ClientOnly>
   );
 }

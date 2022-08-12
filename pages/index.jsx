@@ -1,4 +1,7 @@
-import { compact, find, keys, map } from 'lodash';
+import compact from 'lodash/compact';
+import find from 'lodash/find';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';

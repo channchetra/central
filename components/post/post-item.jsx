@@ -1,4 +1,5 @@
-import { find, merge } from 'lodash';
+import find from 'lodash/find';
+import merge from 'lodash/merge';
 import PostTitle from './post-title';
 import PostAuthor from './post-author';
 import PostCategoryTag from './post-category-tag';

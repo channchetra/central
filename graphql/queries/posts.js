@@ -175,6 +175,19 @@ export const QUERY_ALL_POSTS = gql`
   }
 `;
 
+export const QUERY_ALL_POSTS_SLUG = gql`
+  query AllPostsSlug {
+    posts(first: ${PER_PAGE}, where: { orderby: { field: DATE, order: DESC }, hasPassword: false }) {
+      edges {
+        node {
+          slug
+          databaseId
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_POST_BY_ID = gql`
   query PostBySlug($id: ID!) {
     post(id: $id, idType: DATABASE_ID) {

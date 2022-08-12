@@ -11,10 +11,22 @@ export default class Menu {
   ];
 
   static flagshipMenus = [
-    { name: 'វិទ្យុសំលេងយុវជន', href: '/voice-of-youth' },
-    { name: 'មើលទូរទស្សន៍', href: 'https://ams.com.kh' },
-    { name: 'ស្តាប់វិទ្យុ', href: 'https://fm97.ams.com.kh/' },
-    { name: 'ជម្លោះអ៊ុយក្រែននិងរុស្សី', href: '/tag/ukraine-russia' },
+    { name: 'វិទ្យុសំលេងយុវជន', href: '/voice-of-youth', class: 'bg-yellow' },
+    {
+      name: 'មើលទូរទស្សន៍',
+      href: 'https://ams.com.kh',
+      class: 'bg-dark-yellow',
+    },
+    {
+      name: 'ស្តាប់វិទ្យុ',
+      href: 'https://fm97.ams.com.kh/',
+      class: 'bg-red',
+    },
+    {
+      name: 'ជម្លោះអ៊ុយក្រែននិងរុស្សី',
+      href: '/tag/ukraine-russia',
+      class: 'bg-purple',
+    },
   ];
 
   static mainMenus = [

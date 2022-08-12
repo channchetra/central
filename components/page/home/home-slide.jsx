@@ -42,7 +42,12 @@ export default function HomeSlide({ posts = [] }) {
             <Link href={`/detail/${slide.databaseId}`}>
               <a aria-label={slide.title}>
                 <div className="relative pb-[40%]">
-                  <Image src={slide.src} layout="fill" objectFit="cover" />
+                  <Image
+                    src={slide.src}
+                    layout="fill"
+                    objectFit="cover"
+                    alt="ads banner"
+                  />
                   <h3 className="absolute bottom-10 md:bottom-14 inset-x-20 md:inset-x-[20%] z-10 mx-auto text-center bg-black/30 py-2 sm:py-3 text-white">
                     <span className="mr-3 md:mr-6">
                       អត្ថបទដោយ៖ {slide.author}

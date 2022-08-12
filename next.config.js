@@ -4,9 +4,13 @@ if (!process.env.WORDPRESS_API_URL) {
     Add to your environment variables WORDPRESS_API_URL.
   `);
 }
+const withPWA = require('next-pwa');
 
-module.exports = {
+module.exports = withPWA({
   // basePath: '/central',
+  pwa: {
+    dest: 'public',
+  },
   images: {
     domains: [
       process.env.WORDPRESS_API_URL.match(/(http(?:s)?:\/\/)(.*)/)[2], // Valid WP Image domain.
@@ -24,4 +28,4 @@ module.exports = {
     },
   },
   // Rest of the config
-};
+});

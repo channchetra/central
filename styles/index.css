@@ -22,17 +22,25 @@
 }
 /* Your own custom utilities */
 
-.flagship > a:nth-child(1) {
-  @apply bg-[#fab314]  dark:bg-gray-800;
+.flagship .bg-yellow:hover,
+.flagship .bg-dark-yellow:hover,
+.flagship .bg-red:hover,
+.flagship .bg-purple:hover {
+  --tw-bg-opacity: 0.7;
 }
-.flagship > a:nth-child(2) {
-  @apply bg-[#897b61] dark:bg-gray-800;
+
+.flagship .bg-yellow {
+  @apply bg-[#fab314];
 }
-.flagship > a:nth-child(3) {
-  @apply bg-[#c70003] dark:bg-gray-800;
+
+.flagship .bg-dark-yellow {
+  @apply bg-[#897b61];
 }
-.flagship > a:nth-child(4) {
-  @apply bg-[#55316f] dark:bg-gray-800 -ml-[0.5px];
+.flagship .bg-red {
+  @apply bg-[#c70003];
+}
+.flagship .bg-purple {
+  @apply bg-[#55316f];
 }
 
 .block-avi span,
@@ -55,7 +63,7 @@ html {
   @apply text-ams-blue;
 }
 .post-detail img {
-  @apply w-full
+  @apply w-full;
 }
 
 /* Hide PodCast elements */

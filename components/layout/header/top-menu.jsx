@@ -104,8 +104,13 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
         <div className="flagship items-center hidden sm:flex">
           {flagshipMenus.map((item, flagShipIndex) => (
             <Link href={item.href} key={`flag-ship-${flagShipIndex}`}>
-              <a className="px-3 py-6 lg:px-5 -skew-x-12 text-xs lg:text-base font-bold text-white hover:opacity-75 flex items-center h-full dark:text-neutral-50">
-                {item.name}
+              <a
+                className={classNames([
+                  'px-3 py-6 lg:px-5 -skew-x-12 text-xs lg:text-base font-bold text-white flex items-center h-full dark:text-neutral-50 dark:bg-gray-800 bg-slate-50/5',
+                  item.class
+                ])}
+              >
+                <span className="skew-x-12">{item.name}</span>
               </a>
             </Link>
           ))}

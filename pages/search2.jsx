@@ -76,6 +76,7 @@ export default function Search() {
                     <Image
                       src="https://asset.ams.com.kh/central/media/photo_2022-06-30_10-36-29.jpg"
                       layout="fill"
+                      alt={post.title}
                     />
                   </div>
                   <h1 className="post-title">{post.title}</h1>

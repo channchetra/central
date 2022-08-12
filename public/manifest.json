@@ -1,12 +1,18 @@
 {
-  "name": "Apsara Media Service Central",
-  "short_name": "AMS Central",
-  "theme_color": "#c70003",
-  "background_color": "#fafafa",
+  "theme_color": "#000",
+  "background_color": "#fab314",
   "display": "standalone",
+  "scope": "/",
   "start_url": "/",
-  "orientation": "portrait-primary",
+  "name": "AMS Central",
+  "short_name": "Central",
+  "description": "AMS Central is part of Apsara Media Services, that\u2019s the center of latest news.",
   "icons": [
+    {
+      "src": "/icons/icon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
     {
       "src": "/icons/icon-72x72.png",
       "sizes": "72x72",
@@ -38,8 +44,13 @@
       "type": "image/png"
     },
     {
-      "src": "/icons/icon-384x384.png",
-      "sizes": "384x384",
+      "src": "/icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-284x284.png",
+      "sizes": "284x284",
       "type": "image/png"
     },
     {

@@ -65,6 +65,7 @@ export default function Index({ posts = {} }) {
                 src={home.economy.banner}
                 layout="fill"
                 className="mx-auto"
+                alt="ads banner"
               />
             </div>
           </section>
@@ -89,6 +90,7 @@ export default function Index({ posts = {} }) {
           layout="fill"
           objectFit="cover"
           className="cover -z-10"
+          alt="ads banner"
         />
         <Container>
           <div className="mb-5 hidden sm:block">
@@ -122,6 +124,7 @@ export default function Index({ posts = {} }) {
           layout="fill"
           objectFit="cover"
           className="cover -z-10"
+          alt="ads banner"
         />
         <Container>
           <div className="mb-5 hidden sm:block">
@@ -161,7 +164,11 @@ export default function Index({ posts = {} }) {
 
           <section>
             <div className="relative mt-4 sm:mt-8">
-              <Image src={home.election.banner} layout="fill" />
+              <Image
+                src={home.election.banner}
+                layout="fill"
+                alt="ads banner"
+              />
             </div>
           </section>
         </div>

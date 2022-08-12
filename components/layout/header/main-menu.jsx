@@ -78,7 +78,7 @@ export default function MainMenu({ mainMenus }) {
             <a aria-label="AMS Central">
               <Image
                 layout="fill"
-                alt=""
+                alt="AMS Central"
                 src={amsLogoWide}
                 objectFit="contain"
                 className="brightness-0 invert-[1]"

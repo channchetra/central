@@ -61,14 +61,14 @@ const home = {
     link: '/ams-news/economy',
     categoryName: 'economy',
     first: 7,
-    banner: '/images/food-panda.jpg',
+    banner: 'https://asset.ams.com.kh/central/media/2021/05/photo_2021-05-06_13-11-39.jpg',
   },
   election: {
     title: 'ការបោះឆ្នោត',
     link: '/ams-news/election',
     categoryName: 'election',
     first: 6,
-    banner: '/images/pocarisweat-ads-sport.jpeg',
+    banner: 'https://asset.ams.com.kh/central/media/2021/05/pocarisweat-ads-sport.jpg',
   },
   video: {
     title: 'ទស្សនាវីដេអូថ្មីៗ',

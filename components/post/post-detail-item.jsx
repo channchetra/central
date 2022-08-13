@@ -65,7 +65,7 @@ export default function PostDetailItem({ post, title }) {
           />
           <div className="relative ads my-4 pb-[16%]">
             <Image
-              src="/images/ads-olatte.jpg"
+              src="https://asset.ams.com.kh/central/media/2020/07/ads-olatte.jpg"
               layout="fill"
               objectFit="cover"
               alt="ads banner"
@@ -75,7 +75,7 @@ export default function PostDetailItem({ post, title }) {
             <Link href="https://t.me/ApsaraMediaServices">
               <a target="_blank">
                 <Image
-                  src="/images/AMS-Telegram-100.jpg"
+                  src="https://asset.ams.com.kh/central/media/2020/07/AMS-Telegram-100.jpg"
                   layout="fill"
                   objectFit="contain"
                   className="w-full"
@@ -90,7 +90,7 @@ export default function PostDetailItem({ post, title }) {
           <div className="sticky top-14">
             <div className="ads relative h-[750px] md:h-[400px] lg:h-[563px]">
               <Image
-                src="/images/cama-mf-2.jpg"
+                src="https://asset.ams.com.kh/central/media/2021/04/cama-mf-2.jpg"
                 layout="fill"
                 objectFit="contain"
                 className="w-full object-top"

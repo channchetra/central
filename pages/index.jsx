@@ -166,10 +166,11 @@ export default function Index({ posts = {} }) {
           </section>
 
           <section>
-            <div className="relative mt-4 sm:mt-8">
+            <div className="relative mt-4 sm:mt-8 h-full">
               <Image
                 src={home.election.banner}
                 layout="fill"
+                objectFit="contain"
                 alt="ads banner"
               />
             </div>

@@ -58,31 +58,33 @@ export default function PostDetailItem({ post, title }) {
             />
           </div> */}
           <div
-            className=" px-3 sm:px-0"
+            className="px-3 sm:px-0"
             dangerouslySetInnerHTML={{
               __html: post.content,
             }}
           />
-          <div className="relative ads my-4 pb-[16%]">
-            <Image
-              src="https://asset.ams.com.kh/central/media/2020/07/ads-olatte.jpg"
-              layout="fill"
-              objectFit="cover"
-              alt="ads banner"
-            />
-          </div>
-          <div className="join-telegram relative my-4 sm:my-7 border pb-[28%]">
-            <Link href="https://t.me/ApsaraMediaServices">
-              <a target="_blank">
-                <Image
-                  src="https://asset.ams.com.kh/central/media/2020/07/AMS-Telegram-100.jpg"
-                  layout="fill"
-                  objectFit="contain"
-                  className="w-full"
-                  alt="ads banner"
-                />
-              </a>
-            </Link>
+          <div className="px-3 sm:px-0">
+            <div className="relative ads my-4 pb-[16%]">
+              <Image
+                src="https://asset.ams.com.kh/central/media/2020/07/ads-olatte.jpg"
+                layout="fill"
+                objectFit="cover"
+                alt="ads banner"
+              />
+            </div>
+            <div className="join-telegram relative my-4 sm:my-7 border pb-[28%]">
+              <Link href="https://t.me/ApsaraMediaServices">
+                <a target="_blank">
+                  <Image
+                    src="https://asset.ams.com.kh/central/media/2020/07/AMS-Telegram-100.jpg"
+                    layout="fill"
+                    objectFit="contain"
+                    className="w-full"
+                    alt="ads banner"
+                  />
+                </a>
+              </Link>
+            </div>
           </div>
           {/* {post.author} */}
         </div>

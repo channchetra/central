@@ -9,7 +9,6 @@ import {
   HomeSlide,
   HomeCambotory,
   HomeConnectToOversea,
-  // HomeDailyNews,
   HomeEconomy,
   HomeElection,
   HomeLatestNews,
@@ -53,11 +52,6 @@ export default function Index({ posts = {} }) {
         />
         <div className="md:grid md:grid-cols-3 gap-3 lg:gap-5">
           <section className="flex flex-col">
-            {/* <HomeDailyNews
-              title={home.daily.title}
-              link={home.daily.link}
-              posts={daily}
-            /> */}
             <HomeEconomy
               title={home.economy.title}
               link={home.economy.link}
@@ -120,7 +114,6 @@ export default function Index({ posts = {} }) {
         />
       </Container>
 
-      {/* Block banner Cambodia 2050 */}
       <section className="block-cambodia relative my-7 py-12 sm:py-7 md:py-14 lg:py-20 lg:pb-20">
         <Image
           src={home.cambodia2050.banner}
@@ -146,7 +139,6 @@ export default function Index({ posts = {} }) {
         </Container>
       </section>
 
-      {/* Block Sports & Economy */}
       <Container>
         <div className="md:grid md:grid-cols-3 gap-3 lg:gap-5 pb-5">
           <div className="col-span-3">

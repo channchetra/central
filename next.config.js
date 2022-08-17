@@ -5,8 +5,11 @@ if (!process.env.WORDPRESS_API_URL) {
   `);
 }
 
-module.exports = {
-  // basePath: '/central',
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+module.exports = withBundleAnalyzer({
   images: {
     domains: [
       process.env.WORDPRESS_API_URL.match(/(http(?:s)?:\/\/)(.*)/)[2], // Valid WP Image domain.
@@ -18,5 +21,4 @@ module.exports = {
     ],
     // formats: ['image/avif', 'image/webp'],
   },
-  // Rest of the config
-};
+})

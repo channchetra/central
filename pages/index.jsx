@@ -39,7 +39,7 @@ export default function Index({ posts = {} }) {
         <meta property="og:site_name" content="AMS Central" />
         <meta
           property="og:image"
-          content="/images/APSARA_MEDIA_SERVICES_LOGO-01.png"
+          content="/central/images/APSARA_MEDIA_SERVICES_LOGO-01.png"
         />
         <meta name="description" content="AMS Central" />
       </Head>

@@ -19,7 +19,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
               <Image
                 layout="fill"
                 alt="AMS Central"
-                src="/images/APSARA_MEDIA_SERVICES_SECONDARY_LOGO.png"
+                src="/central/images/APSARA_MEDIA_SERVICES_SECONDARY_LOGO.png"
                 objectFit="contain"
                 className="dark:brightness-0 dark:invert-[1]"
               />

@@ -21,9 +21,11 @@ export default function TemplateArchiveCategory({
     return <SkeletonCategoryPage />;
   }
 
+  const { seo = {} } = category || {}
+
   return (
     <>
-      <Head>{HTMLReactParser(category.seo.fullHead)}</Head>
+      <Head>{HTMLReactParser(seo.fullHead)}</Head>
       {category?.image?.banner && (
         <CategoryBanner image={category?.image?.banner} />
       )}

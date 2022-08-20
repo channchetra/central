@@ -12,9 +12,12 @@ export default function TemplateSingle({
   previous,
   title,
 }) {
+
+  const { seo = {} } = post || {}
+
   return (
     <>
-      <Head>{HTMLReactParser(post.seo.fullHead)}</Head>
+      <Head>{HTMLReactParser(seo.fullHead)}</Head>
       <Container>
         <InfiniteScroll
           pageStart={0}

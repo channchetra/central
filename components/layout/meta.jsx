@@ -67,7 +67,7 @@ export default function Meta() {
         href="/central/favicon/safari-pinned-tab.svg"
         color="#000000"
       />
-      <link rel="manifest" href="/manifest.json" />
+      <link rel="manifest" href="central/manifest.json" />
       <link rel="shortcut icon" href="/central/favicon/favicon.ico" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="theme-color" content="#000" />

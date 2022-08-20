@@ -68,7 +68,7 @@ export default function Meta() {
         color="#000000"
       />
       <link rel="manifest" href="/manifest.json" />
-      <link rel="shortcut icon" href="/central/favicon/central/favicon.ico" />
+      <link rel="shortcut icon" href="/central/favicon/favicon.ico" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="theme-color" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />

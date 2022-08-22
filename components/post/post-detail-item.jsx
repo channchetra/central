@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CMS_NAME } from '~/lib/constants';
 import ReactPlayer from 'react-player';
+import sanitizeHtml from 'sanitize-html';
 import PostCategoryTag from './post-category-tag';
 import PostDate from './post-date';
 
@@ -20,14 +21,14 @@ export default function PostDetailItem({ post, title }) {
       <div id={post.databaseId}> </div>
       <Head>
         <title>
-          {title} {CMS_NAME}
+          {sanitizeHtml(title, { allowedTags: [] })} {CMS_NAME}
         </title>
         <meta property="og:image" content={post.featuredImage?.sourceUrl} />
       </Head>
       <div className="grid sm:grid-cols-3 gap-3 lg:gap-6">
         <div className="col-span-2">
-          <h3 className="entry-title text-lg sm:text-2xl font-bold px-3 sm:px-0">
-            {post.title}
+          <h3 className="entry-title text-lg sm:text-2xl px-3 sm:px-0">
+            {sanitizeHtml(post.title, { allowedTags: [] })}
           </h3>
           <div className="flex flex-wrap my-3 items-center">
             <span className="text-sm pl-3 sm:pl-0">
@@ -64,7 +65,7 @@ export default function PostDetailItem({ post, title }) {
             }}
           />
           <div className="px-3 sm:px-0">
-            <div className="relative ads my-4 pb-[16%]">
+            <div className="relative ads my-4">
               <Image
                 src="https://asset.ams.com.kh/central/media/2020/07/ads-olatte.jpg"
                 layout="fill"
@@ -72,7 +73,7 @@ export default function PostDetailItem({ post, title }) {
                 alt="ads banner"
               />
             </div>
-            <div className="join-telegram relative my-4 sm:my-7 border pb-[28%]">
+            <div className="join-telegram relative my-4 border pb-[28%]">
               <Link href="https://t.me/ApsaraMediaServices">
                 <a target="_blank">
                   <Image
@@ -90,7 +91,7 @@ export default function PostDetailItem({ post, title }) {
         </div>
         <div className="mb-4 px-3 sm:px-0 col-span-2 sm:col-auto">
           <div className="sticky top-14">
-            <div className="ads relative h-[750px] md:h-[400px] lg:h-[563px]">
+            <div className="ads">
               <Image
                 src="https://asset.ams.com.kh/central/media/2021/04/cama-mf-2.jpg"
                 layout="fill"

@@ -65,6 +65,10 @@ html {
 .post-detail img {
   @apply w-full;
 }
+.ads span,
+.ads img {
+  @apply static w-full h-full !important;
+}
 
 /* Hide PodCast elements */
 .podcast_player,

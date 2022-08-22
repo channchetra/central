@@ -17,7 +17,7 @@ export default function TemplateSingle({
 
   return (
     <>
-      <Head>{HTMLReactParser(seo.fullHead)}</Head>
+      <Head>{HTMLReactParser(seo.fullHead || '')}</Head>
       <Container>
         <InfiniteScroll
           pageStart={0}

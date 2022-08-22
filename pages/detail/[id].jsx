@@ -50,7 +50,7 @@ export default function Detail({ post }) {
         window.history.pushState(
           null,
           item.title,
-          postPathById(item.databaseId)
+          `/central${postPathById(item.databaseId)}`
         );
         setTitle(item.title);
         setId(item.databaseId);

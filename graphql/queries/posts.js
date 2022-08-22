@@ -53,7 +53,9 @@ export const ARCHIVE_POST_FIELDS = gql`
     author {
       node {
         avatar {
+          height
           url
+          width
         }
         id
         name

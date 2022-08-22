@@ -24,7 +24,7 @@ export default function TemplateArchiveTag({
 
   return (
     <>
-      <Head>{HTMLReactParser(seo.fullHead)}</Head>
+      <Head>{HTMLReactParser(seo.fullHead || '')}</Head>
       <TagBanner tag={tag} className="mb-4" />
       <Container>
         <ClientOnly>

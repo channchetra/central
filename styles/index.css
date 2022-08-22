@@ -30,17 +30,17 @@
 }
 
 .flagship .bg-yellow {
-  @apply bg-[#fab314];
+  @apply bg-rose-900;
 }
 
 .flagship .bg-dark-yellow {
-  @apply bg-[#897b61];
+  @apply bg-pink-800;
 }
 .flagship .bg-red {
-  @apply bg-[#c70003];
+  @apply bg-purple-900;
 }
 .flagship .bg-purple {
-  @apply bg-[#55316f];
+  @apply bg-indigo-900;
 }
 
 .block-avi span,

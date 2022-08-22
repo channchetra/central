@@ -5,6 +5,14 @@ import Link from 'next/link';
 import { CMS_NAME } from '~/lib/constants';
 import ReactPlayer from 'react-player';
 import sanitizeHtml from 'sanitize-html';
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TelegramShareButton,
+  TelegramIcon,
+  TwitterShareButton,
+  TwitterIcon,
+} from 'next-share';
 import PostCategoryTag from './post-category-tag';
 import PostDate from './post-date';
 
@@ -39,7 +47,28 @@ export default function PostDetailItem({ post, title }) {
               {/* </span>  */} {/* | {post.author} | {post.date} */}
               <PostDate dateString={post.date} />
             </span>
+            <div className="ml-auto flex gap-2">
+              <FacebookShareButton
+                url={`https://ams.page/c/${post.databaseId}`}
+                quote={sanitizeHtml(title, { allowedTags: [] })}
+              >
+                <FacebookIcon size={32} round />
+              </FacebookShareButton>
+              <TelegramShareButton
+                url={`https://ams.page/c/${post.databaseId}`}
+                title={sanitizeHtml(title, { allowedTags: [] })}
+              >
+                <TelegramIcon size={32} round />
+              </TelegramShareButton>
+              <TwitterShareButton
+                url={`https://ams.page/c/${post.databaseId}`}
+                title={sanitizeHtml(title, { allowedTags: [] })}
+              >
+                <TwitterIcon size={32} round />
+              </TwitterShareButton>
+            </div>
           </div>
+
           {isVideo && (
             <div className="player-wrapper mb-5">
               <ReactPlayer

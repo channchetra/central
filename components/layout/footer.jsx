@@ -89,7 +89,7 @@ export default function Footer() {
         </section>
 
         <section className="copy-right mt-5 md:mt-8 py-2 lg:px-0 flex items-center justify-between flex-col md:flex-row">
-          <div className="text-[10px] md:text-xs text-gray-400 text-center md:text-left">
+          <div className="text-[10px] md:text-xs text-center md:text-left">
             ឆ្នាំ{new Date().getFullYear()} © រក្សាសិទ្ធគ្រប់យ៉ាងដោយ
             អប្សរាមេឌាសឺវីស / Apsara Media Services (AMS)
           </div>

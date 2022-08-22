@@ -46,6 +46,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
                   {({ open }) => (
                     <>
                       <Popover.Button
+                        aria-label="other-ams"
                         onMouseEnter={() => setPopoverOpen(true)}
                         onMouseLeave={() => setPopoverOpen(false)}
                         className={classNames(
@@ -107,7 +108,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
               <a
                 className={classNames([
                   'px-3 py-6 lg:px-5 -skew-x-12 text-xs lg:text-base font-bold text-white flex items-center h-full dark:text-neutral-50 dark:bg-gray-800 bg-slate-50/5',
-                  item.class
+                  item.class,
                 ])}
               >
                 <span className="skew-x-12">{item.name}</span>

@@ -39,7 +39,7 @@ export default function HomeSlide({ posts = [] }) {
     <div className="relative hidden md:block">
       <Slider {...settings}>
         {slides.map((slide) => (
-          <div key={slide.databaseId}>
+          <div key={slide.databaseId} aria-hidden="true">
             <Link href={`/detail/${slide.databaseId}`}>
               <a aria-label={slide.title}>
                 <div className="relative pb-[40%]">

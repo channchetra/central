@@ -60,7 +60,7 @@ html {
   @apply w-full h-auto aspect-video;
 }
 .post-detail p a {
-  @apply text-ams-blue;
+  @apply text-ams-blue dark:text-rose-500;
 }
 .post-detail img {
   @apply w-full;

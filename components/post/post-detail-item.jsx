@@ -47,7 +47,7 @@ export default function PostDetailItem({ post, title }) {
               {/* </span>  */} {/* | {post.author} | {post.date} */}
               <PostDate dateString={post.date} />
             </span>
-            <div className="ml-auto flex gap-2">
+            <div className="sm:ml-auto flex gap-2 mt-3 pl-3 sm:pl-0">
               <FacebookShareButton
                 url={`https://ams.page/c/${post.databaseId}`}
                 quote={sanitizeHtml(title, { allowedTags: [] })}

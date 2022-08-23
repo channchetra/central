@@ -29,7 +29,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
         <Link href="/">
           <a
             aria-label="CENTRAL"
-            className="text-3xl leading-none dark:text-neutral-50 before:content-['|'] before:mr-3"
+            className="sm:text-3xl leading-none dark:text-neutral-300 before:content-['|'] before:mr-3"
             style={{ fontFamily: 'Battambang' }}
           >
             CENTRAL

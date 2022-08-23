@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { CMS_NAME } from '~/lib/constants';
 import ReactPlayer from 'react-player';
 import sanitizeHtml from 'sanitize-html';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
+import { postPathById } from '~/lib/posts';
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -35,11 +37,11 @@ export default function PostDetailItem({ post, title }) {
       </Head>
       <div className="grid sm:grid-cols-3 gap-3 lg:gap-6">
         <div className="col-span-2">
-          <h3 className="entry-title text-lg sm:text-2xl px-3 sm:px-0">
+          <h3 className="entry-title text-lg sm:text-3xl px-3 sm:px-0">
             {sanitizeHtml(post.title, { allowedTags: [] })}
           </h3>
           <div className="flex flex-wrap my-3 items-center justify-between">
-            <div className='flex'>
+            <div className="flex">
               <span className="text-sm pl-3 sm:pl-0">
                 <PostCategoryTag categories={post.categories} />
               </span>
@@ -82,19 +84,47 @@ export default function PostDetailItem({ post, title }) {
               />
             </div>
           )}
-          {/* <div className="relative my-3 sm:my-6 pb-[56%]">
-            <Image
-              src={post.featuredImage?.sourceUrl}
-              layout="fill"
-              objectFit="cover"
-            />
-          </div> */}
+          {!isVideo && (
+            <div className="relative my-3 sm:my-6 pb-[56%]">
+              <Image
+                src={post.featuredImage?.sourceUrl}
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          )}
           <div
             className="px-3 sm:px-0"
             dangerouslySetInnerHTML={{
               __html: post.content,
             }}
           />
+          <div className="flex justify-between">
+            {post.previous ? (
+              <Link href={postPathById(post.previous.databaseId)}>
+                <a className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">
+                  <ChevronLeftIcon className="h-5 w-5 inline" />
+                  អត្ថបទមុន
+                </a>
+              </Link>
+            ) : (
+              <div className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">
+                <ChevronLeftIcon className="h-5 w-5" />
+              </div>
+            )}
+            {post.next ? (
+              <Link href={postPathById(post.next.databaseId)}>
+                <a className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">
+                  អត្ថបទបន្ទាប់
+                  <ChevronRightIcon className="h-5 w-5 inline" />
+                </a>
+              </Link>
+            ) : (
+              <div className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">
+                <ChevronRightIcon className="h-5 w-5" />
+              </div>
+            )}
+          </div>
           <div className="px-3 sm:px-0">
             <div className="relative ads my-4">
               <Image

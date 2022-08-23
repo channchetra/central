@@ -193,51 +193,27 @@ export const QUERY_ALL_POSTS_SLUG = gql`
 export const QUERY_POST_BY_ID = gql`
   query PostBySlug($id: ID!) {
     post(id: $id, idType: DATABASE_ID) {
-      author {
-        node {
-          avatar {
-            height
-            url
-            width
-          }
-          id
-          name
-          slug
-          firstName
-          lastName
-        }
-      }
       id
-      categories {
-        edges {
-          node {
-            databaseId
-            id
-            name
-            slug
-            uri
-          }
-        }
-      }
       content
       date
       excerpt
-      featuredImage {
-        node {
-          altText
-          caption
-          sourceUrl
-          srcSet
-          sizes
-          id
-        }
-      }
       modified
       databaseId
       title
       slug
       videoLink
       isSticky
+      featuredImage {
+        node {
+          mediaDetails {
+            sizes {
+              sourceUrl
+              name
+            }
+          }
+          sourceUrl
+        }
+      }
       postFormats {
         edges {
           node {
@@ -256,6 +232,31 @@ export const QUERY_POST_BY_ID = gql`
         databaseId
         title
         uri
+      }
+      categories {
+        edges {
+          node {
+            databaseId
+            id
+            name
+            slug
+            uri
+          }
+        }
+      }
+      author {
+        node {
+          avatar {
+            height
+            url
+            width
+          }
+          id
+          name
+          slug
+          firstName
+          lastName
+        }
       }
       seo {
         fullHead

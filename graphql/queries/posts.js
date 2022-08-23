@@ -252,6 +252,11 @@ export const QUERY_POST_BY_ID = gql`
         title
         uri
       }
+      next {
+        databaseId
+        title
+        uri
+      }
       seo {
         fullHead
       }

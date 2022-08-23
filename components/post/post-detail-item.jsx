@@ -38,16 +38,18 @@ export default function PostDetailItem({ post, title }) {
           <h3 className="entry-title text-lg sm:text-2xl px-3 sm:px-0">
             {sanitizeHtml(post.title, { allowedTags: [] })}
           </h3>
-          <div className="flex flex-wrap my-3 items-center">
-            <span className="text-sm pl-3 sm:pl-0">
-              <PostCategoryTag categories={post.categories} />
-            </span>
-            <span className="text-sm pl-3 sm:pl-0">
-              {/* <span className="py-1 px-2 text-white bg-ams-purple dark:bg-slate-600"> */}
-              {/* </span>  */} {/* | {post.author} | {post.date} */}
-              <PostDate dateString={post.date} />
-            </span>
-            <div className="sm:ml-auto flex gap-2 mt-3 pl-3 sm:pl-0">
+          <div className="flex flex-wrap my-3 items-center justify-between">
+            <div className='flex'>
+              <span className="text-sm pl-3 sm:pl-0">
+                <PostCategoryTag categories={post.categories} />
+              </span>
+              <span className="text-sm pl-3 sm:pl-0">
+                {/* <span className="py-1 px-2 text-white bg-ams-purple dark:bg-slate-600"> */}
+                {/* </span>  */} {/* | {post.author} | {post.date} */}
+                <PostDate dateString={post.date} />
+              </span>
+            </div>
+            <div className="flex gap-2 mt-3 pl-3 sm:pl-0">
               <FacebookShareButton
                 url={`https://ams.page/c/${post.databaseId}`}
                 quote={sanitizeHtml(title, { allowedTags: [] })}

@@ -100,29 +100,21 @@ export default function PostDetailItem({ post, title }) {
             }}
           />
           <div className="flex justify-between px-3 sm:px-0">
-            {post.previous ? (
+            {post.previous && (
               <Link href={postPathById(post.previous.databaseId)}>
                 <a className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">
                   <ChevronLeftIcon className="h-5 w-5 inline" />
                   អត្ថបទមុន
                 </a>
               </Link>
-            ) : (
-              <div className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">
-                <ChevronLeftIcon className="h-5 w-5" />
-              </div>
             )}
-            {post.next ? (
+            {post.next && (
               <Link href={postPathById(post.next.databaseId)}>
                 <a className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">
                   អត្ថបទបន្ទាប់
                   <ChevronRightIcon className="h-5 w-5 inline" />
                 </a>
               </Link>
-            ) : (
-              <div className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">
-                <ChevronRightIcon className="h-5 w-5" />
-              </div>
             )}
           </div>
           <div className="px-3 sm:px-0">

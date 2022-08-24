@@ -94,12 +94,12 @@ export default function PostDetailItem({ post, title }) {
             </div>
           )}
           <div
-            className="px-3 sm:px-0"
+            className="px-3 sm:px-0 md:text-lg"
             dangerouslySetInnerHTML={{
               __html: post.content,
             }}
           />
-          <div className="flex justify-between">
+          <div className="flex justify-between px-3 sm:px-0">
             {post.previous ? (
               <Link href={postPathById(post.previous.databaseId)}>
                 <a className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">

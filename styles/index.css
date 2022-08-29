@@ -22,25 +22,19 @@
 }
 /* Your own custom utilities */
 
-.flagship .bg-yellow:hover,
-.flagship .bg-dark-yellow:hover,
-.flagship .bg-red:hover,
-.flagship .bg-purple:hover {
-  --tw-bg-opacity: 0.7;
-}
-
 .flagship .bg-yellow {
-  @apply bg-rose-900;
+  @apply bg-rose-900 hover:bg-rose-900/70;
 }
 
 .flagship .bg-dark-yellow {
-  @apply bg-pink-800;
+  @apply bg-pink-800 hover:bg-pink-800/70;
 }
 .flagship .bg-red {
-  @apply bg-purple-900;
+  @apply bg-purple-900 hover:bg-purple-900/70;
+  margin-left: 1px;
 }
 .flagship .bg-purple {
-  @apply bg-indigo-900;
+  @apply bg-indigo-900 hover:bg-indigo-900/70;
 }
 
 .block-avi span,

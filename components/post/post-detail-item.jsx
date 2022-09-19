@@ -41,14 +41,25 @@ export default function PostDetailItem({ post, title }) {
             {sanitizeHtml(post.title, { allowedTags: [] })}
           </h3>
           <div className="flex flex-wrap my-3 items-center justify-between">
-            <div className="flex">
-              <span className="text-sm pl-3 sm:pl-0">
+            <div className="flex flex-wrap">
+              <span className="text-sm pl-3 sm:pl-0 mb-3 md:mb-0">
                 <PostCategoryTag categories={post.categories} />
               </span>
               <span className="text-sm pl-3 sm:pl-0">
-                {/* <span className="py-1 px-2 text-white bg-ams-purple dark:bg-slate-600"> */}
-                {/* </span>  */} {/* | {post.author} | {post.date} */}
+                <PostCategoryTag categories={post.categories} />
+              </span>
+              <span className="text-sm pl-3 sm:pl-0 flex items-center">
                 <PostDate dateString={post.date} />
+                <div className="flex items-center ml-3">
+                  អត្ថបទដោយ៖
+                  <Link href={`/author/${post.author?.slug}`}>
+                    <a aria-label={post.author?.name}>
+                      <div className="ml-1 font-bold md:text-lg">
+                        {post.author?.name}
+                      </div>
+                    </a>
+                  </Link>
+                </div>
               </span>
             </div>
             <div className="flex gap-2 mt-3 pl-3 sm:pl-0">
@@ -99,25 +110,29 @@ export default function PostDetailItem({ post, title }) {
               __html: post.content,
             }}
           />
-          <div className="flex justify-between px-3 sm:px-0">
-            {post.previous && (
-              <Link href={postPathById(post.previous.databaseId)}>
-                <a className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">
-                  <ChevronLeftIcon className="h-5 w-5 inline" />
-                  អត្ថបទមុន
-                </a>
-              </Link>
-            )}
-            {post.next && (
-              <Link href={postPathById(post.next.databaseId)}>
-                <a className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">
-                  អត្ថបទបន្ទាប់
-                  <ChevronRightIcon className="h-5 w-5 inline" />
-                </a>
-              </Link>
-            )}
-          </div>
           <div className="px-3 sm:px-0">
+            <div className="border mb-4 p-5">
+              <div className="md:flex items-center text-center md:text-left">
+                <div className="relative w-24 h-24 md:w-36 md:h-36 flex-none mx-auto">
+                  <Image
+                    src={post.author?.avatar?.url}
+                    layout="fill"
+                    className="rounded-full"
+                    alt={post.author?.name}
+                  />
+                </div>
+                <div className="md:ml-4 mt-4 md:mt-0 grow">
+                  <Link href={`/author/${post.author?.slug}`}>
+                    <a aria-label={post.author?.name}>
+                      <div className="font-bold md:text-lg">
+                        {post.author?.name}
+                      </div>
+                    </a>
+                  </Link>
+                  <div className="mt-3">{post.author?.description}</div>
+                </div>
+              </div>
+            </div>
             <div className="relative ads my-4">
               <Image
                 src="https://asset.ams.com.kh/central/media/2020/07/ads-olatte.jpg"
@@ -139,6 +154,24 @@ export default function PostDetailItem({ post, title }) {
                 </a>
               </Link>
             </div>
+          </div>
+          <div className="flex justify-between px-3 sm:px-0 mb-4">
+            {post.previous && (
+              <Link href={postPathById(post.previous.databaseId)}>
+                <a className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">
+                  <ChevronLeftIcon className="h-5 w-5 inline" />
+                  អត្ថបទមុន
+                </a>
+              </Link>
+            )}
+            {post.next && (
+              <Link href={postPathById(post.next.databaseId)}>
+                <a className="p-3 sm:p-4 bg-slate-100 dark:bg-gray-600 shadow focus:outline-none">
+                  អត្ថបទបន្ទាប់
+                  <ChevronRightIcon className="h-5 w-5 inline" />
+                </a>
+              </Link>
+            )}
           </div>
           {/* {post.author} */}
         </div>

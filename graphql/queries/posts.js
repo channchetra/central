@@ -256,6 +256,7 @@ export const QUERY_POST_BY_ID = gql`
           slug
           firstName
           lastName
+          description
         }
       }
       seo {

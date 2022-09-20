@@ -41,16 +41,15 @@ export default function PostDetailItem({ post, title }) {
             {sanitizeHtml(post.title, { allowedTags: [] })}
           </h3>
           <div className="flex flex-wrap my-3 items-center justify-between">
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap items-center">
               <span className="text-sm pl-3 sm:pl-0 mb-3 md:mb-0">
                 <PostCategoryTag categories={post.categories} />
               </span>
-              <span className="text-sm pl-3 sm:pl-0">
-                <PostCategoryTag categories={post.categories} />
-              </span>
+              <span className="w-0.5 h-4 mx-3 bg-slate-800 dark:bg-white" />
               <span className="text-sm pl-3 sm:pl-0 flex items-center">
                 <PostDate dateString={post.date} />
-                <div className="flex items-center ml-3">
+                <span className="w-0.5 h-4 mx-3 bg-slate-800 dark:bg-white" />
+                <div className="flex items-center">
                   អត្ថបទដោយ៖
                   <Link href={`/author/${post.author?.slug}`}>
                     <a aria-label={post.author?.name}>
@@ -123,10 +122,11 @@ export default function PostDetailItem({ post, title }) {
                 </div>
                 <div className="md:ml-4 mt-4 md:mt-0 grow">
                   <Link href={`/author/${post.author?.slug}`}>
-                    <a aria-label={post.author?.name}>
-                      <div className="font-bold md:text-lg">
-                        {post.author?.name}
-                      </div>
+                    <a
+                      aria-label={post.author?.name}
+                      className="font-bold md:text-lg"
+                    >
+                      {post.author?.name}
                     </a>
                   </Link>
                   <div className="mt-3">{post.author?.description}</div>

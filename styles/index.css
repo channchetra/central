@@ -1,5 +1,5 @@
 /* Fonts */
-@import 'fonts';
+@import './fonts.css';
 
 @tailwind base;
 

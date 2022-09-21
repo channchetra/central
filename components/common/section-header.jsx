@@ -51,7 +51,10 @@ export default function CommonSectionHeader({
             <div className={primaryClass} />
           </>
         ) : (
-          <span className={primaryClass}>{title}</span>
+          <>
+            <span>{title}</span>
+            <div className={primaryClass} />
+          </>
         )}
       </div>
     );

@@ -100,37 +100,12 @@ export const QUERY_ALL_POSTS_INDEX = gql`
 `;
 
 export const QUERY_ALL_POSTS_ARCHIVE = gql`
-  ${POST_FIELDS}
-  query AllPostsArchive {
-    posts(first: ${PER_PAGE}, where: { hasPassword: false }) {
+  ${ARCHIVE_POST_FIELDS}
+  query AllPostsArchive($first: Int = ${PER_PAGE}, $where: RootQueryToPostConnectionWhereArgs = {}) {
+    posts(first: $first, where: $where) {
       edges {
         node {
-          ...PostFields
-          author {
-            node {
-              avatar {
-                height
-                url
-                width
-              }
-              id
-              name
-              slug
-              firstName
-              lastName
-            }
-          }
-          excerpt
-          featuredImage {
-            node {
-              altText
-              caption
-              sourceUrl
-              srcSet
-              sizes
-              id
-            }
-          }
+          ...ArchivePostFields
         }
       }
     }

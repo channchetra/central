@@ -18,18 +18,17 @@ import {
 } from '~/components/page/home';
 import home from '~/data/home';
 import { getCategoriesWithPostsBySlugs } from '~/lib/categories';
+import { getAllPosts } from '~/lib/posts';
 import Container from '../components/layout/container';
 
-export default function Index({ posts = {} }) {
-  const news = posts.news.posts;
-  // const daily = posts.daily.posts;
-  const politico360 = posts.politico360.posts;
-  const connectToOversea = posts.connectToOversea.posts;
-  const cambotory = posts.cambotory.posts;
-  const sports = posts.sports.posts;
-  const economy = posts.economy.posts;
-  const election = posts.election.posts;
-  const video = posts.video.posts;
+export default function Index({ posts = {}, latestPosts = [] }) {
+  const politico360 = posts.politico360?.posts || [];
+  const connectToOversea = posts.connectToOversea?.posts || [];
+  const cambotory = posts.cambotory?.posts || [];
+  const sports = posts.sports?.posts || [];
+  const economy = posts.economy?.posts || [];
+  const election = posts.election?.posts || [];
+  const video = posts.video?.posts || [];
 
   return (
     <>
@@ -45,11 +44,7 @@ export default function Index({ posts = {} }) {
       </Head>
       <HomeSlide posts={connectToOversea} />
       <Container>
-        <HomeLatestNews
-          title={home.news.title}
-          link={home.news.link}
-          posts={news}
-        />
+        <HomeLatestNews title="ព័ត៌មានថ្មីបំផុត" posts={latestPosts} />
         <div className="md:grid md:grid-cols-3 gap-3 lg:gap-5">
           <section className="flex flex-col">
             <HomeEconomy
@@ -202,8 +197,26 @@ export async function getStaticProps() {
     }
   });
 
+  const { posts: latestPosts = [] } = await getAllPosts({
+    queryIncludes: 'archive',
+    variables: {
+      first: 5,
+      where: {
+        hasPassword: false,
+        orderby: [
+          {
+            "field": "DATE",
+            "order": "DESC"
+          }
+        ],
+        categoryNotIn: [16, 89, 130, 513, 631, 1768, 1934],
+      },
+    },
+  });
+
   return {
     props: {
+      latestPosts,
       posts,
     },
     revalidate: 10,

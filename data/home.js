@@ -1,10 +1,10 @@
 const home = {
-  news: {
-    title: 'ព័ត៌មានថ្មីបំផុត',
-    link: '/ams-news',
-    categoryName: 'ams-news',
-    first: 5,
-  },
+  // news: {
+  //   title: 'ព័ត៌មានថ្មីបំផុត',
+  //   link: '/ams-news',
+  //   categoryName: 'ams-news',
+  //   first: 5,
+  // },
   // daily: {
   //   title: 'ព័ត៌មានប្រចាំថ្ងៃ',
   //   banner: '/central/images/food-panda.jpg',

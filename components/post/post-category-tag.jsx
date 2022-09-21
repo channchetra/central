@@ -8,8 +8,8 @@ export default function PostCategoryTag({
 }) {
   const classes = {
     wrapper: '',
-    innerWrapper: 'flex items-center',
-    name: 'mr-2 py-1 px-2 text-white bg-rose-900 hover:bg-rose-700 max-w-[8rem] sm:max-w-none truncate',
+    innerWrapper: 'flex items-center space-x-2',
+    name: 'py-1 px-2 text-white bg-rose-900 hover:bg-rose-700 max-w-[8rem] sm:max-w-none truncate',
     ...styles,
   };
 

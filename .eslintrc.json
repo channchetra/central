@@ -40,7 +40,8 @@
         "extensions": [".ts", ".js", ".jsx", ".json"]
       },
       "node": {
-        "paths": ["."]
+        "paths": ["."],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   }

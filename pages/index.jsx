@@ -42,7 +42,9 @@ export default function Index({ posts = {}, latestPosts = [] }) {
         />
         <meta name="description" content="AMS Central" />
       </Head>
+
       <HomeSlide posts={connectToOversea} />
+
       <Container>
         <HomeLatestNews title="ព័ត៌មានថ្មីបំផុត" posts={latestPosts} />
         <div className="md:grid md:grid-cols-3 gap-3 lg:gap-5">
@@ -164,6 +166,7 @@ export default function Index({ posts = {}, latestPosts = [] }) {
           </section>
         </div>
       </Container>
+
       <section className="bg-slate-100 dark:bg-zinc-600 py-5">
         <Container>
           <HomeVideo
@@ -205,9 +208,9 @@ export async function getStaticProps() {
         hasPassword: false,
         orderby: [
           {
-            "field": "DATE",
-            "order": "DESC"
-          }
+            field: 'DATE',
+            order: 'DESC',
+          },
         ],
         categoryNotIn: [16, 89, 130, 513, 631, 1768, 1934],
       },

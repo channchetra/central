@@ -39,9 +39,9 @@ export default function SeaGame() {
     { label: 'វិនាទី', value: timeLeft.seconds },
   ];
 
-  /** 
+  /**
    * Option Top Highlight
-  */
+   */
   // return (
   //   <div className="relative sm:-mx-5 md:-mx-0 flex items-center justify-center md:justify-end py-1 px-[30px] lg:px-[44.5px]">
   //     <div className="w-10 h-7 relative">
@@ -65,21 +65,22 @@ export default function SeaGame() {
   //   </div>
   // );
 
-  /** 
+  /**
    * Option Right Highlight
-  */
+   */
   return (
     <div className="sm:fixed right-0 inset-y-1/3 z-10">
-      <div className="flex sm:flex-col space-x-[1px] sm:space-x-0 space-y-0 sm:space-y-[1px] bg-white justify-center items-center py-1 sm:py-0">
-        <div className="w-12 sm:w-14 h-8 sm:h-12 relative sm:border sm:border-r-0">
-          <Image
-            layout="fill"
-            alt="CAMBODIA 2023 SEA GAME"
-            src={seaGameLogo}
-            objectFit="contain"
-            target="_BLANK"
-            className="dark:brightness-0 dark:invert-[1] py-2"
-          />
+      <div className="flex sm:flex-col space-x-[1px] sm:space-x-0 space-y-0 sm:space-y-[1px] justify-center items-center py-1 sm:py-0 shadow">
+        <div className="bg-white dark:bg-gray-800 py-1">
+          <div className="w-12 sm:w-14 h-7 sm:h-10 relative">
+            <Image
+              layout="fill"
+              alt="CAMBODIA 2023 SEA GAME"
+              src={seaGameLogo}
+              objectFit="contain"
+              target="_BLANK"
+            />
+          </div>
         </div>
         {items.map(({ label, value }) => (
           <div className="bg-rose-900 dark:bg-gray-800 text-white dark:text-neutral-50 text-sm sm:text-md font-bold italic text-center leading-[12px] py-1 sm:py-2 w-12 sm:w-14">

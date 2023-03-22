@@ -121,6 +121,7 @@ export default class Menu {
         { name: 'នយោបាយឈ្នះ-ឈ្នះ', href: '/cambotory/winwin' },
         { name: 'ដំណើររបស់កម្ពុជា', href: '/cambotory/cambodia-journey' },
         { name: 'ឥស្សរជនឆ្នើមកម្ពុជា', href: '/cambotory/peacefounders' },
+        { name: '60នាទីនៃប្រវត្តិសាស្ត្រ', href: '/cambotory/60minute-of-history' },
       ],
     },
   ];

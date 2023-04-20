@@ -77,7 +77,6 @@ export default class Menu {
         { name: 'សេដ្ឋកិច្ច', href: '/ams-news/economy' },
         { name: 'អប្សរាណេត', href: '/ams-news/apsara-net' },
         { name: 'អប្សរាផ្លាស់', href: '/ams-news/apsara-plus' },
-        { name: 'ការបោះឆ្នោត', href: '/ams-news/election' },
         { name: 'Covid-19', href: '/ams-news/covid-19' },
       ],
     },
@@ -121,8 +120,15 @@ export default class Menu {
         { name: 'នយោបាយឈ្នះ-ឈ្នះ', href: '/cambotory/winwin' },
         { name: 'ដំណើររបស់កម្ពុជា', href: '/cambotory/cambodia-journey' },
         { name: 'ឥស្សរជនឆ្នើមកម្ពុជា', href: '/cambotory/peacefounders' },
-        { name: '60នាទីនៃប្រវត្តិសាស្ត្រ', href: '/cambotory/60minute-of-history' },
+        {
+          name: '60នាទីនៃប្រវត្តិសាស្ត្រ',
+          href: '/cambotory/60minute-of-history',
+        },
       ],
+    },
+    {
+      name: 'បោះឆ្នោតសកល២០២៣',
+      href: '/ams-news/election',
     },
   ];
 

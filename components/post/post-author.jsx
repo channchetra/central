@@ -1,31 +1,36 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
-export default function PostAuthor({ author, className = '', styles, config = {} }) {
+export default function PostAuthor({
+  author,
+  className = '',
+  styles,
+  config = {},
+}) {
   if (!author) {
-    return (null)
+    return null;
   }
 
-  const { firstName, lastName, name, avatar, slug } = author || {}
-  const authorName = name || `${firstName} ${lastName}` || null
+  const { firstName, lastName, name, amsAvatar, slug } = author || {};
+  const authorName = name || `${firstName} ${lastName}` || null;
   const conf = {
-      showAvatar: true,
-      showName: true,
-      ...config,
-  }
+    showAvatar: true,
+    showName: true,
+    ...config,
+  };
   const classes = {
     wrapper: '',
     avatar: '',
     name: '',
     ...styles,
-  }
+  };
 
   return (
     <div className={`${className} ${classes.wrapper}`}>
       {conf.showAvatar && (
         <div className={classes.avatar}>
           <Image
-            src={avatar.url}
+            src={amsAvatar}
             layout="fill"
             className="rounded-full"
             alt={authorName}
@@ -40,5 +45,5 @@ export default function PostAuthor({ author, className = '', styles, config = {}
         </Link>
       )}
     </div>
-  )
+  );
 }

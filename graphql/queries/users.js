@@ -31,6 +31,7 @@ export const QUERY_ALL_USERS = gql`
     users(first: ${PER_PAGE}) {
       edges {
         node {
+          amsAvatar
           avatar {
             height
             width
@@ -54,6 +55,7 @@ export const QUERY_ALL_USERS = gql`
 export const QUERY_USER_BY_SLUG = gql`
   query UserBySlug($slug: ID!) {
     user(id: $slug, idType: SLUG) {
+      amsAvatar
       avatar {
         height
         width
@@ -112,6 +114,7 @@ export const QUERY_AUTHOR_WITH_PAGINATED_POSTS_BY_SLUG = gql`
       id
       name
       slug
+      amsAvatar
       avatar {
         height
         width

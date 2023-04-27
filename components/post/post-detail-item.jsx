@@ -114,7 +114,7 @@ export default function PostDetailItem({ post, title }) {
               <div className="md:flex items-center text-center md:text-left">
                 <div className="relative w-24 h-24 md:w-36 md:h-36 flex-none mx-auto">
                   <Image
-                    src={post.author?.avatar?.url}
+                    src={post.author?.amsAvatar}
                     layout="fill"
                     className="rounded-full"
                     alt={post.author?.name}

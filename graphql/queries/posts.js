@@ -52,6 +52,7 @@ export const ARCHIVE_POST_FIELDS = gql`
     title
     author {
       node {
+        amsAvatar
         avatar {
           height
           url
@@ -121,6 +122,7 @@ export const QUERY_ALL_POSTS = gql`
           ...PostFields
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url
@@ -221,6 +223,7 @@ export const QUERY_POST_BY_ID = gql`
       }
       author {
         node {
+          amsAvatar
           avatar {
             height
             url
@@ -324,6 +327,7 @@ export const QUERY_POSTS_SEARCH = gql`
           }
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url
@@ -394,6 +398,7 @@ export const QUERY_POSTS_BY_CATEGORY_ID_ARCHIVE = gql`
           ...PostFields
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url
@@ -423,6 +428,7 @@ export const QUERY_POSTS_BY_CATEGORY_ID = gql`
           ...PostFields
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url
@@ -464,6 +470,7 @@ export const QUERY_POSTS_BY_CATEGORY_SLUG = gql`
           ...PostFields
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url
@@ -509,6 +516,7 @@ export const QUERY_POSTS_BY_AUTHOR_SLUG = gql`
           ...PostFields
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url
@@ -587,6 +595,7 @@ export const QUERY_POSTS_BY_TAG_SLUG = gql`
           ...PostFields
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url

@@ -36,17 +36,40 @@ export default class Menu {
       href: '/ams-one-minute',
       subMenus: [
         {
-          name: 'សន្តិសុខមាតុភូមិខ្ញុំ',
-          href: '/ams-one-minute/homeland-security',
+          name: 'ប្រសាសន៍ថ្នាក់ដឹកនាំ',
+          href: '/ams-one-minute/one-leader-remark',
         },
-        { name: 'ព័ត៌មានទាន់ហេតុការណ៍', href: '/ams-one-minute/hot-news' },
-        {
-          name: 'ព័ត៌មានសង្ខេបប្រចាំថ្ងៃ',
-          href: '/ams-one-minute/daily-summary',
+        { 
+          name: 'បែងចែកផ្លែផ្កា',
+          href: '/ams-one-minute/one-sharing' 
         },
         {
-          name: 'ការផ្លាស់ប្តរមុខមាត់ថ្មីក្នុងប្រទេស',
-          href: '/ams-one-minute/new-change-in-country',
+          name: 'នគរូបនីយកម្ម',
+          href: '/ams-one-minute/one-urbanization',
+        },
+        {
+          name: 'ចំណេះដឹងទូទៅ',
+          href: '/ams-one-minute/one-general-knowledge',
+        },
+        {
+          name: 'អប់រំចិត្ត',
+          href: '/ams-one-minute/one-psychological-education',
+        },
+        {
+          name: 'រស់នៅស្អាត',
+          href: '/ams-one-minute/one-live-clean',
+        },
+        {
+          name: 'ព័ត៌មានជាតិ',
+          href: '/ams-one-minute/one-national-news',
+        },
+        {
+          name: 'ព័ត៌មានអន្តរជាតិ',
+          href: '/ams-one-minute/one-international-news',
+        },
+        {
+          name: 'សង្ខេបព័ត៌មាន',
+          href: '/ams-one-minute/one-brief-news',
         },
       ],
     },

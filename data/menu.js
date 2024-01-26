@@ -39,33 +39,17 @@ export default class Menu {
           name: 'ប្រសាសន៍ថ្នាក់ដឹកនាំ',
           href: '/ams-one-minute/one-leader-remark',
         },
-        { 
-          name: 'បែងចែកផ្លែផ្កា',
-          href: '/ams-one-minute/one-sharing' 
+        {
+          name: 'Infographic',
+          href: '/ams-one-minute/one-infographic',
         },
         {
-          name: 'នគរូបនីយកម្ម',
-          href: '/ams-one-minute/one-urbanization',
-        },
-        {
-          name: 'ចំណេះដឹងទូទៅ',
-          href: '/ams-one-minute/one-general-knowledge',
+          name: 'បំណិនជីវិត',
+          href: '/ams-one-minute/one-life-skill',
         },
         {
           name: 'អប់រំចិត្ត',
           href: '/ams-one-minute/one-psychological-education',
-        },
-        {
-          name: 'រស់នៅស្អាត',
-          href: '/ams-one-minute/one-live-clean',
-        },
-        {
-          name: 'ព័ត៌មានជាតិ',
-          href: '/ams-one-minute/one-national-news',
-        },
-        {
-          name: 'ព័ត៌មានអន្តរជាតិ',
-          href: '/ams-one-minute/one-international-news',
         },
         {
           name: 'សង្ខេបព័ត៌មាន',

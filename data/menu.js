@@ -44,16 +44,16 @@ export default class Menu {
           href: '/ams-one-minute/one-infographic',
         },
         {
-          name: 'បំណិនជីវិត',
-          href: '/ams-one-minute/one-life-skill',
+          name: 'ចំណេះដឹងទូទៅ',
+          href: '/ams-one-minute/one-general-knowledge',
         },
         {
-          name: 'អប់រំចិត្ត',
-          href: '/ams-one-minute/one-psychological-education',
+          name: 'ព័ត៌មានជាតិ',
+          href: '/ams-one-minute/one-national-news',
         },
         {
-          name: 'សង្ខេបព័ត៌មាន',
-          href: '/ams-one-minute/one-brief-news',
+          name: 'ព័ត៌មានអន្តរជាតិ',
+          href: '/ams-one-minute/	one-international-news',
         },
       ],
     },

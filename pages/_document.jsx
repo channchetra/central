@@ -7,9 +7,9 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <Script
-            strategy="lazyOnload"
-            data-website-id="817a094a-7bea-4c3d-8eab-12a57a932937"
-            src="https://status.amskh.co/umami.js"
+            defer
+            data-domain="ams.com.kh/central"
+            src="https://analytic.cloud.sovichetra.com/js/script.js"
           />
         </Head>
         <body>

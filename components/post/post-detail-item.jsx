@@ -37,31 +37,28 @@ export default function PostDetailItem({ post, title }) {
       </Head>
       <div className="grid sm:grid-cols-3 gap-3 lg:gap-6">
         <div className="col-span-2">
-          <h3 className="entry-title text-lg sm:text-3xl px-3 sm:px-0">
+          <h3 className="entry-title text-2xl sm:text-3xl px-3 sm:px-0">
             {sanitizeHtml(post.title, { allowedTags: [] })}
           </h3>
-          <div className="flex flex-wrap my-3 items-center justify-between">
-            <div className="flex flex-wrap items-center">
-              <span className="text-sm pl-3 sm:pl-0 mb-3 md:mb-0">
+          <div className="flex flex-wrap my-3 items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-base pl-3 sm:pl-0">
                 <PostCategoryTag categories={post.categories} />
               </span>
-              <span className="w-0.5 h-4 mx-3 bg-slate-800 dark:bg-white" />
-              <span className="text-sm pl-3 sm:pl-0 flex items-center">
+              <span className="text-base pl-3 sm:pl-0 flex items-center gap-3">
                 <PostDate dateString={post.date} />
-                <span className="w-0.5 h-4 mx-3 bg-slate-800 dark:bg-white" />
+                <span className="w-0.5 h-4 bg-slate-800 dark:bg-white" />
                 <div className="flex items-center">
                   អត្ថបទដោយ៖
                   <Link href={`/author/${post.author?.slug}`}>
                     <a aria-label={post.author?.name}>
-                      <div className="ml-1 font-bold md:text-lg">
-                        {post.author?.name}
-                      </div>
+                      <div className="ml-1 font-bold">{post.author?.name}</div>
                     </a>
                   </Link>
                 </div>
               </span>
             </div>
-            <div className="flex gap-2 mt-3 pl-3 sm:pl-0">
+            <div className="flex gap-2 pl-3 sm:pl-0">
               <FacebookShareButton
                 url={`https://ams.page/c/${post.databaseId}`}
                 quote={sanitizeHtml(title, { allowedTags: [] })}
@@ -104,7 +101,7 @@ export default function PostDetailItem({ post, title }) {
             </div>
           )}
           <div
-            className="px-3 sm:px-0 md:text-lg"
+            className="px-3 sm:px-0 text-lg"
             dangerouslySetInnerHTML={{
               __html: post.content,
             }}
@@ -124,12 +121,12 @@ export default function PostDetailItem({ post, title }) {
                   <Link href={`/author/${post.author?.slug}`}>
                     <a
                       aria-label={post.author?.name}
-                      className="font-bold md:text-lg"
+                      className="font-bold text-lg"
                     >
                       {post.author?.name}
                     </a>
                   </Link>
-                  <div className="mt-3">{post.author?.description}</div>
+                  <div className="mt-3 text-lg">{post.author?.description}</div>
                 </div>
               </div>
             </div>

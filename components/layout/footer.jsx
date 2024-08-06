@@ -88,14 +88,14 @@ export default function Footer() {
           </div>
         </section>
 
-        <section className="copy-right mt-5 md:mt-8 py-2 lg:px-0 flex items-center justify-between flex-col md:flex-row">
-          <div className="text-[10px] md:text-xs text-center md:text-left">
+        <section className="copy-right mt-5 md:mt-8 py-2 lg:px-0 flex items-center justify-between flex-col lg:flex-row">
+          <div className="text-sm md:text-base text-center md:text-left">
             ឆ្នាំ{new Date().getFullYear()} © រក្សាសិទ្ធគ្រប់យ៉ាងដោយ
             អប្សរាមេឌាសឺវីស / Apsara Media Services (AMS)
           </div>
           <div className="md:text-right">
             <Link href="#">
-              <a className="text-xs">
+              <a className="text-sm md:text-base">
                 គោលការណ៍ភាពឯងជន លក្ខ័ណក្នុងការប្រើប្រាស់ COOKIE (ខូខី)
               </a>
             </Link>

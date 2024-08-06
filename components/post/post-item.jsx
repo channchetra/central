@@ -72,14 +72,14 @@ export default function PostItem({
       },
       title: {
         wrapper: '',
-        title: 'text-base lg:text-lg lg:leading-relaxed dark:text-neutral-50',
+        title: 'text-lg dark:text-neutral-50',
       },
       excerpt: {
         wrapper: 'mt-3',
-        excerpt: 'text-sm text-gray-500 dark:text-white',
+        excerpt: 'text-gray-500 dark:text-white',
       },
       meta: {
-        wrapper: 'flex items-center text-xs mt-3',
+        wrapper: 'flex items-center text-sm mt-3 flex-wrap',
         author: {
           wrapper: 'flex items-center',
           avatar: 'w-12 h-12 relative mr-4',

@@ -92,11 +92,11 @@ export default function Index({ posts = {}, latestPosts = [] }) {
               {home.aviVoice.title}
             </span>
           </div>
-          <p className="text-white sm:w-2/3 lg:w-1/2 xl:w-2/5 hidden sm:block mb-3 text-sm md:text-base">
+          <p className="text-white sm:w-2/3 lg:w-1/2 xl:w-2/5 hidden sm:block mb-3 text-base">
             {home.aviVoice.description}
           </p>
           <Link href={home.aviVoice.button.link}>
-            <a className="py-2 px-5 bg-rose-900 text-white text-sm md:text-base inline-block">
+            <a className="py-2 px-5 bg-rose-900 text-white text-lg inline-block">
               {home.aviVoice.button.title}
             </a>
           </Link>
@@ -125,11 +125,11 @@ export default function Index({ posts = {}, latestPosts = [] }) {
               {home.cambodia2050.title}
             </span>
           </div>
-          <p className="text-white sm:w-2/3 lg:w-1/2 xl:w-2/5 hidden sm:block mb-3 text-sm md:text-base">
+          <p className="text-white sm:w-2/3 lg:w-1/2 xl:w-2/5 hidden sm:block mb-3">
             {home.cambodia2050.description}
           </p>
           <Link href={home.cambodia2050.button.link}>
-            <a className="py-2 px-5 bg-rose-900 text-white text-sm md:text-base inline-block">
+            <a className="py-2 px-5 bg-rose-900 text-white inline-block">
               {home.cambodia2050.button.title}
             </a>
           </Link>

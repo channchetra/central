@@ -128,7 +128,7 @@ export default class Menu {
         { name: 'ដំណើររបស់កម្ពុជា', href: '/cambotory/cambodia-journey' },
         { name: 'ឥស្សរជនឆ្នើមកម្ពុជា', href: '/cambotory/peacefounders' },
         {
-          name: '60នាទីនៃប្រវត្តិសាស្ត្រ',
+          name: '60វិនាទីនៃប្រវត្តិសាស្ត្រ',
           href: '/cambotory/60minute-of-history',
         },
       ],

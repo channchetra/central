@@ -8,8 +8,8 @@ export default class MyDocument extends Document {
         <Head>
           <Script
             defer
-            data-domain="ams.com.kh/central"
-            src="https://analytic.cloud.sovichetra.com/js/script.js"
+            src="https://analytic.cloud.sovichetra.com/script.js"
+            data-website-id="b1e5ed14-aa5d-4f63-ab38-b0023cd61af5"
           />
         </Head>
         <body>

@@ -133,10 +133,6 @@ export default class Menu {
         },
       ],
     },
-    {
-      name: 'បោះឆ្នោតសកល២០២៣',
-      href: '/ams-news/election',
-    },
   ];
 
   static footerCentral = [

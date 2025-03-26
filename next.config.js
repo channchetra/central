@@ -20,6 +20,7 @@ module.exports = withBundleAnalyzer({
       'localhost:3000',
       'ams.com.kh',
       'admin.amskh.co',
+      's3.ams.com.kh',
     ],
     // formats: ['image/avif', 'image/webp'],
   },

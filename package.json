@@ -48,6 +48,7 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "autoprefixer": "10.4.7",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -58,8 +59,12 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "jquery": "^3.6.0",
     "postcss": "8.4.14",
     "prettier": "^2.7.1",
-    "tailwindcss": "^3.0.24"
-  }
+    "tailwindcss": "^3.0.24",
+    "typescript": "^4.9.0",
+    "webpack": "^5.1.0"
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

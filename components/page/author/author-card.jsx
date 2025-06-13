@@ -7,7 +7,7 @@ export default function AuthorCard({ author, className = '' }) {
       <div className="relative">
         <Image
           alt={author.name}
-          src={author.avatar.url}
+          src={author.amsAvatar}
           width="200"
           height="200"
           objectFit="contain"

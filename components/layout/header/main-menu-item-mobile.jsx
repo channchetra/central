@@ -17,7 +17,7 @@ export default function SubMenuItem({ menu, index, close }) {
                 aria-hidden="true"
                 className="group py-2 text-base lg:text-base inline-flex items-center focus:outline-0 border-b-2 border-transparent dark:text-neutral-50"
               >
-                <span className="font-bold">{menu.name}</span>
+                <span className="font-normal">{menu.name}</span>
               </a>
             </Link>
             <Popover.Button className="bg-white dark:bg-gray-700 rounded-md px-3 py-1 inline-flex items-center justify-center text-gray-400 dark:text-neutral-50 dark:focus:outline-none">
@@ -51,11 +51,14 @@ export default function SubMenuItem({ menu, index, close }) {
                         href={subMenu.href}
                       >
                         <a
-                          onClick={() => { setPopoverOpen(false); close(); }}
+                          onClick={() => {
+                            setPopoverOpen(false);
+                            close();
+                          }}
                           aria-hidden="true"
                           className="flex items-start rounded-lg dark:text-neutral-50"
                         >
-                          <span className="font-bold">{subMenu.name}</span>
+                          <span className="font-normal">{subMenu.name}</span>
                         </a>
                       </Link>
                     ))}
@@ -72,7 +75,7 @@ export default function SubMenuItem({ menu, index, close }) {
       <a
         onClick={() => close()}
         aria-hidden="true"
-        className="group py-4 text-base lg:text-base dark:text-neutral-50 font-bold inline-flex items-center focus:outline-0 border-b-2 border-transparent"
+        className="group py-4 text-base lg:text-base dark:text-neutral-50 inline-flex items-center focus:outline-0 border-b-2 border-transparent"
       >
         {menu.name}
       </a>

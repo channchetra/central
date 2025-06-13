@@ -18,8 +18,8 @@ export default function HomeSport({ title, link, posts = [], className = '' }) {
           className="text-xl font-bold"
         />
       </div>
-      <div className="grid md:grid-cols-3 gap-5">
-        <div className="col-span-2 md:col-auto">
+      <div className="grid lg:grid-cols-3 gap-5">
+        <div className="col-span-2 lg:col-auto">
           <PostItem
             key={posts[0]?.id}
             post={posts[0]}
@@ -35,7 +35,7 @@ export default function HomeSport({ title, link, posts = [], className = '' }) {
             }}
           />
         </div>
-        <div className="col-span-2 grid md:grid-cols-2 gap-3 md:gap-5">
+        <div className="col-span-2 grid md:grid-cols-2 gap-3 lg:gap-5">
           {posts.map(
             (post, index) =>
               index > 0 && (
@@ -50,8 +50,8 @@ export default function HomeSport({ title, link, posts = [], className = '' }) {
                   }}
                   styles={{
                     lineSeparator: `mb-3 border-b pb-4 ${
-                      index > 3 ? 'pb-4 md:border-none' : ''
-                    }  ${index > 5 ? 'border-none' : ''}`,
+                      index > 4 ? 'lg:border-none' : ''
+                    }  ${index > 4 ? 'border-none' : ''}`,
                   }}
                 />
               )

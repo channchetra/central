@@ -1,23 +1,23 @@
 import InfiniteScroll from 'react-infinite-scroller';
 import CommonLoader from '~/components/common/loader';
-import Container from '~/components/container';
 import CategoryBanner from '~/components/page/category/category-banner';
 import CategoryTitle from '~/components/page/category/category-title';
 import PostItem from '~/components/post/post-item';
 import useStaticInfiniteScroll from '~/hooks/use-static-infinite-scroll';
+import Container from '~/components/layout/container';
 
 export default function TemplateArchive({ posts, attributes = {} }) {
   // console.warn(posts)
   // return null
   const pageBanner = {
-    image: 'https://asset.ams.com.kh/central/media/AMS-Cover-AVI-Voice.jpg',
+    image: '/central/images/AMS-Cover-AVI-Voice.jpg',
     enable: true,
     ...attributes.pageBanner,
   };
   const pageTitle = {
     title: 'Archive',
     description: 'Description',
-    image: 'https://asset.ams.com.kh/central/media/AVI-Voice-on-AMS.jpg',
+    image: '/central/images/AVI-Voice-on-AMS.jpg',
     className: 'my-5',
     config: {
       showLineSeparator: true,

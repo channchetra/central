@@ -1,4 +1,5 @@
-import { merge } from 'lodash';
+import HTMLReactParser from 'html-react-parser';
+import merge from 'lodash/merge';
 import Image from 'next/image';
 
 export default function CategoryTitle({
@@ -24,10 +25,10 @@ export default function CategoryTitle({
       description:
         'text-lg lg:text-xl leading-relaxed lg:leading-loose mt-3 lg:mt-5 px-3 sm:px-0',
       image: {
-        wrapper: 'relative aspect-[2/3] lg:-mt-20',
+        wrapper: 'category-title relative aspect-[2/3] lg:-mt-20',
         image: '',
       },
-      lineSeparator: 'border-b pb-5 md:pb-10',
+      lineSeparator: 'border-b pb-5 md:pb-7',
     },
     styles
   );
@@ -54,7 +55,11 @@ export default function CategoryTitle({
       <div className={`${classes.innerWrapper.content}`}>
         <div className={classes.lineSeparator}>
           {title && <div className={classes.title}>{title}</div>}
-          {description && <div className={classes.description}>{description}</div>}
+          {description && (
+            <div className={classes.description}>
+              {HTMLReactParser(description)}
+            </div>
+          )}
         </div>
       </div>
     </div>

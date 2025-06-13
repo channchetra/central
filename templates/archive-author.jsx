@@ -19,9 +19,11 @@ export default function TemplateArchiveAuthor({
     return <SkeletonAuthorPage />;
   }
 
+  const { seo = {} } = author || {}
+
   return (
     <>
-      <Head>{HTMLReactParser(author.seo.fullHead)}</Head>
+      <Head>{HTMLReactParser(seo.fullHead || '')}</Head>
       <Container className="my-5">
         <InfiniteScroll pageStart={0} loadMore={loadMore} hasMore={hasMore}>
           <section className="grid md:grid-cols-3 gap-5 sm:gap-7 mb-5">

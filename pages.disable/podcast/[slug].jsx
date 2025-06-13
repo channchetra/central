@@ -1,41 +1,34 @@
-import { mapPostData } from '~/lib/posts';
-import { getAllCategoriesPath } from '~/lib/categories';
+import { addApolloState, initializeApollo } from '~/lib/apollo-client';
+import { generateRSSFeed, getAllPodcastsSlug } from '~/lib/podcast';
+import { QUERY_PODCAST_WITH_PAGINATED_POSTS_BY_SLUG } from '~/graphql/queries/podcast';
 import TemplateArchiveCategory from '~/templates/archive-category';
 import { useQuery } from '@apollo/client';
-import { QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG } from '~/graphql/queries/categories';
-import { addApolloState, initializeApollo } from '~/lib/apollo-client';
 import { useRouter } from 'next/router';
+import { mapPostData } from '../../lib/posts';
 
-export default function ArchivePage() {
+export default function ArchivePodcastPage() {
   const router = useRouter();
-  const {
-    query: { slugChild, slugParent },
-  } = router;
-  const slug =
-    slugChild && slugChild.length
-      ? slugChild[slugChild.length - 1]
-      : slugParent;
+  const { slug } = router.query;
 
   if (router.isFallback) {
     return <TemplateArchiveCategory isFallback={router.isFallback} />;
   }
 
   const { loading, data, fetchMore } = useQuery(
-    QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG,
+    QUERY_PODCAST_WITH_PAGINATED_POSTS_BY_SLUG,
     {
       variables: {
         slug,
       },
     }
   );
-
-  const category = data?.category;
+  const podcast = data?.podcast || {};
   const postData = {
     posts:
-      data?.category?.posts?.edges
+      data?.podcast?.posts?.edges
         .map(({ node = {} }) => node)
         .map(mapPostData) || [],
-    pageInfo: data?.category?.posts?.pageInfo || {},
+    pageInfo: data?.podcast?.posts?.pageInfo || {},
   };
 
   const loadMore = () =>
@@ -49,7 +42,7 @@ export default function ArchivePage() {
 
   return (
     <TemplateArchiveCategory
-      category={category}
+      category={podcast}
       posts={postData.posts}
       hasMore={postData.pageInfo.hasNextPage}
       loading={loading}
@@ -59,40 +52,27 @@ export default function ArchivePage() {
 }
 
 export async function getStaticProps({ params = {} } = {}) {
-  const { slugParent, slugChild = [] } = params;
-  const slug =
-    slugChild && slugChild.length
-      ? slugChild[slugChild.length - 1]
-      : slugParent;
-
+  const { slug } = params;
   const apolloClient = initializeApollo();
   const { data } = await apolloClient.query({
-    query: QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG,
+    query: QUERY_PODCAST_WITH_PAGINATED_POSTS_BY_SLUG,
     variables: {
       slug,
     },
   });
 
+  generateRSSFeed(data?.podcast);
+
   return addApolloState(apolloClient, {
     props: {},
     revalidate: 10,
-    notFound: !data?.category,
+    notFound: !data?.podcast,
   });
 }
 
 export async function getStaticPaths() {
-  const { categories } = await getAllCategoriesPath();
-  const paths = categories.map(({ uri }) => {
-    const segments = uri.split('/').filter((seg) => seg !== '');
-    segments.shift();
-    return {
-      params: {
-        slugParent: segments.shift(),
-        slugChild: segments,
-      },
-    };
-  });
-
+  const { podcasts } = await getAllPodcastsSlug();
+  const paths = podcasts.map(({ slug }) => `/podcast/${slug}`);
   return {
     paths,
     fallback: true,

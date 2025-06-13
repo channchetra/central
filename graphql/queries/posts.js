@@ -52,8 +52,11 @@ export const ARCHIVE_POST_FIELDS = gql`
     title
     author {
       node {
+        amsAvatar
         avatar {
+          height
           url
+          width
         }
         id
         name
@@ -98,37 +101,12 @@ export const QUERY_ALL_POSTS_INDEX = gql`
 `;
 
 export const QUERY_ALL_POSTS_ARCHIVE = gql`
-  ${POST_FIELDS}
-  query AllPostsArchive {
-    posts(first: ${PER_PAGE}, where: { hasPassword: false }) {
+  ${ARCHIVE_POST_FIELDS}
+  query AllPostsArchive($first: Int = ${PER_PAGE}, $where: RootQueryToPostConnectionWhereArgs = {}) {
+    posts(first: $first, where: $where) {
       edges {
         node {
-          ...PostFields
-          author {
-            node {
-              avatar {
-                height
-                url
-                width
-              }
-              id
-              name
-              slug
-              firstName
-              lastName
-            }
-          }
-          excerpt
-          featuredImage {
-            node {
-              altText
-              caption
-              sourceUrl
-              srcSet
-              sizes
-              id
-            }
-          }
+          ...ArchivePostFields
         }
       }
     }
@@ -144,6 +122,7 @@ export const QUERY_ALL_POSTS = gql`
           ...PostFields
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url
@@ -175,24 +154,62 @@ export const QUERY_ALL_POSTS = gql`
   }
 `;
 
+export const QUERY_ALL_POSTS_SLUG = gql`
+  query AllPostsSlug {
+    posts(first: ${PER_PAGE}, where: { orderby: { field: DATE, order: DESC }, hasPassword: false }) {
+      edges {
+        node {
+          slug
+          databaseId
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_POST_BY_ID = gql`
   query PostBySlug($id: ID!) {
     post(id: $id, idType: DATABASE_ID) {
-      author {
+      id
+      content
+      date
+      excerpt
+      modified
+      databaseId
+      title
+      slug
+      videoLink
+      isSticky
+      featuredImage {
         node {
-          avatar {
-            height
-            url
-            width
+          mediaDetails {
+            sizes {
+              sourceUrl
+              name
+            }
           }
-          id
-          name
-          slug
-          firstName
-          lastName
+          sourceUrl
         }
       }
-      id
+      postFormats {
+        edges {
+          node {
+            name
+            postFormatId
+            slug
+          }
+        }
+      }
+      previous {
+        databaseId
+        title
+        uri
+      }
+      next {
+        databaseId
+        title
+        uri
+      }
       categories {
         edges {
           node {
@@ -204,28 +221,21 @@ export const QUERY_POST_BY_ID = gql`
           }
         }
       }
-      content
-      date
-      excerpt
-      featuredImage {
+      author {
         node {
-          altText
-          caption
-          sourceUrl
-          srcSet
-          sizes
+          amsAvatar
+          avatar {
+            height
+            url
+            width
+          }
           id
+          name
+          slug
+          firstName
+          lastName
+          description
         }
-      }
-      modified
-      databaseId
-      title
-      slug
-      isSticky
-      previous {
-        databaseId
-        title
-        uri
       }
       seo {
         fullHead
@@ -317,6 +327,7 @@ export const QUERY_POSTS_SEARCH = gql`
           }
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url
@@ -387,6 +398,7 @@ export const QUERY_POSTS_BY_CATEGORY_ID_ARCHIVE = gql`
           ...PostFields
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url
@@ -416,6 +428,7 @@ export const QUERY_POSTS_BY_CATEGORY_ID = gql`
           ...PostFields
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url
@@ -457,6 +470,7 @@ export const QUERY_POSTS_BY_CATEGORY_SLUG = gql`
           ...PostFields
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url
@@ -502,6 +516,7 @@ export const QUERY_POSTS_BY_AUTHOR_SLUG = gql`
           ...PostFields
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url
@@ -580,6 +595,7 @@ export const QUERY_POSTS_BY_TAG_SLUG = gql`
           ...PostFields
           author {
             node {
+              amsAvatar
               avatar {
                 height
                 url

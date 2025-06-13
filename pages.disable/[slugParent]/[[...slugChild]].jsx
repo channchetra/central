@@ -1,73 +1,88 @@
-import {
-  getPostsByAuthorSlug,
-  getPostsByCategorySlug,
-  getPostsByTagSlug,
-} from '~/lib/posts';
-import { getAllCategoriesPath, getCategoryBySlug } from '~/lib/categories';
-import categoryData from '~/data/categories';
-import { find, isEmpty } from 'lodash';
+import { mapPostData } from '~/lib/posts';
+import { getAllCategoriesPath } from '~/lib/categories';
 import TemplateArchiveCategory from '~/templates/archive-category';
-import { getAllUsersSlug, getUserBySlug } from '~/lib/users';
-import TemplateArchiveAuthor from '~/templates/static/archive-author';
-import { getAllTagsSlug, getTagBySlug } from '~/lib/tag';
-import TemplateArchiveTag from '~/templates/archive-tag';
+import { useQuery } from '@apollo/client';
+import { QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG } from '~/graphql/queries/categories';
+import { addApolloState, initializeApollo } from '~/lib/apollo-client';
+import { useRouter } from 'next/router';
 
-export default function Category({ model, posts }) {
-  if (model.type === 'category') {
-    return <TemplateArchiveCategory category={model} posts={posts} />;
+export default function ArchivePage() {
+  const router = useRouter();
+  const {
+    query: { slugChild, slugParent },
+  } = router;
+  const slug =
+    slugChild && slugChild.length
+      ? slugChild[slugChild.length - 1]
+      : slugParent;
+
+  if (router.isFallback) {
+    return <TemplateArchiveCategory isFallback={router.isFallback} />;
   }
 
-  if (model.type === 'author') {
-    return <TemplateArchiveAuthor author={model} posts={posts} />;
-  }
+  const { loading, data, fetchMore } = useQuery(
+    QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG,
+    {
+      variables: {
+        slug,
+      },
+    }
+  );
 
-  if (model.type === 'tag') {
-    return <TemplateArchiveTag tag={model} posts={posts} />;
-  }
+  const category = data?.category;
+  const postData = {
+    posts:
+      data?.category?.posts?.edges
+        .map(({ node = {} }) => node)
+        .map(mapPostData) || [],
+    pageInfo: data?.category?.posts?.pageInfo || {},
+  };
+
+  const loadMore = () =>
+    fetchMore({
+      variables: {
+        slug,
+        after: postData.pageInfo.endCursor,
+      },
+      notifyOnNetworkStatusChange: true,
+    });
+
+  return (
+    <TemplateArchiveCategory
+      category={category}
+      posts={postData.posts}
+      hasMore={postData.pageInfo.hasNextPage}
+      loading={loading}
+      loadMore={loadMore}
+    />
+  );
 }
 
 export async function getStaticProps({ params = {} } = {}) {
   const { slugParent, slugChild = [] } = params;
-  const slug = slugChild.length ? slugChild[slugChild.length - 1] : slugParent;
-  let model = {};
-  let postsData = {};
-  let type = slugParent;
+  const slug =
+    slugChild && slugChild.length
+      ? slugChild[slugChild.length - 1]
+      : slugParent;
 
-  if (slugParent === 'author') {
-    model = await getUserBySlug(slug);
-    postsData = await getPostsByAuthorSlug({ slug });
-  } else if (slugParent === 'tag') {
-    model = await getTagBySlug(slug);
-    postsData = await getPostsByTagSlug({ slug });
-  } else {
-    type = 'category';
-    model = find(categoryData, ['slug', slug]) || {};
-    if (isEmpty(model)) {
-      const category = await getCategoryBySlug(slug);
-      model = {
-        ...model,
-        ...category,
-        title: category.name,
-      };
-    }
-
-    postsData = await getPostsByCategorySlug({
+  const apolloClient = initializeApollo();
+  const { data } = await apolloClient.query({
+    query: QUERY_CATEGORY_WITH_PAGINATED_POSTS_BY_SLUG,
+    variables: {
       slug,
-    });
-  }
-
-  return {
-    props: {
-      model: { ...model, type },
-      posts: postsData.posts || [],
     },
+  });
+
+  return addApolloState(apolloClient, {
+    props: {},
     revalidate: 10,
-  };
+    notFound: !data?.category,
+  });
 }
 
 export async function getStaticPaths() {
   const { categories } = await getAllCategoriesPath();
-  const categoriesPath = categories.map(({ uri }) => {
+  const paths = categories.map(({ uri }) => {
     const segments = uri.split('/').filter((seg) => seg !== '');
     segments.shift();
     return {
@@ -78,24 +93,8 @@ export async function getStaticPaths() {
     };
   });
 
-  const { users } = await getAllUsersSlug();
-  const usersPath = users.map(({ slug }) => ({
-    params: {
-      slugParent: 'author',
-      slugChild: [slug],
-    },
-  }));
-
-  const { tags } = await getAllTagsSlug();
-  const tagsPath = tags.map(({ slug }) => ({
-    params: {
-      slugParent: 'tag',
-      slugChild: [slug],
-    },
-  }));
-
   return {
-    paths: [...categoriesPath, ...usersPath, ...tagsPath],
-    fallback: false,
+    paths,
+    fallback: true,
   };
 }

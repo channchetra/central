@@ -11,10 +11,22 @@ export default class Menu {
   ];
 
   static flagshipMenus = [
-    { name: 'វិទ្យុសំលេងយុវជន', href: '/voice-of-youth' },
-    { name: 'មើលទូរទស្សន៍', href: 'https://ams.com.kh' },
-    { name: 'ស្តាប់វិទ្យុ', href: 'https://fm97.ams.com.kh/' },
-    { name: 'ជម្លោះអ៊ុយក្រែននិងរុស្សី', href: '/tag/ukraine-russia' },
+    { name: 'វិទ្យុសំលេងយុវជន', href: '/voice-of-youth', class: 'bg-yellow' },
+    {
+      name: 'មើលទូរទស្សន៍',
+      href: 'https://ams.com.kh',
+      class: 'bg-dark-yellow',
+    },
+    {
+      name: 'ស្តាប់វិទ្យុ',
+      href: 'https://fm97.ams.com.kh/',
+      class: 'bg-red',
+    },
+    {
+      name: 'ជម្លោះអ៊ុយក្រែននិងរុស្សី',
+      href: '/tag/ukraine-russia',
+      class: 'bg-purple',
+    },
   ];
 
   static mainMenus = [
@@ -24,17 +36,24 @@ export default class Menu {
       href: '/ams-one-minute',
       subMenus: [
         {
-          name: 'សន្តិសុខមាតុភូមិខ្ញុំ',
-          href: '/ams-one-minute/homeland-security',
-        },
-        { name: 'ព័ត៌មានទាន់ហេតុការណ៍', href: '/ams-one-minute/hot-news' },
-        {
-          name: 'ព័ត៌មានសង្ខេបប្រចាំថ្ងៃ',
-          href: '/ams-one-minute/daily-summary',
+          name: 'ប្រសាសន៍ថ្នាក់ដឹកនាំ',
+          href: '/ams-one-minute/one-leader-remark',
         },
         {
-          name: 'ការផ្លាស់ប្តរមុខមាត់ថ្មីក្នុងប្រទេស',
-          href: '/ams-one-minute/new-change-in-country',
+          name: 'Infographic',
+          href: '/ams-one-minute/one-infographic',
+        },
+        {
+          name: 'ចំណេះដឹងទូទៅ',
+          href: '/ams-one-minute/one-general-knowledge',
+        },
+        {
+          name: 'ព័ត៌មានជាតិ',
+          href: '/ams-one-minute/one-national-news',
+        },
+        {
+          name: 'ព័ត៌មានអន្តរជាតិ',
+          href: '/ams-one-minute/one-international-news',
         },
       ],
     },
@@ -65,7 +84,6 @@ export default class Menu {
         { name: 'សេដ្ឋកិច្ច', href: '/ams-news/economy' },
         { name: 'អប្សរាណេត', href: '/ams-news/apsara-net' },
         { name: 'អប្សរាផ្លាស់', href: '/ams-news/apsara-plus' },
-        { name: 'ការបោះឆ្នោត', href: '/ams-news/election' },
         { name: 'Covid-19', href: '/ams-news/covid-19' },
       ],
     },
@@ -101,14 +119,33 @@ export default class Menu {
       name: 'សច្ចធម៌ប្រវត្តិសាស្ត្រ',
       href: '/cambotory',
       subMenus: [
-        { name: 'ក្អែកខ្មៅ', href: '/cambotory/black-crows' },
+        { name: 'ក្អែកខ្មៅ',
+          href: '/cambotory/black-crows' },
         {
           name: 'កិច្ចព្រមព្រៀងទីក្រុងប៉ារីស៍',
           href: '/cambotory/paris-peace-agreement',
         },
-        { name: 'នយោបាយឈ្នះ-ឈ្នះ', href: '/cambotory/winwin' },
-        { name: 'ដំណើររបស់កម្ពុជា', href: '/cambotory/cambodia-journey' },
-        { name: 'ឥស្សរជនឆ្នើមកម្ពុជា', href: '/cambotory/peacefounders' },
+        { name: 'នយោបាយឈ្នះ-ឈ្នះ',
+          href: '/cambotory/winwin'
+        },
+        { name: 'ដំណើររបស់កម្ពុជា', 
+          href: '/cambotory/cambodia-journey' 
+        },
+        { name: 'ឥស្សរជនឆ្នើមកម្ពុជា',
+          href: '/cambotory/peacefounders' 
+        },
+        {
+          name: '60វិនាទីនៃប្រវត្តិសាស្ត្រ',
+          href: '/cambotory/60minute-of-history',
+        },
+        {
+          name: 'ប្រវត្តិសាស្ត្រថ្នាក់ទី១២',
+          href: '/cambotory/history-4hischool',
+        },
+        {
+          name: 'ព្រឹត្តិការណ៍សំខាន់ៗ',
+          href: '/cambotory/special-event',
+        },
       ],
     },
   ];

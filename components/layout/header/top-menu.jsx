@@ -19,7 +19,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
               <Image
                 layout="fill"
                 alt="AMS Central"
-                src="https://asset.ams.com.kh/central/media/APSARA_MEDIA_SERVICES_SECONDARY_LOGO.png"
+                src="/central/images/APSARA_MEDIA_SERVICES_SECONDARY_LOGO.png"
                 objectFit="contain"
                 className="dark:brightness-0 dark:invert-[1]"
               />
@@ -29,7 +29,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
         <Link href="/">
           <a
             aria-label="CENTRAL"
-            className="text-3xl leading-none dark:text-neutral-50 before:content-['|'] before:mr-3"
+            className="sm:text-3xl leading-none dark:text-neutral-300 before:content-['|'] before:mr-3"
             style={{ fontFamily: 'Battambang' }}
           >
             CENTRAL
@@ -46,6 +46,7 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
                   {({ open }) => (
                     <>
                       <Popover.Button
+                        aria-label="other-ams"
                         onMouseEnter={() => setPopoverOpen(true)}
                         onMouseLeave={() => setPopoverOpen(false)}
                         className={classNames(
@@ -104,8 +105,13 @@ export default function TopMenu({ flagshipMenus, amsWebsites }) {
         <div className="flagship items-center hidden sm:flex">
           {flagshipMenus.map((item, flagShipIndex) => (
             <Link href={item.href} key={`flag-ship-${flagShipIndex}`}>
-              <a className="px-3 py-6 lg:px-5 -skew-x-12 text-xs lg:text-base font-bold text-white hover:opacity-75 flex items-center h-full dark:text-neutral-50">
-                {item.name}
+              <a
+                className={classNames([
+                  'px-3 py-6 lg:px-5 -skew-x-12 text-xs lg:text-base font-bold text-white flex items-center h-full dark:text-neutral-50 dark:bg-gray-800 bg-slate-50/5',
+                  item.class,
+                ])}
+              >
+                <span className="skew-x-12">{item.name}</span>
               </a>
             </Link>
           ))}

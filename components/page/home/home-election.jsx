@@ -23,7 +23,7 @@ export default function HomeElection({
           className="text-xl font-bold"
         />
       </div>
-      <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
+      <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5">
         {posts.map((post, index) => (
           <PostItem
             key={post.id}
@@ -35,7 +35,7 @@ export default function HomeElection({
             }}
             styles={{
               lineSeparator: `border-b mb-3 pb-4 sm:pb-5 ${
-                index > 2 ? 'md:border-none' : ''
+                index > 2 ? 'lg:border-none' : ''
               } ${index > 3 ? 'border-none' : ''}`,
             }}
           />

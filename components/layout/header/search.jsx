@@ -54,7 +54,7 @@ export default function Search() {
   return (
     <div className="relative hidden md:flex items-center justify-end">
       <Popover>
-        <Popover.Button className="-ml-2 py-3 lg:py-5 px-2 lg:px-4 -skew-x-12 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-zinc-800 focus:outline-none">
+        <Popover.Button className="-ml-2 py-3 lg:py-6 px-2 lg:px-4 -skew-x-12 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-zinc-800 focus:outline-none">
           <span className="sr-only">Open search</span>
           <SearchIcon
             className="h-6 w-6 skew-x-12"

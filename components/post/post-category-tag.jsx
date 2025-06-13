@@ -1,15 +1,15 @@
 import Link from 'next/link';
 
 export default function PostCategoryTag({
-  categories,
+  categories = [],
   multiple = true,
   className = '',
   styles,
 }) {
   const classes = {
     wrapper: '',
-    innerWrapper: 'flex items-center',
-    name: 'text-white bg-rose-900 hover:bg-rose-700 px-1 max-w-[8rem] sm:max-w-none truncate mr-2',
+    innerWrapper: 'flex items-center space-x-2',
+    name: 'py-1 px-2 text-white bg-rose-900 hover:bg-rose-700 max-w-[8rem] sm:max-w-none truncate',
     ...styles,
   };
 
@@ -22,8 +22,8 @@ export default function PostCategoryTag({
       <div className={classes.innerWrapper}>
         {multiple ? (
           categories.map((category) => (
-            <div className={classes.name}>
-              <Link href={category.uri} key={category.databaseId}>
+            <div className={classes.name} key={category.databaseId}>
+              <Link href={category.uri}>
                 <a aria-label={category.name}>{category.name}</a>
               </Link>
             </div>

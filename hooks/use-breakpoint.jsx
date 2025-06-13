@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { throttle } from 'lodash';
+import throttle from 'lodash/throttle';
 
 const getDeviceConfig = (width) => {
   if (width < 640) {

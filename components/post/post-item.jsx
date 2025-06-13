@@ -1,4 +1,5 @@
-import { find, merge } from 'lodash';
+import find from 'lodash/find';
+import merge from 'lodash/merge';
 import PostTitle from './post-title';
 import PostAuthor from './post-author';
 import PostCategoryTag from './post-category-tag';
@@ -63,7 +64,7 @@ export default function PostItem({
           conf.listView && conf.showImage ? 'mb-3 sm:mb-0 ' : 'mb-3'
         }`,
         imageWrapper:
-          'aspect-video bg-gradient-to-r from-gray-100 to-white dark:from-gray-700 dark:to-gray-800',
+          'pb-[56%] aspect-video bg-gradient-to-r from-gray-100 to-white dark:from-gray-700 dark:to-gray-800',
         category: {
           wrapper: 'absolute bottom-0',
           name: 'text-[11px] text-white bg-rose-900 hover:bg-rose-700 px-1 mr-1',
@@ -71,14 +72,14 @@ export default function PostItem({
       },
       title: {
         wrapper: '',
-        title: 'text-base lg:text-lg lg:leading-relaxed dark:text-neutral-50',
+        title: 'text-lg dark:text-neutral-50',
       },
       excerpt: {
         wrapper: 'mt-3',
-        excerpt: 'text-sm text-gray-500 dark:text-white',
+        excerpt: 'text-gray-500 dark:text-white',
       },
       meta: {
-        wrapper: 'flex items-center text-xs mt-3',
+        wrapper: 'flex items-center text-sm mt-3 flex-wrap',
         author: {
           wrapper: 'flex items-center',
           avatar: 'w-12 h-12 relative mr-4',

@@ -41,7 +41,7 @@ export default function Search() {
     <div className="my-4 sm:my-8">
       <Container>
         <h1 className="mb-4 text-lg sm:text-2xl leading-relaxed text-center">
-          ស្វែងរកលទ្ធលសម្រាប់: <span className="font-bold">Search</span>
+          ស្វែងរកលទ្ធលសម្រាប់: <span className="font-normal">Search</span>
         </h1>
         <div className="max-w-32 max-w-xl mx-auto">
           <form
@@ -76,6 +76,7 @@ export default function Search() {
                     <Image
                       src="https://asset.ams.com.kh/central/media/photo_2022-06-30_10-36-29.jpg"
                       layout="fill"
+                      alt={post.title}
                     />
                   </div>
                   <h1 className="post-title">{post.title}</h1>

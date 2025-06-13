@@ -20,9 +20,11 @@ export default function TemplateArchiveTag({
     return <SkeletonTagPage />;
   }
 
+  const { seo = {} } = tag || {}
+
   return (
     <>
-      <Head>{HTMLReactParser(tag.seo.fullHead)}</Head>
+      <Head>{HTMLReactParser(seo.fullHead || '')}</Head>
       <TagBanner tag={tag} className="mb-4" />
       <Container>
         <ClientOnly>

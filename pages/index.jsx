@@ -1,10 +1,14 @@
-import { compact, find, keys, map } from 'lodash';
+import compact from 'lodash/compact';
+import find from 'lodash/find';
+import keys from 'lodash/keys';
+import map from 'lodash/map';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 import {
+  HomeSlide,
   HomeCambotory,
   HomeConnectToOversea,
-  // HomeDailyNews,
   HomeEconomy,
   HomeElection,
   HomeLatestNews,
@@ -14,44 +18,48 @@ import {
 } from '~/components/page/home';
 import home from '~/data/home';
 import { getCategoriesWithPostsBySlugs } from '~/lib/categories';
+import { getAllPosts } from '~/lib/posts';
 import Container from '../components/layout/container';
 
-export default function Index({ posts = {} }) {
-  const news = posts.news.posts;
-  // const daily = posts.daily.posts;
-  const politico360 = posts.politico360.posts;
-  const connectToOversea = posts.connectToOversea.posts;
-  const cambotory = posts.cambotory.posts;
-  const sports = posts.sports.posts;
-  const economy = posts.economy.posts;
-  const election = posts.election.posts;
-  const video = posts.video.posts;
+export default function Index({ posts = {}, latestPosts = [] }) {
+  const politico360 = posts.politico360?.posts || [];
+  const connectToOversea = posts.connectToOversea?.posts || [];
+  const cambotory = posts.cambotory?.posts || [];
+  const sports = posts.sports?.posts || [];
+  const economy = posts.economy?.posts || [];
+  const election = posts.election?.posts || [];
+  const video = posts.video?.posts || [];
 
   return (
     <>
-      <Container>
-        <HomeLatestNews
-          title={home.news.title}
-          link={home.news.link}
-          posts={news}
+      <Head>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="AMS Central" />
+        <meta property="og:site_name" content="AMS Central" />
+        <meta
+          property="og:image"
+          content="/central/images/APSARA_MEDIA_SERVICES_LOGO-01.png"
         />
-        <div className="md:grid md:grid-cols-3 gap-5">
+        <meta name="description" content="AMS Central" />
+      </Head>
+
+      <HomeSlide posts={connectToOversea} />
+
+      <Container>
+        <HomeLatestNews title="ព័ត៌មានថ្មីបំផុត" posts={latestPosts} />
+        <div className="md:grid md:grid-cols-3 gap-3 lg:gap-5">
           <section className="flex flex-col">
-            {/* <HomeDailyNews
-              title={home.daily.title}
-              link={home.daily.link}
-              posts={daily}
-            /> */}
             <HomeEconomy
               title={home.economy.title}
               link={home.economy.link}
               posts={economy}
             />
-            <div className="relative md:flex-1 aspect-[2/3]">
+            <div className="relative md:flex-1">
               <Image
                 src={home.economy.banner}
                 layout="fill"
-                objectFit="cover"
+                className="mx-auto"
+                alt="ads banner"
               />
             </div>
           </section>
@@ -76,6 +84,7 @@ export default function Index({ posts = {} }) {
           layout="fill"
           objectFit="cover"
           className="cover -z-10"
+          alt="ads banner"
         />
         <Container>
           <div className="mb-5 hidden sm:block">
@@ -83,11 +92,11 @@ export default function Index({ posts = {} }) {
               {home.aviVoice.title}
             </span>
           </div>
-          <p className="text-white sm:w-2/3 lg:w-1/2 xl:w-2/5 hidden sm:block mb-3 text-sm md:text-base">
+          <p className="text-white sm:w-2/3 lg:w-1/2 xl:w-2/5 hidden sm:block mb-3 text-base">
             {home.aviVoice.description}
           </p>
           <Link href={home.aviVoice.button.link}>
-            <a className="py-2 px-5 bg-rose-900 text-white text-sm md:text-base inline-block">
+            <a className="py-2 px-5 bg-rose-900 text-white text-lg inline-block">
               {home.aviVoice.button.title}
             </a>
           </Link>
@@ -102,13 +111,13 @@ export default function Index({ posts = {} }) {
         />
       </Container>
 
-      {/* Block banner Cambodia 2050 */}
       <section className="block-cambodia relative my-7 py-12 sm:py-7 md:py-14 lg:py-20 lg:pb-20">
         <Image
           src={home.cambodia2050.banner}
           layout="fill"
           objectFit="cover"
           className="cover -z-10"
+          alt="ads banner"
         />
         <Container>
           <div className="mb-5 hidden sm:block">
@@ -116,20 +125,19 @@ export default function Index({ posts = {} }) {
               {home.cambodia2050.title}
             </span>
           </div>
-          <p className="text-white sm:w-2/3 lg:w-1/2 xl:w-2/5 hidden sm:block mb-3 text-sm md:text-base">
+          <p className="text-white sm:w-2/3 lg:w-1/2 xl:w-2/5 hidden sm:block mb-3">
             {home.cambodia2050.description}
           </p>
           <Link href={home.cambodia2050.button.link}>
-            <a className="py-2 px-5 bg-rose-900 text-white text-sm md:text-base inline-block">
+            <a className="py-2 px-5 bg-rose-900 text-white inline-block">
               {home.cambodia2050.button.title}
             </a>
           </Link>
         </Container>
       </section>
 
-      {/* Block Sports & Economy */}
       <Container>
-        <div className="md:grid md:grid-cols-3 gap-5 pb-5">
+        <div className="md:grid md:grid-cols-3 gap-3 lg:gap-5 pb-5">
           <div className="col-span-3">
             <HomeSport
               title={home.sports.title}
@@ -147,16 +155,18 @@ export default function Index({ posts = {} }) {
           </section>
 
           <section>
-            <div className="relative mt-4 sm:mt-8 aspect-[3/4]">
+            <div className="relative mt-4 sm:mt-8 ads">
               <Image
                 src={home.election.banner}
                 layout="fill"
-                objectFit="cover"
+                objectFit="contain"
+                alt="ads banner"
               />
             </div>
           </section>
         </div>
       </Container>
+
       <section className="bg-slate-100 dark:bg-zinc-600 py-5">
         <Container>
           <HomeVideo
@@ -171,10 +181,9 @@ export default function Index({ posts = {} }) {
 }
 
 export async function getStaticProps() {
-  const { categories } =
-    await getCategoriesWithPostsBySlugs(
-      compact(map(home, (category) => category.categoryName))
-    );
+  const { categories } = await getCategoriesWithPostsBySlugs(
+    compact(map(home, (category) => category.categoryName))
+  );
 
   const posts = {};
   keys(home).forEach((categoryKey) => {
@@ -191,8 +200,26 @@ export async function getStaticProps() {
     }
   });
 
+  const { posts: latestPosts = [] } = await getAllPosts({
+    queryIncludes: 'archive',
+    variables: {
+      first: 5,
+      where: {
+        hasPassword: false,
+        orderby: [
+          {
+            field: 'DATE',
+            order: 'DESC',
+          },
+        ],
+        categoryNotIn: [16, 89, 130, 513, 631, 1768, 1934],
+      },
+    },
+  });
+
   return {
     props: {
+      latestPosts,
       posts,
     },
     revalidate: 10,

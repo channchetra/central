@@ -11,6 +11,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer({
   basePath: '/central',
+  output: 'standalone',
   images: {
     domains: [
       process.env.WORDPRESS_API_URL.match(/(http(?:s)?:\/\/)(.*)/)[2], // Valid WP Image domain.
@@ -24,4 +25,9 @@ module.exports = withBundleAnalyzer({
     ],
     // formats: ['image/avif', 'image/webp'],
   },
+  experimental: {
+    optimizeCss: true,
+  },
+  poweredByHeader: false,
+  reactStrictMode: true,
 })

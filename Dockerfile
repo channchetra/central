@@ -19,12 +19,23 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Set environment variables
+# Declare build-time arguments
+ARG NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_API_KEY
+ARG NEXT_PUBLIC_GRAPHQL_URL
+ARG NEXT_PUBLIC_WORDPRESS_API_URL
+ARG REVALIDATE_SECRET_KEY
+
+# Set environment variables from build arguments
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_KEY=$NEXT_PUBLIC_API_KEY
+ENV NEXT_PUBLIC_GRAPHQL_URL=$NEXT_PUBLIC_GRAPHQL_URL
+ENV NEXT_PUBLIC_WORDPRESS_API_URL=$NEXT_PUBLIC_WORDPRESS_API_URL
+ENV REVALIDATE_SECRET_KEY=$REVALIDATE_SECRET_KEY
+
+# Set other environment variables
 ENV NEXT_TELEMETRY_DISABLED 1
 ENV NODE_ENV production
-
-# Copy .env file if it exists
-COPY .env* ./
 
 # Build the application
 RUN yarn build
@@ -44,7 +55,6 @@ RUN addgroup --system --gid 1001 nodejs && \
 # Copy necessary files
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/.env* ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 

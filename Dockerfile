@@ -24,15 +24,15 @@ ENV NEXT_TELEMETRY_DISABLED 1
 ENV NODE_ENV production
 
 # Install additional build dependencies
-RUN yarn add -D \
-    tailwindcss@3.3.0 \
-    postcss@8.4.31 \
-    autoprefixer@10.4.14 \
-    eslint-plugin-react@7.32.2 \
-    eslint-config-airbnb@19.0.4 \
-    eslint-plugin-import@2.27.5 \
-    eslint-plugin-jsx-a11y@6.7.1 \
-    eslint-plugin-react-hooks@4.6.0
+# RUN yarn add -D \
+#     tailwindcss@3.3.0 \
+#     postcss@8.4.31 \
+#     autoprefixer@10.4.14 \
+#     eslint-plugin-react@7.32.2 \
+#     eslint-config-airbnb@19.0.4 \
+#     eslint-plugin-import@2.27.5 \
+#     eslint-plugin-jsx-a11y@6.7.1 \
+#     eslint-plugin-react-hooks@4.6.0
 
 # Build the application
 RUN yarn build

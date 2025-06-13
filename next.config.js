@@ -24,10 +24,5 @@ module.exports = withBundleAnalyzer({
       's3.ams.com.kh',
     ],
     // formats: ['image/avif', 'image/webp'],
-  },
-  experimental: {
-    optimizeCss: true,
-  },
-  poweredByHeader: false,
-  reactStrictMode: true,
+  }
 })

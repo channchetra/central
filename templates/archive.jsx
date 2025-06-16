@@ -10,14 +10,14 @@ export default function TemplateArchive({ posts, attributes = {} }) {
   // console.warn(posts)
   // return null
   const pageBanner = {
-    image: '/central/images/AMS-Cover-AVI-Voice.jpg',
+    image: '/images/AMS-Cover-AVI-Voice.jpg',
     enable: true,
     ...attributes.pageBanner,
   };
   const pageTitle = {
     title: 'Archive',
     description: 'Description',
-    image: '/central/images/AVI-Voice-on-AMS.jpg',
+    image: '/images/AVI-Voice-on-AMS.jpg',
     className: 'my-5',
     config: {
       showLineSeparator: true,

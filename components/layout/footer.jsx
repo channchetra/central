@@ -4,7 +4,7 @@ import Menu from '~/data/menu';
 import Container from './container';
 import CommonSectionHeader from '../common/section-header';
 
-const amsLogoWide = '/central/images/APSARA_MEDIA_SERVICES_LOGO-01.png';
+const amsLogoWide = '/images/APSARA_MEDIA_SERVICES_LOGO-01.png';
 
 export default function Footer() {
   return (

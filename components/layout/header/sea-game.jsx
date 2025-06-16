@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const seaGameLogo = '/central/images/seagame2023.svg';
+const seaGameLogo = '/images/seagame2023.svg';
 
 export default function SeaGame() {
   const calculateTimeLeft = () => {

@@ -7,7 +7,7 @@ import ThemeSwitcher from '~/components/common/theme-switcher';
 import MainMenuItem from './main-menu-item';
 import MainMenuItemMobile from './main-menu-item-mobile';
 
-const amsLogoWide = '/central/images/APSARA_MEDIA_SERVICES_LOGO-01.png';
+const amsLogoWide = '/images/APSARA_MEDIA_SERVICES_LOGO-01.png';
 
 export default function MainMenu({ mainMenus }) {
   return (

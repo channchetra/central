@@ -38,7 +38,7 @@ export default function Index({ posts = {}, latestPosts = [] }) {
         <meta property="og:site_name" content="AMS Central" />
         <meta
           property="og:image"
-          content="/central/images/APSARA_MEDIA_SERVICES_LOGO-01.png"
+          content="/images/APSARA_MEDIA_SERVICES_LOGO-01.png"
         />
         <meta name="description" content="AMS Central" />
       </Head>

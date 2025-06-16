@@ -20,10 +20,15 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # COPY .env.local.example .env
 
+ARG WORDPRESS_API_URL
+ARG REVALIDATE_SECRET_KEY
+ARG NODE_ENV
+
 # Set environment variables
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_ENV=production
-ENV WORDPRESS_API_URL="https://admin.amskh.co"
+ENV NODE_ENV=$NODE_ENV
+ENV WORDPRESS_API_URL=$WORDPRESS_API_URL
+ENV REVALIDATE_SECRET_KEY=$REVALIDATE_SECRET_KEY
 # ENV NUXT_PUBLIC_WORDPRESS_API_URL "https://admin.amskh.co"
 
 # Build the application

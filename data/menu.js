@@ -119,21 +119,14 @@ export default class Menu {
       name: 'សច្ចធម៌ប្រវត្តិសាស្ត្រ',
       href: '/cambotory',
       subMenus: [
-        { name: 'ក្អែកខ្មៅ',
-          href: '/cambotory/black-crows' },
+        { name: 'ក្អែកខ្មៅ', href: '/cambotory/black-crows' },
         {
           name: 'កិច្ចព្រមព្រៀងទីក្រុងប៉ារីស៍',
           href: '/cambotory/paris-peace-agreement',
         },
-        { name: 'នយោបាយឈ្នះ-ឈ្នះ',
-          href: '/cambotory/winwin'
-        },
-        { name: 'ដំណើររបស់កម្ពុជា', 
-          href: '/cambotory/cambodia-journey' 
-        },
-        { name: 'ឥស្សរជនឆ្នើមកម្ពុជា',
-          href: '/cambotory/peacefounders' 
-        },
+        { name: 'នយោបាយឈ្នះ-ឈ្នះ', href: '/cambotory/winwin' },
+        { name: 'ដំណើររបស់កម្ពុជា', href: '/cambotory/cambodia-journey' },
+        { name: 'ឥស្សរជនឆ្នើមកម្ពុជា', href: '/cambotory/peacefounders' },
         {
           name: '60វិនាទីនៃប្រវត្តិសាស្ត្រ',
           href: '/cambotory/60minute-of-history',
@@ -168,11 +161,11 @@ export default class Menu {
 
   static amsGroup = [
     { name: 'AMS Education', href: 'http://education.ams.com.kh/' },
-    { name: 'AMS Central', href: 'https://ams.com.kh/central/' },
+    { name: 'AMS Central', href: 'https://central.ams.com.kh/' },
     { name: 'AMS Economy', href: 'ttp://economy.ams.com.kh/' },
     {
       name: 'AMS Khmer Civilization',
-      href: 'https://ams.com.kh/khmercivilization/',
+      href: 'https://khmercivilization.ams.com.kh/',
     },
     { name: 'AMS Infotainment', href: 'http://infotainment.ams.com.kh/' },
     { name: 'AMS Sports', href: 'https://ams.com.kh/sports/' },

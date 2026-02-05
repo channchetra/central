@@ -7,10 +7,10 @@ if (!process.env.WORDPRESS_API_URL) {
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-})
+});
 
 module.exports = withBundleAnalyzer({
-  basePath: '/central',
+  basePath: '',
   output: 'standalone',
   images: {
     domains: [
@@ -22,7 +22,8 @@ module.exports = withBundleAnalyzer({
       'ams.com.kh',
       'admin.amskh.co',
       's3.ams.com.kh',
+      'central.ams.com.kh',
     ],
     // formats: ['image/avif', 'image/webp'],
-  }
-})
+  },
+});

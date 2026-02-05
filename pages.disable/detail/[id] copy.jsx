@@ -50,7 +50,7 @@ export default function Detail({ post }) {
         window.history.pushState(
           null,
           item.title,
-          `/central${postPathById(item.databaseId)}`
+          `${postPathById(item.databaseId)}`
         );
         setTitle(item.title);
         setId(item.databaseId);
@@ -89,9 +89,7 @@ export async function getStaticPaths() {
   const { posts } = await getAllPostsSlug();
 
   return {
-    paths: posts.map(
-      ({ databaseId }) => postPathById(databaseId) || []
-    ),
+    paths: posts.map(({ databaseId }) => postPathById(databaseId) || []),
     fallback: true,
   };
 }

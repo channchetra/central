@@ -8,8 +8,8 @@ export default class MyDocument extends Document {
         <Head>
           <Script
             strategy="beforeInteractive"
-            src="https://analytic.cloud.sovichetra.com/script.js"
-            data-website-id="b1e5ed14-aa5d-4f63-ab38-b0023cd61af5"
+            src="https://statistic.amskh.co/script.js"
+            data-website-id="128049ce-f57b-4cbb-92a1-737e187bfa12"
           />
           <Script
             strategy="beforeInteractive"

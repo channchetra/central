@@ -7,7 +7,7 @@ const home = {
   // },
   // daily: {
   //   title: 'ព័ត៌មានប្រចាំថ្ងៃ',
-  //   banner: '/central/images/food-panda.jpg',
+  //   banner: '/images/food-panda.jpg',
   //   link: '/ams-one-minute/daily-summary',
   //   categoryName: 'daily-summary',
   //   first: 6,
@@ -28,7 +28,8 @@ const home = {
     title: 'AVI Voice',
     description:
       'គោលបំណងចែករំលែកចំណេះដឹង និងការវិភាគដល់ប្រិយមិត្តអ្នកស្តាប់ជាពិសេសយុវជនលើប្រធានបទសំខាន់ៗដូចជាភូមិសាស្រ្តនយោបាយនិងសេដ្ឋកិច្ចសកលនិងក្នុងតំបន់ការអភិវឌ្ឍដោយចីរភាព សេដ្ឋកិច្ចឌីជីថលនិងនវានុវត្តន៍បច្ចេកវិទ្យាដើម្បីរួមចំណែក ក្នុងការអភិវឌ្ឍនូវសមត្ថភាព និងការយល់ដឹងរបស់យុវជនកម្ពុជាជំនាន់ថ្មីក៏ដូចជា ផ្សព្វផ្សាយឲ្យអន្តរជាតិយល់ដឹងនិងស្គាល់កាន់តែច្បាស់អំពីកម្ពុជា។ —',
-    banner: 'https://asset.ams.com.kh/central/media/2021/06/AMS-AVI-front-cover.jpg',
+    banner:
+      'https://asset.ams.com.kh/central/media/2021/06/AMS-AVI-front-cover.jpg',
     button: {
       title: 'អត្ថបទរបស់ AVI Voice on AMS',
       link: '/connect-to-oversea/avi-voice',

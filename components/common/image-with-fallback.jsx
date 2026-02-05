@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 function ImageWithFallback({
   src,
-  fallbackSrc = '/central/images/APSARA_MEDIA_SERVICES_LOGO-01.png',
+  fallbackSrc = '/images/APSARA_MEDIA_SERVICES_LOGO-01.png',
   objectFit = 'cover',
   className = '',
   ...attributes
